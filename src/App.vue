@@ -1,10 +1,6 @@
 <template>
   <div id="app" :dir="lang">
     <router-view />
-    <div class="flex">
-      <!-- <p class="pr-4">this is p</p> -->
-      <span class="bg-red-500 ml-10 w-24 inline-block">{{ $t("arabic") }}</span>
-    </div>
   </div>
 </template>
 <script>
@@ -15,7 +11,7 @@ export default {
     };
   },
   mounted() {
-    localStorage.setItem("lang", "ar");
+    localStorage.setItem("lang", "en");
     if (this.lang === "en") {
       this.lang = "ltr";
     } else {
