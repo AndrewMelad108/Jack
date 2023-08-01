@@ -1,31 +1,61 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HomeView from "../views/User/Home.vue";
+import UserHomeView from "../views/User/UserHome.vue";
 import HomePage from "../components/User/HomePage.vue";
-import Orders from "../components/User/Orders.vue";
-import AllServies from "../components/User/AllServies.vue";
+import UserHome from "../components/User/UserHome.vue";
+import UserAllServies from "../components/User/UserAllServies.vue";
+import UserRequest from "../components/User/UserRequest.vue";
+import UserOrders from "../components/User/UserOrders.vue";
+import UserChat from "../components/User/UserChat.vue";
+import UserWallet from "../components/User/UserWallet.vue";
+import UserProfile from "../components/User/UserProfile.vue";
 Vue.use(VueRouter);
-
 const routes = [
   {
-    path: "/user/",
-    name: "user.home",
-    component: HomeView,
+    path: "/User/main",
+    name: "HomePage",
+    component: HomePage,
+  },
+  {
+    path: "/User/",
+    name: "HomeView",
+    component: UserHomeView,
     children: [
       {
-        path: "all-servies",
-        name: "AllServies",
-        component: AllServies,
+        path: "Home",
+        name: "Home",
+        component: UserHome,
       },
       {
-        path: "main",
-        name: "Home",
-        component: HomePage,
+        path: "all-servies",
+        name: "UserAllServies",
+        component: UserAllServies,
       },
+
       {
         path: "Orders",
-        name: "Orders",
-        component: Orders,
+        name: "UserOrders",
+        component: UserOrders,
+      },
+      {
+        path: "Chat",
+        name: "UserChat",
+        component: UserChat,
+      },
+      {
+        path: "Profile",
+        name: "UserProfile",
+        component: UserProfile,
+      },
+      {
+        path: "Wallet",
+        name: "UserWallet",
+        component: UserWallet,
+      },
+      {
+        path: "Request/index",
+        name: "UserRequests",
+        component: UserRequest,
       },
     ],
   },

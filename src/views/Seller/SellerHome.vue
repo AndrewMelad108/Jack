@@ -6,7 +6,7 @@
     >
       <img
         src="../../assets//images/icons/menu.svg"
-        class="h-8 cursor-pointer"
+        class="h-8 cursor-pointer justify-self-start w-1/6"
         @click="showSidebar = !showSidebar"
         alt=""
         loading="lazy"
@@ -17,12 +17,14 @@
         v-if="showSidebar"
         @changeCloseSidebarValue="showSidebar = !showSidebar"
       />
-      <img
-        src="../../assets/images/logo.png"
-        class="h-8"
-        alt="logo-menu"
-        loading="lazy"
-      />
+      <div class="logo-header-md w-11/12 pl-[30%]">
+        <img
+          src="../../assets/images/logo.png"
+          class="h-8"
+          alt="logo-menu"
+          loading="lazy"
+        />
+      </div>
     </div>
     <div class="max-w-full p-10 w-auto h-screen">
       <router-view />
@@ -42,9 +44,11 @@ export default {
         "Home",
         "Control Panel",
         "Requests",
+        "Offers",
         "Orders",
         "Wallet",
         "Profile",
+        "Profile Servies",
         "Logout",
       ],
     };

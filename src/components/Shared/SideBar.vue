@@ -14,7 +14,16 @@
         class="text-white block text-xl"
         v-for="link in links"
         :key="link.index"
-        :to="{ name: `${link}` }"
+        :to="
+          link === 'Home'
+            ? { name: 'HomePage' }
+            : link === 'Control Panel'
+            ? { path: '/User/Home' }
+            : { name: `${link}` }
+        "
+        :class="{
+          'bg-white text-[#24c6c9] py-1 pl-2 rounded-lg': $route.name === link,
+        }"
         >{{ $t(link) }}
       </router-link>
     </div>
