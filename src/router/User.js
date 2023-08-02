@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import MainPage from "../views/User/MainPage.vue";
 import UserHomeView from "../views/User/UserHome.vue";
 import HomePage from "../components/User/HomePage.vue";
 import UserHome from "../components/User/UserHome.vue";
@@ -15,6 +16,11 @@ const routes = [
     path: "/User/main",
     name: "HomePage",
     component: HomePage,
+  },
+  {
+    path: "/",
+    name: "MainPage",
+    component: MainPage,
   },
   {
     path: "/User/",
