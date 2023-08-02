@@ -1,6 +1,6 @@
 <template>
   <section class="MainPage relative min-h-full">
-    <UserHeader />
+    <UserHeader :checked="checkUser" />
     <UserHeaderPhone />
     <div class="mainPage-content">
       <div
@@ -45,7 +45,7 @@ import UserFooter from "@/components/User/MainPage/UserFooter.vue";
 export default {
   name: "MainPage",
   data() {
-    return {};
+    return { checkUser: true };
   },
   components: {
     UserHeader,

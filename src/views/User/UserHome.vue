@@ -42,8 +42,9 @@ export default {
       showSidebar: false,
       LinksData: [
         "Home",
-        "Control Panel",
+        "ControlPanel",
         "Requests",
+        "Chats",
         "Orders",
         "Wallet",
         "Profile",

@@ -14,7 +14,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/User/main",
-    name: "HomePage",
+    name: "Home",
     component: HomePage,
   },
   {
@@ -29,7 +29,7 @@ const routes = [
     children: [
       {
         path: "Home",
-        name: "Home",
+        name: "ControlPanel",
         component: UserHome,
       },
       {
@@ -40,27 +40,27 @@ const routes = [
 
       {
         path: "Orders",
-        name: "UserOrders",
+        name: "Orders",
         component: UserOrders,
       },
       {
         path: "Chat",
-        name: "UserChat",
+        name: "Chats",
         component: UserChat,
       },
       {
         path: "Profile",
-        name: "UserProfile",
+        name: "Profile",
         component: UserProfile,
       },
       {
         path: "Wallet",
-        name: "UserWallet",
+        name: "Wallet",
         component: UserWallet,
       },
       {
-        path: "Request/index",
-        name: "UserRequests",
+        path: "Request",
+        name: "Requests",
         component: UserRequest,
       },
     ],

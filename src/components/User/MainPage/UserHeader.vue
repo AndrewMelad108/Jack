@@ -21,15 +21,20 @@
         :to="{ path: '/User/all-servies' }"
         >{{ $t("Servies") }}</router-link
       >
-      <router-link class="hover:text-black" :to="{ name: 'LogIn' }">{{
-        $t("Join")
-      }}</router-link>
+      <router-link
+        v-if="checked"
+        class="hover:text-black"
+        :to="{ name: 'LogIn' }"
+        >{{ $t("Join") }}</router-link
+      >
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["checked"],
+};
 </script>
 
 <style></style>
