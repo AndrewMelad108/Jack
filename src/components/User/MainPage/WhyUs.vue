@@ -61,7 +61,9 @@
 <script>
 export default {
   name: "WhyUs",
-  data() {},
+  data() {
+    return {};
+  },
 };
 </script>
 

@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Register from "@/views/Shared/Register.vue";
 import MainPage from "../views/User/MainPage.vue";
 import UserHomeView from "../views/User/UserHome.vue";
 import HomePage from "../components/User/HomePage.vue";
@@ -21,6 +22,11 @@ const routes = [
     path: "/",
     name: "MainPage",
     component: MainPage,
+  },
+  {
+    path: "/Register/Create",
+    name: "Register",
+    component: Register,
   },
   {
     path: "/User/",

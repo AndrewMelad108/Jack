@@ -3,9 +3,21 @@ import VueRouter from "vue-router";
 import User from "./User.js";
 import Seller from "./Seller.js";
 import Admin from "./Admin.js";
+import Login from "@/views/Shared/Login.vue";
+
 Vue.use(VueRouter);
 
-const routes = [...User, ...Seller, ...Admin];
+const routes = [
+  {
+    path: "/Login/Create",
+    name: "LogIn",
+    component: Login,
+  },
+
+  ...User,
+  ...Seller,
+  ...Admin,
+];
 
 const router = new VueRouter({
   mode: "history",
