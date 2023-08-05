@@ -20,7 +20,7 @@
       </div>
     </div>
     <div
-      class="links absolute left-0 right-0 z-40 bg-white space-y-4 pl-20 py-4 font-bold text-text-color"
+      class="links absolute left-0 right-0 z-[999] bg-white space-y-4 pl-20 py-4 font-bold text-text-color"
       v-if="showLinks"
     >
       <router-link

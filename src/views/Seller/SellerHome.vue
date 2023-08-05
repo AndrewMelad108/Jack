@@ -1,6 +1,6 @@
 <template>
   <section class="UserHome relative flex flex-wrap bg-cover-color md:flex-row">
-    <SideBar :links="LinksData" />
+    <SideBar :links="LinksData" :type="UserType" />
     <div
       class="bg-main-color py-2 px-10 w-[100%] h-12 md:hidden flex justify-between items-center"
     >
@@ -15,6 +15,7 @@
         :links="LinksData"
         :closeSidebar="showSidebar"
         v-if="showSidebar"
+        :type="UserType"
         @changeCloseSidebarValue="showSidebar = !showSidebar"
       />
       <div class="logo-header-md w-11/12 pl-[30%]">
@@ -40,6 +41,7 @@ export default {
   data() {
     return {
       showSidebar: false,
+      UserType: "Seller",
       LinksData: [
         "Home",
         "Control Panel",

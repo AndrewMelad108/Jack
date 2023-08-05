@@ -1,6 +1,6 @@
 <template>
   <section
-    class="w-[220px] bg-main-color md:block hidden rounded-s-xl rounded-e-xl h-[100vh] min-h-full"
+    class="min-w-[220px] bg-main-color md:block hidden rounded-s-xl rounded-e-xl min-h-[100vh]"
   >
     <div class="logo">
       <img
@@ -9,15 +9,16 @@
         alt="logo-image"
       />
     </div>
-    <div class="p-8 mt-10 space-y-8">
+    <div class="p-8 mt-10 text-white space-y-8">
       <router-link
-        class="text-white block text-xl"
+        :class="{
+          'py-1 pl-2 rounded-lg bg-white text-main-color':
+            $route.name === type + '.' + link,
+        }"
+        class="block text-xl"
         v-for="link in links"
         :key="link.index"
-        :to="link"
-        :class="{
-          'bg-white text-[#24c6c9] py-1 pl-2 rounded-lg': $route.name == link,
-        }"
+        :to="{ name: type + '.' + link }"
         >{{ $t(link) }}
       </router-link>
     </div>
@@ -32,6 +33,10 @@ export default {
   props: {
     links: {
       type: Array,
+      required: true,
+    },
+    type: {
+      type: String,
       required: true,
     },
   },

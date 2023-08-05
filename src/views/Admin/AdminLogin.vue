@@ -30,7 +30,7 @@
           <input
             type="text"
             class="placeholder:capitalize p-4 rounded-lg placeholder:text-gray-600 placeholder:text-xl bg-gray-200 w-[100%]"
-            :placeholder="$t('enter your email address')"
+            :placeholder="$t('enter email')"
             v-model="person.email"
           />
         </div>

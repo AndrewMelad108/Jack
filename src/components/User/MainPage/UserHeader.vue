@@ -1,6 +1,8 @@
 <template>
-  <section class="Header py-8 md:flex hidden justify-around items-center px-40">
-    <div class="logo-image w-3/6">
+  <section
+    class="Header py-8 md:flex hidden justify-around items-center max-md:px-40 px-20"
+  >
+    <div class="logo-image max-md:w-4/6 w-4/6">
       <img
         src="../../../assets//images/logo.png"
         alt="logo-image"
@@ -9,7 +11,7 @@
       />
     </div>
     <div
-      class="header-links flex justify-around text-xl font-bold text-[#858585] w-3/6"
+      class="header-links flex justify-around text-xl font-bold text-[#858585] max-md:w-2/6 w-2/6"
     >
       <router-link
         class="hover:text-black"
@@ -23,7 +25,7 @@
       >
       <router-link
         v-if="checked"
-        class="hover:text-black"
+        class="hover:text-black text-main-color"
         :to="{ name: 'LogIn' }"
         >{{ $t("Join") }}</router-link
       >

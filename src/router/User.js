@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Register from "@/views/Shared/Register.vue";
+import Register from "@/views/User/UserRegister.vue";
 import MainPage from "../views/User/MainPage.vue";
 import UserHomeView from "../views/User/UserHome.vue";
 import HomePage from "../components/User/HomePage.vue";
@@ -15,7 +15,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/User/main",
-    name: "Home",
+    name: "User.Home",
     component: HomePage,
   },
   {
@@ -24,7 +24,7 @@ const routes = [
     component: MainPage,
   },
   {
-    path: "/Register/Create",
+    path: "/User/Register/Create",
     name: "Register",
     component: Register,
   },
@@ -35,38 +35,38 @@ const routes = [
     children: [
       {
         path: "Home",
-        name: "ControlPanel",
+        name: "User.ControlPanel",
         component: UserHome,
       },
       {
         path: "all-servies",
-        name: "UserAllServies",
+        name: "User.UserAllServies",
         component: UserAllServies,
       },
 
       {
         path: "Orders",
-        name: "Orders",
+        name: "User.Orders",
         component: UserOrders,
       },
       {
         path: "Chat",
-        name: "Chats",
+        name: "User.Chats",
         component: UserChat,
       },
       {
         path: "Profile",
-        name: "Profile",
+        name: "User.Profile",
         component: UserProfile,
       },
       {
         path: "Wallet",
-        name: "Wallet",
+        name: "User.Wallet",
         component: UserWallet,
       },
       {
         path: "Request",
-        name: "Requests",
+        name: "User.Requests",
         component: UserRequest,
       },
     ],

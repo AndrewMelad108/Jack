@@ -1,7 +1,7 @@
 <template>
-  <section class="LoginPage bg-text-color min-h-[100vh] w-screen py-4 md:px-8">
+  <section class="LoginPage bg-text-color min-h-[100vh] w-[100%] py-4 md:px-8">
     <div
-      class="login-form md:w-96 w-72 mx-auto bg-white rounded-2xl min-h-[95vh] h-auto p-4"
+      class="login-form md:w-96 w-72 mx-auto bg-white rounded-2xl h-[95vh] min--h-auto p-4"
     >
       <img
         src="../../assets/images/icons/close-icon.svg"
@@ -78,7 +78,7 @@
           <input
             type="text"
             class="placeholder:capitalize p-4 rounded-lg placeholder:text-gray-600 placeholder:text-xl bg-gray-200 w-[100%]"
-            :placeholder="$t('enter your email address')"
+            :placeholder="$t('enter email')"
             v-model="person.email"
           />
         </div>

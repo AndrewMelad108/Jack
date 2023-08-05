@@ -7,9 +7,7 @@
         class="intro-section bg-main-color w-[100%] h-[500px] flex md:flex-row flex-col items-center justify-around"
       >
         <div class="intro-description capitalize space-y-10">
-          <h1
-            class="intro-title text-white max-md:text-5xl text-3xl text-center"
-          >
+          <h1 class="intro-title text-white md:text-5xl text-3xl text-center">
             {{ $t("vehicle service") }}
           </h1>
           <button

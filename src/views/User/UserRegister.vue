@@ -4,7 +4,7 @@
     <UserHeaderPhone />
     <div class="Register-form bg-gray-100 w-[100%] py-4">
       <div
-        class="bg-white md:w-[900px] max-w-[600px] p-4 mx-auto min-h-[95vh] rounded-2xl"
+        class="bg-white md:max-w-[1000px] max-w-[600px] p-4 mx-auto min-h-[95vh] rounded-2xl"
       >
         <div
           class="social-icons w-48 mt-4 mx-auto flex justify-around gap-1 items-center"
@@ -34,27 +34,21 @@
             loading="lazy"
           />
         </div>
-        <h1 class="text-xl capitalize mt-4">{{ $t("account type") }}</h1>
-        <div class="group-btn md:w-[70%] w-[60%] grid grid-cols-2 gap-1">
+        <h1 class="text-xl capitalize mt-4 pb-2">{{ $t("account type") }}</h1>
+        <div class="group-btn md:w-[35%] w-[60%] grid grid-cols-2 gap-1">
           <button
             :class="
               selected === 'User'
                 ? 'bg-green-100 text-[#24C6C9]'
                 : 'bg-gray-100'
             "
-            @click="selected = 'User'"
-            class="capitalize border-0 p-2 md:text-2xl text-lg rounded-2xl"
+            class="capitalize 'bg-gray-100 border-0 p-2 mr-4 md:text-xl text-lg rounded-2xl"
           >
             {{ $t("user") }}
           </button>
           <button
-            :class="
-              selected === 'Seller'
-                ? 'bg-green-100 text-[#24C6C9]'
-                : 'bg-gray-100'
-            "
-            @click="selected = 'Seller'"
-            class="capitalize border-0 p-2 md:text-2xl text-lg rounded-xl"
+            @click="$router.push({ name: 'Seller.Register' })"
+            class="capitalize bg-gray-100 border-0 p-2 md:text-xl text-lg rounded-xl"
           >
             {{ $t("seller") }}
           </button>
@@ -64,14 +58,14 @@
         >
           <div class="input-field">
             <label
-              for="Email"
+              for="FirstName"
               class="capitalize block md:text-xl text-md text-lg"
               >{{ $t("FirstName") }}</label
             >
             <input
               type="text"
               class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
-              :placeholder="$t('enter your FirstName')"
+              :placeholder="$t('enter FirstName')"
               v-model="person.FirstName"
             />
           </div>
@@ -81,13 +75,13 @@
             }}</label>
             <input
               type="text"
-              :placeholder="$t('enter your FirstName')"
+              :placeholder="$t('enter LastName')"
               v-model="person.LastName"
               class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
           </div>
           <div class="input-field">
-            <label for="Region" class="capitalize block md:text-xl text-md">{{
+            <label for="City" class="capitalize block md:text-xl text-md">{{
               $t("City")
             }}</label>
             <select
@@ -126,8 +120,8 @@
               >{{ $t("Contact Number") }}</label
             >
             <input
-              type="text"
-              :placeholder="$t('enter your Number address')"
+              type="number"
+              :placeholder="$t('enter Number')"
               v-model="person.Number"
               class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
@@ -138,7 +132,7 @@
             }}</label>
             <input
               type="text"
-              :placeholder="$t('enter your Email')"
+              :placeholder="$t('enter Email')"
               v-model="person.Email"
               class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
@@ -148,8 +142,8 @@
               $t("Password")
             }}</label>
             <input
-              type="text"
-              :placeholder="$t('enter your Password')"
+              type="password"
+              :placeholder="$t('enter Password')"
               v-model="person.Email"
               class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
@@ -160,7 +154,7 @@
             }}</label>
             <input
               type="text"
-              :placeholder="$t('enter your Confirm Password')"
+              :placeholder="$t('enter Confirm Password')"
               v-model="person.ConfirmPassword"
               class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
