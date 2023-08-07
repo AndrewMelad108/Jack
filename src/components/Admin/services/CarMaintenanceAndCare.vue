@@ -1,5 +1,5 @@
 <template>
-  <div class="car maintenance and care min-h-[100vh] my-10">
+  <div class="carmaintenanceandcare min-h-[100vh] my-10">
     <HeaderServices />
     <div classs="services-des pt-4">
       <img
