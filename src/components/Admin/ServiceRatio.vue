@@ -9,14 +9,14 @@
         v-else
         type="number"
         class="bg-green-50 w-5/6 rounded-full py-2 px-4"
-        placeholder="enter your add"
+        :placeholder="$t('enter your service ratio')"
         v-model="ratio"
       />
       <button
         class="w-1/6 bg-main-color text-white rounded-lg hover:bg-red-400 transition-all ease-in-out duration-300"
         @click="showInput = !showInput"
       >
-        Edit
+        {{ $t("Edit") }}
       </button>
     </div>
   </section>

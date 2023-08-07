@@ -5,7 +5,7 @@
     </h1>
     <span class="line block w-24 bg-main-color h-2 rounded-full mx-auto"></span>
     <div
-      class="services-content w-[100%] capitalize justify-center md:px-20 px-10 mt-20 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 text-center md:gap-y-20 md:gap-x-36 gap-x-24 gap-y-10"
+      class="services-content w-[100%] capitalize justify-center md:px-20 px-10 mt-20 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 text-center gap-6"
     >
       <div
         class="bg-green-100 cursor-pointer py-10 space-y-12 rounded-2xl text-main-color text-2xl font-bold min-h-[350px]"

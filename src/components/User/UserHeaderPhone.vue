@@ -5,7 +5,7 @@
     >
       <img
         src="../../assets//images/icons/menu.svg"
-        class="h-8 cursor-pointer justify-self-start w-1/6"
+        class="h-5 cursor-pointer justify-self-start w-5"
         @click="showLinks = !showLinks"
         alt="menu-icon"
         loading="lazy"
@@ -20,12 +20,12 @@
       </div>
     </div>
     <div
-      class="links absolute left-0 right-0 z-[999] bg-white space-y-4 pl-20 py-4 font-bold text-text-color"
+      class="links absolute left-0 right-0 bg-white space-y-4 pl-20 py-4 font-bold text-text-color shadow-md shadow-text-color z-50"
       v-if="showLinks"
     >
       <router-link
         class="hover:text-black block text-lg"
-        :to="{ path: '/User/all-servies' }"
+        :to="{ path: '/User/home' }"
         >{{ $t("Home") }}</router-link
       >
       <router-link

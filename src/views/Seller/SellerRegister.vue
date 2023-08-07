@@ -4,7 +4,7 @@
     <UserHeaderPhone />
     <div class="Register-form bg-gray-100 w-[100%] py-4">
       <div
-        class="bg-white md:max-w-[1000px] max-w-[600px] p-4 mx-auto min-h-[95vh] rounded-2xl"
+        class="bg-white md:max-w-[1100px] max-w-[600px] p-4 mx-auto min-h-[95vh] rounded-2xl"
       >
         <div
           class="social-icons w-48 mt-4 mx-auto flex justify-around gap-1 items-center"
@@ -37,17 +37,15 @@
         <h1 class="md:text-xl text-md capitalize mt-4 pb-2">
           {{ $t("account type") }}
         </h1>
-        <div
-          class="group-btn flex md:justify-between items-center md:flex-row flex-col md:gap-0 gap-2"
-        >
-          <div class="flex md:justify-around justify-start w-1/2">
+        <div class="group-btn md:flex-row flex-col flex items-start gap-2">
+          <div class="flex gap-2 w-1/2">
             <button
               @click="
                 $router.push({
                   name: 'Register',
                 })
               "
-              class="capitalize md:w-[40%] w-[50%] bg-gray-100 border-0 p-2 mr-4 md:text-xl text-md rounded-2xl"
+              class="capitalize px-12 bg-gray-100 border-0 py-2 md:text-xl text-md rounded-2xl"
             >
               {{ $t("user") }}
             </button>
@@ -60,21 +58,19 @@
               @click="
                 selected = 'Seller' && router.push({ name: 'Seller.Register' })
               "
-              class="capitalize md:w-[40%] w-[50%] border-0 p-2 md:text-xl text-md rounded-xl"
+              class="capitalize px-12 py-2 border-0 md:text-xl text-md rounded-xl"
             >
               {{ $t("seller") }}
             </button>
           </div>
-          <div
-            class="image-person flex md:flex-nowrap flex-wrap content-start md:justify-start justify-between sm:justify-start sm:gap-1 gap-4 items-start mx-auto md:px-4 w-1/2"
-          >
+          <div class="image-person flex gap-2 justify-end md:px-4 w-1/2">
             <p
-              class="capitalize flex justify-center items-center md:text-3xl text-md text-white bg-main-color md:h-16 md:w-16 h-10 w-10 rounded-full"
+              class="capitalize flex justify-center items-center md:text-3xl text-md text-white bg-main-color md:h-16 md:w-16 h-10 w-10 rounded-full sm:ml-8"
             >
               A
             </p>
             <input
-              class="text-grey-100 w-4/6 self-center file:p-2 md:text-md text-sm file:rounded-full file:w-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
+              class="text-grey-100 md:w-[200px] w-[100px] self-center md:file:p-2 file:p-1 md:text-md text-sm file:rounded-full file:w-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
               type="file"
               name="upload_photo"
               id="upload_photo"
@@ -83,111 +79,156 @@
             />
           </div>
         </div>
-        <div
-          class="form-inputs grid md:grid-cols-2 gap-5 grid-cols-1 my-5 md:mx-2 md:px-8 md:w-[100%] mx-auto pb-4 w-[80%]"
-        >
+        <div class="form-inputs grid md:grid-cols-2 gap-6 grid-cols-1">
           <div class="input-field">
             <label
               for="FirstName"
-              class="capitalize block md:text-xl text-md text-lg"
+              class="capitalize text-text-color block md:text-lg text-md text-lg"
               >{{ $t("First Name") }}</label
             >
             <input
               type="text"
-              class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
               :placeholder="$t('enter FirstName')"
               v-model="person.FirstName"
             />
           </div>
           <div class="input-field">
-            <label for="LastName" class="capitalize block md:text-xl text-md">{{
-              $t("Last Name")
-            }}</label>
+            <label
+              for="LastName"
+              class="capitalize text-text-color block md:text-lg text-md"
+              >{{ $t("Last Name") }}</label
+            >
             <input
               type="text"
               :placeholder="$t('enter LastName')"
               v-model="person.LastName"
-              class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
           </div>
           <div class="input-field">
-            <label for="Email" class="capitalize block md:text-xl text-md">{{
-              $t("Email")
-            }}</label>
+            <label
+              for="Email"
+              class="capitalize text-text-color block md:text-lg text-md"
+              >{{ $t("Email") }}</label
+            >
             <input
-              type="text"
+              type="email"
               :placeholder="$t('enter Email')"
               v-model="person.Email"
-              class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
           </div>
           <div class="input-field">
             <label
               for="Mobile Number"
-              class="capitalize block md:text-xl text-md"
+              class="capitalize text-text-color block md:text-lg text-md"
               >{{ $t("Mobile Number") }}</label
             >
             <input
               type="number"
-              :placeholder="$t('enter Mobile Number')"
-              v-model="person.Number"
-              class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              :placeholder="$t('enter mobile number')"
+              v-model="person.MobileNumber"
+              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
           </div>
           <div class="input-field">
-            <label for="Password" class="capitalize block md:text-xl text-md">{{
-              $t("Password")
-            }}</label>
+            <label
+              for="Password"
+              class="capitalize text-text-color block md:text-lg text-md"
+              >{{ $t("Password") }}</label
+            >
             <input
               type="password"
               :placeholder="$t('enter Password')"
-              v-model="person.Email"
-              class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              v-model="person.password"
+              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
           </div>
           <div class="input-field">
-            <label for="Password" class="capitalize block md:text-xl text-md">{{
-              $t("Confirm password")
-            }}</label>
+            <label
+              for="ConfirmPassword"
+              class="capitalize text-text-color block md:text-lg text-md"
+              >{{ $t("Confirm password") }}</label
+            >
             <input
-              type="text"
+              type="password"
               :placeholder="$t('enter Confirm Password')"
               v-model="person.ConfirmPassword"
-              class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
           </div>
           <div class="input-field">
-            <label for="Address" class="capitalize block md:text-xl text-md">{{
-              $t("Address")
-            }}</label>
+            <label
+              for="Address"
+              class="capitalize text-text-color block md:text-lg text-md"
+              >{{ $t("Address") }}</label
+            >
             <input
               type="text"
-              :placeholder="$t('enter Address')"
-              v-model="person.Email"
-              class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              :placeholder="$t('enter shop address')"
+              v-model="person.Address"
+              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
           </div>
           <div class="input-field">
-            <label for="City" class="capitalize block md:text-xl text-md">{{
-              $t("City")
-            }}</label>
+            <label
+              for="ID"
+              class="capitalize text-text-color block md:text-lg text-md"
+              >{{ $t("ID or Comercial Registration number") }}</label
+            >
+            <input
+              type="text"
+              :placeholder="$t('enter number')"
+              v-model="person.ID"
+              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+            />
+          </div>
+          <div class="input-field">
+            <label
+              for="Country"
+              class="capitalize text-text-color block md:text-lg text-md"
+              >{{ $t("Country") }}</label
+            >
             <select
-              v-model="person.City"
-              class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              v-model="person.Country"
+              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             >
               <option disabled selected value="">
-                {{ $t("Select City") }}
+                {{ $t("Select Country") }}
               </option>
 
-              <option value="asd1">asd</option>
-              <option value="asd2">asd</option>
-              <option value="asd3">asd</option>
+              <option value="asd1">{{ $t("Libia") }}</option>
+              <option value="asd2">{{ $t("Qatar") }}</option>
+              <option value="asd3">{{ $t("India") }}</option>
             </select>
           </div>
           <div class="input-field">
-            <label for="Region" class="capitalize block md:text-xl text-md">{{
-              $t("Region")
-            }}</label>
+            <label
+              for="Nationality"
+              class="capitalize text-text-color block md:text-lg text-md"
+              >{{ $t("Nationality") }}</label
+            >
+            <select
+              v-model="person.Nationality"
+              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+            >
+              <option disabled selected value="">
+                {{ $t("Select Nationality") }}
+              </option>
+
+              <option value="pakistani">{{ $t("pakistani") }}</option>
+              <option value="American">{{ $t("American") }}</option>
+              <option value="Arabian">{{ $t("Arabian") }}</option>
+            </select>
+          </div>
+
+          <div class="input-field">
+            <label
+              for="Region"
+              class="capitalize text-text-color block md:text-lg text-md"
+              >{{ $t("Region") }}</label
+            >
             <select
               v-model="person.Region"
               class="placeholder:capitalize p-4 rounded-lg placeholder:text-gray-600 placeholder:text-xl bg-gray-200 w-[100%]"
@@ -195,14 +236,122 @@
               <option disabled selected value="">
                 {{ $t("Select Region") }}
               </option>
-              <option value="asd1">asd</option>
-              <option value="asd2">asd</option>
-              <option value="asd3">asd</option>
+              <option
+                v-for="Region in regions"
+                :key="Region.id"
+                :value="Region.name"
+              >
+                {{ Region.name }}
+              </option>
             </select>
           </div>
+          <div class="input-field">
+            <label
+              for="City"
+              class="capitalize text-text-color block md:text-lg text-md"
+              >{{ $t("City") }}</label
+            >
+            <select
+              v-model="person.City"
+              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+            >
+              <option disabled selected value="">
+                {{ $t("Select City") }}
+              </option>
 
+              <option v-for="City in cities" :key="City.id" :value="City.name">
+                {{ City.name }}
+              </option>
+            </select>
+          </div>
+          <div class="input-field">
+            <label
+              for="IBAN"
+              class="capitalize text-text-color block md:text-lg text-md text-lg"
+              >{{ $t("IBAN") }}</label
+            >
+            <input
+              type="number"
+              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              :placeholder="$t('enter bank IBAN')"
+              v-model="person.IBAN"
+            />
+          </div>
+          <div class="input-field">
+            <label
+              for="Account Number"
+              class="capitalize text-text-color block md:text-lg text-md"
+              >{{ $t("Account Number") }}</label
+            >
+            <input
+              type="text"
+              :placeholder="$t('enter Account Number')"
+              v-model="person.AccountNumber"
+              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+            />
+          </div>
+          <div class="input-field">
+            <label
+              for="Comercial Activity"
+              class="capitalize text-text-color block md:text-lg text-md"
+              >{{ $t("Comercial Activity") }}</label
+            >
+            <input
+              type="text"
+              :placeholder="$t('Comercial Activity')"
+              v-model="person.ComercialActivity"
+              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+            />
+          </div>
+          <div class="input-field">
+            <label
+              for="Legal Capacity"
+              class="capitalize text-text-color block md:text-lg text-md"
+              >{{ $t("Legal Capacity") }}</label
+            >
+            <input
+              type="number"
+              :placeholder="$t('enter Legal Capacity')"
+              v-model="person.LegalCapacity"
+              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+            />
+          </div>
+          <div class="input-field">
+            <label class="block text-gray-700 text-[16px]">
+              Licence Photo one
+              <div
+                class="flex items-center justify-center bg-gray-100 rounded-[10px] focus:ring-[#24C6C9] focus:border-[#24C6C9] w-full h-[200px]"
+              >
+                <input
+                  class="text-sm text-grey-100 text-[15px] file:bg-gray-100 file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
+                  type="file"
+                  name="license_photo_2"
+                  id="license_photo_2"
+                  @change="licensePhotoOne($event)"
+                  accept="image/*"
+                />
+              </div>
+            </label>
+          </div>
+          <div class="input-field">
+            <label class="block text-gray-700 text-[16px]">
+              Licence Photo Two
+              <div
+                class="flex items-center justify-center bg-gray-100 rounded-[10px] focus:ring-[#24C6C9] focus:border-[#24C6C9] w-full h-[200px]"
+              >
+                <input
+                  class="text-sm text-grey-100 text-[15px] file:bg-gray-100 file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
+                  type="file"
+                  name="license_photo_2"
+                  id="license_photo_2"
+                  @change="licensePhotoTwo($event)"
+                  accept="image/*"
+                />
+              </div>
+            </label>
+          </div>
           <div
-            class="md:text-xl text-sm md:col-start-1 md:col-end-3 font-bold capitalize"
+            class="md:text-lg text-sm md:col-start-1 md:col-end-3 font-bold capitalize"
           >
             <input type="checkbox" v-model="person.condition" />
             {{ $t("accept") }}
@@ -210,7 +359,7 @@
           </div>
           <button
             @click="Register()"
-            class="bg-main-color text-white p-4 text-center w-full py-3 rounded-xl md:text-xl text-md md:col-start-1 md:col-end-3"
+            class="bg-main-color text-white p-4 text-center w-full py-3 rounded-xl md:text-lg text-md md:col-start-1 md:col-end-3"
           >
             {{ $t("Next") }}
           </button>
@@ -234,12 +383,151 @@ export default {
         LastName: "",
         Region: "",
         City: "",
-        Number: "",
         Email: "",
-        Password: "",
+        password: "",
         ConfirmPassword: "",
         condition: "",
+        MobileNumber: null,
+        Address: "",
+        ID: "",
+        Country: "",
+        Nationality: "",
+        IBAN: "",
+        AccountNumber: "",
+        ComercialActivity: "",
+        LegalCapacity: "",
       },
+      nations: [
+        { id: 1, name: "Pakistani" },
+        { id: 2, name: "American" },
+        { id: 3, name: "Arabian" },
+      ],
+      countries: [
+        { id: 1, name: "Libia" },
+        { id: 2, name: "Qatar" },
+        { id: 3, name: "India" },
+      ],
+      cities: [
+        { id: 1, name: "Riyadh" },
+        { id: 2, name: "Alkharag" },
+        { id: 3, name: "Dawadmi" },
+        { id: 4, name: "Al majmah" },
+        { id: 5, name: "Al-Quwayiyah" },
+        { id: 6, name: "Wadi Al Dawasir" },
+        { id: 7, name: "Afif" },
+        { id: 8, name: "Diriyah" },
+        { id: 9, name: "Zulfi" },
+        { id: 10, name: "Aflaj" },
+        { id: 11, name: "Hotat Bani Tamim" },
+        { id: 12, name: "Shaqra" },
+        { id: 13, name: "Muzahimiyah" },
+        { id: 14, name: "Alslayel" },
+        { id: 15, name: "Makkah Al-Mukarramah" },
+        { id: 16, name: "Jeddah" },
+        { id: 17, name: "Taif" },
+        { id: 18, name: "Qunfudhah" },
+        { id: 19, name: "Bahra" },
+        { id: 20, name: "Algmom" },
+        { id: 21, name: "Rabigh" },
+        { id: 22, name: "Laith" },
+        { id: 23, name: "Al ardeyat" },
+        { id: 24, name: "Maysan" },
+        { id: 25, name: "Khulais" },
+        { id: 26, name: "Adume" },
+        { id: 27, name: "Ranyh" },
+        { id: 28, name: "Trobeh" },
+        { id: 29, name: "Al Khurma" },
+        { id: 30, name: "Al mweh" },
+        { id: 31, name: "Medina" },
+        { id: 32, name: "Yanbu" },
+        { id: 33, name: "Badr" },
+        { id: 34, name: "Almehd" },
+        { id: 35, name: "Hanakia" },
+        { id: 36, name: "Al ola" },
+        { id: 37, name: "Khaibar" },
+        { id: 38, name: "Buraidah" },
+        { id: 39, name: "Unaizah" },
+        { id: 40, name: "Alrass" },
+        { id: 41, name: "Al bkeryah" },
+        { id: 42, name: "Badayea" },
+        { id: 43, name: "Nabhania" },
+        { id: 44, name: "Meznab" },
+        { id: 45, name: "Ehsaa" },
+        { id: 46, name: "Dammam" },
+        { id: 47, name: "Qatif" },
+        { id: 48, name: "Al khuber" },
+        { id: 49, name: "Hafar Al-Batin" },
+        { id: 50, name: "Jubail" },
+        { id: 51, name: "Khafji" },
+        { id: 52, name: "Ras Tanura" },
+        { id: 53, name: "Abqaiq" },
+        { id: 54, name: "Abha" },
+        { id: 55, name: "Khamis Mushait" },
+        { id: 56, name: "Bisha" },
+        { id: 57, name: "Mahayel" },
+        { id: 58, name: "Ahad Rafidah" },
+        { id: 59, name: "Belqrn" },
+        { id: 60, name: "Sarat" },
+        { id: 61, name: "Rijal Almaa" },
+        { id: 62, name: "Namas" },
+        { id: 63, name: "Majarda" },
+        { id: 64, name: "Tathleath" },
+        { id: 65, name: "Barq" },
+        { id: 66, name: "Dhahran South" },
+        { id: 67, name: "Tabouk" },
+        { id: 68, name: "Umluj" },
+        { id: 69, name: "Wajh" },
+        { id: 70, name: "Duba" },
+        { id: 71, name: "Tema" },
+        { id: 72, name: "Hail" },
+        { id: 73, name: "Al hayet" },
+        { id: 74, name: "Paqaa" },
+        { id: 75, name: "Arar" },
+        { id: 76, name: "Rafha" },
+        { id: 77, name: "Treaf" },
+        { id: 78, name: "Jazan" },
+        { id: 79, name: "Samtah" },
+        { id: 80, name: "Sabya" },
+        { id: 81, name: "Abu Arish" },
+        { id: 82, name: "Ahd al msarheh" },
+        { id: 83, name: "Alaaredh" },
+        { id: 84, name: "ligature" },
+        { id: 85, name: "Bish" },
+        { id: 86, name: "Darb" },
+        { id: 87, name: "Dayer" },
+        { id: 88, name: "Altwal" },
+        { id: 89, name: "Najran" },
+        { id: 90, name: "Sharurah" },
+        { id: 91, name: "Al Baha" },
+        { id: 92, name: "Baljurashi" },
+        { id: 93, name: "Almakhwah" },
+        { id: 94, name: "Alkalosis" },
+        { id: 95, name: "Sakaka" },
+        { id: 96, name: "Qurayyat" },
+        { id: 97, name: "Tabarjal" },
+        { id: 98, name: "Jandal" },
+      ],
+      regions: [
+        { id: 1, name: "Riyadh" },
+        { id: 2, name: "Makkah Al-Mukarramah" },
+        { id: 3, name: "Al-Madinah Al-Munawwarah" },
+        { id: 4, name: "Al-Qassim" },
+        { id: 5, name: "Eastern" },
+        { id: 6, name: "Asir" },
+        { id: 7, name: "Tabuk" },
+        { id: 8, name: "Hail" },
+        { id: 9, name: "Northern Border" },
+        { id: 10, name: "Jazan" },
+        { id: 11, name: "Najran" },
+        { id: 12, name: "Al Baha" },
+        { id: 13, name: "Al-Jawf" },
+        { id: 14, name: "Farasan Island" },
+        { id: 15, name: "Al Saqid" },
+        { id: 16, name: "Qammah" },
+        { id: 17, name: "Abu Ali" },
+        { id: 18, name: "Tarot" },
+        { id: 19, name: "Paradise" },
+      ],
     };
   },
   components: {

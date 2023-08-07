@@ -54,7 +54,7 @@
           </button>
         </div>
         <div
-          class="form-inputs grid md:grid-cols-2 gap-5 grid-cols-1 my-5 md:mx-2 md:px-8 md:w-[100%] mx-auto pb-4 w-[80%]"
+          class="form-inputs grid md:grid-cols-2 gap-5 grid-cols-1 my-5 mx-2 pb-4"
         >
           <div class="input-field">
             <label

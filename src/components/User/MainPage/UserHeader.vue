@@ -13,11 +13,9 @@
     <div
       class="header-links flex justify-around text-xl font-bold text-[#858585] max-md:w-2/6 w-2/6"
     >
-      <router-link
-        class="hover:text-black"
-        :to="{ path: '/User/all-servies' }"
-        >{{ $t("Home") }}</router-link
-      >
+      <router-link class="hover:text-black" :to="{ path: '/User/home' }">{{
+        $t("Home")
+      }}</router-link>
       <router-link
         class="hover:text-black"
         :to="{ path: '/User/all-servies' }"

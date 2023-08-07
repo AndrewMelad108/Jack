@@ -1,6 +1,6 @@
 <template>
   <section
-    class="UserHome relative min-h-[100vh] flex flex-wrap bg-cover-color md:flex-row"
+    class="UserHome relative min-h-[100vh] flex md:flex-row flex-col bg-cover-color"
   >
     <SideBar :links="LinksData" :type="UserType" />
     <div
@@ -29,9 +29,7 @@
         />
       </div>
     </div>
-    <div class="max-w-full p-10 w-auto h-screen">
-      <router-view />
-    </div>
+    <router-view class="h-[100%] min-h-[100vh] md:w-screen w-auto" />
   </section>
 </template>
 

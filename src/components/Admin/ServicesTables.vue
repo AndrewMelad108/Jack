@@ -32,11 +32,11 @@
             {{ option.id }}
           </td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            {{ option.name }}
+            {{ $t(option.name) }}
           </td>
 
           <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-            <button class="text-blue-600">Edit</button>
+            <button class="text-blue-600">{{ $t("Edit") }}</button>
             <!-- <button class="text-red-600">Delete</button> -->
           </td>
         </tr>

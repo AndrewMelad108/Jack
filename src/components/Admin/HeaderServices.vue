@@ -10,7 +10,7 @@
 
 <script>
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
-import ServiceRatio from "@/components/Admin/services/ServiceRatio.vue";
+import ServiceRatio from "@/components/Admin/ServiceRatio.vue";
 export default {
   components: {
     WelcomeMassage,

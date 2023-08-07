@@ -1,24 +1,32 @@
+de
 <template>
-  <div class="Towing min-h-[100vh] my-10">
+  <div class="SpareParts min-h-[100vh] my-10">
     <HeaderServices />
     <div classs="services-des pt-4">
       <img
-        src="../../../assets/images/Servies/towing_and_shipping.png"
-        alt="towing_and_shipping"
+        src="../../../assets/images/Servies/spare_parts.png"
+        alt="SpareParts"
         loading="lazy"
         class="h-20"
       />
       <h1 class="text-black py-4 font-bold text-xl capitalize">
-        {{ $t("towing and shipping") }}
+        {{ $t("Spare Parts") }}
       </h1>
     </div>
     <div class="Towing-content grid lg:grid-cols-2 grid-cols-1 gap-6 mt-2">
       <div class="lists">
         <h1 class="text-main-color py-4 font-bold text-2xl">
-          {{ $t("Service Type") }}
+          {{ $t("Search Scope") }}
         </h1>
         <InputAdd @AddOptions="AddOptions" />
-        <ServicesTables :options="ServiceType" />
+        <ServicesTables :options="SearchScope" />
+      </div>
+      <div class="lists">
+        <h1 class="text-main-color py-4 font-bold text-2xl">
+          {{ $t("Spare Parts Type") }}
+        </h1>
+        <InputAdd @AddOptions="AddOptions" />
+        <ServicesTables :options="SparePartsType" />
       </div>
       <div class="lists">
         <h1 class="text-main-color py-4 font-bold text-2xl">
@@ -50,21 +58,31 @@ import HeaderServices from "@/components/Admin/HeaderServices.vue";
 import ServicesTables from "@/components/Admin/ServicesTables.vue";
 import InputAdd from "@/components/Admin/Form/InputAdd.vue";
 export default {
-  name: "TowingServices",
+  name: "SpareParts_servies",
   data() {
     return {
-      ServiceType: [
+      SearchScope: [
         {
           id: 1,
-          name: "Towing",
+          name: "All",
         },
         {
           id: 2,
-          name: "shipping",
+          name: "My Area",
         },
         {
           id: 3,
-          name: "loading",
+          name: "Others",
+        },
+      ],
+      SparePartsType: [
+        {
+          id: 1,
+          name: "New",
+        },
+        {
+          id: 2,
+          name: "Used",
         },
       ],
       Brand: [

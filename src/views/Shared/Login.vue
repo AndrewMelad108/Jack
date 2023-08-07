@@ -1,7 +1,7 @@
 <template>
-  <section class="LoginPage bg-text-color min-h-[100vh] w-[100%] py-4 md:px-8">
+  <section class="LoginPage bg-text-color min-h-[100vh] w-[100%] p-4">
     <div
-      class="login-form md:w-96 w-72 mx-auto bg-white rounded-2xl h-[95vh] min--h-auto p-4"
+      class="login-form max-w-[500px] mx-auto bg-white rounded-2xl min-h-auto p-4"
     >
       <img
         src="../../assets/images/icons/close-icon.svg"

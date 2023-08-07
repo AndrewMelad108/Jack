@@ -5,7 +5,7 @@ import MainPage from "../views/User/MainPage.vue";
 import UserHomeView from "../views/User/UserHome.vue";
 import HomePage from "../components/User/HomePage.vue";
 import UserHome from "../components/User/UserHome.vue";
-import UserAllServies from "../components/User/UserAllServies.vue";
+// import UserAllServies from "../components/User/UserAllServies.vue";
 import UserRequest from "../components/User/UserRequest.vue";
 import UserOrders from "../components/User/UserOrders.vue";
 import UserChat from "../components/User/UserChat.vue";
@@ -38,11 +38,11 @@ const routes = [
         name: "User.ControlPanel",
         component: UserHome,
       },
-      {
-        path: "all-servies",
-        name: "User.UserAllServies",
-        component: UserAllServies,
-      },
+      // {
+      //   path: "all-servies",
+      //   name: "User.UserAllServies",
+      //   component: UserHome,
+      // },
 
       {
         path: "Orders",

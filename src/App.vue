@@ -11,7 +11,7 @@ export default {
     };
   },
   mounted() {
-    localStorage.setItem("lang", "en");
+    localStorage.setItem("lang", "ar");
     if (this.lang === "en") {
       this.lang = "ltr";
     } else {
