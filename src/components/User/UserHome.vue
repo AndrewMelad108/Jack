@@ -17,10 +17,10 @@
     </div>
     <div
       v-if="!showAllServices"
-      class="mt-4 md:w-[700px] lg:flex hidden w-auto h-[300px] mx-auto overflow-x-scroll md:gap-10"
+      class="mt-4 lg:flex hidden w-full h-[300px] md:gap-4"
     >
       <div
-        class="h-62 min-w-[220px] px-2 bg-white rounded-xl capitalize text-center font-boldx 2 py-6"
+        class="h-62 w-3/12 px-2 bg-white rounded-xl capitalize text-center font-boldx 2 py-6"
       >
         <img
           src="../../assets/images/Servies/towing_and_shipping.png"
@@ -33,7 +33,7 @@
         </p>
       </div>
       <div
-        class="h-62 min-w-[220px] px-2 bg-white rounded-xl capitalize text-center font-boldx 2 py-6"
+        class="h-62 w-3/12 px-2 bg-white rounded-xl capitalize text-center font-boldx 2 py-6"
       >
         <img
           src="../../assets/images/Servies/spare_parts.png"
@@ -46,7 +46,7 @@
         </p>
       </div>
       <div
-        class="h-62 min-w-[220px] px-2 bg-white rounded-xl capitalize text-center font-boldx 2 py-6"
+        class="h-62 w-3/12 px-2 bg-white rounded-xl capitalize text-center font-boldx 2 py-6"
       >
         <img
           src="../../assets/images/Servies/shipping_and_forwarding.png"
@@ -59,7 +59,7 @@
         </p>
       </div>
       <div
-        class="h-62 min-w-[220px] px-2 bg-white rounded-xl capitalize text-center font-boldx 2 py-6"
+        class="h-62 w-3/12 px-2 bg-white rounded-xl capitalize text-center font-boldx 2 py-6"
       >
         <img
           src="../../assets/images/Servies/sell_your_broken_car.png"
@@ -69,32 +69,6 @@
         />
         <p class="w-22 break-words md:text-lg sm:text-sm">
           {{ $t("sell your broken car") }}
-        </p>
-      </div>
-      <div
-        class="h-62 min-w-[220px] px-2 bg-white rounded-xl capitalize text-center font-boldx 2 py-6"
-      >
-        <img
-          src="../../assets/images/Servies/delivery_services.png"
-          alt="delivery_services"
-          loading="lazy"
-          class="block h-22 mx-auto mb-4"
-        />
-        <p class="w-22 break-words md:text-lg sm:text-sm">
-          {{ $t("delivery services") }}
-        </p>
-      </div>
-      <div
-        class="h-62 min-w-[220px] px-2 bg-white rounded-xl capitalize text-center font-boldx 2 py-6"
-      >
-        <img
-          src="../../assets/images/Servies/car_maintenance_and_care.png"
-          alt="car_maintenance_and_care"
-          loading="lazy"
-          class="block h-22 mx-auto mb-4"
-        />
-        <p class="w-22 break-words md:text-lg sm:text-sm">
-          {{ $t("car maintenance and care") }}
         </p>
       </div>
     </div>

@@ -1,0 +1,199 @@
+<template>
+  <section class="OfferDetails md:p-8 p-2">
+    <header class="grid md:grid-cols-2 grid-cols-1 items-start justify-between">
+      <WelcomeMassage name="User" />
+      <InputSearch />
+    </header>
+    <div
+      @click="
+        $router.push({
+          name: 'User.Requests',
+        })
+      "
+      class="back_Requests cursor-pointer mx-4 my-8 flex gap-4 font-bold items-center text-xl"
+    >
+      <img
+        src="../../assets/images/Back.png"
+        alt="Back-icon"
+        loading="lazy"
+      />Provider Details
+    </div>
+    <div class="Offer-detials mt-10">
+      <div
+        class="bg-white md:text-md text-sm shadow-md shadow-slate-400 md:w-[73%] w-full rounded-xl min-h-52 grid lg:grid-cols-2 grid-cols-1 gap-y-6 p-6"
+      >
+        <p class="font-bold">
+          Spare Parts Type
+          <span class="text-text-color md:px-6">
+            {{ Offer.SparePartsType }}</span
+          >
+        </p>
+        <p class="font-bold">
+          Brand<span class="text-text-color md:px-6 px-2">
+            {{ Offer.Brand }}</span
+          >
+        </p>
+        <p class="font-bold">
+          Model
+          <span class="text-text-color md:px-6 px-2"> {{ Offer.Model }}</span>
+        </p>
+        <p class="font-bold">
+          Year of Manufactur<span class="text-text-color md:px-4 px-2">
+            {{ Offer.YearofManufactur }}</span
+          >
+        </p>
+        <p class="font-bold">
+          Car Serial Number
+          <span class="text-text-color md:px-6 px-2">
+            {{ Offer.CarSerialNumber }}</span
+          >
+        </p>
+        <p class="font-bold">
+          Part Name
+          <span class="text-text-color px-6"> {{ Offer.PartName }}</span>
+        </p>
+      </div>
+
+      <table
+        class="mt-10 divide-y lg:w-[70%] w-full shadow-md shadow-slate-400 divide-gray-200"
+      >
+        <thead class="bg-gray-50">
+          <tr>
+            <th
+              scope="col"
+              class="md:px-4 px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Name
+            </th>
+            <th
+              scope="col"
+              class="md:px-4 px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Description
+            </th>
+
+            <th
+              scope="col"
+              class="md:px-4 px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Amount
+            </th>
+            <th
+              scope="col"
+              class="md:px-4 px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Part Cost
+            </th>
+            <th
+              scope="col"
+              class="md:px-4 px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Total
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y capitalize divide-gray-200">
+          <tr v-for="service in services" :key="service.index">
+            <td
+              class="md:px-2 px-1 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+            >
+              {{ service.name }}
+            </td>
+            <td
+              class="md:px-2 px-1 py-4 whitespace-nowrap text-sm text-gray-500"
+            >
+              {{ service.description }}
+            </td>
+            <td
+              class="md:px-2 px-1 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+            >
+              {{ service.Amount }}
+            </td>
+            <td
+              class="md:px-2 px-1 py-4 whitespace-nowrap text-sm text-gray-500"
+            >
+              {{ service.PartCost }}
+            </td>
+            <td
+              class="md:px-2 px-1 py-4 whitespace-nowrap text-sm text-gray-500"
+            >
+              {{ service.Total }}
+            </td>
+          </tr>
+          <!-- Add more rows here -->
+        </tbody>
+      </table>
+      <p class="md:text-lg text-sm my-4 capitalize">
+        total amount is {{ total }}
+      </p>
+      <div
+        class="group-btn capitalize flex justify-center md:flex-row flex-col items-center gap-4 mx-auto"
+      >
+        <button
+          @click="
+            $router.push({
+              name: 'User.Chats',
+            })
+          "
+          class="text-main-color font-bold border-2 md:text-md text-sm border-main-color w-auto p-1 md:px-3 md:py-2 rounded-lg"
+        >
+          Send message
+        </button>
+        <button
+          @click="
+            $router.push({
+              name: 'User.Orders',
+            })
+          "
+          class="bg-main-color font-bold w-auto md:text-md text-sm px-4 py-2 md:p-3 text-white rounded-lg"
+        >
+          start order
+        </button>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
+import InputSearch from "@/components/Shared/Form/InputSearch.vue";
+
+export default {
+  name: "OfferDetails",
+  data() {
+    return {
+      total: "750",
+      Offer: {
+        SparePartsType: "new",
+        Brand: "Yamaha",
+        Model: "Hilux",
+        YearofManufactur: "2022",
+        CarSerialNumber: "54546186441864",
+        PartName: "Something",
+      },
+      services: [
+        {
+          name: "service",
+          description: "Description",
+          Amount: 2,
+          PartCost: 400,
+          Total: 2,
+        },
+        {
+          name: "service",
+          description: "Description",
+          Amount: 2,
+          PartCost: 400,
+          Total: 2,
+        },
+      ],
+    };
+  },
+  components: {
+    WelcomeMassage,
+    InputSearch,
+  },
+};
+</script>
+
+<style></style>

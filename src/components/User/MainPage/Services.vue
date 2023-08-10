@@ -8,6 +8,11 @@
       class="services-content w-[100%] capitalize justify-center md:px-20 px-10 mt-20 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 text-center gap-6"
     >
       <div
+        @click="
+          $router.push({
+            name: 'User.TowingAndShipping',
+          })
+        "
         class="bg-green-100 cursor-pointer py-10 space-y-12 rounded-2xl text-main-color text-2xl font-bold min-h-[350px]"
       >
         <img
@@ -21,6 +26,11 @@
         </p>
       </div>
       <div
+        @click="
+          $router.push({
+            name: 'User.Repairing',
+          })
+        "
         class="bg-green-100 cursor-pointer py-10 space-y-12 rounded-2xl text-main-color text-2xl font-bold min-h-[350px]"
       >
         <img

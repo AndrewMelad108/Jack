@@ -47,19 +47,42 @@
           <div
             v-for="offer in Offers"
             :key="offer.id"
-            class="Offers p-4 h-52 mb-5 bg-white rounded-xl"
+            class="Offers p-3 h-52 mb-5 bg-white rounded-xl"
           >
             <div class="flex gap-2">
               <img
                 src="../../assets/images/1667831181-Group_1.png"
                 alt="offer-image"
-                class="rounded-full"
+                class="rounded-full w-16 h-16"
               />
-              <div>
-                <h1 class="font-bold">{{ offer.OfferName }}</h1>
-                <p class="text-text-color">Services in Riyadh, Saudi Arabia</p>
+              <div class="Offer-name">
+                <h1 class="font-bold mt-2">{{ offer.OfferName }}</h1>
+                <p class="text-text-color my-4">
+                  Services in Riyadh, Saudi Arabia
+                </p>
               </div>
             </div>
+            <div class="flex gap-4 Offer-details justify-center">
+              <p class="text-text-color">
+                Time <span class="text-main-color px-2">12:00:00</span>
+              </p>
+              <p class="text-text-color">
+                cost <span class="text-main-color px-2">50000</span>
+              </p>
+            </div>
+            <button
+              class="Offer-details-btn block mx-auto p-2 mt-2 text-main-color text-lg border border-main-color rounded-md hover:bg-main-color hover:text-white transition-all duration-300 ease-linear"
+              @click="
+                $router.push({
+                  name: 'User.OfferDetails',
+                  params: {
+                    OfferID: 1,
+                  },
+                })
+              "
+            >
+              More Detials
+            </button>
           </div>
         </div>
       </div>

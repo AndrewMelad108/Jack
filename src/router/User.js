@@ -7,10 +7,14 @@ import HomePage from "../components/User/HomePage.vue";
 import UserHome from "../components/User/UserHome.vue";
 // import UserAllServies from "../components/User/UserAllServies.vue";
 import UserRequest from "../components/User/UserRequest.vue";
+import OfferDetails from "../components/User/OfferDetails.vue";
 import UserOrders from "../components/User/UserOrders.vue";
 import UserChat from "../components/User/UserChat.vue";
 import UserWallet from "../components/User/UserWallet.vue";
 import UserProfile from "../components/User/UserProfile.vue";
+import TowingAndShipping from "@/components/User/Services/TowingAndShipping.vue";
+import CarMaintenanceAndCare from "@/components/User/Services/CarMaintenanceAndCare.vue";
+import SparePartsRequest from "@/components/User/Services/SparePartsRequest.vue";
 Vue.use(VueRouter);
 const routes = [
   {
@@ -38,12 +42,16 @@ const routes = [
         name: "User.ControlPanel",
         component: UserHome,
       },
-      // {
-      //   path: "all-servies",
-      //   name: "User.UserAllServies",
-      //   component: UserHome,
-      // },
-
+      {
+        path: "Request",
+        name: "User.Requests",
+        component: UserRequest,
+      },
+      {
+        path: "OfferDetails/:OfferID",
+        name: "User.OfferDetails",
+        component: OfferDetails,
+      },
       {
         path: "Orders",
         name: "User.Orders",
@@ -65,9 +73,19 @@ const routes = [
         component: UserWallet,
       },
       {
-        path: "Request",
-        name: "User.Requests",
-        component: UserRequest,
+        path: "TowingAndShipping",
+        name: "User.Towing",
+        component: TowingAndShipping,
+      },
+      {
+        path: "CarMaintenanceAndCare",
+        name: "User.Repairing",
+        component: CarMaintenanceAndCare,
+      },
+      {
+        path: "SparePartsRequest",
+        name: "User.Spare Parts",
+        component: SparePartsRequest,
       },
     ],
   },
