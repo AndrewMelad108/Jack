@@ -192,7 +192,12 @@ import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 export default {
   name: "TowingAndShipping",
   data() {
-    return {};
+    return {
+      asd: this.$route.query,
+    };
+  },
+  created() {
+    console.log(this.asd.servicesID);
   },
   components: {
     ServicesNav,

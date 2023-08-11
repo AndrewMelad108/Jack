@@ -29,7 +29,10 @@
         />
       </div>
     </div>
-    <router-view class="h-[100%] min-h-[100vh] md:w-screen w-auto" />
+    <div class="h-[100%] min-h-[100vh] md:w-screen w-auto">
+      <button class="text-right block w-full">asd</button>
+      <router-view />
+    </div>
   </section>
 </template>
 
