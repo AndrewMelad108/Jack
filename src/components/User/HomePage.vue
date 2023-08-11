@@ -12,7 +12,7 @@
         <router-link :to="{}">{{ $t("Orders") }}</router-link>
         <router-link :to="{}">{{ $t("Requests") }}</router-link>
         <router-link :to="{}">{{ $t("Chats") }}</router-link>
-        <router-link :to="{}">{{ $t("Control panel") }}</router-link>
+        <router-link :to="{}">{{ $t("Controlpanel") }}</router-link>
         <router-link :to="{}">{{ $t("Wallet") }}</router-link>
       </div>
     </div>

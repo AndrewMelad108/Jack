@@ -2,7 +2,7 @@
   <section
     class="UserProfile px-2 grid lg:grid-cols-2 grid-cols-1 justify-center items-center gap-4"
   >
-    <div class="">
+    <div>
       <div class="bg-white rounded-[20px] pt-[40px] pb-[30px]">
         <div class="flex justify-center">
           <img class="rounded-full w-[200px] h-[200px]" alt="" />
@@ -31,15 +31,15 @@
       </div>
     </div>
     <div class="Form-user bg-white h-auto rounded-lg p-4">
-      <h1 class="font-bold text-lg">personal information</h1>
+      <h1 class="font-bold text-lg">{{ $t("personal information") }}</h1>
       <input
         type="text"
-        placeholder="FirstName"
+        :placeholder="$t('First Name')"
         class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
       />
       <input
         type="text"
-        placeholder="LastName"
+        :placeholder="$t('Last Name')"
         class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
       />
       <select
@@ -64,14 +64,14 @@
         <option value="asd2">asd</option>
         <option value="asd3">asd</option>
       </select>
-      <h1 class="font-bold mt-2 text-lg">Contact information</h1>
+      <h1 class="font-bold mt-2 text-lg">{{ $t("Contact information") }}</h1>
       <input
         type="text"
-        placeholder="Contact Number"
+        :placeholder="$t('Contact Number')"
         class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
       />
       <button class="w-full p-2 mt-10 text-white rounded-lg bg-main-color">
-        Save changes
+        {{ $t("Save changes") }}
       </button>
     </div>
   </section>

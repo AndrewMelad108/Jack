@@ -42,7 +42,7 @@
           class="block h-22 mx-auto mb-4"
         />
         <p class="w-22 break-words md:text-lg sm:text-sm">
-          {{ $t("spare parts") }}
+          {{ $t("Spare Parts") }}
         </p>
       </div>
       <div

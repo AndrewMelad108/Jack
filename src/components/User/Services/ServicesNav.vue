@@ -6,7 +6,7 @@
       :to="{ name: `User.${service}` }"
       v-for="service in services"
       :key="service.index"
-      >{{ service }}</router-link
+      >{{ $t(service) }}</router-link
     >
   </section>
 </template>
