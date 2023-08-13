@@ -1,5 +1,7 @@
 <template>
-  <section class="UserHome relative flex flex-wrap bg-cover-color md:flex-row">
+  <section
+    class="UserHome relative min-h-[100vh] flex md:flex-row flex-col bg-cover-color"
+  >
     <SideBar :links="LinksData" :type="UserType" />
     <div
       class="bg-main-color py-2 px-10 w-[100%] h-12 md:hidden flex justify-between items-center"
@@ -27,7 +29,7 @@
         />
       </div>
     </div>
-    <div class="max-w-full p-10 w-auto h-screen">
+    <div class="max-w-full w-screen min-h-full">
       <router-view />
     </div>
   </section>
@@ -44,7 +46,7 @@ export default {
       UserType: "Seller",
       LinksData: [
         "Home",
-        "Control Panel",
+        "ControlPanel",
         "Requests",
         "Offers",
         "Orders",

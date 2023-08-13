@@ -61,11 +61,6 @@ export default {
     SideBar,
     SidebaPhone,
   },
-  methods: {
-    // toggleSidebar() {
-    //   this.isSidebarVisible = !this.isSidebarVisible;
-    // },
-  },
 };
 </script>
 
