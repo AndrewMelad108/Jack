@@ -1,12 +1,24 @@
+import Vue from "vue";
+import VueI18n from "vue-i18n";
+import store from "@/store";
 import en from "@/languages/en.json";
 import ar from "@/languages/ar.json";
-import VueI18n from "vue-i18n";
-import Vue from "vue";
+
 Vue.use(VueI18n);
-export default new VueI18n({
-  locale: localStorage.getItem("lang") || "en",
+
+const i18n = new VueI18n({
+  locale: store.state.Lang,
   messages: {
-    en: en,
-    ar: ar,
+    en,
+    ar,
   },
 });
+
+store.watch(
+  (state) => state.Lang,
+  (newLang) => {
+    i18n.locale = newLang;
+  }
+);
+
+export default i18n;

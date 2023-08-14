@@ -7,6 +7,8 @@ import SellerOrders from "../components/Seller/SellerOrders.vue";
 import Home from "../components/Seller/SellerAllServies.vue";
 import SellerRequests from "../components/Seller/SellerRequests.vue";
 import SellerOffers from "../components/Seller/SellerOffers.vue";
+import SellerProfile from "../components/Seller/SellerProfile.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -44,6 +46,11 @@ const routes = [
         path: "Orders",
         name: "Seller.Orders",
         component: SellerOrders,
+      },
+      {
+        path: "Profile",
+        name: "Seller.Profile",
+        component: SellerProfile,
       },
     ],
   },

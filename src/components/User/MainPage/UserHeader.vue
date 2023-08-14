@@ -1,8 +1,6 @@
 <template>
-  <section
-    class="Header py-8 md:flex hidden justify-around items-center max-md:px-40 px-20"
-  >
-    <div class="logo-image max-md:w-4/6 w-4/6">
+  <section class="Header py-4 md:flex hidden justify-around items-center px-20">
+    <div class="logo-image w-3/6">
       <img
         src="../../../assets//images/logo.png"
         alt="logo-image"
@@ -11,7 +9,7 @@
       />
     </div>
     <div
-      class="header-links flex justify-around text-xl font-bold text-[#858585] max-md:w-2/6 w-2/6"
+      class="header-links flex items-center gap-4 justify-around text-xl font-bold text-[#858585] w-3/6"
     >
       <router-link class="hover:text-black" :to="{ path: '/User/home' }">{{
         $t("Home")
@@ -27,13 +25,19 @@
         :to="{ name: 'LogIn' }"
         >{{ $t("Join") }}</router-link
       >
+      <SwitchLang />
     </div>
   </section>
 </template>
 
 <script>
+import SwitchLang from "@/components/Shared/Form/SwitchLang.vue";
+
 export default {
   props: ["checked"],
+  components: {
+    SwitchLang,
+  },
 };
 </script>
 

@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="h-[100%] min-h-[100vh] md:w-screen w-auto">
-      <button class="text-right block w-full">asd</button>
+      <SwitchLang />
       <router-view />
     </div>
   </section>
@@ -39,6 +39,7 @@
 <script>
 import SideBar from "../../components/Shared/SideBar.vue";
 import SidebaPhone from "../../components/Shared/SidebaPhone.vue";
+import SwitchLang from "../../components/Shared/Form/SwitchLang.vue";
 export default {
   name: "UserHome",
   data() {
@@ -60,6 +61,7 @@ export default {
   components: {
     SideBar,
     SidebaPhone,
+    SwitchLang,
   },
 };
 </script>
