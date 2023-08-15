@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    Lang: "en",
+    Lang: localStorage.getItem("lang"),
     isRTL: false,
   },
   getters: {},

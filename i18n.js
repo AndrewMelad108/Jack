@@ -7,7 +7,7 @@ import ar from "@/languages/ar.json";
 Vue.use(VueI18n);
 
 const i18n = new VueI18n({
-  locale: store.state.Lang,
+  locale: localStorage.getItem("lang"),
   messages: {
     en,
     ar,
