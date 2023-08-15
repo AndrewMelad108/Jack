@@ -77,10 +77,13 @@
           }}</label>
           <input
             type="text"
+            v-validate="{ required: true, email: true }"
             class="placeholder:capitalize p-4 rounded-lg placeholder:text-gray-600 placeholder:text-xl bg-gray-200 w-[100%]"
             :placeholder="$t('enter email')"
             v-model="person.email"
+            name="email"
           />
+          <span class="text-red-400">{{ errors.first("email") }}</span>
         </div>
         <div class="input-field space-y-2">
           <label for="Password" class="capitalize block text-xl">{{
@@ -90,8 +93,11 @@
             type="password"
             :placeholder="$t('Password')"
             v-model="person.password"
+            v-validate="{ required: true, min: 8 }"
+            name="password"
             class="placeholder:capitalize p-4 rounded-lg placeholder:text-gray-600 placeholder:text-xl bg-gray-200 w-[100%]"
           />
+          <span class="text-red-400">{{ errors.first("password") }}</span>
         </div>
         <p
           class="capitalize m-0 text-main-color text-right p-0 text-lg cursor-pointer"
@@ -106,6 +112,7 @@
         >
           {{ $t("Login") }}
         </button>
+
         <div class="text-center space-y-1 capitalize text-md">
           <p>{{ $t("dont have account ?") }}</p>
           <router-link
@@ -131,11 +138,20 @@ export default {
       },
     };
   },
+
   methods: {
     goToMainPage() {
       this.$router.go(-1);
     },
-    Login() {},
+    Login() {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          console.log("run");
+        } else {
+          console.log("error");
+        }
+      });
+    },
   },
 };
 </script>
