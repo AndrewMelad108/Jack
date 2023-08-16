@@ -21,6 +21,9 @@
           }}</label>
           <select
             class="focus:outline-0 p-1 rounded-lg bg-gray-100 w-full mx-auto"
+            v-validate="{ required: true }"
+            name="Search Scope"
+            v-model="Shipping.Scope"
           >
             <option disabled selected value="">
               {{ $t("Search Scope") }}
@@ -30,11 +33,15 @@
             <option value="asd2">asd</option>
             <option value="asd3">asd</option>
           </select>
+          <p class="text-red-400">{{ errors.first("Search Scope") }}</p>
           <label for="ServiceType" class="mt-6 text-lg block text-text-color">{{
             $t("Service Type")
           }}</label>
           <select
             class="placeholder:capitalize focus:outline-0 p-2 rounded-lg bg-gray-100 w-full mx-auto"
+            v-validate="{ required: true }"
+            name="ServiceType"
+            v-model="Shipping.ServiceType"
           >
             <option disabled selected value="">
               {{ $t("Service Type") }}
@@ -44,56 +51,78 @@
             <option value="asd2">asd</option>
             <option value="asd3">asd</option>
           </select>
+          <p class="text-red-400">{{ errors.first("ServiceType") }}</p>
+
           <label for="ShippingType" class="mt-6 text-lg block text-text-color">
             {{ $t("Shipping Type") }}</label
           >
           <select
             class="placeholder:capitalize focus:outline-0 p-2 rounded-lg bg-gray-100 w-full mx-auto"
+            v-validate="{ required: true }"
+            name="ShippingType"
+            v-model="Shipping.ShippingType"
           >
             <option disabled selected value="">
               {{ $t("Select Shipping Type") }}
             </option>
-
             <option value="asd1">asd</option>
             <option value="asd2">asd</option>
             <option value="asd3">asd</option>
           </select>
-
+          <p class="text-red-400">{{ errors.first("ShippingType") }}</p>
           <label for="Size" class="mt-6 text-lg block text-text-color">
             {{ $t("Size") }}</label
           >
           <input
             type="text"
+            v-validate="{ required: true }"
+            v-model.trim="Shipping.Size"
+            name="Size"
             :placeholder="$t('Enter Size')"
             class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
           />
+          <p class="text-red-400">{{ errors.first("Size") }}</p>
+
           <label for="Weight" class="mt-6 text-lg block text-text-color">
             {{ $t("Weight") }}</label
           >
           <input
             type="text"
+            v-validate="{ required: true }"
+            v-model.trim="Shipping.Weight"
+            name="Weight"
             :placeholder="$t('Enter Weight')"
             class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
           />
-
+          <p class="text-red-400">{{ errors.first("Weight") }}</p>
           <label for="LocationFrom" class="mt-6 text-lg block text-text-color">
             {{ $t("Location From") }}</label
           >
           <input
             type="text"
+            v-validate="{ required: true }"
+            v-model.trim="Shipping.LocationFrom"
+            name="LocationFrom"
             :placeholder="$t('Enter Location From')"
             class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
           />
+          <p class="text-red-400">{{ errors.first("LocationFrom") }}</p>
           <label for="LocationTo" class="mt-6 text-lg block text-text-color">
             {{ $t("Location To") }}</label
           >
           <input
             type="text"
+            v-validate="{ required: true }"
+            v-model.trim="Shipping.LocationTo"
+            name="LocationTo"
             :placeholder="$t('Enter Location To')"
             class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
           />
-
-          <button class="w-full bg-main-color p-2 mt-3 text-white rounded-lg">
+          <p class="text-red-400">{{ errors.first("LocationTo") }}</p>
+          <button
+            class="w-full bg-main-color p-2 mt-3 text-white rounded-lg"
+            @click="SendServices"
+          >
             {{ $t("Post Request") }}
           </button>
         </div>
@@ -110,12 +139,16 @@
           <input
             class="text-sm text-grey-100 text-[15px] file:bg-gray-100 file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
             type="file"
-            name="upload_photo"
+            v-validate="{ required: true }"
+            name="Addimages"
             id="upload_photo"
             @change="onFileChanged($event)"
             accept="image/*"
           />
         </div>
+        <p class="text-red-400">
+          {{ errors.first("Addimages") }}
+        </p>
       </div>
     </div>
   </section>
@@ -127,11 +160,32 @@ import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 export default {
   name: "ShippingAndForwarding",
   data() {
-    return {};
+    return {
+      Shipping: {
+        Scope: "",
+        ServiceType: "",
+        ShippingType: "",
+        Weight: "",
+        Size: "",
+        LocationFrom: "",
+        LocationTo: "",
+      },
+    };
   },
   components: {
     ServicesNav,
     WelcomeMassage,
+  },
+  methods: {
+    SendServices() {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          console.log("run");
+        } else {
+          console.log("error");
+        }
+      });
+    },
   },
 };
 </script>

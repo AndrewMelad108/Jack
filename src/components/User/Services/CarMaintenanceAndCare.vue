@@ -21,6 +21,9 @@
           }}</label>
           <select
             class="focus:outline-0 p-1 rounded-lg bg-gray-100 w-full mx-auto"
+            v-validate="{ required: true }"
+            name="ServiceType"
+            v-model="Repairing.ServiceType"
           >
             <option disabled selected value="">
               {{ $t("Service Type") }}
@@ -30,11 +33,16 @@
             <option value="asd2">asd</option>
             <option value="asd3">asd</option>
           </select>
+          <p class="text-red-400">{{ errors.first("ServiceType") }}</p>
+
           <label for="Brand" class="mt-6 text-lg block text-text-color">
             {{ $t("Brand") }}</label
           >
           <select
             class="placeholder:capitalize focus:outline-0 p-2 rounded-lg bg-gray-100 w-full mx-auto"
+            v-validate="{ required: true }"
+            name="SelectBrand"
+            v-model="Repairing.Brand"
           >
             <option disabled selected value="">
               {{ $t("Select Brand") }}
@@ -44,11 +52,15 @@
             <option value="asd2">asd</option>
             <option value="asd3">asd</option>
           </select>
+          <p class="text-red-400">{{ errors.first("ServiceType") }}</p>
           <label for="Model" class="mt-6 text-lg block text-text-color">
             {{ $t("Model") }}</label
           >
           <select
             class="placeholder:capitalize focus:outline-0 p-2 rounded-lg bg-gray-100 w-full mx-auto"
+            v-validate="{ required: true }"
+            name="SelectModel"
+            v-model="Repairing.Model"
           >
             <option disabled selected value="">
               {{ $t("Select Model") }}
@@ -58,6 +70,7 @@
             <option value="asd2">asd</option>
             <option value="asd3">asd</option>
           </select>
+          <p class="text-red-400">{{ errors.first("SelectModel") }}</p>
           <label
             for="YearofManufactur"
             class="mt-6 text-lg block text-text-color"
@@ -66,6 +79,9 @@
           >
           <select
             class="placeholder:capitalize focus:outline-0 p-2 rounded-lg bg-gray-100 w-full mx-auto"
+            v-validate="{ required: true }"
+            name="SelectYear"
+            v-model="Repairing.Year"
           >
             <option disabled selected value="">
               {{ $t("Select Year") }}
@@ -75,6 +91,7 @@
             <option value="asd2">asd</option>
             <option value="asd3">asd</option>
           </select>
+          <p class="text-red-400">{{ errors.first("SelectYear") }}</p>
 
           <label for="color" class="mt-6 text-lg block text-text-color">
             {{ $t("color") }}</label
@@ -82,25 +99,37 @@
           <input
             type="text"
             :placeholder="$t('Enter Color')"
+            v-validate="{ required: true }"
+            name="color"
+            v-model.trim="Repairing.color"
             class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
           />
+          <p class="text-red-400">{{ errors.first("color") }}</p>
           <label for="PlateNumber" class="mt-6 text-lg block text-text-color">
             {{ $t("Plate Number") }}</label
           >
           <input
             type="text"
+            v-validate="{ required: true }"
+            name="PlateNumber"
+            v-model.trim="Repairing.PlateNumber"
             :placeholder="$t('Enter Plate Number')"
             class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
           />
-
+          <p class="text-red-400">{{ errors.first("PlateNumber") }}</p>
           <label for="LocationTo" class="mt-6 text-lg block text-text-color">
             {{ $t("Location") }}
           </label>
           <input
             type="text"
+            v-validate="{ required: true }"
+            name="LocationTo"
+            v-model.trim="Repairing.LocationTo"
             :placeholder="$t('Enter Location')"
             class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
           />
+          <p class="text-red-400">{{ errors.first("LocationTo") }}</p>
+
           <p class="my-2">
             {{
               $t(
@@ -108,7 +137,14 @@
               )
             }}
           </p>
-          <button class="w-full bg-main-color p-2 mt-3 text-white rounded-lg">
+          <div class="Maps flex justify-around h-62">
+            <!-- <MapGoogle />
+            <MapGoogle /> -->
+          </div>
+          <button
+            @click="SendServices"
+            class="w-full bg-main-color p-2 mt-3 text-white rounded-lg"
+          >
             {{ $t("Post Request") }}
           </button>
         </div>
@@ -122,12 +158,16 @@
           <input
             class="text-sm text-grey-100 text-[15px] file:bg-gray-100 file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
             type="file"
-            name="upload_photo"
             id="upload_photo"
             @change="onFileChanged($event)"
             accept="image/*"
+            v-validate="{ required: true }"
+            name="Addimages"
           />
         </div>
+        <p class="text-red-400">
+          {{ errors.first("Addimages") }}
+        </p>
       </div>
     </div>
   </section>
@@ -136,14 +176,37 @@
 <script>
 import ServicesNav from "@/components/User/Services/ServicesNav.vue";
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
+// import Map from "@/components/Shared/Map.vue";
 export default {
   name: "CarMaintenanceAndCare",
   data() {
-    return {};
+    return {
+      yourActualApiKeyHere: "AIzaSyD1qZn-hta_tR9_z2To2Qcrg1CgaXeyP0g",
+      Repairing: {
+        ServiceType: "",
+        Brand: "",
+        Model: "",
+        Year: "",
+        color: "",
+        PlateNumber: "",
+        LocationTo: "",
+      },
+    };
   },
   components: {
     ServicesNav,
     WelcomeMassage,
+  },
+  methods: {
+    SendServices() {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          console.log("run");
+        } else {
+          console.log("error");
+        }
+      });
+    },
   },
 };
 </script>
