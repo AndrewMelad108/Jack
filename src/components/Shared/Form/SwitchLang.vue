@@ -1,9 +1,9 @@
 <template>
   <div class="language-switcher" @click="toggleLanguage()">
     <button
-      class="px-4 py-2 block ml-auto m-4 rounded-lg border-0 hover:text-main-color hover:bg-green-50 font-bold transition-all ease-in-out duration-500 dark:border-gray-700 bg-main-color text-white"
+      class="px-4 py-2 block ml-auto rounded-lg border-0 hover:text-main-color hover:bg-green-50 font-bold transition-all ease-in-out duration-500 dark:border-gray-700 bg-main-color text-white"
     >
-      {{ lang === "ar" ? "English" : "Arabic" }}
+      {{ lang === "ar" ? "English" : "العربيه" }}
     </button>
   </div>
 </template>

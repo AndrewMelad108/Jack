@@ -5,21 +5,25 @@
     <div
       class="UserProfile-content px-2 space-x-4 grid lg:grid-cols-2 grid-cols-1 justify-center items-center gap-4"
     >
-      <div class="bg-white rounded-[20px] h-[300px] mb-28">
-        <div
-          v-if="!person.imageUrl"
-          class="flex items-end justify-center rounded-[10px] min-h-full"
-        >
-          <input
-            class="bg-gray-100 border-2 p-4 rounded-xl text-grey-100 text-lg file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
-            type="file"
-            v-validate="{ required: true }"
-            name="profileIamge"
-            id="upload_photo"
-            @change="onFileChange($event)"
-            accept="image/*"
-            title="Add image"
-          />
+      <div>
+        <div v-if="!person.imageUrl">
+          <label
+            for="file-input"
+            class="bg-white rounded-[20px] h-[300px] w-full mb-28"
+          >
+            asd
+            <input
+              id="file-input"
+              class="opacity-0"
+              ref="fileInput"
+              type="file"
+              v-validate="{ required: true }"
+              name="profileIamge"
+              @change="changeImage($event)"
+              accept="image/*"
+              title="Add image"
+            />
+          </label>
         </div>
         <div
           v-if="person.imageUrl"
@@ -131,10 +135,11 @@ export default {
     WelcomeMassage,
   },
   methods: {
-    onFileChange(event) {
-      const selectedImage = event.target.files[0];
-      if (selectedImage) {
-        this.person.imageUrl = URL.createObjectURL(selectedImage);
+    changeImage() {
+      console.log("run");
+      const [file] = this.$refs.fileInput.files;
+      if (file) {
+        this.person.imageUrl = URL.createObjectURL(file);
       }
     },
     saveProfile() {

@@ -1,9 +1,9 @@
 <template>
   <section
-    class="home min-w-[80vw] min-h-[100vh] p-8 grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4"
+    class="home min-h-[100vh] items-start gap-4 content-start grid md:grid-cols-2 grid-cols-1"
   >
     <div
-      class="bg-main-color shadow-2xl shadow-gray-500 rounded-lg p-6 flex flex-wrap text-center items-center justify-center h-40 hover:text-main-color text-white hover:bg-white hover:shadow-xl hover:shadow-main-color cursor-pointer transition-all ease-in-out duration-500"
+      class="bg-main-color shadow-2xl shadow-gray-500 rounded-lg flex flex-wrap text-center items-center justify-center h-40 hover:text-main-color text-white hover:bg-white hover:shadow-xl hover:shadow-main-color cursor-pointer transition-all ease-in-out duration-500"
       v-for="item in data"
       :key="item.index"
     >
@@ -21,6 +21,10 @@ export default {
   data() {
     return {
       data: [
+        {
+          name: "Total Users",
+          number: "122222",
+        },
         {
           name: "Total Users",
           number: "122222",

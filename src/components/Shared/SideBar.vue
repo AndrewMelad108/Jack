@@ -1,6 +1,6 @@
 <template>
   <section
-    class="min-w-[220px] bg-main-color md:block hidden rounded-s-xl rounded-e-xl min-h-[100vh]"
+    class="min-w-[280px] bg-main-color md:block hidden rounded-s-xl rounded-e-xl min-h-[100vh]"
   >
     <div class="logo">
       <img

@@ -26,8 +26,8 @@
         />
       </div>
     </div>
-    <div class="h-[100%] min-h-[100vh] md:w-screen w-auto md:px-5 px-4 pt-4">
-      <SwitchLang />
+    <div class="h-[100%] w-full min-h-[100vh] p-4">
+      <SwitchLang class="mb-3" />
       <router-view />
     </div>
   </section>

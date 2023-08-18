@@ -1,7 +1,7 @@
 <template>
   <section
     v-if="closeSidebar"
-    class="SidebaPhone w-[270px] bg-[#24c6c9] absolute left-0 top-0 bottom-0 z-40 rounded-s-xl rounded-e-xl min-h-[100vh]"
+    class="SidebaPhone w-[280px] bg-[#24c6c9] absolute left-0 top-0 bottom-0 z-40 rounded-s-xl rounded-e-xl min-h-[100vh]"
   >
     <img
       src="../../assets/images/icons/close-icon.svg"
