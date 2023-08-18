@@ -56,7 +56,7 @@ export default {
   methods: {
     goHome() {
       this.$router.push({
-        path: "/User/all-servies",
+        name: "User.ControlPanel",
       });
     },
   },

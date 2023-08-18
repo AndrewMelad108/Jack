@@ -1,5 +1,7 @@
 <template>
-  <section class="Header py-4 md:flex hidden justify-around items-center px-20">
+  <section
+    class="Header py-4 md:flex hidden justify-around items-center lg:px-10"
+  >
     <div class="logo-image w-3/6">
       <img
         src="../../../assets//images/logo.png"
@@ -9,16 +11,14 @@
       />
     </div>
     <div
-      class="header-links flex items-center gap-4 justify-around text-xl font-bold text-[#858585] w-3/6"
+      class="header-links flex items-center justify-around text-xl font-bold text-[#858585] w-3/6"
     >
       <router-link class="hover:text-black" :to="{ path: '/User/home' }">{{
         $t("Home")
       }}</router-link>
-      <router-link
-        class="hover:text-black"
-        :to="{ path: '/User/all-servies' }"
-        >{{ $t("Servies") }}</router-link
-      >
+      <router-link class="hover:text-black" :to="{ name: 'User.Towing' }">{{
+        $t("Servies")
+      }}</router-link>
       <router-link
         v-if="checked"
         class="hover:text-black text-main-color"

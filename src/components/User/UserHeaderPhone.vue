@@ -30,7 +30,7 @@
       >
       <router-link
         class="hover:text-black block text-lg"
-        :to="{ path: '/User/all-servies' }"
+        :to="{ name: 'User.Towing' }"
         >{{ $t("Servies") }}</router-link
       >
       <router-link
