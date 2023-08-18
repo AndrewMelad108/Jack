@@ -21,6 +21,9 @@
         :to="{ name: type + '.' + link }"
         >{{ $t(link) }}
       </router-link>
+      <button class="text-xl capitalize" @click="Logout()">
+        {{ $t("Logout") }}
+      </button>
     </div>
   </section>
 
@@ -44,7 +47,13 @@ export default {
     return {};
   },
 
-  methods: {},
+  methods: {
+    Logout() {
+      this.$router.push({
+        name: "MainPage",
+      });
+    },
+  },
 };
 </script>
 

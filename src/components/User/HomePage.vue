@@ -2,22 +2,23 @@
   <section class="HomePage">
     <UserHeader :checked="checkUser" />
     <UserHeaderPhone />
+    <SwitchLang class="md:hidden block" />
     <div
       class="bg-main-color min-h-20 w-full flex flex-warp content-center p-4 text-center"
     >
       <div
-        class="w-[70%] mx-auto flex gap-10 capitalize justify-center text-white font-bold text-xl md:flex-row flex-col items-center"
+        class="w-[70%] mx-auto flex gap-4 capitalize justify-center text-white font-bold text-xl md:flex-row flex-col items-center"
       >
-        <router-link :to="{}">{{ $t("Profile") }}</router-link>
-        <router-link :to="{}">{{ $t("Orders") }}</router-link>
-        <router-link :to="{}">{{ $t("Requests") }}</router-link>
-        <router-link :to="{}">{{ $t("Chats") }}</router-link>
-        <router-link :to="{}">{{ $t("Controlpanel") }}</router-link>
-        <router-link :to="{}">{{ $t("Wallet") }}</router-link>
+        <router-link to="Profile">{{ $t("Profile") }}</router-link>
+        <router-link to="Orders">{{ $t("Orders") }}</router-link>
+        <router-link to="Request">{{ $t("Requests") }}</router-link>
+        <router-link to="Chat">{{ $t("Chats") }}</router-link>
+        <router-link to="Home">{{ $t("Controlpanel") }}</router-link>
+        <router-link to="Wallet">{{ $t("Wallet") }}</router-link>
       </div>
     </div>
     <div
-      class="payment-methods grid md:grid-cols-6 space-y-5 grid-cols-3 sm:grid-cols-3 justify-around items-center py-10"
+      class="payment-methods grid md:grid-cols-6 space-y-5 grid-cols-2 justify-around items-center py-4"
     >
       <img
         src="../../assets/images/Companies/transfer_6.png"
@@ -57,7 +58,7 @@
       />
     </div>
     <div
-      class="Credit-Card grid md:grid-cols-2 grid-cols-1 md:gap-10 gap-5 justify-center items-center px-20 py-10 my-20"
+      class="Credit-Card grid md:grid-cols-2 grid-cols-1 gap-5 justify-center items-center md:px-20 px-4 py-10 my-4"
     >
       <div class="input-filed space-y-4">
         <label for="FullName" class="block font-bold text-xl">{{
@@ -66,7 +67,7 @@
         <input
           type="text"
           disabled
-          class="p-4 bg-gray-200 md:w-[80%] text-black rounded-lg w-full placeholder:text-black placeholder:text-xl placeholder:font-bold placeholder:px-20"
+          class="p-4 bg-gray-200 md:w-[80%] text-black rounded-lg w-full placeholder:text-black placeholder:text-xl placeholder:font-bold"
           placeholder="Anddrew Melad Dawood"
         />
       </div>
@@ -77,7 +78,7 @@
         <input
           type="text"
           disabled
-          class="p-4 bg-gray-200 md:w-[80%] text-black rounded-lg w-full placeholder:text-black placeholder:text-xl placeholder:font-bold placeholder:px-20"
+          class="p-4 bg-gray-200 md:w-[80%] text-black rounded-lg w-full placeholder:text-black placeholder:text-xl placeholder:font-bold"
           placeholder="1275156892312231"
         />
       </div>
@@ -88,7 +89,7 @@
         <input
           type="text"
           disabled
-          class="p-4 bg-gray-200 md:w-[80%] text-black rounded-lg w-full placeholder:text-black placeholder:text-xl placeholder:font-bold placeholder:px-20"
+          class="p-4 bg-gray-200 md:w-[80%] text-black rounded-lg w-full placeholder:text-black placeholder:text-xl placeholder:font-bold"
           placeholder="2027-10-05"
         />
       </div>
@@ -99,7 +100,7 @@
         <input
           type="text"
           disabled
-          class="p-4 bg-gray-200 md:w-[80%] text-black rounded-lg w-full placeholder:text-black placeholder:text-xl placeholder:font-bold placeholder:px-20"
+          class="p-4 bg-gray-200 md:w-[80%] text-black rounded-lg w-full placeholder:text-black placeholder:text-xl placeholder:font-bold"
           placeholder="1275"
         />
       </div>
@@ -110,6 +111,7 @@
 </template>
 
 <script>
+import SwitchLang from "../../components/Shared/Form/SwitchLang.vue";
 import UserHeader from "@/components/User/MainPage/UserHeader.vue";
 import UserHeaderPhone from "@/components/User/UserHeaderPhone.vue";
 import servicesFeature from "@/components/User/MainPage/Services.vue";
@@ -124,6 +126,7 @@ export default {
     UserHeaderPhone,
     UserFooter,
     servicesFeature,
+    SwitchLang,
   },
 };
 </script>

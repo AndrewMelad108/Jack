@@ -30,10 +30,11 @@
         :to="{ name: type + '.' + link }"
         >{{ $t(link) }}
       </router-link>
+      <button class="text-xl capitalize" @click="Logout()">
+        {{ $t("Logout") }}
+      </button>
     </div>
   </section>
-
-  <!--  v-if="!toggleSidebar" -->
 </template>
 
 <script>
@@ -58,6 +59,11 @@ export default {
   methods: {
     changeCloseSidebarValue() {
       this.$emit("changeCloseSidebarValue");
+    },
+    Logout() {
+      this.$router.push({
+        name: "MainPage",
+      });
     },
   },
 };

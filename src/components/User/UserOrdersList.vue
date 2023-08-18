@@ -41,11 +41,17 @@
           {{ $t("Offer") }}
         </h1>
         <p
-          class="md:col-start-1 md:col-end-3 col-start-1 col-end-2"
+          class="md:col-start-1 pl-4 md:col-end-3 col-start-1 col-end-2"
           v-if="order.showOrders"
         >
           {{ order.Offer_Details }}
         </p>
+        <button
+          v-if="order.showOrders"
+          class="md:col-start-1 md:col-end-3 col-start-1 col-end-2 block w-44 mr-3 font-bold ml-auto border-2 rounded-lg border-main-color p-2 text-main-color"
+        >
+          {{ $t("Mark completed") }}
+        </button>
         <div
           class="p-2 md:col-start-1 md:col-end-3 col-start-1 col-end-2 rounded-b-lg bg-[#EDEDED]"
         >
@@ -120,6 +126,7 @@ export default {
       ],
     };
   },
+
   methods: {
     showOrdersDetails(orderId) {
       let selectOrder = this.orders.map((order) => {

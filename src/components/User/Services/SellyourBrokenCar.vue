@@ -1,5 +1,6 @@
 <template>
   <section class="SellyourBrokenCar p-6 bg-white">
+    <SwitchLang />
     <ServicesNav class="md:flex hidden" />
     <header class="service-title">
       <WelcomeMassage name="User" />
@@ -252,6 +253,7 @@
 <script>
 import ServicesNav from "@/components/User/Services/ServicesNav.vue";
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
+import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
 export default {
   name: "TowingAndShipping",
   data() {
@@ -285,6 +287,7 @@ export default {
   components: {
     ServicesNav,
     WelcomeMassage,
+    SwitchLang,
   },
 };
 </script>

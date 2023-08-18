@@ -1,5 +1,6 @@
 <template>
   <section class="AllServices px-12 py-4">
+    <SwitchLang />
     <!-- start header section -->
     <header class="grid md:grid-cols-2 grid-cols-1 justify-between">
       <WelcomeMassage name="User" />
@@ -20,7 +21,8 @@
       class="mt-4 lg:flex hidden w-full h-[300px] md:gap-4"
     >
       <div
-        class="h-62 w-3/12 px-2 bg-white rounded-xl capitalize text-center font-boldx 2 py-6"
+        class="h-62 w-3/12 px-2 bg-white cursor-pointer rounded-xl capitalize text-center font-boldx 2 py-6"
+        @click="goServices('User.Towing')"
       >
         <img
           src="../../assets/images/Servies/towing_and_shipping.png"
@@ -33,7 +35,8 @@
         </p>
       </div>
       <div
-        class="h-62 w-3/12 px-2 bg-white rounded-xl capitalize text-center font-boldx 2 py-6"
+        @click="goServices('User.Spare Parts')"
+        class="h-62 w-3/12 px-2 bg-white rounded-xl cursor-pointer capitalize text-center font-boldx 2 py-6"
       >
         <img
           src="../../assets/images/Servies/spare_parts.png"
@@ -46,7 +49,8 @@
         </p>
       </div>
       <div
-        class="h-62 w-3/12 px-2 bg-white rounded-xl capitalize text-center font-boldx 2 py-6"
+        class="h-62 w-3/12 px-2 bg-white rounded-xl cursor-pointer capitalize text-center font-boldx 2 py-6"
+        @click="goServices('User.Baggage Transfer')"
       >
         <img
           src="../../assets/images/Servies/shipping_and_forwarding.png"
@@ -59,7 +63,8 @@
         </p>
       </div>
       <div
-        class="h-62 w-3/12 px-2 bg-white rounded-xl capitalize text-center font-boldx 2 py-6"
+        class="h-62 w-3/12 px-2 bg-white rounded-xl cursor-pointer capitalize text-center font-boldx 2 py-6"
+        @click="goServices('User.Selling Cars')"
       >
         <img
           src="../../assets/images/Servies/sell_your_broken_car.png"
@@ -72,12 +77,10 @@
         </p>
       </div>
     </div>
-    <div
-      v-else
-      class="show_all_services grid md:grid-cols-3 grid-cols-2 gap-10"
-    >
+    <div v-else class="show_all_services grid md:grid-cols-3 grid-cols-2 gap-6">
       <div
-        class="h-62 max-w-[220px] bg-white rounded-xl capitalize text-center font-bold px-2 py-6"
+        class="h-62 bg-white rounded-xl capitalize cursor-pointer text-center font-bold px-2 py-6"
+        @click="goServices('User.Towing')"
       >
         <img
           src="../../assets/images/Servies/towing_and_shipping.png"
@@ -90,7 +93,8 @@
         </p>
       </div>
       <div
-        class="h-62 max-w-[220px] bg-white rounded-xl capitalize text-center font-bold px-2 py-6"
+        class="h-62 bg-white rounded-xl capitalize cursor-pointer text-center font-bold px-2 py-6"
+        @click="goServices('User.Spare Parts')"
       >
         <img
           src="../../assets/images/Servies/spare_parts.png"
@@ -99,11 +103,12 @@
           class="block h-20 mx-auto mb-4"
         />
         <p class="w-22 break-words md:text-md sm:text-sm">
-          {{ $t("spare parts") }}
+          {{ $t("Spare Parts") }}
         </p>
       </div>
       <div
-        class="h-62 max-w-[220px] bg-white rounded-xl capitalize text-center font-bold px-2 py-6"
+        class="h-62 bg-white rounded-xl capitalize cursor-pointer text-center font-bold px-2 py-6"
+        @click="goServices('User.Baggage Transfer')"
       >
         <img
           src="../../assets/images/Servies/shipping_and_forwarding.png"
@@ -116,7 +121,8 @@
         </p>
       </div>
       <div
-        class="h-62 max-w-[220px] bg-white rounded-xl capitalize text-center font-bold px-2 py-6"
+        class="h-62 bg-white rounded-xl capitalize cursor-pointer text-center font-bold px-2 py-6"
+        @click="goServices('User.Selling Cars')"
       >
         <img
           src="../../assets/images/Servies/sell_your_broken_car.png"
@@ -129,7 +135,8 @@
         </p>
       </div>
       <div
-        class="h-62 max-w-[220px] bg-white rounded-xl capitalize text-center font-bold px-2 py-6"
+        class="h-62 bg-white rounded-xl capitalize cursor-pointer text-center font-bold px-2 py-6"
+        @click="goServices('User.Delivery')"
       >
         <img
           src="../../assets/images/Servies/delivery_services.png"
@@ -142,7 +149,8 @@
         </p>
       </div>
       <div
-        class="h-62 max-w-[220px] bg-white rounded-xl capitalize text-center font-bold px-2 py-6"
+        class="h-62 bg-white rounded-xl capitalize cursor-pointer text-center font-bold px-2 py-6"
+        @click="goServices('User.Repairing')"
       >
         <img
           src="../../assets/images/Servies/car_maintenance_and_care.png"
@@ -179,6 +187,7 @@
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import InputSearch from "@/components/Shared/Form/InputSearch.vue";
 import UserOrdersList from "@/components/User/UserOrdersList.vue";
+import SwitchLang from "../../components/Shared/Form/SwitchLang.vue";
 export default {
   name: "UserAllServices",
   data() {
@@ -190,6 +199,14 @@ export default {
     WelcomeMassage,
     InputSearch,
     UserOrdersList,
+    SwitchLang,
+  },
+  methods: {
+    goServices(nameService) {
+      this.$router.push({
+        name: nameService,
+      });
+    },
   },
 };
 </script>

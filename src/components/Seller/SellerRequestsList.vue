@@ -27,7 +27,7 @@
         <button
           class="block rounded-lg mt-4 p-4 ml-auto text-white bg-main-color"
         >
-          Details
+          {{ $t("Details") }}
         </button>
       </div>
     </div>

@@ -1,8 +1,7 @@
 <template>
   <section class="UserWallet md:p-8 p-4">
-    <SwitchLang />
     <header class="grid md:grid-cols-2 grid-cols-1 items-start justify-between">
-      <WelcomeMassage name="User" />
+      <WelcomeMassage name="Seller" />
       <InputSearch />
     </header>
     <div
@@ -64,7 +63,6 @@
 </template>
 
 <script>
-import SwitchLang from "../../components/Shared/Form/SwitchLang.vue";
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import InputSearch from "@/components/Shared/Form/InputSearch.vue";
 export default {
@@ -156,7 +154,6 @@ export default {
     };
   },
   components: {
-    SwitchLang,
     WelcomeMassage,
     InputSearch,
   },

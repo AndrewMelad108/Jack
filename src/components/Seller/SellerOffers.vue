@@ -1,8 +1,8 @@
 <template>
-  <section class="UserOffers p-4 py-4">
+  <section class="SellerOffers p-4 py-4">
     <!-- start header section -->
     <header class="grid md:grid-cols-2 grid-cols-1 items-start justify-between">
-      <WelcomeMassage name="User" />
+      <WelcomeMassage name="Seller" />
       <InputSearch />
     </header>
     <!-- end header section -->
@@ -59,16 +59,17 @@
               class="px-4 my-2 gap-4 md:flex md:flex-row md:col-start-1 md:col-end-3"
             >
               <p class="md:w-4/12 w-full">
-                Time <span class="text-main-color pl-6">12.00.00</span>
+                {{ $t("Time") }}
+                <span class="text-main-color pl-6">12.00.00</span>
               </p>
               <p class="md:w-4/12 w-full">
-                Cost <span class="text-main-color pl-6">5000</span>
+                {{ $t("Cost") }} <span class="text-main-color pl-6">5000</span>
               </p>
               <button class="mr-4 mt-2 md:w-2/12 text-main-color font-bold">
-                Edit
+                {{ $t("Edit") }}
               </button>
               <button class="text-main-color md:w-2/12 font-bold">
-                Delete
+                {{ $t("Delete") }}
               </button>
             </div>
           </div>

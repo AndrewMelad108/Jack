@@ -1,8 +1,8 @@
 <template>
-  <section class="AllServices p-4">
+  <section class="Seller-AllServices p-4">
     <!-- start header section -->
     <header class="grid md:grid-cols-2 grid-cols-1 justify-between">
-      <WelcomeMassage name="User" />
+      <WelcomeMassage name="Seller" />
       <InputSearch class="self-center" />
     </header>
     <!-- end header section -->
@@ -70,7 +70,7 @@ import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import InputSearch from "@/components/Shared/Form/InputSearch.vue";
 import SellerRequestsList from "@/components/Seller/SellerRequestsList.vue";
 export default {
-  name: "UserAllServices",
+  name: "SellerAllServices",
   data() {
     return {
       showAllServices: false,

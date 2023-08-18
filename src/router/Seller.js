@@ -8,7 +8,7 @@ import Home from "../components/Seller/SellerAllServies.vue";
 import SellerRequests from "../components/Seller/SellerRequests.vue";
 import SellerOffers from "../components/Seller/SellerOffers.vue";
 import SellerProfile from "../components/Seller/SellerProfile.vue";
-
+import SellerWallet from "../components/Seller/SellerWallet.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -51,6 +51,11 @@ const routes = [
         path: "Profile",
         name: "Seller.Profile",
         component: SellerProfile,
+      },
+      {
+        path: "Wallet",
+        name: "Seller.Wallet",
+        component: SellerWallet,
       },
     ],
   },

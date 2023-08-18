@@ -1,6 +1,7 @@
 <template>
   <section class="UserRequest pt-10 md:px-8 px-2 py-4">
     <!-- start header section -->
+    <SwitchLang />
     <header class="grid md:grid-cols-2 grid-cols-1 items-start justify-between">
       <WelcomeMassage name="User" />
       <InputSearch />
@@ -64,10 +65,11 @@
             </div>
             <div class="flex gap-4 Offer-details justify-center">
               <p class="text-text-color">
-                Time <span class="text-main-color px-2">12:00:00</span>
+                {{ $t("Time") }}
+                <span class="text-main-color px-2">12:00:00</span>
               </p>
               <p class="text-text-color">
-                cost <span class="text-main-color px-2">50000</span>
+                {{ $t("Cost") }} <span class="text-main-color px-2">50000</span>
               </p>
             </div>
             <button
@@ -81,7 +83,7 @@
                 })
               "
             >
-              More Detials
+              {{ $t("More Detials") }}
             </button>
           </div>
         </div>
@@ -92,6 +94,7 @@
 
 <script>
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
+import SwitchLang from "../../components/Shared/Form/SwitchLang.vue";
 import InputSearch from "@/components/Shared/Form/InputSearch.vue";
 export default {
   name: "UserRequest",
@@ -133,6 +136,7 @@ export default {
   components: {
     WelcomeMassage,
     InputSearch,
+    SwitchLang,
   },
 };
 </script>

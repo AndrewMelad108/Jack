@@ -1,8 +1,8 @@
 <template>
-  <section class="UserOffers p-4 py-4">
+  <section class="SellerOffers p-4 py-4">
     <!-- start header section -->
     <header class="grid md:grid-cols-2 grid-cols-1 items-start justify-between">
-      <WelcomeMassage name="User" />
+      <WelcomeMassage name="Seller" />
       <InputSearch />
     </header>
     <!-- end header section -->
@@ -29,7 +29,9 @@
           <!-- order in lg screen-->
           <div class="md:grid hidden grid-cols-3 gap-4 w-full justify-between">
             <h1 class="font-bold pl-4">{{ $t(Order.user) }}</h1>
-            <span class="cursor-pointer text-center font-bold">Cost </span>
+            <span class="cursor-pointer text-center font-bold"
+              >{{ $t("Cost") }}
+            </span>
             <span class="cursor-pointer text-right font-bold"
               >{{ $t(Order.type) }}
             </span>
@@ -47,12 +49,12 @@
               v-if="Order.showOrders"
               class="px-4 my-2 md:col-start-1 md:col-end-4 col-start-1 col-end-2"
             >
-              <h1 class="text-md font-bold">Requirments</h1>
+              <h1 class="text-md font-bold">{{ $t("Requirments") }}</h1>
               <p class="mb-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
                 provident,
               </p>
-              <h1 class="text-md font-bold">Offer</h1>
+              <h1 class="text-md font-bold">{{ $t("Offer") }}</h1>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
                 provident,
@@ -69,17 +71,17 @@
               />
               {{ $t(Order.location) }}</span
             >
-            <span class="font-bold">Cost </span>
+            <span class="font-bold">{{ $t("Cost") }} </span>
             <span>{{ Order.Cost }}</span>
             <span>{{ Order.date }}</span>
             <span class="font-bold">{{ $t(Order.type) }} </span>
             <div v-if="Order.showOrders" class="my-4">
-              <h1 class="text-md font-bold">Requirments</h1>
+              <h1 class="text-md font-bold">{{ $t("Requirments") }}</h1>
               <p class="mb-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
                 provident,
               </p>
-              <h1 class="text-md font-bold">Offer</h1>
+              <h1 class="text-md font-bold">{{ $t("Offer") }}</h1>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
                 provident,
@@ -118,7 +120,7 @@ import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import InputSearch from "@/components/Shared/Form/InputSearch.vue";
 
 export default {
-  name: "SellerOffers",
+  name: "SellerOrders",
   data() {
     return {
       Orders: [

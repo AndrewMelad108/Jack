@@ -8,12 +8,14 @@
       <div
         class="w-[70%] mx-auto flex gap-10 capitalize justify-center text-white font-bold text-xl md:flex-row flex-col items-center"
       >
-        <router-link :to="{}">{{ $t("Profile") }}</router-link>
-        <router-link :to="{}">{{ $t("Orders") }}</router-link>
-        <router-link :to="{}">{{ $t("Requests") }}</router-link>
-        <router-link :to="{}">{{ $t("Chats") }}</router-link>
-        <router-link :to="{}">{{ $t("Controlpanel") }}</router-link>
-        <router-link :to="{}">{{ $t("Wallet") }}</router-link>
+        <router-link to="Profile">{{ $t("Profile Services") }}</router-link>
+        <router-link to="Profile">{{ $t("Profile") }}</router-link>
+        <router-link to="Orders">{{ $t("Orders") }}</router-link>
+        <router-link to="Offers">{{ $t("Offers") }}</router-link>
+        <router-link to="Requests">{{ $t("Requests") }}</router-link>
+        <router-link to="Chats">{{ $t("Chats") }}</router-link>
+        <router-link to="Controlpanel">{{ $t("Controlpanel") }}</router-link>
+        <router-link to="Wallet">{{ $t("Wallet") }}</router-link>
       </div>
     </div>
     <div

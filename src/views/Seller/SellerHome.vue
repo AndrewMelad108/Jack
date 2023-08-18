@@ -57,7 +57,6 @@ export default {
         "Wallet",
         "Profile",
         "Profile Servies",
-        "Logout",
       ],
     };
   },

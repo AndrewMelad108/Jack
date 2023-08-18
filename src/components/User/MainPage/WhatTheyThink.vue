@@ -1,79 +1,88 @@
 <template>
-  <section class="WhatTheyThink">
-    <h1
-      class="text-center text-black md:text-5xl text-2xl font-bold pt-10 pb-4"
+  <div class="p-8">
+    <VueSlickCarousel
+      :arrows="true"
+      :dots="true"
+      class="w-[80%] mx-auto text-center"
     >
-      {{ $t("What They Think") }}
-    </h1>
-    <span class="line block w-24 bg-main-color h-1 rounded-full mx-auto"></span>
-    <div class="WhatTheyThink-content mx-auto mt-20 px-10">
-      <div class="persons flex justify-between">
-        <img
-          src="../../../assets/images/Vector_(1).png"
-          alt="forward.png"
-          loading="lazy"
-          class="self-start md:m-auto w-6"
-        />
+      <div class="h-60" v-for="(slide, index) in slides" :key="index">
         <div class="person-description space-y-4 mb-10">
           <img
-            src="../../../assets/images/Ellipse_8.png"
-            alt="Ellipse_8.png"
+            :src="slide.image"
+            alt="Person Image"
             loading="lazy"
             class="md:w-28 w-20 mx-auto"
           />
-          <h1 class="text-center font-bold md:text-xl text-md">Andrew Melad</h1>
+          <h1 class="text-center font-bold md:text-xl text-md">
+            {{ slide.name }}
+          </h1>
+          <p class="text-lg">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum,
+            tempora placeat. Dolorem et sequi dolorum, dolore voluptas error
+            expedita ipsa. Exercitationem dignissimos sit tempora. Voluptates ad
+            distinctio quam expedita tempore?
+          </p>
           <div class="person-rate flex mx-auto justify-center space-x-2">
             <img
+              v-for="(star, starIndex) in slide.rate"
+              :key="starIndex"
               src="../../../assets/images/Star.png"
-              alt="Star.png"
-              loading="lazy"
-            />
-            <img
-              src="../../../assets/images/Star.png"
-              alt="Star.png"
-              loading="lazy"
-            />
-            <img
-              src="../../../assets/images/Star.png"
-              alt="Star.png"
-              loading="lazy"
-            />
-            <img
-              src="../../../assets/images/Star.png"
-              alt="Star.png"
-              loading="lazy"
-            />
-            <img
-              src="../../../assets/images/Star.png"
-              alt="Star.png"
+              alt="Star"
               loading="lazy"
             />
           </div>
         </div>
-        <img
-          src="../../../assets/images/Vector.png"
-          alt="back.png"
-          loading="lazy"
-          class="self-start md:m-auto w-6"
-        />
       </div>
-      <p class="w-[80%] mx-auto text-center text-xl">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet odio
-        sunt eius accusantium asperiores a exercitationem expedita libero?
-        Commodi exercitationem, accusantium quasi excepturi nesciunt tempore
-        magni voluptatibus soluta asperiores tempora?
-      </p>
-    </div>
-  </section>
+    </VueSlickCarousel>
+  </div>
 </template>
 
 <script>
+import VueSlickCarousel from "vue-slick-carousel";
+
 export default {
   name: "WhatTheyThink",
+  components: {
+    VueSlickCarousel,
+  },
   data() {
-    return {};
+    return {
+      slickOptions: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        dots: true,
+        infinite: true,
+      },
+      slides: [
+        {
+          image: require("../../../assets/images/Ellipse17.png"),
+          name: "andrew melad",
+          rate: 5,
+          alt: "Slide 1",
+        },
+        {
+          image: require("../../../assets/images/Ellipse_15.png"),
+          alt: "Slide 2",
+          name: "andrew melad",
+          rate: 1,
+        },
+        {
+          image: require("../../../assets/images/Ellipse_16.png"),
+          name: "andrew melad",
+          rate: 4,
+          alt: "Slide 3",
+        },
+        {
+          image: require("../../../assets/images/Ellipse_8.png"),
+          alt: "Slide 4",
+          name: "andrew melad",
+          rate: 3,
+        },
+      ],
+    };
   },
 };
 </script>
 
-<style></style>
+<style scoped></style>

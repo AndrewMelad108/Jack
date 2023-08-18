@@ -1,6 +1,7 @@
 <template>
-  <section class="UserOrders px-12 py-4">
+  <section class="UserOrders md:px-12 px-4 py-4">
     <!-- start header section -->
+    <SwitchLang />
     <header class="grid md:grid-cols-2 grid-cols-1 items-start justify-between">
       <WelcomeMassage name="User" />
       <InputSearch />
@@ -30,6 +31,7 @@
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import InputSearch from "@/components/Shared/Form/InputSearch.vue";
 import UserOrdersList from "@/components/User/UserOrdersList.vue";
+import SwitchLang from "../../components/Shared/Form/SwitchLang.vue";
 export default {
   name: "UserOrders",
   data() {
@@ -41,6 +43,7 @@ export default {
     WelcomeMassage,
     InputSearch,
     UserOrdersList,
+    SwitchLang,
   },
 };
 </script>
