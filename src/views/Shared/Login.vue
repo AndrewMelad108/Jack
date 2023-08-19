@@ -138,7 +138,9 @@ export default {
       },
     };
   },
-
+  updated() {
+    localStorage.setItem("role", this.selected);
+  },
   methods: {
     goToMainPage() {
       this.$router.go(-1);
@@ -146,7 +148,15 @@ export default {
     Login() {
       this.$validator.validateAll().then((result) => {
         if (result) {
-          console.log("run");
+          if (localStorage.getItem("role") === "User") {
+            this.$router.push({
+              name: "MainPage",
+            });
+          } else {
+            this.$router.push({
+              name: "Seller.ControlPanel",
+            });
+          }
         } else {
           console.log("error");
         }

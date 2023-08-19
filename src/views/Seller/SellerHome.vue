@@ -1,6 +1,6 @@
 <template>
   <section
-    class="UserHome relative min-h-[100vh] flex md:flex-row flex-col bg-cover-color"
+    class="SellerHome relative min-h-[100vh] flex md:flex-row flex-col bg-cover-color"
   >
     <SideBar :links="LinksData" :type="UserType" />
     <div
@@ -29,8 +29,8 @@
         />
       </div>
     </div>
-    <div class="max-w-full w-screen min-h-full">
-      <SwitchLang />
+    <div class="h-[100%] min-h-[100vh] w-full">
+      <SwitchLang class="m-4" />
 
       <router-view />
     </div>
@@ -47,13 +47,14 @@ export default {
   data() {
     return {
       showSidebar: false,
-      UserType: "Seller",
+      UserType: localStorage.getItem("role"),
       LinksData: [
         "Home",
         "ControlPanel",
         "Requests",
         "Offers",
         "Orders",
+        "Chats",
         "Wallet",
         "Profile",
         "Profile Servies",

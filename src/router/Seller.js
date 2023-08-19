@@ -8,7 +8,10 @@ import Home from "../components/Seller/SellerAllServies.vue";
 import SellerRequests from "../components/Seller/SellerRequests.vue";
 import SellerOffers from "../components/Seller/SellerOffers.vue";
 import SellerProfile from "../components/Seller/SellerProfile.vue";
+import SellerChat from "../components/Seller/SellerChat.vue";
 import SellerWallet from "../components/Seller/SellerWallet.vue";
+import SellerRequestDetials from "../components/Seller/SellerRequestDetials.vue";
+import SellerOferCreate from "../components/Seller/SellerOferCreate.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -23,39 +26,54 @@ const routes = [
     component: SellerHome,
   },
   {
-    path: "/Seller/",
+    path: "/Seller",
     name: "Home",
     component: SellerHomeView,
     children: [
       {
-        path: "Home",
+        path: "/Home",
         name: "Seller.ControlPanel",
         component: Home,
       },
       {
-        path: "Requests",
+        path: "/Requests",
         name: "Seller.Requests",
         component: SellerRequests,
       },
       {
-        path: "SellerOffers",
+        path: "/request/:requestId/Details",
+        name: "Seller.RequestDetials",
+        component: SellerRequestDetials,
+      },
+      {
+        path: "/SellerOffers",
         name: "Seller.Offers",
         component: SellerOffers,
       },
       {
-        path: "Orders",
+        path: "/Offer/:OfferId/Create",
+        name: "Seller.SellerOferCreate",
+        component: SellerOferCreate,
+      },
+      {
+        path: "/Orders",
         name: "Seller.Orders",
         component: SellerOrders,
       },
       {
-        path: "Profile",
+        path: "/Profile",
         name: "Seller.Profile",
         component: SellerProfile,
       },
       {
-        path: "Wallet",
+        path: "/Wallet",
         name: "Seller.Wallet",
         component: SellerWallet,
+      },
+      {
+        path: "/Chat",
+        name: "Seller.Chats",
+        component: SellerChat,
       },
     ],
   },

@@ -103,7 +103,6 @@
 <script>
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import InputSearch from "@/components/Shared/Form/InputSearch.vue";
-
 export default {
   name: "SellerOffers",
   data() {

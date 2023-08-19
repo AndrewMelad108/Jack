@@ -25,6 +25,7 @@
           alt="request-image"
         />
         <button
+          @click="requestDetails()"
           class="block rounded-lg mt-4 p-4 ml-auto text-white bg-main-color"
         >
           {{ $t("Details") }}
@@ -60,6 +61,16 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    requestDetails() {
+      this.$router.push({
+        name: "Seller.RequestDetials",
+        params: {
+          requestId: 1,
+        },
+      });
+    },
   },
 };
 </script>

@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       showSidebar: false,
-      UserType: "User",
+      UserType: localStorage.getItem("role"),
       LinksData: [
         "Home",
         "ControlPanel",

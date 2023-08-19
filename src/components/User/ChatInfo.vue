@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-100 md:w-[80%] p-6 w-full mx-auto mt-32">
+  <div class="bg-gray-100 md:w-[80%] p-6 w-full mx-auto mt-32">
     <div v-for="chat in chatData" :key="chat.id">
       <div class="bg-white rounded-[12px]">
         <div class="flex p-5 mb-5">
