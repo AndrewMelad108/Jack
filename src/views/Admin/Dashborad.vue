@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       showSidebar: false,
-      UserType: "Admin",
+      UserType: localStorage.getItem("role"),
       LinksData: [
         "Home",
         "Towing",

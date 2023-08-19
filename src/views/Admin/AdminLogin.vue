@@ -94,6 +94,7 @@ export default {
       });
     },
     Login() {
+      localStorage.setItem("role", "Admin");
       this.$router.push({
         name: "Admin.Home",
       });
