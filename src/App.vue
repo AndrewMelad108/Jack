@@ -1,25 +1,19 @@
 <template>
-  <div id="app" :dir="lang">
+  <div id="app">
     <router-view />
   </div>
 </template>
+
 <script>
 export default {
-  data: () => {
+  data() {
     return {
-      lang: localStorage.getItem("lang"),
+      lang: "",
     };
-  },
-  mounted() {
-    localStorage.setItem("lang", "ar");
-    if (this.lang === "en") {
-      this.lang = "ltr";
-    } else {
-      this.lang = "rtl";
-    }
   },
 };
 </script>
+
 <style>
 html,
 #app,

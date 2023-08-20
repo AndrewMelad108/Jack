@@ -1,5 +1,6 @@
 <template>
   <section class="OfferDetails md:p-8 p-2">
+    <SwitchLang />
     <header class="grid md:grid-cols-2 grid-cols-1 items-start justify-between">
       <WelcomeMassage name="User" />
       <InputSearch />
@@ -16,79 +17,86 @@
         src="../../assets/images/Back.png"
         alt="Back-icon"
         loading="lazy"
-      />Provider Details
+        v-if="Lang === 'en'"
+      />{{ $t("Provider Details") }}
+      <img
+        src="../../assets/images/Back.png"
+        v-if="Lang === 'ar'"
+        alt="Back-icon"
+        loading="lazy"
+      />
     </div>
     <div class="Offer-detials mt-10">
       <div
         class="bg-white md:text-md text-sm shadow-md shadow-slate-400 md:w-[73%] w-full rounded-xl min-h-52 grid lg:grid-cols-2 grid-cols-1 gap-y-6 p-6"
       >
         <p class="font-bold">
-          Spare Parts Type
+          {{ $t("Spare Parts Type") }}
           <span class="text-text-color md:px-6">
             {{ Offer.SparePartsType }}</span
           >
         </p>
         <p class="font-bold">
-          Brand<span class="text-text-color md:px-6 px-2">
-            {{ Offer.Brand }}</span
-          >
+          {{ $t("Brand")
+          }}<span class="text-text-color md:px-6 px-2"> {{ Offer.Brand }}</span>
         </p>
         <p class="font-bold">
-          Model
+          {{ $t("Model") }}
           <span class="text-text-color md:px-6 px-2"> {{ Offer.Model }}</span>
         </p>
         <p class="font-bold">
-          Year of Manufactur<span class="text-text-color md:px-4 px-2">
+          {{ $t("Year of Manufactur")
+          }}<span class="text-text-color md:px-4 px-2">
             {{ Offer.YearofManufactur }}</span
           >
         </p>
         <p class="font-bold">
-          Car Serial Number
+          {{ $t("Car Serial Number") }}
           <span class="text-text-color md:px-6 px-2">
             {{ Offer.CarSerialNumber }}</span
           >
         </p>
         <p class="font-bold">
-          Part Name
+          {{ $t("Part Name") }}
           <span class="text-text-color px-6"> {{ Offer.PartName }}</span>
         </p>
       </div>
 
       <table
-        class="mt-10 divide-y lg:w-[70%] w-full shadow-md shadow-slate-400 divide-gray-200"
+        class="mt-10 text-center divide-y lg:w-[73%] w-full shadow-md shadow-slate-400 divide-gray-200"
       >
         <thead class="bg-gray-50">
           <tr>
             <th
               scope="col"
-              class="md:px-4 px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              class="md:px-4 px-1 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
             >
-              Name
+              {{ $t("Name") }}
             </th>
             <th
               scope="col"
-              class="md:px-4 px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              class="md:px-4 px-1 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
             >
-              Description
+              {{ $t("Description") }}
             </th>
 
             <th
               scope="col"
-              class="md:px-4 px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              class="md:px-4 px-1 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
             >
-              Amount
+              {{ $t("Amount") }}
             </th>
             <th
               scope="col"
-              class="md:px-4 px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              class="md:px-4 px-1 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
             >
-              Part Cost
+              {{ $t("Part Cost") }}
             </th>
             <th
               scope="col"
-              class="md:px-4 px-1 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              class="md:px-4 px-1 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
             >
-              Total
+              {{ $t("Total") }}
             </th>
           </tr>
         </thead>
@@ -124,7 +132,7 @@
         </tbody>
       </table>
       <p class="md:text-lg text-sm my-4 capitalize">
-        total amount is {{ total }}
+        {{ $t("total amount is") }} {{ total }}
       </p>
       <div
         class="group-btn capitalize flex justify-center md:flex-row flex-col items-center gap-4 mx-auto"
@@ -137,7 +145,7 @@
           "
           class="text-main-color font-bold border-2 md:text-md text-sm border-main-color w-auto p-1 md:px-3 md:py-2 rounded-lg"
         >
-          Send message
+          {{ $t("Send Message") }}
         </button>
         <button
           @click="
@@ -147,7 +155,7 @@
           "
           class="bg-main-color font-bold w-auto md:text-md text-sm px-4 py-2 md:p-3 text-white rounded-lg"
         >
-          start order
+          {{ $t("Start Order") }}
         </button>
       </div>
     </div>
@@ -157,11 +165,12 @@
 <script>
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import InputSearch from "@/components/Shared/Form/InputSearch.vue";
-
+import SwitchLang from "../../components/Shared/Form/SwitchLang.vue";
 export default {
   name: "OfferDetails",
   data() {
     return {
+      Lang: localStorage.getItem("lang"),
       total: "750",
       Offer: {
         SparePartsType: "new",
@@ -189,9 +198,15 @@ export default {
       ],
     };
   },
+  watch: {
+    Lang() {
+      return this.Lang;
+    },
+  },
   components: {
     WelcomeMassage,
     InputSearch,
+    SwitchLang,
   },
 };
 </script>

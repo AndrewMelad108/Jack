@@ -20,7 +20,7 @@
       </div>
     </div>
     <div
-      class="links absolute left-0 right-0 bg-white space-y-4 pl-20 py-4 font-bold text-text-color shadow-md shadow-text-color z-50"
+      class="links absolute left-0 right-0 bg-white space-y-4 pl-10 py-4 font-bold text-text-color shadow-md shadow-text-color z-50"
       v-if="showLinks"
     >
       <router-link
@@ -30,7 +30,7 @@
       >
       <router-link
         class="hover:text-black block text-lg"
-        :to="{ path: '/User/all-servies' }"
+        :to="{ name: 'User.Towing' }"
         >{{ $t("Servies") }}</router-link
       >
       <router-link

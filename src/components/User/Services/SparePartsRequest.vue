@@ -1,5 +1,6 @@
 <template>
   <section class="SparePartsRequest p-6 bg-white">
+    <SwitchLang />
     <ServicesNav class="md:flex hidden" />
     <header class="service-title">
       <WelcomeMassage name="User" />
@@ -19,6 +20,9 @@
           }}</label>
           <select
             class="focus:outline-0 p-1 rounded-lg bg-gray-100 w-full mx-auto"
+            v-validate="{ required: true }"
+            name="Search Scope"
+            v-model="SpareParts.Scope"
           >
             <option disabled selected value="">
               {{ $t("Search Scope") }}
@@ -28,6 +32,8 @@
             <option value="asd2">asd</option>
             <option value="asd3">asd</option>
           </select>
+          <p class="text-red-400">{{ errors.first("Search Scope") }}</p>
+
           <label
             for="SparePartsType"
             class="mt-6 text-lg block text-text-color"
@@ -35,6 +41,9 @@
           >
           <select
             class="placeholder:capitalize focus:outline-0 p-2 rounded-lg bg-gray-100 w-full mx-auto"
+            v-validate="{ required: true }"
+            name="SparePartsType"
+            v-model="SpareParts.SparePartsType"
           >
             <option disabled selected value="">
               {{ $t("Select Spare Parts Type") }}
@@ -44,11 +53,16 @@
             <option value="asd2">asd</option>
             <option value="asd3">asd</option>
           </select>
+          <p class="text-red-400">{{ errors.first("SparePartsType") }}</p>
+
           <label for="Brand" class="mt-6 text-lg block text-text-color">
             {{ $t("Brand") }}</label
           >
           <select
             class="placeholder:capitalize focus:outline-0 p-2 rounded-lg bg-gray-100 w-full mx-auto"
+            v-validate="{ required: true }"
+            name="Brand"
+            v-model="SpareParts.Brand"
           >
             <option disabled selected value="">
               {{ $t("Select Brand") }}
@@ -58,11 +72,16 @@
             <option value="asd2">asd</option>
             <option value="asd3">asd</option>
           </select>
+          <p class="text-red-400">{{ errors.first("Brand") }}</p>
+
           <label for="Model" class="mt-6 text-lg block text-text-color">
             {{ $t("Model") }}</label
           >
           <select
             class="placeholder:capitalize focus:outline-0 p-2 rounded-lg bg-gray-100 w-full mx-auto"
+            v-validate="{ required: true }"
+            name="Select Model"
+            v-model="SpareParts.Model"
           >
             <option disabled selected value="">
               {{ $t("Select Model") }}
@@ -72,6 +91,9 @@
             <option value="asd2">asd</option>
             <option value="asd3">asd</option>
           </select>
+          <p class="text-red-400">
+            {{ errors.first("Select Model") }}
+          </p>
           <label
             for="YearofManufactur"
             class="mt-6 text-lg block text-text-color"
@@ -80,6 +102,9 @@
           >
           <select
             class="placeholder:capitalize focus:outline-0 p-2 rounded-lg bg-gray-100 w-full mx-auto"
+            v-validate="{ required: true }"
+            name="Select Year"
+            v-model="SpareParts.Year"
           >
             <option disabled selected value="">
               {{ $t("Select Year") }}
@@ -89,6 +114,9 @@
             <option value="asd2">asd</option>
             <option value="asd3">asd</option>
           </select>
+          <p class="text-red-400">
+            {{ errors.first("Select Model") }}
+          </p>
           <label
             for=" CarSerialNumber"
             class="mt-6 text-lg block text-text-color"
@@ -97,18 +125,29 @@
           >
           <input
             type="text"
+            v-model.trim="SpareParts.CarSerialNumber"
+            v-validate="{ required: true }"
+            name="PlateNumber"
             :placeholder="$t('Enter Car Serial Number')"
             class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
           />
+          <p class="text-red-400">
+            {{ errors.first("PlateNumber") }}
+          </p>
           <label for="Part Name" class="mt-6 text-lg block text-text-color">
             {{ $t("Part Name") }}</label
           >
           <input
             type="text"
+            v-model.trim="SpareParts.PartName"
+            v-validate="{ required: true }"
+            name="PartName"
             :placeholder="$t('Enter Part Name')"
             class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
           />
-
+          <p class="text-red-400">
+            {{ errors.first("PartName") }}
+          </p>
           <p class="my-2">
             {{
               $t(
@@ -116,7 +155,10 @@
               )
             }}
           </p>
-          <button class="w-full bg-main-color p-2 mt-3 text-white rounded-lg">
+          <button
+            class="w-full bg-main-color p-2 mt-3 text-white rounded-lg"
+            @click="SendServices"
+          >
             {{ $t("Post Request") }}
           </button>
         </div>
@@ -132,12 +174,16 @@
           <input
             class="text-sm text-grey-100 text-[15px] file:bg-gray-100 file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
             type="file"
-            name="upload_photo"
+            v-validate="{ required: true }"
+            name="AddRegistrationimages"
             id="upload_photo"
             @change="onFileChanged($event)"
             accept="image/*"
           />
         </div>
+        <p class="text-red-400">
+          {{ errors.first("AddRegistrationimages") }}
+        </p>
         <div class="mt-8">
           <h1 class="text-[16px] font-bold mb-[13px]">
             {{ $t("Add images") }}
@@ -149,12 +195,16 @@
           <input
             class="text-sm text-grey-100 text-[15px] file:bg-gray-100 file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
             type="file"
-            name="upload_photo"
+            v-validate="{ required: true }"
+            name="Addimages"
             id="upload_photo"
             @change="onFileChanged($event)"
             accept="image/*"
           />
         </div>
+        <p class="text-red-400">
+          {{ errors.first("Addimages") }}
+        </p>
       </div>
     </div>
   </section>
@@ -163,14 +213,38 @@
 <script>
 import ServicesNav from "@/components/User/Services/ServicesNav.vue";
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
+import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
+
 export default {
   name: "SparePartsRequest",
   data() {
-    return {};
+    return {
+      SpareParts: {
+        Scope: "",
+        CarSerialNumber: "",
+        Brand: "",
+        Model: "",
+        Year: "",
+        PartName: "",
+        SparePartsType: "",
+      },
+    };
   },
   components: {
     ServicesNav,
     WelcomeMassage,
+    SwitchLang,
+  },
+  methods: {
+    SendServices() {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          console.log("run");
+        } else {
+          console.log("error");
+        }
+      });
+    },
   },
 };
 </script>

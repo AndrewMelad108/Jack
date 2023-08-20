@@ -88,10 +88,13 @@
             >
             <input
               type="text"
+              v-validate="{ alpha: true, required: true }"
+              name="FirstName"
               class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
               :placeholder="$t('enter FirstName')"
               v-model="person.FirstName"
             />
+            <span class="text-red-400">{{ errors.first("FirstName") }}</span>
           </div>
           <div class="input-field">
             <label
@@ -101,10 +104,13 @@
             >
             <input
               type="text"
+              v-validate="{ alpha: true, required: true }"
+              name="LastName"
               :placeholder="$t('enter LastName')"
               v-model="person.LastName"
               class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
+            <span class="text-red-400">{{ errors.first("LastName") }}</span>
           </div>
           <div class="input-field">
             <label
@@ -116,8 +122,11 @@
               type="email"
               :placeholder="$t('enter Email')"
               v-model="person.Email"
+              v-validate="{ required: true, email: true }"
+              name="Email"
               class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
+            <span class="text-red-400">{{ errors.first("Email") }}</span>
           </div>
           <div class="input-field">
             <label
@@ -128,9 +137,12 @@
             <input
               type="number"
               :placeholder="$t('enter mobile number')"
+              v-validate="{ required: true, min: 6 }"
+              name="MobileNumber"
               v-model="person.MobileNumber"
               class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
+            <span class="text-red-400">{{ errors.first("MobileNumber") }}</span>
           </div>
           <div class="input-field">
             <label
@@ -141,9 +153,12 @@
             <input
               type="password"
               :placeholder="$t('enter Password')"
+              v-validate="{ required: true, min: 8 }"
+              name="password"
               v-model="person.password"
               class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
+            <span class="text-red-400">{{ errors.first("password") }}</span>
           </div>
           <div class="input-field">
             <label
@@ -153,10 +168,15 @@
             >
             <input
               type="password"
+              v-validate="{ required: true, min: 8 }"
+              name="ConfirmPassword"
               :placeholder="$t('enter Confirm Password')"
               v-model="person.ConfirmPassword"
               class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
+            <span class="text-red-400">{{
+              errors.first("ConfirmPassword")
+            }}</span>
           </div>
           <div class="input-field">
             <label
@@ -167,9 +187,12 @@
             <input
               type="text"
               :placeholder="$t('enter shop address')"
+              v-validate="{ required: true }"
+              name="Address"
               v-model="person.Address"
               class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
+            <span class="text-red-400">{{ errors.first("Address") }}</span>
           </div>
           <div class="input-field">
             <label
@@ -178,11 +201,14 @@
               >{{ $t("ID or Comercial Registration number") }}</label
             >
             <input
-              type="text"
+              type="number"
               :placeholder="$t('enter number')"
+              v-validate="{ required: true }"
+              name="ID"
               v-model="person.ID"
               class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
+            <span class="text-red-400">{{ errors.first("ID") }}</span>
           </div>
           <div class="input-field">
             <label
@@ -192,6 +218,8 @@
             >
             <select
               v-model="person.Country"
+              v-validate="{ required: true }"
+              name="Country"
               class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             >
               <option disabled selected value="">
@@ -202,6 +230,7 @@
               <option value="asd2">{{ $t("Qatar") }}</option>
               <option value="asd3">{{ $t("India") }}</option>
             </select>
+            <span class="text-red-400">{{ errors.first("Country") }}</span>
           </div>
           <div class="input-field">
             <label
@@ -211,6 +240,8 @@
             >
             <select
               v-model="person.Nationality"
+              v-validate="{ required: true }"
+              name="Nationality"
               class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             >
               <option disabled selected value="">
@@ -221,8 +252,8 @@
               <option value="American">{{ $t("American") }}</option>
               <option value="Arabian">{{ $t("Arabian") }}</option>
             </select>
+            <span class="text-red-400">{{ errors.first("Nationality") }}</span>
           </div>
-
           <div class="input-field">
             <label
               for="Region"
@@ -231,6 +262,8 @@
             >
             <select
               v-model="person.Region"
+              v-validate="{ required: true }"
+              name="Region"
               class="placeholder:capitalize p-4 rounded-lg placeholder:text-gray-600 placeholder:text-xl bg-gray-200 w-[100%]"
             >
               <option disabled selected value="">
@@ -244,6 +277,7 @@
                 {{ Region.name }}
               </option>
             </select>
+            <span class="text-red-400">{{ errors.first("Region") }}</span>
           </div>
           <div class="input-field">
             <label
@@ -253,6 +287,8 @@
             >
             <select
               v-model="person.City"
+              v-validate="{ required: true }"
+              name="City"
               class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             >
               <option disabled selected value="">
@@ -263,6 +299,7 @@
                 {{ City.name }}
               </option>
             </select>
+            <span class="text-red-400">{{ errors.first("City") }}</span>
           </div>
           <div class="input-field">
             <label
@@ -272,10 +309,13 @@
             >
             <input
               type="number"
+              v-validate="{ required: true }"
+              name="IBAN"
               class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
               :placeholder="$t('enter bank IBAN')"
               v-model="person.IBAN"
             />
+            <span class="text-red-400">{{ errors.first("IBAN") }}</span>
           </div>
           <div class="input-field">
             <label
@@ -285,10 +325,15 @@
             >
             <input
               type="text"
+              v-validate="{ required: true }"
+              name="AccountNumber"
               :placeholder="$t('enter Account Number')"
               v-model="person.AccountNumber"
               class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
+            <span class="text-red-400">{{
+              errors.first("AccountNumber")
+            }}</span>
           </div>
           <div class="input-field">
             <label
@@ -298,10 +343,15 @@
             >
             <input
               type="text"
+              v-validate="{ required: true }"
+              name="ComercialActivity"
               :placeholder="$t('Comercial Activity')"
               v-model="person.ComercialActivity"
               class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
+            <span class="text-red-400">{{
+              errors.first("ComercialActivity")
+            }}</span>
           </div>
           <div class="input-field">
             <label
@@ -312,9 +362,14 @@
             <input
               type="number"
               :placeholder="$t('enter Legal Capacity')"
+              v-validate="{ required: true }"
+              name="LegalCapacity"
               v-model="person.LegalCapacity"
               class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
+            <span class="text-red-400">{{
+              errors.first("LegalCapacity")
+            }}</span>
           </div>
           <div class="input-field">
             <label class="block text-gray-700 text-[16px]">
@@ -325,12 +380,16 @@
                 <input
                   class="text-sm text-grey-100 text-[15px] file:bg-gray-100 file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
                   type="file"
-                  name="license_photo_2"
-                  id="license_photo_2"
+                  v-validate="{ required: true }"
+                  name="license_photo_1"
+                  id="license_photo_1"
                   @change="licensePhotoOne($event)"
                   accept="image/*"
                 />
               </div>
+              <span class="text-red-400">{{
+                errors.first("license_photo_1")
+              }}</span>
             </label>
           </div>
           <div class="input-field">
@@ -342,20 +401,30 @@
                 <input
                   class="text-sm text-grey-100 text-[15px] file:bg-gray-100 file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
                   type="file"
+                  v-validate="{ required: true }"
                   name="license_photo_2"
                   id="license_photo_2"
                   @change="licensePhotoTwo($event)"
                   accept="image/*"
                 />
               </div>
+              <span class="text-red-400">{{
+                errors.first("license_photo_2")
+              }}</span>
             </label>
           </div>
           <div
             class="md:text-lg text-sm md:col-start-1 md:col-end-3 font-bold capitalize"
           >
-            <input type="checkbox" v-model="person.condition" />
+            <input
+              type="checkbox"
+              v-model="person.condition"
+              v-validate="{ required: true }"
+              name="condition"
+            />
             {{ $t("accept") }}
             <span class="text-main-color">{{ $t("terms and condition") }}</span>
+            <p class="text-red-400">{{ errors.first("condition") }}</p>
           </div>
           <button
             @click="Register()"
@@ -538,7 +607,15 @@ export default {
     goToMainPage() {
       this.$router.go(-1);
     },
-    Register() {},
+    Register() {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          console.log("run");
+        } else {
+          console.log("error");
+        }
+      });
+    },
   },
 };
 </script>

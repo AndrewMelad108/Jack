@@ -29,7 +29,10 @@
         />
       </div>
     </div>
-    <router-view class="h-[100%] min-h-[100vh] md:w-screen w-auto" />
+    <div class="h-[100%] min-h-[100vh] md:w-screen w-auto">
+      <!-- <SwitchLang /> -->
+      <router-view />
+    </div>
   </section>
 </template>
 
@@ -41,7 +44,7 @@ export default {
   data() {
     return {
       showSidebar: false,
-      UserType: "User",
+      UserType: localStorage.getItem("role"),
       LinksData: [
         "Home",
         "ControlPanel",
@@ -50,18 +53,13 @@ export default {
         "Orders",
         "Wallet",
         "Profile",
-        "Logout",
       ],
     };
   },
   components: {
     SideBar,
     SidebaPhone,
-  },
-  methods: {
-    // toggleSidebar() {
-    //   this.isSidebarVisible = !this.isSidebarVisible;
-    // },
+    // SwitchLang,
   },
 };
 </script>

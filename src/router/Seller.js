@@ -4,7 +4,15 @@ import SellerHomeView from "../views/Seller/SellerHome.vue";
 import SellerRegister from "../views/Seller/SellerRegister.vue";
 import SellerHome from "../components/Seller/SellerHome.vue";
 import SellerOrders from "../components/Seller/SellerOrders.vue";
-import SellerAllServies from "../components/Seller/SellerAllServies.vue";
+import Home from "../components/Seller/SellerAllServies.vue";
+import SellerRequests from "../components/Seller/SellerRequests.vue";
+import SellerOffers from "../components/Seller/SellerOffers.vue";
+import SellerProfile from "../components/Seller/SellerProfile.vue";
+import SellerChat from "../components/Seller/SellerChat.vue";
+import SellerWallet from "../components/Seller/SellerWallet.vue";
+import SellerRequestDetials from "../components/Seller/SellerRequestDetials.vue";
+import SellerOferCreate from "../components/Seller/SellerOferCreate.vue";
+import SellerProfileServices from "../components/Seller/SellerProfileServices.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -14,24 +22,64 @@ const routes = [
     component: SellerRegister,
   },
   {
-    path: "/Seller/",
+    path: "/Seller/main",
+    name: "Seller.Home",
+    component: SellerHome,
+  },
+  {
+    path: "/Seller",
     name: "Home",
     component: SellerHomeView,
     children: [
       {
-        path: "all-servies",
-        name: "Seller.AllServies",
-        component: SellerAllServies,
+        path: "/Home",
+        name: "Seller.ControlPanel",
+        component: Home,
       },
       {
-        path: "main",
-        name: "Seller.Home",
-        component: SellerHome,
+        path: "/Requests",
+        name: "Seller.Requests",
+        component: SellerRequests,
       },
       {
-        path: "Orders",
+        path: "/request/:requestId/Details",
+        name: "Seller.RequestDetials",
+        component: SellerRequestDetials,
+      },
+      {
+        path: "/SellerOffers",
+        name: "Seller.Offers",
+        component: SellerOffers,
+      },
+      {
+        path: "/Offer/:OfferId/Create",
+        name: "Seller.SellerOferCreate",
+        component: SellerOferCreate,
+      },
+      {
+        path: "/Orders",
         name: "Seller.Orders",
         component: SellerOrders,
+      },
+      {
+        path: "/Profile",
+        name: "Seller.Profile",
+        component: SellerProfile,
+      },
+      {
+        path: "/Wallet",
+        name: "Seller.Wallet",
+        component: SellerWallet,
+      },
+      {
+        path: "/Chat",
+        name: "Seller.Chats",
+        component: SellerChat,
+      },
+      {
+        path: "/ProfileServices",
+        name: "Seller.Profile Servies",
+        component: SellerProfileServices,
       },
     ],
   },

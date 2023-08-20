@@ -1,13 +1,10 @@
 <template>
-  <section class="UserWallet md:p-8 p-4">
-    <SwitchLang class="mb-3" />
+  <section class="UserWallet p-4">
     <header class="grid md:grid-cols-2 grid-cols-1 items-start justify-between">
-      <WelcomeMassage name="User" />
+      <WelcomeMassage name="Seller" />
       <InputSearch />
     </header>
-    <div
-      class="UserWallet-content mt-10 grid lg:grid-cols-3 grid-cols-1 md:gap-6 gap-2"
-    >
+    <div class="UserWallet-content mt-10 grid lg:grid-cols-3 grid-cols-1">
       <div
         class="Wallet-info md:col-start-1 md:col-end-2 col-start-1 col-end-2"
       >
@@ -15,7 +12,7 @@
           SAR 11,231
         </h1>
         <div class="flex items-center justify-between py-6">
-          <button class="bg-main-color text-white p-4 rounded-lg">
+          <button class="bg-main-color text-white p-2 rounded-lg">
             Top Up
           </button>
           <button class="text-lg text-main-color">Withdraw</button>
@@ -28,7 +25,7 @@
         <div
           v-for="Transaction in Transactions"
           :key="Transaction.id"
-          class="md:w-[80%] w-full ml-auto cursor-pointer flex items-center hover:border hover:border-1 hover:border-main-color bg-white rounded-xl p-4"
+          class="md:w-[80%] ml-auto w-full cursor-pointer flex items-center hover:border hover:border-1 hover:border-main-color bg-white rounded-xl p-4"
         >
           <div class="transaction-type md:w-2/12">
             <img
@@ -64,7 +61,6 @@
 </template>
 
 <script>
-import SwitchLang from "../../components/Shared/Form/SwitchLang.vue";
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import InputSearch from "@/components/Shared/Form/InputSearch.vue";
 export default {
@@ -156,7 +152,6 @@ export default {
     };
   },
   components: {
-    SwitchLang,
     WelcomeMassage,
     InputSearch,
   },

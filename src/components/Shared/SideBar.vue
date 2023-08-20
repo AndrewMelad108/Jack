@@ -1,6 +1,6 @@
 <template>
   <section
-    class="min-w-[220px] bg-main-color md:block hidden rounded-s-xl rounded-e-xl min-h-[100vh]"
+    class="min-w-[280px] bg-main-color md:block hidden rounded-s-xl rounded-e-xl min-h-[100vh]"
   >
     <div class="logo">
       <img
@@ -21,6 +21,9 @@
         :to="{ name: type + '.' + link }"
         >{{ $t(link) }}
       </router-link>
+      <button class="text-xl capitalize" @click="Logout()">
+        {{ $t("Logout") }}
+      </button>
     </div>
   </section>
 
@@ -44,7 +47,13 @@ export default {
     return {};
   },
 
-  methods: {},
+  methods: {
+    Logout() {
+      this.$router.push({
+        name: "MainPage",
+      });
+    },
+  },
 };
 </script>
 

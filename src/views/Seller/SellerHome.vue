@@ -1,5 +1,7 @@
 <template>
-  <section class="UserHome relative flex flex-wrap bg-cover-color md:flex-row">
+  <section
+    class="SellerHome relative min-h-[100vh] flex md:flex-row flex-col bg-cover-color"
+  >
     <SideBar :links="LinksData" :type="UserType" />
     <div
       class="bg-main-color py-2 px-10 w-[100%] h-12 md:hidden flex justify-between items-center"
@@ -27,7 +29,9 @@
         />
       </div>
     </div>
-    <div class="max-w-full p-10 w-auto h-screen">
+    <div class="h-[100%] min-h-[100vh] w-full">
+      <SwitchLang class="m-4" />
+
       <router-view />
     </div>
   </section>
@@ -36,33 +40,31 @@
 <script>
 import SideBar from "../../components/Shared/SideBar.vue";
 import SidebaPhone from "../../components/Shared/SidebaPhone.vue";
+import SwitchLang from "../../components/Shared/Form/SwitchLang.vue";
+
 export default {
   name: "UserHome",
   data() {
     return {
       showSidebar: false,
-      UserType: "Seller",
+      UserType: localStorage.getItem("role"),
       LinksData: [
         "Home",
-        "Control Panel",
+        "ControlPanel",
         "Requests",
         "Offers",
         "Orders",
+        "Chats",
         "Wallet",
         "Profile",
         "Profile Servies",
-        "Logout",
       ],
     };
   },
   components: {
     SideBar,
     SidebaPhone,
-  },
-  methods: {
-    // toggleSidebar() {
-    //   this.isSidebarVisible = !this.isSidebarVisible;
-    // },
+    SwitchLang,
   },
 };
 </script>

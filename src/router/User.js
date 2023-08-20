@@ -17,6 +17,7 @@ import SparePartsRequest from "@/components/User/Services/SparePartsRequest.vue"
 import ShippingAndForwarding from "@/components/User/Services/ShippingAndForwarding.vue";
 import DeliveryServices from "@/components/User/Services/DeliveryServices.vue";
 import SellyourBrokenCar from "@/components/User/Services/SellyourBrokenCar.vue";
+import ChatInfo from "@/components/User/ChatInfo.vue";
 Vue.use(VueRouter);
 const routes = [
   {
@@ -63,6 +64,11 @@ const routes = [
         path: "Chat",
         name: "User.Chats",
         component: UserChat,
+      },
+      {
+        path: "ChatInfo/:chatId/Create",
+        name: "User.ChatInfo",
+        component: ChatInfo,
       },
       {
         path: "Profile",

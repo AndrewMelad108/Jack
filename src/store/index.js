@@ -4,9 +4,17 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
+  state: {
+    Lang: localStorage.getItem("lang"),
+    isRTL: false,
+  },
   getters: {},
-  mutations: {},
+  mutations: {
+    setLang(state, { lang, isRTL }) {
+      state.Lang = lang;
+      state.isRTL = isRTL;
+    },
+  },
   actions: {},
   modules: {},
 });

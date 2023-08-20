@@ -64,10 +64,13 @@
             >
             <input
               type="text"
+              v-validate="{ alpha: true, required: true }"
               class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
               :placeholder="$t('enter FirstName')"
               v-model="person.FirstName"
+              name="FirstName"
             />
+            <span class="text-red-400">{{ errors.first("FirstName") }}</span>
           </div>
           <div class="input-field">
             <label for="LastName" class="capitalize block md:text-xl text-md">{{
@@ -76,9 +79,12 @@
             <input
               type="text"
               :placeholder="$t('enter LastName')"
+              v-validate="{ alpha: true, required: true }"
+              name="LastName"
               v-model="person.LastName"
               class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
+            <span class="text-red-400">{{ errors.first("LastName") }}</span>
           </div>
           <div class="input-field">
             <label for="City" class="capitalize block md:text-xl text-md">{{
@@ -86,7 +92,9 @@
             }}</label>
             <select
               v-model="person.City"
+              v-validate="{ required: true }"
               class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              name="City"
             >
               <option disabled selected value="">
                 {{ $t("Select City") }}
@@ -96,6 +104,7 @@
               <option value="asd2">asd</option>
               <option value="asd3">asd</option>
             </select>
+            <span class="text-red-400">{{ errors.first("City") }}</span>
           </div>
           <div class="input-field">
             <label for="Region" class="capitalize block md:text-xl text-md">{{
@@ -103,6 +112,8 @@
             }}</label>
             <select
               v-model="person.Region"
+              name="Region"
+              v-validate="{ required: true }"
               class="placeholder:capitalize p-4 rounded-lg placeholder:text-gray-600 placeholder:text-xl bg-gray-200 w-[100%]"
             >
               <option disabled selected value="">
@@ -112,6 +123,7 @@
               <option value="asd2">asd</option>
               <option value="asd3">asd</option>
             </select>
+            <span class="text-red-400">{{ errors.first("Region") }}</span>
           </div>
           <div class="input-field">
             <label
@@ -122,9 +134,12 @@
             <input
               type="number"
               :placeholder="$t('enter Number')"
+              v-validate="{ required: true, min: 6 }"
+              name="Number"
               v-model="person.Number"
               class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
+            <span class="text-red-400">{{ errors.first("Number") }}</span>
           </div>
           <div class="input-field">
             <label for="Email" class="capitalize block md:text-xl text-md">{{
@@ -133,9 +148,12 @@
             <input
               type="text"
               :placeholder="$t('enter Email')"
+              v-validate="{ required: true, email: true }"
               v-model="person.Email"
+              name="Email"
               class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
+            <span class="text-red-400">{{ errors.first("Email") }}</span>
           </div>
           <div class="input-field">
             <label for="Password" class="capitalize block md:text-xl text-md">{{
@@ -144,9 +162,12 @@
             <input
               type="password"
               :placeholder="$t('enter Password')"
-              v-model="person.Email"
+              v-validate="{ required: true, min: 8 }"
+              name="Password"
+              v-model="person.Password"
               class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
+            <span class="text-red-400">{{ errors.first("Password") }}</span>
           </div>
           <div class="input-field">
             <label for="Password" class="capitalize block md:text-xl text-md">{{
@@ -156,15 +177,26 @@
               type="text"
               :placeholder="$t('enter Confirm Password')"
               v-model="person.ConfirmPassword"
+              v-validate="{ required: true, min: 8 }"
+              name="ConfirmPassword"
               class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
             />
+            <span class="text-red-400">{{
+              errors.first("ConfirmPassword")
+            }}</span>
           </div>
           <div
             class="md:text-xl text-sm md:col-start-1 md:col-end-3 font-bold capitalize"
           >
-            <input type="checkbox" v-model="person.condition" />
+            <input
+              type="checkbox"
+              v-model="person.condition"
+              v-validate="{ required: true }"
+              name="condition"
+            />
             {{ $t("accept") }}
             <span class="text-main-color">{{ $t("terms and condition") }}</span>
+            <p class="text-red-400 text-sm">{{ errors.first("condition") }}</p>
           </div>
           <button
             @click="Register()"
@@ -192,11 +224,11 @@ export default {
         LastName: "",
         Region: "",
         City: "",
-        Number: "",
+        Number: null,
         Email: "",
-        Password: "",
-        ConfirmPassword: "",
-        condition: "",
+        Password: null,
+        ConfirmPassword: null,
+        condition: false,
       },
     };
   },
@@ -208,7 +240,15 @@ export default {
     goToMainPage() {
       this.$router.go(-1);
     },
-    Register() {},
+    Register() {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          console.log("run");
+        } else {
+          console.log("error");
+        }
+      });
+    },
   },
 };
 </script>

@@ -26,22 +26,23 @@
         />
       </div>
     </div>
-
-    <router-view
-      class="h-[100%] min-h-[100vh] md:w-screen w-auto md:px-5 px-4 pt-4"
-    />
+    <div class="h-[100%] w-full min-h-[100vh] p-4">
+      <SwitchLang class="mb-3" />
+      <router-view />
+    </div>
   </section>
 </template>
 
 <script>
 import SideBar from "../../components/Shared/SideBar.vue";
 import SidebaPhone from "../../components/Shared/SidebaPhone.vue";
+import SwitchLang from "../../components/Shared/Form/SwitchLang.vue";
 export default {
   name: "AdminHome",
   data() {
     return {
       showSidebar: false,
-      UserType: "Admin",
+      UserType: localStorage.getItem("role"),
       LinksData: [
         "Home",
         "Towing",
@@ -50,18 +51,13 @@ export default {
         "Baggage Transfer",
         "Delivery",
         "Selling Cars",
-        "Logout",
       ],
     };
   },
   components: {
     SideBar,
     SidebaPhone,
-  },
-  methods: {
-    // toggleSidebar() {
-    //   this.isSidebarVisible = !this.isSidebarVisible;
-    // },
+    SwitchLang,
   },
 };
 </script>

@@ -1,15 +1,15 @@
 <template>
-  <section class="UserChat md:px-12 p-4">
+  <section class="UserChat p-4">
     <!-- start header section -->
-    <SwitchLang />
+
     <header class="grid md:grid-cols-2 grid-cols-1 items-start justify-between">
-      <WelcomeMassage name="User" />
+      <h1 class="py-2 text-lg">{{ $t("Chats") }}</h1>
     </header>
     <!-- end header section -->
 
     <!-- start Chat section -->
     <div
-      class="Your_Chat mt-4 p-6 space-y-4 bg-white lg:w-[80%] w-full flex justify-center items-center flex-col rounded-2xl min-h-60"
+      class="Your_Chat mt-4 space-y-4 w-full bg-white flex justify-center items-center flex-col rounded-2xl min-h-60"
     >
       <div
         v-for="chat in Chats"
@@ -33,8 +33,6 @@
 </template>
 
 <script>
-import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
-import SwitchLang from "../../components/Shared/Form/SwitchLang.vue";
 export default {
   name: "UserChat",
   data() {
@@ -61,22 +59,40 @@ export default {
           des: "loremssssssssss",
           dataActive: "2min",
         },
+        {
+          id: 4,
+          image: require("../../assets/images/Ellipse_59.png"),
+          name: "asd",
+          des: "loremssssssssss",
+          dataActive: "8min",
+        },
+        {
+          id: 5,
+          image: require("../../assets/images/Ellipse_59.png"),
+          name: "asd2",
+          des: "loremssssssssss",
+          dataActive: "4min",
+        },
+        {
+          id: 6,
+          image: require("../../assets/images/Ellipse_59.png"),
+          name: "asd3",
+          des: "loremssssssssss",
+          dataActive: "2min",
+        },
       ],
     };
   },
   methods: {
     goChat(id) {
-      this.$router.push({
-        name: "User.ChatInfo",
-        params: {
-          chatId: id,
-        },
-      });
+      console.log(id);
+      //   this.$router.push({
+      //     name: "User.ChatInfo",
+      //     params: {
+      //       chatId: id,
+      //     },
+      //   });
     },
-  },
-  components: {
-    WelcomeMassage,
-    SwitchLang,
   },
 };
 </script>
