@@ -1,6 +1,6 @@
 <template>
   <section class="UserWallet md:p-8 p-4">
-    <SwitchLang />
+    <SwitchLang class="mb-3" />
     <header class="grid md:grid-cols-2 grid-cols-1 items-start justify-between">
       <WelcomeMassage name="User" />
       <InputSearch />
@@ -15,7 +15,7 @@
           SAR 11,231
         </h1>
         <div class="flex items-center justify-between py-6">
-          <button class="bg-main-color text-white p-2 rounded-lg">
+          <button class="bg-main-color text-white p-4 rounded-lg">
             Top Up
           </button>
           <button class="text-lg text-main-color">Withdraw</button>
@@ -28,7 +28,7 @@
         <div
           v-for="Transaction in Transactions"
           :key="Transaction.id"
-          class="md:w-[80%] w-full mx-auto cursor-pointer flex items-center hover:border hover:border-1 hover:border-main-color bg-white rounded-xl p-4"
+          class="md:w-[80%] w-full ml-auto cursor-pointer flex items-center hover:border hover:border-1 hover:border-main-color bg-white rounded-xl p-4"
         >
           <div class="transaction-type md:w-2/12">
             <img

@@ -2,29 +2,29 @@
   <section class="SelllerProfile md:px-6 px-2">
     <WelcomeMassage name="Selller" />
     <div
-      class="grid lg:grid-cols-2 grid-cols-1 mt-4 justify-center items-center"
+      class="grid lg:grid-cols-2 grid-cols-1 gap-4 mt-4 justify-center items-center"
     >
-      <div class="bg-white rounded-[20px] h-[300px] mb-28">
-        <div
-          v-if="!person.imageUrl"
-          class="flex items-end justify-center rounded-[10px] min-h-full"
-        >
+      <div
+        class="bg-white self-start w-[80%] mr-auto rounded-[20px] h-[400px] mb-28"
+      >
+        <div v-if="!person.imageUrl" class="">
+          <label
+            for="file-input"
+            class="bg-white rounded-[20px] flex justify-center items-center font-bold cursor-pointer h-[300px] w-full mb-28"
+          >
+            {{ $t("Add images") }}
+          </label>
           <input
-            class="bg-gray-100 border-2 p-4 rounded-xl text-grey-100 text-lg file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
+            id="file-input"
+            class="hidden"
+            ref="fileInput"
             type="file"
             v-validate="{ required: true }"
             name="profileIamge"
-            id="upload_photo"
-            @change="onFileChange($event)"
+            @change="changeImage($event)"
             accept="image/*"
             title="Add image"
           />
-        </div>
-        <div
-          v-if="person.imageUrl"
-          class="bg-white p-4 rounded-xl h-[300px] max-h-[300px] overflow-hidden flex justify-center flex-col"
-        >
-          <img :src="person.imageUrl" alt="profile-image" loading="lazy" />
         </div>
         <button
           v-if="person.imageUrl"
@@ -37,8 +37,8 @@
           {{ errors.first("profileIamge") }}
         </p>
       </div>
-      <div class="Form-Seller bg-white h-auto rounded-lg p-4">
-        <div class="group-btn mb-4 flex justify-center gap-4">
+      <div class="Form-Seller bg-white h-auto rounded-lg md:p-6 p-2">
+        <div class="group-btn mb-4 flex gap-4">
           <button
             class="p-4 w-32 inline-block rounded-lg bg-main-color text-white capitalize"
           >
@@ -149,10 +149,11 @@ export default {
     WelcomeMassage,
   },
   methods: {
-    onFileChange(event) {
-      const selectedImage = event.target.files[0];
-      if (selectedImage) {
-        this.person.imageUrl = URL.createObjectURL(selectedImage);
+    changeImage() {
+      console.log("run");
+      const [file] = this.$refs.fileInput.files;
+      if (file) {
+        this.person.imageUrl = URL.createObjectURL(file);
       }
     },
     saveProfile() {

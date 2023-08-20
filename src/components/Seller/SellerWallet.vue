@@ -1,12 +1,10 @@
 <template>
-  <section class="UserWallet md:p-8 p-4">
+  <section class="UserWallet p-4">
     <header class="grid md:grid-cols-2 grid-cols-1 items-start justify-between">
       <WelcomeMassage name="Seller" />
       <InputSearch />
     </header>
-    <div
-      class="UserWallet-content mt-10 grid lg:grid-cols-3 grid-cols-1 md:gap-6 gap-2"
-    >
+    <div class="UserWallet-content mt-10 grid lg:grid-cols-3 grid-cols-1">
       <div
         class="Wallet-info md:col-start-1 md:col-end-2 col-start-1 col-end-2"
       >
@@ -27,7 +25,7 @@
         <div
           v-for="Transaction in Transactions"
           :key="Transaction.id"
-          class="md:w-[80%] w-full mx-auto cursor-pointer flex items-center hover:border hover:border-1 hover:border-main-color bg-white rounded-xl p-4"
+          class="md:w-[80%] ml-auto w-full cursor-pointer flex items-center hover:border hover:border-1 hover:border-main-color bg-white rounded-xl p-4"
         >
           <div class="transaction-type md:w-2/12">
             <img
