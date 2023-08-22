@@ -1,7 +1,10 @@
 <template>
-  <section class="RegisterPage relative min-h-[100vh] w-[100%]">
+  <section
+    class="RegisterPage relative min-h-[100vh] md:bg-white bg-gray-100 w-[100%]"
+  >
     <UserHeader :checked="checkUser" />
     <UserHeaderPhone />
+    <SwitchLang class="md:hidden m-4" />
     <div class="Register-form bg-gray-100 w-[100%] py-4">
       <div
         class="bg-white md:max-w-[1000px] max-w-[600px] p-4 mx-auto min-h-[95vh] rounded-2xl"
@@ -56,25 +59,23 @@
         <div
           class="form-inputs grid md:grid-cols-2 gap-5 grid-cols-1 my-5 mx-2 pb-4"
         >
-          <div class="input-field">
-            <label
-              for="FirstName"
-              class="capitalize block md:text-xl text-md text-lg"
-              >{{ $t("FirstName") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="FirstName" class="capitalize block text-xl">{{
+              $t("First Name")
+            }}</label>
             <input
               type="text"
               v-validate="{ alpha: true, required: true }"
-              class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
               :placeholder="$t('enter FirstName')"
               v-model="person.FirstName"
               name="FirstName"
             />
             <span class="text-red-400">{{ errors.first("FirstName") }}</span>
           </div>
-          <div class="input-field">
-            <label for="LastName" class="capitalize block md:text-xl text-md">{{
-              $t("LastName")
+          <div class="input-field space-y-2">
+            <label for="LastName" class="capitalize block text-xl">{{
+              $t("Last Name")
             }}</label>
             <input
               type="text"
@@ -82,18 +83,18 @@
               v-validate="{ alpha: true, required: true }"
               name="LastName"
               v-model="person.LastName"
-              class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
             <span class="text-red-400">{{ errors.first("LastName") }}</span>
           </div>
-          <div class="input-field">
-            <label for="City" class="capitalize block md:text-xl text-md">{{
+          <div class="input-field space-y-2">
+            <label for="City" class="capitalize block text-xl">{{
               $t("City")
             }}</label>
             <select
               v-model="person.City"
               v-validate="{ required: true }"
-              class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
               name="City"
             >
               <option disabled selected value="">
@@ -106,15 +107,15 @@
             </select>
             <span class="text-red-400">{{ errors.first("City") }}</span>
           </div>
-          <div class="input-field">
-            <label for="Region" class="capitalize block md:text-xl text-md">{{
+          <div class="input-field space-y-2">
+            <label for="Region" class="capitalize block text-xl">{{
               $t("Region")
             }}</label>
             <select
               v-model="person.Region"
               name="Region"
               v-validate="{ required: true }"
-              class="placeholder:capitalize p-4 rounded-lg placeholder:text-gray-600 placeholder:text-xl bg-gray-200 w-[100%]"
+              class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             >
               <option disabled selected value="">
                 {{ $t("Select Region") }}
@@ -125,24 +126,22 @@
             </select>
             <span class="text-red-400">{{ errors.first("Region") }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="Contact Number"
-              class="capitalize block md:text-xl text-md"
-              >{{ $t("Contact Number") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="Contact Number" class="capitalize block text-xl">{{
+              $t("Contact Number")
+            }}</label>
             <input
               type="number"
               :placeholder="$t('enter Number')"
               v-validate="{ required: true, min: 6 }"
               name="Number"
               v-model="person.Number"
-              class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
             <span class="text-red-400">{{ errors.first("Number") }}</span>
           </div>
-          <div class="input-field">
-            <label for="Email" class="capitalize block md:text-xl text-md">{{
+          <div class="input-field space-y-2">
+            <label for="Email" class="capitalize block text-xl">{{
               $t("Email")
             }}</label>
             <input
@@ -151,12 +150,12 @@
               v-validate="{ required: true, email: true }"
               v-model="person.Email"
               name="Email"
-              class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
             <span class="text-red-400">{{ errors.first("Email") }}</span>
           </div>
-          <div class="input-field">
-            <label for="Password" class="capitalize block md:text-xl text-md">{{
+          <div class="input-field space-y-2">
+            <label for="Password" class="capitalize block text-xl">{{
               $t("Password")
             }}</label>
             <input
@@ -165,12 +164,12 @@
               v-validate="{ required: true, min: 8 }"
               name="Password"
               v-model="person.Password"
-              class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
             <span class="text-red-400">{{ errors.first("Password") }}</span>
           </div>
-          <div class="input-field">
-            <label for="Password" class="capitalize block md:text-xl text-md">{{
+          <div class="input-field space-y-2">
+            <label for="Password" class="capitalize block text-xl">{{
               $t("Confirm password")
             }}</label>
             <input
@@ -179,7 +178,7 @@
               v-model="person.ConfirmPassword"
               v-validate="{ required: true, min: 8 }"
               name="ConfirmPassword"
-              class="placeholder:capitalize md:p-4 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
             <span class="text-red-400">{{
               errors.first("ConfirmPassword")
@@ -211,6 +210,7 @@
 </template>
 
 <script>
+import SwitchLang from "@/components/Shared/Form/SwitchLang.vue";
 import UserHeader from "@/components/User/MainPage/UserHeader.vue";
 import UserHeaderPhone from "@/components/User/UserHeaderPhone.vue";
 export default {
@@ -235,6 +235,7 @@ export default {
   components: {
     UserHeader,
     UserHeaderPhone,
+    SwitchLang,
   },
   methods: {
     goToMainPage() {

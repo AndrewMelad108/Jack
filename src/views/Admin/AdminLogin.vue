@@ -1,17 +1,20 @@
 <template>
   <section
-    class="LoginPage flex items-center bg-text-color min-h-[100vh] w-screen py-4 md:px-8"
+    class="adminLogin bg-text-color h-[100vh] w-[100%] flex justify-center items-center p-4"
   >
     <div
-      class="login-form md:w-96 w-72 mx-auto bg-white rounded-2xl h-[70vh] p-4"
+      class="login-form w-[450px] mx-auto bg-white rounded-2xl min-h-auto p-4"
     >
-      <img
-        src="../../assets/images/icons/close-icon.svg"
-        class="md:py-2 md:px-4 py-0 md:h-10 h-5 cursor-pointer ml-auto"
-        alt="close-icon"
-        loading="lazy"
-        @click="goToMainPage()"
-      />
+      <div class="flex justify-center items-center">
+        <SwitchLang />
+        <img
+          src="../../assets/images/icons/close-icon.svg"
+          class="md:py-2 md:px-4 py-0 md:h-10 h-5 cursor-pointer ml-auto"
+          alt="close-icon"
+          loading="lazy"
+          @click="goToMainPage()"
+        />
+      </div>
       <img
         src="../../assets/images/logo.png"
         class="mt-1 h-14 w-28 cursor-pointer mx-auto"
@@ -31,10 +34,13 @@
           }}</label>
           <input
             type="text"
-            class="placeholder:capitalize p-4 rounded-lg placeholder:text-gray-600 placeholder:text-xl bg-gray-200 w-[100%]"
+            class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             :placeholder="$t('enter email')"
             v-model="person.email"
+            v-validate="{ required: true, email: true }"
+            name="email"
           />
+          <span class="text-red-400">{{ errors.first("email") }}</span>
         </div>
         <div class="input-field space-y-2">
           <label
@@ -46,8 +52,11 @@
             type="password"
             :placeholder="$t('Password')"
             v-model="person.password"
-            class="placeholder:capitalize p-4 rounded-lg placeholder:text-gray-600 placeholder:text-xl bg-gray-200 w-[100%]"
+            v-validate="{ required: true, min: 8 }"
+            name="password"
+            class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
           />
+          <span class="text-red-400">{{ errors.first("password") }}</span>
         </div>
         <p
           class="capitalize m-0 text-main-color text-right p-0 text-lg cursor-pointer"
@@ -62,31 +71,25 @@
         >
           {{ $t("Login") }}
         </button>
-        <div class="text-center space-y-1 capitalize text-md">
-          <p>{{ $t("dont have account ?") }}</p>
-          <router-link
-            :to="{ name: 'Register' }"
-            class="text-main-color cursor-pointer"
-            >{{ $t("create account") }}</router-link
-          >
-        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import SwitchLang from "@/components/Shared/Form/SwitchLang.vue";
+
 export default {
-  name: "LoginPage",
+  name: "AdmiLogin",
   data() {
     return {
-      selected: "User",
       person: {
         email: "",
         password: "",
       },
     };
   },
+  components: { SwitchLang },
   methods: {
     goToMainPage() {
       this.$router.push({
@@ -94,9 +97,13 @@ export default {
       });
     },
     Login() {
-      localStorage.setItem("role", "Admin");
-      this.$router.push({
-        name: "Admin.Home",
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          console.log("run");
+          localStorage.setItem("role", "Admin");
+        } else {
+          console.log("error");
+        }
       });
     },
   },

@@ -1,5 +1,5 @@
 <template>
-  <section class="UserRequest pt-10 md:px-8 px-2 py-4">
+  <section class="UserRequest pt-10 p-4">
     <!-- start header section -->
     <SwitchLang />
     <header class="grid md:grid-cols-2 grid-cols-1 items-start justify-between">

@@ -1,6 +1,6 @@
 <template>
-  <section class="SparePartsRequest p-6 bg-white">
-    <SwitchLang />
+  <section class="SparePartsRequest md:p-4 p-2 bg-white">
+    <SwitchLang class="m-4" />
     <ServicesNav class="md:flex hidden" />
     <header class="service-title">
       <WelcomeMassage name="User" />
@@ -14,12 +14,12 @@
     </header>
     <div class="service-content grid lg:grid-cols-4 grid-cols-1 gap-2">
       <div class="lg:col-start-1 lg:col-end-4 col-start-1 col-end-2">
-        <div class="Form-user bg-white h-auto rounded-lg p-4">
-          <label for="SearchScope" class="mb-2 text-lg block text-text-color">{{
+        <div class="Form-user bg-white h-auto rounded-lg space-y-3">
+          <label for="SearchScope" class="capitalize block text-xl">{{
             $t("Search Scope")
           }}</label>
           <select
-            class="focus:outline-0 p-1 rounded-lg bg-gray-100 w-full mx-auto"
+            class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-100 w-[100%]"
             v-validate="{ required: true }"
             name="Search Scope"
             v-model="SpareParts.Scope"
@@ -34,13 +34,11 @@
           </select>
           <p class="text-red-400">{{ errors.first("Search Scope") }}</p>
 
-          <label
-            for="SparePartsType"
-            class="mt-6 text-lg block text-text-color"
-            >{{ $t("SparePartsType") }}</label
-          >
+          <label for="SparePartsType" class="capitalize block text-xl">{{
+            $t("SparePartsType")
+          }}</label>
           <select
-            class="placeholder:capitalize focus:outline-0 p-2 rounded-lg bg-gray-100 w-full mx-auto"
+            class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-100 w-[100%]"
             v-validate="{ required: true }"
             name="SparePartsType"
             v-model="SpareParts.SparePartsType"
@@ -55,11 +53,11 @@
           </select>
           <p class="text-red-400">{{ errors.first("SparePartsType") }}</p>
 
-          <label for="Brand" class="mt-6 text-lg block text-text-color">
+          <label for="Brand" class="capitalize block text-xl">
             {{ $t("Brand") }}</label
           >
           <select
-            class="placeholder:capitalize focus:outline-0 p-2 rounded-lg bg-gray-100 w-full mx-auto"
+            class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-100 w-[100%]"
             v-validate="{ required: true }"
             name="Brand"
             v-model="SpareParts.Brand"
@@ -74,11 +72,11 @@
           </select>
           <p class="text-red-400">{{ errors.first("Brand") }}</p>
 
-          <label for="Model" class="mt-6 text-lg block text-text-color">
+          <label for="Model" class="capitalize block text-xl">
             {{ $t("Model") }}</label
           >
           <select
-            class="placeholder:capitalize focus:outline-0 p-2 rounded-lg bg-gray-100 w-full mx-auto"
+            class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-100 w-[100%]"
             v-validate="{ required: true }"
             name="Select Model"
             v-model="SpareParts.Model"
@@ -94,14 +92,11 @@
           <p class="text-red-400">
             {{ errors.first("Select Model") }}
           </p>
-          <label
-            for="YearofManufactur"
-            class="mt-6 text-lg block text-text-color"
-          >
+          <label for="YearofManufactur" class="capitalize block text-xl">
             {{ $t("Year of Manufactur") }}</label
           >
           <select
-            class="placeholder:capitalize focus:outline-0 p-2 rounded-lg bg-gray-100 w-full mx-auto"
+            class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-100 w-[100%]"
             v-validate="{ required: true }"
             name="Select Year"
             v-model="SpareParts.Year"
@@ -117,10 +112,7 @@
           <p class="text-red-400">
             {{ errors.first("Select Model") }}
           </p>
-          <label
-            for=" CarSerialNumber"
-            class="mt-6 text-lg block text-text-color"
-          >
+          <label for=" CarSerialNumber" class="capitalize block text-xl">
             {{ $t("Car Serial Number") }}</label
           >
           <input
@@ -129,12 +121,12 @@
             v-validate="{ required: true }"
             name="PlateNumber"
             :placeholder="$t('Enter Car Serial Number')"
-            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+            class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-100 w-[100%]"
           />
           <p class="text-red-400">
             {{ errors.first("PlateNumber") }}
           </p>
-          <label for="Part Name" class="mt-6 text-lg block text-text-color">
+          <label for="Part Name" class="capitalize block text-xl">
             {{ $t("Part Name") }}</label
           >
           <input
@@ -143,7 +135,7 @@
             v-validate="{ required: true }"
             name="PartName"
             :placeholder="$t('Enter Part Name')"
-            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+            class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-100 w-[100%]"
           />
           <p class="text-red-400">
             {{ errors.first("PartName") }}
@@ -155,12 +147,6 @@
               )
             }}
           </p>
-          <button
-            class="w-full bg-main-color p-2 mt-3 text-white rounded-lg"
-            @click="SendServices"
-          >
-            {{ $t("Post Request") }}
-          </button>
         </div>
       </div>
       <div class="images lg:col-start-4 lg:col-end-5 col-start-1 col-end-2">
@@ -171,8 +157,13 @@
         <div
           class="flex items-center justify-center bg-gray-100 rounded-[10px] focus:ring-[#24C6C9] focus:border-[#24C6C9] w-full h-[200px]"
         >
+          <label
+            for="upload_photo"
+            class="cursor-pointer h-full w-full flex justify-center items-center font-bold"
+            >{{ $t("Add images") }}</label
+          >
           <input
-            class="text-sm text-grey-100 text-[15px] file:bg-gray-100 file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
+            class="hidden"
             type="file"
             v-validate="{ required: true }"
             name="AddRegistrationimages"
@@ -192,8 +183,13 @@
         <div
           class="flex items-center justify-center bg-gray-100 rounded-[10px] focus:ring-[#24C6C9] focus:border-[#24C6C9] w-full h-[200px]"
         >
+          <label
+            for="upload_photo"
+            class="cursor-pointer h-full w-full flex justify-center items-center font-bold"
+            >{{ $t("Add images") }}</label
+          >
           <input
-            class="text-sm text-grey-100 text-[15px] file:bg-gray-100 file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
+            class="hidden"
             type="file"
             v-validate="{ required: true }"
             name="Addimages"
@@ -206,6 +202,12 @@
           {{ errors.first("Addimages") }}
         </p>
       </div>
+      <button
+        @click="SendServices"
+        class="w-full bg-main-color md:col-start-1 md:col-end-4 p-2 mt-3 text-white rounded-lg"
+      >
+        {{ $t("Post Request") }}
+      </button>
     </div>
   </section>
 </template>

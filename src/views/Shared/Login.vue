@@ -1,15 +1,20 @@
 <template>
-  <section class="LoginPage bg-text-color min-h-[100vh] w-[100%] p-4">
+  <section
+    class="LoginPage bg-text-color min-h-[100vh] w-[100%] flex justify-center items-center p-4"
+  >
     <div
-      class="login-form max-w-[500px] mx-auto bg-white rounded-2xl min-h-auto p-4"
+      class="login-form w-[500px] mx-auto bg-white rounded-2xl min-h-auto p-4"
     >
-      <img
-        src="../../assets/images/icons/close-icon.svg"
-        class="md:py-2 md:px-4 py-0 md:h-10 h-5 cursor-pointer ml-auto"
-        alt="close-icon"
-        loading="lazy"
-        @click="goToMainPage()"
-      />
+      <div class="flex justify-center items-center">
+        <SwitchLang />
+        <img
+          src="../../assets/images/icons/close-icon.svg"
+          class="md:py-2 md:px-4 py-0 md:h-10 h-5 cursor-pointer ml-auto"
+          alt="close-icon"
+          loading="lazy"
+          @click="goToMainPage()"
+        />
+      </div>
       <img
         src="../../assets/images/logo.png"
         class="mt-1 h-14 w-28 cursor-pointer mx-auto"
@@ -78,7 +83,7 @@
           <input
             type="text"
             v-validate="{ required: true, email: true }"
-            class="placeholder:capitalize p-4 rounded-lg placeholder:text-gray-600 placeholder:text-xl bg-gray-200 w-[100%]"
+            class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             :placeholder="$t('enter email')"
             v-model="person.email"
             name="email"
@@ -95,7 +100,7 @@
             v-model="person.password"
             v-validate="{ required: true, min: 8 }"
             name="password"
-            class="placeholder:capitalize p-4 rounded-lg placeholder:text-gray-600 placeholder:text-xl bg-gray-200 w-[100%]"
+            class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
           />
           <span class="text-red-400">{{ errors.first("password") }}</span>
         </div>
@@ -127,6 +132,7 @@
 </template>
 
 <script>
+import SwitchLang from "@/components/Shared/Form/SwitchLang.vue";
 export default {
   name: "LoginPage",
   data() {
@@ -138,6 +144,7 @@ export default {
       },
     };
   },
+  components: { SwitchLang },
   updated() {
     localStorage.setItem("role", this.selected);
   },
