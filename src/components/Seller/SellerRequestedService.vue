@@ -1,11 +1,9 @@
 <template>
   <section class="DeliveryServices md:p-4 p-2 bg-white">
-    <SwitchLang />
-    <ServicesNav class="md:flex hidden" />
     <header class="service-title">
       <WelcomeMassage name="User" />
       <img
-        src="../../../assets/images/Servies/delivery_services.png"
+        src="../../assets/images/Servies/delivery_services.png"
         alt="delivery_services"
         loading="lazy"
         class="w-auto h-28"
@@ -147,9 +145,8 @@
 </template>
 
 <script>
-import ServicesNav from "@/components/User/Services/ServicesNav.vue";
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
-import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
+
 export default {
   name: "DeliveryServices",
   data() {
@@ -176,9 +173,7 @@ export default {
     },
   },
   components: {
-    ServicesNav,
     WelcomeMassage,
-    SwitchLang,
   },
 };
 </script>

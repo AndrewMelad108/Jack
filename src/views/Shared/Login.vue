@@ -157,11 +157,11 @@ export default {
         if (result) {
           if (localStorage.getItem("role") === "User") {
             this.$router.push({
-              name: "MainPage",
+              name: "User.Home",
             });
           } else {
             this.$router.push({
-              name: "Seller.ControlPanel",
+              name: "Seller.Home",
             });
           }
         } else {

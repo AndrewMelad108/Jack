@@ -52,6 +52,8 @@ export default {
         "Home",
         "ControlPanel",
         "Requests",
+        "Requested orders",
+        "Requested service",
         "Offers",
         "Orders",
         "Chats",

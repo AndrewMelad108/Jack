@@ -23,21 +23,21 @@
       class="links absolute left-0 right-0 bg-white space-y-4 pl-10 py-4 font-bold text-text-color shadow-md shadow-text-color z-50"
       v-if="showLinks"
     >
-      <router-link
+      <button
+        @click="goUserPages('User.Home')"
         class="hover:text-black block text-lg"
-        :to="{ path: '/User/home' }"
-        >{{ $t("Home") }}</router-link
       >
-      <router-link
+        {{ $t("Home") }}
+      </button>
+      <button
+        @click="goUserPages('User.Towing')"
         class="hover:text-black block text-lg"
-        :to="{ name: 'User.Towing' }"
-        >{{ $t("Servies") }}</router-link
       >
-      <router-link
-        class="hover:text-black block text-lg"
-        :to="{ name: 'LogIn' }"
-        >{{ $t("Join") }}</router-link
-      >
+        {{ $t("Servies") }}
+      </button>
+      <button class="hover:text-black block text-lg" :to="{ name: 'LogIn' }">
+        {{ $t("Join") }}
+      </button>
     </div>
   </section>
 </template>
@@ -49,6 +49,15 @@ export default {
     return {
       showLinks: false,
     };
+  },
+  methods: {
+    goUserPages(value) {
+      if (localStorage.getItem("role") === "User") {
+        this.$router.push({
+          name: value,
+        });
+      }
+    },
   },
 };
 </script>
