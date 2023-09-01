@@ -101,6 +101,9 @@ export default {
         if (result) {
           console.log("run");
           localStorage.setItem("role", "Admin");
+          this.$router.push({
+            name: "Admin.Home",
+          });
         } else {
           console.log("error");
         }
