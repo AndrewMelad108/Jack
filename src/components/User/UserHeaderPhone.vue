@@ -29,10 +29,7 @@
       >
         {{ $t("Home") }}
       </button>
-      <button
-        @click="goUserPages('User.Towing')"
-        class="hover:text-black block text-lg"
-      >
+      <button @click="goUserServices()" class="hover:text-black block text-lg">
         {{ $t("Servies") }}
       </button>
       <button class="hover:text-black block text-lg" :to="{ name: 'LogIn' }">
@@ -51,10 +48,20 @@ export default {
     };
   },
   methods: {
-    goUserPages(value) {
+    goUserPages() {
+      if (
+        localStorage.getItem("role") === "User" &&
+        this.$route.name !== "User.Home"
+      ) {
+        this.$router.push({
+          name: "User.Home",
+        });
+      }
+    },
+    goUserServices() {
       if (localStorage.getItem("role") === "User") {
         this.$router.push({
-          name: value,
+          name: "User.Towing",
         });
       }
     },

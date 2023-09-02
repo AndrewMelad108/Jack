@@ -26,9 +26,7 @@
         <router-link :to="{ name: 'Seller.Chats' }">{{
           $t("Chats")
         }}</router-link>
-        <router-link :to="{ name: 'Seller.ControlPanel' }">{{
-          $t("Controlpanel")
-        }}</router-link>
+
         <router-link :to="{ name: 'Seller.Wallet' }">{{
           $t("Wallet")
         }}</router-link>

@@ -50,7 +50,6 @@ export default {
       UserType: localStorage.getItem("role"),
       LinksData: [
         "Home",
-        "ControlPanel",
         "Requests",
         "Requested orders",
         "Requested service",
