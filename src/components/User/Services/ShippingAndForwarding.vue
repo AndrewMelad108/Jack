@@ -1,7 +1,6 @@
 <template>
   <section class="ShippingAndForwarding md:p-4 p-2 bg-white">
     <SwitchLang />
-    <ServicesNav class="md:flex hidden" />
     <header class="service-title">
       <WelcomeMassage name="User" />
       <img
@@ -121,6 +120,10 @@
           />
           <p class="text-red-400">{{ errors.first("LocationTo") }}</p>
         </div>
+        <div class="maps flex lg:flex-row flex-col gap-8 my-4 items-center">
+          <MapGoogle></MapGoogle>
+          <MapGoogle></MapGoogle>
+        </div>
       </div>
       <div class="images lg:col-start-4 lg:col-end-5 col-start-1 col-end-2">
         <div class="mt-8">
@@ -162,8 +165,9 @@
 
 <script>
 import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
-import ServicesNav from "@/components/User/Services/ServicesNav.vue";
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
+import MapGoogle from "../../Shared/Map.vue";
+
 export default {
   name: "ShippingAndForwarding",
   data() {
@@ -180,9 +184,9 @@ export default {
     };
   },
   components: {
-    ServicesNav,
     WelcomeMassage,
     SwitchLang,
+    MapGoogle,
   },
   methods: {
     SendServices() {

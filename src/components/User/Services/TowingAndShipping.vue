@@ -1,7 +1,6 @@
 <template>
   <section class="TowingAndShipping md:p-6 p-1 bg-white">
     <SwitchLang class="m-2" />
-    <ServicesNav class="md:flex hidden" />
     <header class="service-title">
       <WelcomeMassage name="User" />
       <img
@@ -188,6 +187,10 @@
             }}
           </p>
           <p>{{ $t("* Adding registration image is a legal requirement.") }}</p>
+          <div class="maps flex gap-8 lg:flex-row flex-col my-4 items-center">
+            <MapGoogle></MapGoogle>
+            <MapGoogle></MapGoogle>
+          </div>
         </div>
       </div>
       <div class="images lg:col-start-4 lg:col-end-5 col-start-1 col-end-2">
@@ -254,9 +257,9 @@
 </template>
 
 <script>
-import ServicesNav from "@/components/User/Services/ServicesNav.vue";
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
+import MapGoogle from "../../Shared/Map.vue";
 export default {
   name: "TowingAndShipping",
   data() {
@@ -276,10 +279,11 @@ export default {
     };
   },
   components: {
-    ServicesNav,
     WelcomeMassage,
     SwitchLang,
+    MapGoogle,
   },
+
   methods: {
     SendServices() {
       this.$validator.validateAll().then((result) => {

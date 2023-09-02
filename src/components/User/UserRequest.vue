@@ -1,7 +1,7 @@
 <template>
   <section class="UserRequest pt-10 p-4">
     <!-- start header section -->
-    <SwitchLang />
+    <SwitchLang class="mb-4" />
     <header class="grid md:grid-cols-2 grid-cols-1 items-start justify-between">
       <WelcomeMassage name="User" />
       <InputSearch />

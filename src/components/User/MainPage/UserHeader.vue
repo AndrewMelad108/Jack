@@ -7,17 +7,18 @@
         src="../../../assets//images/logo.png"
         alt="logo-image"
         loading="lazy"
-        class="h-10"
+        class="h-10 cursor-pointer"
+        @click="goMainPage()"
       />
     </div>
     <div
       class="header-links flex items-center justify-around text-xl font-bold text-[#858585] w-3/6"
     >
-      <button @click="goUserPages('User.Home')" class="hover:text-black">
+      <button @click="goUserPages()" class="hover:text-black">
         {{ $t("Home") }}
       </button>
       <button
-        @click="goUserPages('User.Towing')"
+        @click="goUserServices()"
         class="hover:text-black"
         :to="{ name: 'User.Towing' }"
       >
@@ -40,16 +41,33 @@ import SwitchLang from "@/components/Shared/Form/SwitchLang.vue";
 export default {
   props: ["checked"],
   data() {
-    return {};
+    return {
+      disabled: "",
+    };
   },
   components: {
     SwitchLang,
   },
   methods: {
-    goUserPages(value) {
+    goUserPages() {
+      if (
+        localStorage.getItem("role") === "User" &&
+        this.$route.name !== "User.Home"
+      ) {
+        this.$router.push({
+          name: "User.Home",
+        });
+      }
+    },
+    goMainPage() {
+      this.$router.push({
+        name: "MainPage",
+      });
+    },
+    goUserServices() {
       if (localStorage.getItem("role") === "User") {
         this.$router.push({
-          name: value,
+          name: "User.Towing",
         });
       }
     },

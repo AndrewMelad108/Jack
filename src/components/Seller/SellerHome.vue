@@ -36,10 +36,10 @@
     </div>
     <div class="intro-page my-16 text-xl font-bold h-auto w-full">
       <div
-        class="grid items-center md:grid-cols-3 grid-cols-1 gap-4 w-full mx-auto h-[100%]"
+        class="grid md:grid-cols-3 grid-cols-1 gap-4 w-full mx-auto h-[100%]"
       >
         <h1 class="text-center md:mb-0 mb-4">{{ $t("Provided Services") }}</h1>
-        <div class="Seller-name self-end flex justify-around">
+        <div class="Seller-name flex justify-around">
           <img
             src="../../assets/images/Servies/spare_parts.png"
             alt="spare_parts"
@@ -47,7 +47,7 @@
             loading="lazy"
             @click="goServices('Seller.Requested service')"
           />
-          <div class="">
+          <div>
             <h1 class="text-2xl text-center">{{ $t("Hello") }} Jack</h1>
             <span
               class="block bg-main-color rounded-2xl w-24 mt-2 mx-auto h-2"
@@ -88,7 +88,41 @@
         </div>
       </div>
     </div>
-    <div
+    <div class="mt-4 lg:flex hidden w-[90%] mx-auto max-h-[300px] md:gap-4">
+      <div
+        class="h-52 w-3/12 px-2 content-center bg-gray-100 rounded-xl capitalize text-center font-boldx 2 py-6"
+      >
+        <h1 class="w-22 break-words md:text-lg sm:text-sm">
+          {{ $t("Balance (SAR)") }}
+        </h1>
+        <p class="mt-16 text-main-color font-bold text-4xl">1234</p>
+      </div>
+      <div
+        class="h-52 w-3/12 px-2 content-center bg-gray-100 rounded-xl capitalize text-center font-boldx 2 py-6"
+      >
+        <h1 class="w-22 break-words md:text-lg sm:text-sm">
+          {{ $t("Pending Orders") }}
+        </h1>
+        <p class="mt-16 text-main-color font-bold text-4xl">03</p>
+      </div>
+      <div
+        class="h-52 w-3/12 px-2 bg-gray-100 content-centerbg-gray-100 rounded-xl capitalize text-center font-boldx 2 py-6"
+      >
+        <h1 class="w-22 break-words md:text-lg sm:text-sm">
+          {{ $t("New Requests") }}
+        </h1>
+        <p class="mt-16 text-main-color font-bold text-4xl">12</p>
+      </div>
+      <div
+        class="h-52 w-3/12 px-2 content-center bg-gray-100 rounded-xl capitalize text-center font-boldx 2 py-6"
+      >
+        <h1 class="w-22 break-words md:text-lg sm:text-sm">
+          {{ $t("Unread Messages") }}
+        </h1>
+        <p class="mt-16 text-main-color font-bold text-4xl">123</p>
+      </div>
+    </div>
+    <!-- <div
       class="image-home my-8 grid md:grid-cols-5 grid-cols-3 items-center justify-center text-center w-[90%] mx-auto"
     >
       <img
@@ -151,7 +185,7 @@
         class="block mx-auto"
         loading="lazy"
       />
-    </div>
+    </div> -->
     <div
       class="card-details my-12 grid md:grid-cols-3 grid-cols-1 items-center gap-4 justify-around w-[90%] mx-auto"
     >
@@ -214,11 +248,13 @@
       </div>
     </div>
     <workHours />
-    <img
-      src="../../assets/images/image_slider.png"
-      alt="image_slider"
-      class="block w-full bg-cover bg-center"
-    />
+    <div class="bg-gray-100 h-[600px] py-8">
+      <img
+        src="../../assets/images/image_slider.png"
+        alt="image_slider"
+        class="w-[70%] mt-2 h-full block rounded-lg mx-auto bg-cover bg-center"
+      />
+    </div>
     <div class="grid md:grid-cols-2 min-h-[400px] grid-cols-1 gap-4 p-4">
       <div class="card-info space-y-4">
         <div

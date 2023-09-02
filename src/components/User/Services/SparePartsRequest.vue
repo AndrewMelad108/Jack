@@ -1,7 +1,6 @@
 <template>
   <section class="SparePartsRequest md:p-4 p-2 bg-white">
     <SwitchLang class="m-4" />
-    <ServicesNav class="md:flex hidden" />
     <header class="service-title">
       <WelcomeMassage name="User" />
       <img
@@ -213,7 +212,6 @@
 </template>
 
 <script>
-import ServicesNav from "@/components/User/Services/ServicesNav.vue";
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
 
@@ -233,7 +231,6 @@ export default {
     };
   },
   components: {
-    ServicesNav,
     WelcomeMassage,
     SwitchLang,
   },

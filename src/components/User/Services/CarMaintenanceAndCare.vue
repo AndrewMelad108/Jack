@@ -1,7 +1,6 @@
 <template>
   <section class="CarMaintenanceAndCare md:p-4 p-2 bg-white">
     <SwitchLang class="m-4" />
-    <ServicesNav class="md:flex hidden" />
     <header class="service-title">
       <WelcomeMassage name="User" />
       <img
@@ -135,9 +134,8 @@
               )
             }}
           </p>
-          <div class="Maps flex justify-around h-62">
-            <!-- <MapGoogle />
-            <MapGoogle /> -->
+          <div class="Maps w-full">
+            <MapGoogle class="w-full" />
           </div>
         </div>
       </div>
@@ -177,10 +175,9 @@
 </template>
 
 <script>
-import ServicesNav from "@/components/User/Services/ServicesNav.vue";
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
-// import Map from "@/components/Shared/Map.vue";
+import MapGoogle from "../../Shared/Map.vue";
 export default {
   name: "CarMaintenanceAndCare",
   data() {
@@ -198,9 +195,9 @@ export default {
     };
   },
   components: {
-    ServicesNav,
     WelcomeMassage,
     SwitchLang,
+    MapGoogle,
   },
   methods: {
     SendServices() {

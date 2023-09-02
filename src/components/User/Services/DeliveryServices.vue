@@ -1,7 +1,6 @@
 <template>
   <section class="DeliveryServices md:p-4 p-2 bg-white">
     <SwitchLang />
-    <ServicesNav class="md:flex hidden" />
     <header class="service-title">
       <WelcomeMassage name="User" />
       <img
@@ -107,6 +106,10 @@
             {{ $t("* Please add documents images and location") }}
           </p>
         </div>
+        <div class="maps flex lg:flex-row flex-col gap-8 my-4 items-center">
+          <MapGoogle></MapGoogle>
+          <MapGoogle></MapGoogle>
+        </div>
       </div>
       <div class="images lg:col-start-4 lg:col-end-5 col-start-1 col-end-2">
         <div class="mt-8">
@@ -147,9 +150,9 @@
 </template>
 
 <script>
-import ServicesNav from "@/components/User/Services/ServicesNav.vue";
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
+import MapGoogle from "../../Shared/Map.vue";
 export default {
   name: "DeliveryServices",
   data() {
@@ -176,9 +179,9 @@ export default {
     },
   },
   components: {
-    ServicesNav,
     WelcomeMassage,
     SwitchLang,
+    MapGoogle,
   },
 };
 </script>

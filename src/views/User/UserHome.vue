@@ -45,15 +45,7 @@ export default {
     return {
       showSidebar: false,
       UserType: localStorage.getItem("role"),
-      LinksData: [
-        "Home",
-        "ControlPanel",
-        "Requests",
-        "Chats",
-        "Orders",
-        "Wallet",
-        "Profile",
-      ],
+      LinksData: ["Home", "Requests", "Chats", "Orders", "Wallet", "Profile"],
     };
   },
   components: {
