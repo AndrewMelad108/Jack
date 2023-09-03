@@ -32,12 +32,18 @@
         }}</router-link>
       </div>
     </div>
-    <div class="intro-page my-16 text-xl font-bold h-auto w-full">
+    <div class="intro-page mb-16 mt-4 text-xl font-bold h-auto w-full">
+      <div>
+        <h1 class="text-2xl text-center">{{ $t("Hello") }} Jack</h1>
+        <span
+          class="block bg-main-color rounded-2xl w-24 mt-2 mx-auto h-2"
+        ></span>
+      </div>
       <div
-        class="grid md:grid-cols-3 grid-cols-1 gap-4 w-full mx-auto h-[100%]"
+        class="grid md:grid-cols-3 grid-cols-1 mt-2 gap-4 w-full mx-auto h-[100%]"
       >
         <h1 class="text-center md:mb-0 mb-4">{{ $t("Provided Services") }}</h1>
-        <div class="Seller-name flex justify-around">
+        <div class="Seller-name flex items-center justify-around">
           <img
             src="../../assets/images/Servies/spare_parts.png"
             alt="spare_parts"
@@ -45,12 +51,6 @@
             loading="lazy"
             @click="goServices('Seller.Requested service')"
           />
-          <div>
-            <h1 class="text-2xl text-center">{{ $t("Hello") }} Jack</h1>
-            <span
-              class="block bg-main-color rounded-2xl w-24 mt-2 mx-auto h-2"
-            ></span>
-          </div>
           <img
             src="../../assets/images/Servies/delivery_services.png"
             alt="delivery_services"
