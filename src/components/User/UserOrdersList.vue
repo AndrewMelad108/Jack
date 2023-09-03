@@ -53,6 +53,7 @@
       </button>
       <div
         class="p-2 md:col-start-1 md:col-end-3 col-start-1 col-end-2 rounded-b-lg bg-[#EDEDED]"
+        @click="showOrdersDetails(order.id)"
       >
         <img
           src="../../assets/images/chevronbottom.png"
@@ -60,7 +61,6 @@
           loading="lazy"
           class="block mx-auto cursor-pointer"
           v-if="!order.showOrders"
-          @click="showOrdersDetails(order.id)"
         />
         <img
           src="../../assets/images/chevronbottom.png"
@@ -68,7 +68,6 @@
           loading="lazy"
           class="block mx-auto cursor-pointer rotate-180"
           v-if="order.showOrders"
-          @click="showOrdersDetails(order.id)"
         />
       </div>
     </div>

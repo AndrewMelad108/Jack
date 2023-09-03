@@ -137,20 +137,7 @@
           <p class="text-red-400">
             {{ errors.first("PlateNumber") }}
           </p>
-          <label for="Copy of Regestration" class="mt-6 text-xl block">
-            {{ $t("Copy of Regestration") }}</label
-          >
-          <input
-            type="text"
-            v-model.trim="Towing.CopyOfRegestration"
-            v-validate="{ required: true }"
-            name="Copy of Regestration"
-            :placeholder="$t('Enter Copy of Regestration')"
-            class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-100 w-[100%]"
-          />
-          <p class="text-red-400">
-            {{ errors.first("Copy of Regestration") }}
-          </p>
+
           <label for="LocationFrom" class="mt-6 text-xl block">
             {{ $t("Location From") }}</label
           >
@@ -272,7 +259,7 @@ export default {
         Year: "",
         color: "",
         PlateNumber: "",
-        CopyOfRegestration: "",
+
         LocationFrom: "",
         LocationTo: "",
       },

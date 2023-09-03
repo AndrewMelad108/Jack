@@ -104,19 +104,19 @@ export default {
       Requests: [
         {
           id: 1,
-          RequestName: "Oil change",
+          RequestName: "Towing And Shipping",
           Requestdes: "This include the services related to the oil change",
           RequestDate: "2022-11-11",
         },
         {
           id: 2,
-          RequestName: "Oil change",
+          RequestName: "Car Maintenance And Care",
           Requestdes: "This include the services related to the oil change",
           RequestDate: "2022-11-11",
         },
         {
           id: 3,
-          RequestName: "Oil change",
+          RequestName: "Spare Parts",
           Requestdes: "This include the services related to the oil change",
           RequestDate: "2022-11-11",
         },

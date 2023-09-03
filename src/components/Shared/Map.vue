@@ -20,8 +20,8 @@ export default {
   name: "MapExample",
   data() {
     return {
-      currentLocation: { lat: 37.7749, lng: -122.4194 },
-      selectedLocation: { lat: 37.7749, lng: -122.4194 },
+      currentLocation: { lat: 24.7136, lng: 46.6753 },
+      selectedLocation: { lat: 24.7136, lng: 46.6753 },
     };
   },
   methods: {
