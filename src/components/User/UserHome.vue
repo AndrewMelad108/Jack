@@ -1,5 +1,5 @@
 <template>
-  <section class="AllServices px-12 py-4">
+  <section class="AllServices p-4">
     <SwitchLang />
     <!-- start header section -->
     <header class="grid md:grid-cols-2 grid-cols-1 justify-between">

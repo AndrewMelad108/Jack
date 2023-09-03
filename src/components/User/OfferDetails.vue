@@ -1,6 +1,6 @@
 <template>
-  <section class="OfferDetails md:p-8 p-2">
-    <SwitchLang />
+  <section class="OfferDetails md:p-8 p-4">
+    <SwitchLang class="m-4" />
     <header class="grid md:grid-cols-2 grid-cols-1 items-start justify-between">
       <WelcomeMassage name="User" />
       <InputSearch />
@@ -28,7 +28,7 @@
     </div>
     <div class="Offer-detials mt-10">
       <div
-        class="bg-white md:text-md text-sm shadow-md shadow-slate-400 md:w-[73%] w-full rounded-xl min-h-52 grid lg:grid-cols-2 grid-cols-1 gap-y-6 p-6"
+        class="bg-white md:text-md text-sm shadow-md shadow-slate-400 lg:w-[90%] w-full rounded-xl min-h-52 grid lg:grid-cols-2 grid-cols-1 gap-y-6 p-6"
       >
         <p class="font-bold">
           {{ $t("Spare Parts Type") }}
@@ -63,7 +63,7 @@
       </div>
 
       <table
-        class="mt-10 text-center divide-y lg:w-[73%] w-full shadow-md shadow-slate-400 divide-gray-200"
+        class="mt-10 text-center divide-y lg:w-[90%] w-full shadow-md shadow-slate-400 divide-gray-200"
       >
         <thead class="bg-gray-50">
           <tr>
@@ -135,7 +135,7 @@
         {{ $t("total amount is") }} {{ total }}
       </p>
       <div
-        class="group-btn capitalize flex justify-center md:flex-row flex-col items-center gap-4 mx-auto"
+        class="group-btn capitalize flex justify-center items-center gap-4 mx-auto"
       >
         <button
           @click="
@@ -143,7 +143,7 @@
               name: 'User.Chats',
             })
           "
-          class="text-main-color font-bold border-2 md:text-md text-sm border-main-color w-auto p-1 md:px-3 md:py-2 rounded-lg"
+          class="text-main-color font-bold border-2 md:text-md text-sm border-main-color w-auto md:p-4 p-2 rounded-lg"
         >
           {{ $t("Send Message") }}
         </button>
@@ -153,7 +153,7 @@
               name: 'User.Orders',
             })
           "
-          class="bg-main-color font-bold w-auto md:text-md text-sm px-4 py-2 md:p-3 text-white rounded-lg"
+          class="bg-main-color font-bold w-auto md:text-md text-sm md:p-4 p-2 text-white rounded-lg"
         >
           {{ $t("Start Order") }}
         </button>

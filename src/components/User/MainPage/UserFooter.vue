@@ -1,6 +1,6 @@
 <template>
   <section
-    class="UserFooter flex justify-around text-white items-center bg-[#095C5E] mt-10 py-10 lg:pl-10 lg:flex-row flex-col lg:space-x-0 space-y-10"
+    class="UserFooter flex justify-around text-white items-center bg-[#095C5E] py-10 lg:pl-10 lg:flex-row flex-col lg:space-x-0 space-y-10"
   >
     <div class="call-detials lg:w-4/12 w-[68%] space-y-10">
       <img

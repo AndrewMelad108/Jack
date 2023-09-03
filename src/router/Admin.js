@@ -22,7 +22,7 @@ const routes = [
     name: "Dashborad",
     component: Dashborad,
     children: [
-      { path: "/", name: "Admin.Home", component: AdminHome },
+      { path: "/dashborad", name: "Admin.Home", component: AdminHome },
       {
         path: "TowingAndShipping",
         name: "Admin.Towing",

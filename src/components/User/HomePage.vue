@@ -2,18 +2,17 @@
   <section class="HomePage">
     <UserHeader :checked="checkUser" />
     <UserHeaderPhone />
-    <SwitchLang class="md:hidden block" />
+    <SwitchLang class="md:hidden block m-4" />
     <div
       class="bg-main-color min-h-20 w-full flex flex-warp content-center p-4 text-center"
     >
       <div
-        class="w-[70%] mx-auto flex gap-4 capitalize justify-center text-white font-bold text-xl md:flex-row flex-col items-center"
+        class="w-[70%] mx-auto flex gap-10 capitalize justify-center text-white font-bold text-xl md:flex-row flex-col items-center"
       >
         <router-link to="Profile">{{ $t("Profile") }}</router-link>
         <router-link to="Orders">{{ $t("Orders") }}</router-link>
         <router-link to="Request">{{ $t("Requests") }}</router-link>
         <router-link to="Chat">{{ $t("Chats") }}</router-link>
-        <router-link to="Home">{{ $t("Controlpanel") }}</router-link>
         <router-link to="Wallet">{{ $t("Wallet") }}</router-link>
       </div>
     </div>
@@ -105,13 +104,23 @@
         />
       </div>
     </div>
+    <div class="flex w-full justify-center my-4 p-4 items-center gap-4">
+      <h1 class="md:text-4xl text-xl md:w-80 w-auto">
+        {{ $t("these information is not shown to other") }}
+      </h1>
+      <img src="../../assets/images/Companies/lock.png" alt="" loading="lazy" />
+    </div>
     <servicesFeature />
+    <div class="md:w-[50%] p-4 w-full my-8 mx-auto">
+      <tradeMark />
+    </div>
     <UserFooter />
   </section>
 </template>
 
 <script>
 import SwitchLang from "../../components/Shared/Form/SwitchLang.vue";
+import tradeMark from "../../components/Shared/tradeMark.vue";
 import UserHeader from "@/components/User/MainPage/UserHeader.vue";
 import UserHeaderPhone from "@/components/User/UserHeaderPhone.vue";
 import servicesFeature from "@/components/User/MainPage/Services.vue";
@@ -127,6 +136,7 @@ export default {
     UserFooter,
     servicesFeature,
     SwitchLang,
+    tradeMark,
   },
 };
 </script>

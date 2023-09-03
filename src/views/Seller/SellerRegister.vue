@@ -37,8 +37,8 @@
         <h1 class="md:text-xl text-md capitalize mt-4 pb-2">
           {{ $t("account type") }}
         </h1>
-        <div class="group-btn md:flex-row flex-col flex items-start gap-2">
-          <div class="flex gap-2 w-1/2">
+        <div class="group-btn sm:flex-row flex-col flex items-center gap-2">
+          <div class="flex items-center gap-2 md:w-1/2 w-full">
             <button
               @click="
                 $router.push({
@@ -63,164 +63,155 @@
               {{ $t("seller") }}
             </button>
           </div>
-          <div class="image-person flex gap-2 justify-end md:px-4 w-1/2">
+          <div
+            class="image-person flex items-center gap-3 mb-2 md:px-4 md:w-1/2 w-full"
+          >
             <p
-              class="capitalize flex justify-center items-center md:text-3xl text-md text-white bg-main-color md:h-16 md:w-16 h-10 w-10 rounded-full sm:ml-8"
+              class="capitalize flex justify-center items-center md:text-3xl text-md text-white bg-main-color md:h-16 h-10 md:w-16 w-10 rounded-full sm:ml-8"
             >
               A
             </p>
-            <input
-              class="text-grey-100 md:w-[200px] w-[100px] self-center md:file:p-2 file:p-1 md:text-md text-sm file:rounded-full file:w-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
-              type="file"
-              name="upload_photo"
-              id="upload_photo"
-              @change="uploadPhoto($event)"
-              accept="image/*"
-            />
+            <div class="flex justify-center items-center gap-3">
+              <label
+                for="upload_photo"
+                class="bg-gray-300 cursor-pointer text-lg text-center md:p-3 p-1 rounded-full inline-block w-[150px]"
+                >{{ $t("Add image") }}</label
+              >
+              <input
+                class="hidden"
+                type="file"
+                name="upload_photo"
+                id="upload_photo"
+                @change="uploadPhoto($event)"
+                accept="image/*"
+              />
+            </div>
           </div>
         </div>
         <div class="form-inputs grid md:grid-cols-2 gap-6 grid-cols-1">
-          <div class="input-field">
-            <label
-              for="FirstName"
-              class="capitalize text-text-color block md:text-lg text-md text-lg"
-              >{{ $t("First Name") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="FirstName" class="capitalize block text-xl">{{
+              $t("First Name")
+            }}</label>
             <input
               type="text"
               v-validate="{ alpha: true, required: true }"
               name="FirstName"
-              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
               :placeholder="$t('enter FirstName')"
               v-model="person.FirstName"
             />
             <span class="text-red-400">{{ errors.first("FirstName") }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="LastName"
-              class="capitalize text-text-color block md:text-lg text-md"
-              >{{ $t("Last Name") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="LastName" class="capitalize block text-xl">{{
+              $t("Last Name")
+            }}</label>
             <input
               type="text"
               v-validate="{ alpha: true, required: true }"
               name="LastName"
               :placeholder="$t('enter LastName')"
               v-model="person.LastName"
-              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
             <span class="text-red-400">{{ errors.first("LastName") }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="Email"
-              class="capitalize text-text-color block md:text-lg text-md"
-              >{{ $t("Email") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="Email" class="capitalize block text-xl">{{
+              $t("Email")
+            }}</label>
             <input
               type="email"
               :placeholder="$t('enter Email')"
               v-model="person.Email"
               v-validate="{ required: true, email: true }"
               name="Email"
-              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
             <span class="text-red-400">{{ errors.first("Email") }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="Mobile Number"
-              class="capitalize text-text-color block md:text-lg text-md"
-              >{{ $t("Mobile Number") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="Mobile Number" class="capitalize block text-xl">{{
+              $t("Mobile Number")
+            }}</label>
             <input
               type="number"
               :placeholder="$t('enter mobile number')"
               v-validate="{ required: true, min: 6 }"
               name="MobileNumber"
               v-model="person.MobileNumber"
-              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
             <span class="text-red-400">{{ errors.first("MobileNumber") }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="Password"
-              class="capitalize text-text-color block md:text-lg text-md"
-              >{{ $t("Password") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="Password" class="capitalize block text-xl">{{
+              $t("Password")
+            }}</label>
             <input
               type="password"
               :placeholder="$t('enter Password')"
               v-validate="{ required: true, min: 8 }"
               name="password"
               v-model="person.password"
-              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
             <span class="text-red-400">{{ errors.first("password") }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="ConfirmPassword"
-              class="capitalize text-text-color block md:text-lg text-md"
-              >{{ $t("Confirm password") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="ConfirmPassword" class="capitalize block text-xl">{{
+              $t("Confirm password")
+            }}</label>
             <input
               type="password"
               v-validate="{ required: true, min: 8 }"
               name="ConfirmPassword"
               :placeholder="$t('enter Confirm Password')"
               v-model="person.ConfirmPassword"
-              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
             <span class="text-red-400">{{
               errors.first("ConfirmPassword")
             }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="Address"
-              class="capitalize text-text-color block md:text-lg text-md"
-              >{{ $t("Address") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="Address" class="capitalize block text-xl">{{
+              $t("Address")
+            }}</label>
             <input
               type="text"
               :placeholder="$t('enter shop address')"
               v-validate="{ required: true }"
               name="Address"
               v-model="person.Address"
-              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
             <span class="text-red-400">{{ errors.first("Address") }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="ID"
-              class="capitalize text-text-color block md:text-lg text-md"
-              >{{ $t("ID or Comercial Registration number") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="ID" class="capitalize block text-xl">{{
+              $t("ID or Comercial Registration number")
+            }}</label>
             <input
               type="number"
               :placeholder="$t('enter number')"
               v-validate="{ required: true }"
               name="ID"
               v-model="person.ID"
-              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
             <span class="text-red-400">{{ errors.first("ID") }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="Country"
-              class="capitalize text-text-color block md:text-lg text-md"
-              >{{ $t("Country") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="Country" class="capitalize block text-xl">{{
+              $t("Country")
+            }}</label>
             <select
               v-model="person.Country"
               v-validate="{ required: true }"
               name="Country"
-              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             >
               <option disabled selected value="">
                 {{ $t("Select Country") }}
@@ -232,17 +223,15 @@
             </select>
             <span class="text-red-400">{{ errors.first("Country") }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="Nationality"
-              class="capitalize text-text-color block md:text-lg text-md"
-              >{{ $t("Nationality") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="Nationality" class="capitalize block text-xl">{{
+              $t("Nationality")
+            }}</label>
             <select
               v-model="person.Nationality"
               v-validate="{ required: true }"
               name="Nationality"
-              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             >
               <option disabled selected value="">
                 {{ $t("Select Nationality") }}
@@ -254,17 +243,15 @@
             </select>
             <span class="text-red-400">{{ errors.first("Nationality") }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="Region"
-              class="capitalize text-text-color block md:text-lg text-md"
-              >{{ $t("Region") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="Region" class="capitalize block text-xl">{{
+              $t("Region")
+            }}</label>
             <select
               v-model="person.Region"
               v-validate="{ required: true }"
               name="Region"
-              class="placeholder:capitalize p-4 rounded-lg placeholder:text-gray-600 placeholder:text-xl bg-gray-200 w-[100%]"
+              class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             >
               <option disabled selected value="">
                 {{ $t("Select Region") }}
@@ -279,17 +266,15 @@
             </select>
             <span class="text-red-400">{{ errors.first("Region") }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="City"
-              class="capitalize text-text-color block md:text-lg text-md"
-              >{{ $t("City") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="City" class="capitalize block text-xl">{{
+              $t("City")
+            }}</label>
             <select
               v-model="person.City"
               v-validate="{ required: true }"
               name="City"
-              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             >
               <option disabled selected value="">
                 {{ $t("Select City") }}
@@ -301,84 +286,79 @@
             </select>
             <span class="text-red-400">{{ errors.first("City") }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="IBAN"
-              class="capitalize text-text-color block md:text-lg text-md text-lg"
-              >{{ $t("IBAN") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="IBAN" class="capitalize block text-xl">{{
+              $t("IBAN")
+            }}</label>
             <input
               type="number"
               v-validate="{ required: true }"
               name="IBAN"
-              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
               :placeholder="$t('enter bank IBAN')"
               v-model="person.IBAN"
             />
             <span class="text-red-400">{{ errors.first("IBAN") }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="Account Number"
-              class="capitalize text-text-color block md:text-lg text-md"
-              >{{ $t("Account Number") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="Account Number" class="capitalize block text-xl">{{
+              $t("Account Number")
+            }}</label>
             <input
               type="text"
               v-validate="{ required: true }"
               name="AccountNumber"
               :placeholder="$t('enter Account Number')"
               v-model="person.AccountNumber"
-              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
             <span class="text-red-400">{{
               errors.first("AccountNumber")
             }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="Comercial Activity"
-              class="capitalize text-text-color block md:text-lg text-md"
-              >{{ $t("Comercial Activity") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="Comercial Activity" class="capitalize block text-xl">{{
+              $t("Comercial Activity")
+            }}</label>
             <input
               type="text"
               v-validate="{ required: true }"
               name="ComercialActivity"
               :placeholder="$t('Comercial Activity')"
               v-model="person.ComercialActivity"
-              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
             <span class="text-red-400">{{
               errors.first("ComercialActivity")
             }}</span>
           </div>
-          <div class="input-field">
-            <label
-              for="Legal Capacity"
-              class="capitalize text-text-color block md:text-lg text-md"
-              >{{ $t("Legal Capacity") }}</label
-            >
+          <div class="input-field space-y-2">
+            <label for="Legal Capacity" class="capitalize block text-xl">{{
+              $t("Legal Capacity")
+            }}</label>
             <input
               type="number"
               :placeholder="$t('enter Legal Capacity')"
               v-validate="{ required: true }"
               name="LegalCapacity"
               v-model="person.LegalCapacity"
-              class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+              class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
             <span class="text-red-400">{{
               errors.first("LegalCapacity")
             }}</span>
           </div>
-          <div class="input-field">
-            <label class="block text-gray-700 text-[16px]">
-              Licence Photo one
+          <div class="input-field space-y-2">
+            <label class="capitalize block text-xl">
+              {{ $t("Licence Photo one") }}
               <div
                 class="flex items-center justify-center bg-gray-100 rounded-[10px] focus:ring-[#24C6C9] focus:border-[#24C6C9] w-full h-[200px]"
               >
+                <label for="license_photo_1" class="cursor-pointer">{{
+                  $t("Add images")
+                }}</label>
                 <input
-                  class="text-sm text-grey-100 text-[15px] file:bg-gray-100 file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
+                  class="text-sm text-grey-100 hidden text-[15px] file:bg-gray-100 file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
                   type="file"
                   v-validate="{ required: true }"
                   name="license_photo_1"
@@ -392,14 +372,17 @@
               }}</span>
             </label>
           </div>
-          <div class="input-field">
-            <label class="block text-gray-700 text-[16px]">
-              Licence Photo Two
+          <div class="input-field space-y-2">
+            <label class="capitalize block text-xl">
+              {{ $t("Licence Photo Two") }}
               <div
                 class="flex items-center justify-center bg-gray-100 rounded-[10px] focus:ring-[#24C6C9] focus:border-[#24C6C9] w-full h-[200px]"
               >
+                <label for="license_photo_2 " class="cursor-pointer">{{
+                  $t("Add images")
+                }}</label>
                 <input
-                  class="text-sm text-grey-100 text-[15px] file:bg-gray-100 file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
+                  class="text-sm text-grey-100 hidden text-[15px] file:bg-gray-100 file:w-full file:rounded-full file:border-0 file:text-[#3A3A3A] hover:file:cursor-pointer"
                   type="file"
                   v-validate="{ required: true }"
                   name="license_photo_2"

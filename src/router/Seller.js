@@ -5,11 +5,13 @@ import SellerRegister from "../views/Seller/SellerRegister.vue";
 import SellerHome from "../components/Seller/SellerHome.vue";
 import SellerOrders from "../components/Seller/SellerOrders.vue";
 import Home from "../components/Seller/SellerAllServies.vue";
-import SellerRequests from "../components/Seller/SellerRequests.vue";
 import SellerOffers from "../components/Seller/SellerOffers.vue";
 import SellerProfile from "../components/Seller/SellerProfile.vue";
 import SellerChat from "../components/Seller/SellerChat.vue";
 import SellerWallet from "../components/Seller/SellerWallet.vue";
+import SellerRequests from "../components/Seller/SellerRequests.vue";
+import SellerRequestedService from "../components/Seller/SellerRequestedService.vue";
+import SellerRequestedOrders from "../components/Seller/SellerRequestedOrders.vue";
 import SellerRequestDetials from "../components/Seller/SellerRequestDetials.vue";
 import SellerOferCreate from "../components/Seller/SellerOferCreate.vue";
 import SellerProfileServices from "../components/Seller/SellerProfileServices.vue";
@@ -40,6 +42,16 @@ const routes = [
         path: "/Requests",
         name: "Seller.Requests",
         component: SellerRequests,
+      },
+      {
+        path: "/RequestedOrders",
+        name: "Seller.Requested orders",
+        component: SellerRequestedOrders,
+      },
+      {
+        path: "/RequestedService",
+        name: "Seller.Requested service",
+        component: SellerRequestedService,
       },
       {
         path: "/request/:requestId/Details",
