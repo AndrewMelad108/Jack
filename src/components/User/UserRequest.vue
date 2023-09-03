@@ -28,7 +28,7 @@
             class="rounded-xl min-h-48 p-4 bg-white"
             @click="addRequest(Request.id)"
           >
-            <h1 class="text-xl font-bold">{{ Request.RequestName }}</h1>
+            <h1 class="text-xl font-bold capitalize">{{ $t(Request.RequestName) }}</h1>
             <p class="mt-4 text-text-color">
               {{ Request.Requestdes }}
             </p>
@@ -104,13 +104,13 @@ export default {
       Requests: [
         {
           id: 1,
-          RequestName: "Towing And Shipping",
+          RequestName: "towing and shipping",
           Requestdes: "This include the services related to the oil change",
           RequestDate: "2022-11-11",
         },
         {
           id: 2,
-          RequestName: "Car Maintenance And Care",
+          RequestName: "car maintenance and care",
           Requestdes: "This include the services related to the oil change",
           RequestDate: "2022-11-11",
         },
