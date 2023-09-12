@@ -35,36 +35,38 @@
             <p class="font-bold">
               {{ $t("Spare Parts Type") }}
               <span class="text-text-color md:px-6">
-                {{ Offer.SparePartsType }}</span
+                {{ OfferDetails.SparePartsType }}</span
               >
             </p>
             <p class="font-bold">
               {{ $t("Brand")
               }}<span class="text-text-color md:px-6 px-2">
-                {{ Offer.Brand }}</span
+                {{ OfferDetails.Brand }}</span
               >
             </p>
             <p class="font-bold">
               {{ $t("Model") }}
               <span class="text-text-color md:px-6 px-2">
-                {{ Offer.Model }}</span
+                {{ OfferDetails.Model }}</span
               >
             </p>
             <p class="font-bold">
               {{ $t("Year of Manufactur")
               }}<span class="text-text-color md:px-4 px-2">
-                {{ Offer.YearofManufactur }}</span
+                {{ OfferDetails.YearofManufactur }}</span
               >
             </p>
             <p class="font-bold">
               {{ $t("Car Serial Number") }}
               <span class="text-text-color md:px-6 px-2">
-                {{ Offer.CarSerialNumber }}</span
+                {{ OfferDetails.CarSerialNumber }}</span
               >
             </p>
             <p class="font-bold">
               {{ $t("Part Name") }}
-              <span class="text-text-color px-6"> {{ Offer.PartName }}</span>
+              <span class="text-text-color px-6">
+                {{ OfferDetails.PartName }}</span
+              >
             </p>
           </div>
           <div class="Offer_form space-y-6 mt-2">
@@ -78,6 +80,7 @@
                 type="text"
                 v-validate="{ alpha: true, required: true }"
                 name="FirstName"
+                v-model="Offer.name"
                 class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
                 :placeholder="$t('enter First Name')"
               />
@@ -91,8 +94,9 @@
               >
               <input
                 type="text"
-                v-validate="{ alpha: true, required: true }"
-                name="LastName"
+                v-validate="{ required: true }"
+                name="PostCost"
+                v-model="Offer.PartCost"
                 :placeholder="$t('enter Post Cost')"
                 class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
               />
@@ -106,9 +110,10 @@
               >
               <input
                 type="number"
-                :placeholder="$t('enter Amount')"
-                v-validate="{ required: true, email: true }"
+                :placeholder="$t('Enter Amount')"
+                v-validate="{ required: true }"
                 name="Amount"
+                v-model="Offer.Amount"
                 class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
               />
               <span class="text-red-400">{{ errors.first("Amount") }}</span>
@@ -120,11 +125,11 @@
                 >{{ $t("TotalCost") }}</label
               >
               <input
-                type="text"
-                :placeholder="$t('enter Total Cost')"
-                v-validate="{ required: true, min: 6 }"
+                type="number"
+                :placeholder="$t('Enter Total Cost')"
+                v-validate="{ required: true }"
                 name="TotalCost"
-                v-model="MobileNumber"
+                v-model="Offer.Total"
                 class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
               />
               <span class="text-red-400">{{ errors.first("TotalCost") }}</span>
@@ -136,22 +141,18 @@
                 >{{ $t("Details") }}</label
               >
               <textarea
-                class="resize-none h-20 w-full bg-gray-200 rounded-lg"
+                class="resize-none h-20 w-full placeholder:p-2 bg-gray-200 rounded-lg"
                 name="Details"
                 id="Details"
+                v-model="Offer.description"
                 rows="10"
+                :placeholder="$t('Enter More Details')"
+                v-validate="'required'"
               ></textarea>
               <span class="text-red-400">{{ errors.first("Details") }}</span>
             </div>
             <button
-              @click="
-                $router.push({
-                  name: 'Seller.SellerOferCreate',
-                  params: {
-                    OfferId: 1,
-                  },
-                })
-              "
+              @click="addOffers"
               class="bg-main-color w-full font-bold border-2 md:text-md text-sm text-white p-1 md:px-3 md:py-2 rounded-lg"
             >
               {{ $t("Add") }}
@@ -259,8 +260,6 @@
             id="upload_photo"
             @change="onFileChanged($event)"
             accept="image/*"
-            v-validate="{ required: true }"
-            name="Addimages"
           />
         </div>
       </div>
@@ -276,7 +275,7 @@ export default {
     return {
       Lang: localStorage.getItem("lang"),
       total: "750",
-      Offer: {
+      OfferDetails: {
         SparePartsType: "new",
         Brand: "Yamaha",
         Model: "Hilux",
@@ -300,10 +299,40 @@ export default {
           Total: 2,
         },
       ],
+      Offer: {
+        name: "",
+        description: "",
+        Amount: null,
+        PartCost: null,
+        Total: null,
+      },
     };
   },
   components: {
     WelcomeMassage,
+  },
+  methods: {
+    addOffers() {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          // Validation passed, add data
+          try {
+            this.services.push({
+              name: this.Offer.name,
+              description: this.Offer.description,
+              Amount: this.Offer.Amount,
+              PartCost: this.Offer.PartCost,
+              Total: this.Offer.Total,
+            });
+          } catch (error) {
+            console.error("Error adding data:", error);
+          }
+        } else {
+          // Validation errors occurred, log them
+          console.log("Validation errors:", this.$validator.errors.all());
+        }
+      });
+    },
   },
 };
 </script>
