@@ -52,7 +52,7 @@
             <option value="asd2">asd</option>
             <option value="asd3">asd</option>
           </select>
-          <p class="text-red-400">{{ errors.first("ServiceType") }}</p>
+          <p class="text-red-400">{{ errors.first("SelectBrand") }}</p>
           <label for="Model" class="capitalize block text-xl">
             {{ $t("Model") }}</label
           >
