@@ -222,5 +222,19 @@
   "Add Day": "أضف يوم",
   "Discard": "ينبذ",
   "Save": "يحفظ",
-  "Coordinates:": "الإحداثيات:"
+  "Coordinates:": "الإحداثيات:",
+  "Price includes shipping": "السعر شامل الشحن",
+  "Attached images": "الصور المرفقه",
+  "Delete image": "حذف صورة",
+  "enter First Name": "ادخل الاسم الاول",
+  "PostCost": "شفرة البريد",
+  "enter Post Cost": "ادخل سفره البريد",
+  "Enter Amount": "ادخل الكميه",
+  "TotalCost": "التكلفة الإجمالية",
+  "Enter Total Cost": "أدخل التكلفة الإجمالية",
+  "Enter More Details": "أدخل المزيد من التفاصيل",
+  "Information about": "معلومات عنا",
+  "FAQs": "اسئلة متكرره",
+  "Terms and Conditions": "الشروط والاحكام",
+  "privacy policy": "سياسة الخصوصية"
 }

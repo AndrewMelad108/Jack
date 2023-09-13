@@ -86,7 +86,104 @@
         </div>
       </div>
     </div>
-
+    <div class="mt-4 lg:flex hidden w-[90%] mx-auto max-h-[300px] md:gap-4">
+      <div
+        class="h-52 w-3/12 px-2 content-center bg-gray-100 rounded-xl capitalize text-center font-boldx 2 py-6"
+      >
+        <h1 class="w-22 break-words md:text-lg sm:text-sm">
+          {{ $t("Balance (SAR)") }}
+        </h1>
+        <p class="mt-16 text-main-color font-bold text-4xl">1234</p>
+      </div>
+      <div
+        class="h-52 w-3/12 px-2 content-center bg-gray-100 rounded-xl capitalize text-center font-boldx 2 py-6"
+      >
+        <h1 class="w-22 break-words md:text-lg sm:text-sm">
+          {{ $t("Pending Orders") }}
+        </h1>
+        <p class="mt-16 text-main-color font-bold text-4xl">03</p>
+      </div>
+      <div
+        class="h-52 w-3/12 px-2 bg-gray-100 content-centerbg-gray-100 rounded-xl capitalize text-center font-boldx 2 py-6"
+      >
+        <h1 class="w-22 break-words md:text-lg sm:text-sm">
+          {{ $t("New Requests") }}
+        </h1>
+        <p class="mt-16 text-main-color font-bold text-4xl">12</p>
+      </div>
+      <div
+        class="h-52 w-3/12 px-2 content-center bg-gray-100 rounded-xl capitalize text-center font-boldx 2 py-6"
+      >
+        <h1 class="w-22 break-words md:text-lg sm:text-sm">
+          {{ $t("Unread Messages") }}
+        </h1>
+        <p class="mt-16 text-main-color font-bold text-4xl">123</p>
+      </div>
+    </div>
+    <div
+      class="image-home my-8 grid md:grid-cols-5 grid-cols-3 items-center justify-center text-center w-[90%] mx-auto"
+    >
+      <img
+        src="../../assets/images/Companies/c_1.png"
+        alt=""
+        class="block mx-auto"
+        loading="lazy"
+      />
+      <img
+        src="../../assets/images/Companies/c_2.png"
+        alt=""
+        class="block mx-auto"
+        loading="lazy"
+      />
+      <img
+        src="../../assets/images/Companies/c_3.png"
+        alt=""
+        class="block mx-auto"
+        loading="lazy"
+      />
+      <img
+        src="../../assets/images/Companies/c_4.png"
+        alt=""
+        class="block mx-auto"
+        loading="lazy"
+      />
+      <img
+        src="../../assets/images/Companies/c_5.png"
+        alt=""
+        class="block mx-auto"
+        loading="lazy"
+      />
+      <img
+        src="../../assets/images/Companies/c_6.png"
+        alt=""
+        class="block mx-auto"
+        loading="lazy"
+      />
+      <img
+        src="../../assets/images/Companies/c_7.png"
+        alt=""
+        class="block mx-auto"
+        loading="lazy"
+      />
+      <img
+        src="../../assets/images/Companies/c_8.png"
+        alt=""
+        class="block mx-auto"
+        loading="lazy"
+      />
+      <img
+        src="../../assets/images/Companies/c_9.png"
+        alt=""
+        class="block mx-auto"
+        loading="lazy"
+      />
+      <img
+        src="../../assets/images/Companies/c_10.png"
+        alt=""
+        class="block mx-auto"
+        loading="lazy"
+      />
+    </div>
     <div
       class="card-details my-12 grid md:grid-cols-3 grid-cols-1 items-center gap-4 justify-around w-[90%] mx-auto"
     >
@@ -153,44 +250,31 @@
       <img
         src="../../assets/images/image_slider.png"
         alt="image_slider"
-        class="md:w-[70%] w-[90%] mt-2 h-full block rounded-lg mx-auto bg-cover bg-center"
+        class="w-[70%] mt-2 h-full block rounded-lg mx-auto bg-cover bg-center"
       />
     </div>
-    <div class="grid md:grid-cols-2 grid-cols-1 gap-4 p-4">
-      <div
-        class="dashbord md:mb-0 mb-4 grid lg:grid-cols-2 grid-cols-1 items-start mx-auto w-[90%] gap-4"
-      >
+    <div class="grid md:grid-cols-2 min-h-[400px] grid-cols-1 gap-4 p-4">
+      <div class="card-info space-y-4">
         <div
-          class="px-2 h-full items-center flex flex-col justify-center bg-gray-100 rounded-xl capitalize text-center font-boldx 2 py-6"
+          class="border border-main-color flex items-center h-20 p-4 rounded-xl"
         >
-          <h1 class="w-22 break-words md:text-lg sm:text-sm">
-            {{ $t("Balance (SAR)") }}
-          </h1>
-          <p class="mt-4 text-main-color font-bold text-4xl">1234</p>
+          <span class="font-bold"> {{ $t("Card Number:") }}</span> 1111 2222
+          3333 4444
         </div>
-        <div
-          class="px-2 h-full items-center flex flex-col justify-center bg-gray-100 rounded-xl capitalize text-center font-boldx 2 py-6"
+        <label
+          v-if="cardFace == ''"
+          for="card-photo"
+          class="border h-80 cursor-pointer flex justify-center items-center rounded-xl border-dotted border-text-color"
         >
-          <h1 class="w-22 break-words md:text-lg sm:text-sm">
-            {{ $t("Pending Orders") }}
-          </h1>
-          <p class="mt-4 text-main-color font-bold text-4xl">03</p>
-        </div>
-        <div
-          class="px-2 h-full items-center flex flex-col justify-center bg-gray-100 rounded-xl capitalize text-center font-boldx 2 py-6"
-        >
-          <h1 class="w-22 break-words md:text-lg sm:text-sm">
-            {{ $t("New Requests") }}
-          </h1>
-          <p class="mt-4 text-main-color font-bold text-4xl">12</p>
-        </div>
-        <div
-          class="px-2 h-full items-center flex flex-col justify-center bg-gray-100 rounded-xl capitalize text-center font-boldx 2 py-6"
-        >
-          <h1 class="w-22 break-words md:text-lg sm:text-sm">
-            {{ $t("Unread Messages") }}
-          </h1>
-          <p class="mt-4 text-main-color font-bold text-4xl">123</p>
+          <img
+            src="../../assets/images/add-alt.png"
+            alt="add-alt"
+            loading="lazy"
+          />
+          <input type="file" class="hidden" id="card-photo" />
+        </label>
+        <div v-else class="image-photo h-80">
+          <img :src="cardFace" alt="" />
         </div>
       </div>
       <tradeMark />

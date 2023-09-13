@@ -91,6 +91,36 @@
           <p class="md:text-lg text-sm my-4 capitalize">
             {{ $t("total amount is") }} {{ total }}
           </p>
+          <div class="checkAllPrices my-4 flex gap-2 items-center">
+            <input
+              type="checkbox"
+              class="w-5 h-5 rounded-xl"
+              v-model="PriceCheck"
+            />
+            <span class="md:text-lg text-sm">{{
+              $t("Price includes shipping")
+            }}</span>
+          </div>
+          <div class="OfferPhotos my-4">
+            <h1 class="my-4 md:text-xl text-md font-bold">
+              {{ $t("Attached images") }}
+            </h1>
+
+            <div
+              class="photos items-start flex space-y-4 gap-2 md:flex-row flex-col my-6 justify-between"
+            >
+              <div class="photo1">
+                <MapGoogle></MapGoogle>
+              </div>
+              <div class="photo2">
+                <img
+                  :src="imageUrl"
+                  alt="الصورة المختارة"
+                  class="md:w-[80%] md:mx-auto w-full"
+                />
+              </div>
+            </div>
+          </div>
         </div>
         <button
           @click="
@@ -101,7 +131,7 @@
               },
             })
           "
-          class="bg-main-color w-full font-bold border-2 md:text-md text-sm text-white p-1 md:px-3 md:py-2 rounded-lg"
+          class="bg-main-color h-12 font-bold w-full border-2 md:text-lg text-sm text-white p-1 md:px-3 md:py-2 rounded-lg"
         >
           {{ $t("Send Offer") }}
         </button>
@@ -118,10 +148,13 @@
 <script>
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import InputSearch from "@/components/Shared/Form/InputSearch.vue";
+import MapGoogle from "../../components/Shared/Map.vue";
+
 export default {
   name: "SellerRequestDetials",
   data() {
     return {
+      imageUrl: require("@/assets/images/Saudi_licene_front.jpg"),
       Lang: localStorage.getItem("lang"),
       total: "750",
       Offer: {
@@ -148,11 +181,14 @@ export default {
           Total: 2,
         },
       ],
+      PriceCheck: false,
     };
   },
+
   components: {
     WelcomeMassage,
     InputSearch,
+    MapGoogle,
   },
 };
 </script>

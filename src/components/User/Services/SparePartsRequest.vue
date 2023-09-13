@@ -109,7 +109,7 @@
             <option value="asd3">asd</option>
           </select>
           <p class="text-red-400">
-            {{ errors.first("Select Model") }}
+            {{ errors.first("Select Year") }}
           </p>
           <label for=" CarSerialNumber" class="capitalize block text-xl">
             {{ $t("Car Serial Number") }}</label
@@ -118,12 +118,12 @@
             type="text"
             v-model.trim="SpareParts.CarSerialNumber"
             v-validate="{ required: true }"
-            name="PlateNumber"
+            name="Car Serial Number"
             :placeholder="$t('Enter Car Serial Number')"
             class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-100 w-[100%]"
           />
           <p class="text-red-400">
-            {{ errors.first("PlateNumber") }}
+            {{ errors.first("Car Serial Number") }}
           </p>
           <label for="Part Name" class="capitalize block text-xl">
             {{ $t("Part Name") }}</label

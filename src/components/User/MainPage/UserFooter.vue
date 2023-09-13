@@ -27,9 +27,9 @@
       </p>
     </div>
     <div
-      class="links lg:w-5/12 w-[90%] mx-auto space-y-6 lg:ml-6 lg:border-x-2 lg:border-solid lg:border-text-color lg:pl-8 pr-4"
+      class="links lg:w-4/12 w-[90%] mx-auto space-y-6 lg:ml-6 lg:border-x-2 lg:border-solid lg:border-text-color lg:pl-8 pr-4"
     >
-      <h1 class="my-4 font-bold text-xl w-[80%] mx-auto">
+      <h1 class="my-4 font-bold text-xl w-[75%] mx-auto">
         {{ $t("Site Map") }}
       </h1>
       <div
@@ -41,13 +41,19 @@
         }}</router-link>
         <router-link to="/Login/Create">{{ $t("SignIn") }}</router-link>
         <router-link to="">{{ $t("Testemonials") }}</router-link>
-        <router-link to="/User/Register/Create">{{ $t("SignUp") }}</router-link>
-        <router-link to="">{{ $t("User Reviews") }}</router-link>
+        <router-link to="/User/Register/Create">{{
+          $t("Information about")
+        }}</router-link>
+        <router-link to="">{{ $t("FAQs") }}</router-link>
+        <router-link to="/User/Register/Create">{{
+          $t("Terms and Conditions")
+        }}</router-link>
+        <router-link to="">{{ $t("privacy policy") }}</router-link>
       </div>
     </div>
-    <div class="social lg:w-3/12 w-[80%] mx-auto px-4">
-      <h1 class="my-4 font-bold text-xl w-[80%] mx-auto">Social</h1>
-      <div class="w-[80%] mx-auto space-y-6">
+    <div class="social lg:w-3/12 w-[70%] mx-auto px-4">
+      <h1 class="my-4 font-bold text-xl w-[80%]">Social</h1>
+      <div class="w-[80%] space-y-6">
         <p class="phone-number flex gap-4 cursor-pointer">
           <img
             src="../../../assets/images/facebook.png"
@@ -80,6 +86,62 @@
             loading="lazy"
           />instagram
         </p>
+      </div>
+      <div class="icon-image grid grid-cols-3 mt-2 w-[80%]">
+        <img
+          src="../../../assets/images/icons/social_1.png"
+          alt="social-icon"
+          loading="lazy"
+          class="h-14 w-14 p-2"
+        />
+        <img
+          src="../../../assets/images/icons/social_2.png"
+          alt="social-icon"
+          loading="lazy"
+          class="h-14 w-14 p-2"
+        />
+        <img
+          src="../../../assets/images/icons/social_3.png"
+          alt="social-icon"
+          loading="lazy"
+          class="h-14 w-14 p-2"
+        />
+        <img
+          src="../../../assets/images/icons/social_4.png"
+          alt="social-icon"
+          loading="lazy"
+          class="h-14 w-14 p-2"
+        />
+        <img
+          src="../../../assets/images/icons/social_5.png"
+          alt="social-icon"
+          loading="lazy"
+          class="h-14 w-14 p-2"
+        />
+        <img
+          src="../../../assets/images/icons/social_6.png"
+          alt="social-icon"
+          loading="lazy"
+          class="h-14 w-14 p-2"
+        />
+        <img
+          src="../../../assets/images/icons/social_7.png"
+          alt="social-icon"
+          loading="lazy"
+          class="h-14 w-14 p-2"
+        />
+        <img
+          src="../../../assets/images/icons/social_8.png"
+          alt="social-icon"
+          loading="lazy"
+          class="h-14 w-14 p-2"
+        />
+        <img
+          src="../../../assets/images/icons/social_9.png"
+          alt="social-icon"
+          loading="lazy"
+          class="h-14 w-14 p-2"
+        />
       </div>
     </div>
   </section>
