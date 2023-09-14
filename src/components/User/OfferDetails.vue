@@ -132,7 +132,8 @@
         </tbody>
       </table>
       <p class="md:text-lg text-sm my-4 capitalize">
-        {{ $t("total amount is") }} {{ total }}
+        {{ $t("total amount is") }} {{ total + " + "
+        }}{{ $t("Shipping expenses") }}
       </p>
       <div
         class="group-btn capitalize flex justify-center items-center gap-4 mx-auto"
