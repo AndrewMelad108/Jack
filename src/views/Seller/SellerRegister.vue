@@ -68,9 +68,7 @@
           >
             <p
               class="capitalize flex justify-center items-center md:text-3xl text-md text-white bg-main-color md:h-16 h-10 md:w-16 w-10 rounded-full sm:ml-8"
-            >
-              A
-            </p>
+            ></p>
             <div class="flex justify-center items-center gap-3">
               <label
                 for="upload_photo"

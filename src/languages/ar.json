@@ -63,6 +63,7 @@
   "Mobile Number": "رقم الهاتف المحمول",
   "enter mobile number": "أدخل رقم الهاتف المحمول",
   "ID or Comercial Registration number": "الهوية أو رقم السجل التجاري",
+  "Enter ID Number": "لهوية أو رقم السجل التجاري",
   "Country": "دولة",
   "Libia": "ليبيا",
   "Qatar": "قطر",
@@ -78,6 +79,7 @@
   "enter Account Number": "أدخل رقم الحساب",
   "enter bank IBAN": "أدخل رقم الحساب المصرفي الدولي للبنك",
   "Comercial Activity": "النشاط التجاري",
+  "Enter Comercial Activity": "ادخل النشاط التجاري",
   "Legal Capacity": "الأهلية القانونية",
   "enter Legal Capacity": "أدخل الأهلية القانونية",
   "accept": "يقبل",
@@ -236,5 +238,8 @@
   "Information about": "معلومات عنا",
   "FAQs": "اسئلة متكرره",
   "Terms and Conditions": "الشروط والاحكام",
-  "privacy policy": "سياسة الخصوصية"
+  "privacy policy": "سياسة الخصوصية",
+  "Return policy(1)": "سياسه الاسترجاع (1)",
+  "Return policy(2)": "سياسه الاسترجاع (2)",
+  "Shipping expenses": "مصاريف الشحن"
 }
