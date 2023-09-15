@@ -233,6 +233,59 @@
             {{ $t("total amount is") }} {{ total }}
           </p>
         </div>
+        <div class="checkAllPrices my-4 flex gap-2 items-center">
+          <input
+            type="checkbox"
+            class="w-5 h-5 rounded-xl"
+            v-model="PriceCheck"
+          />
+          <span class="md:text-lg text-sm">{{
+            $t("Price includes shipping")
+          }}</span>
+        </div>
+        <div v-if="!PriceCheck" class="input-field my-4">
+          <label
+            for="Price"
+            class="capitalize text-text-color block md:text-lg text-md"
+            >{{ $t("Price") }}</label
+          >
+          <input
+            type="number"
+            :placeholder="$t('Enter Price')"
+            v-validate="{ required: true }"
+            name="Price"
+            v-model="Offer.Price"
+            class="placeholder:capitalize my-2 p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
+          />
+          <span class="text-red-400">{{ errors.first("Price") }}</span>
+        </div>
+        <div
+          class="radio-inputs-group md:flex justify-between items-center my-4"
+        >
+          <div class="flex gap-2 items-center my-4">
+            <input
+              type="radio"
+              id="policy1"
+              name="policy"
+              class="cursor-pointer"
+            />
+            <label for="policy1" class="text-lg">{{
+              $t("Return policy(1)")
+            }}</label>
+          </div>
+          <div class="flex gap-2 items-center">
+            <input
+              type="radio"
+              id="policy2"
+              name="policy"
+              class="cursor-pointer"
+            />
+            <label for="policy2" class="text-lg">{{
+              $t("Return policy(2)")
+            }}</label>
+          </div>
+        </div>
+
         <button
           @click="
             $router.push({
@@ -274,6 +327,7 @@ export default {
   data() {
     return {
       Lang: localStorage.getItem("lang"),
+      PriceCheck: true,
       total: "750",
       OfferDetails: {
         SparePartsType: "new",

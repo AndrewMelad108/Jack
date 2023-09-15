@@ -26,6 +26,7 @@
             title="Add image"
           />
         </div>
+
         <button
           v-if="person.imageUrl"
           @click="person.imageUrl = ''"
@@ -37,86 +38,169 @@
           {{ errors.first("profileIamge") }}
         </p>
       </div>
-      <div class="Form-Seller bg-white h-auto rounded-lg md:p-6 p-2">
+      <div
+        class="Form-Seller bg-white min-h-[600px] h-auto rounded-lg md:p-6 p-2"
+      >
         <div class="group-btn mb-4 flex gap-4">
           <button
-            class="p-4 w-32 inline-block rounded-lg bg-main-color text-white capitalize"
+            @click="personalData = true"
+            :class="{ 'bg-main-color text-white ': personalData }"
+            class="p-4 w-32 inline-block rounded-lg text-lg font-bold bg-gray-200 text-black capitalize"
           >
             {{ $t("general") }}
           </button>
           <button
-            class="p-4 w-32 inline-block rounded-lg bg-gray-200 capitalize"
+            :class="{ 'bg-main-color text-white ': !personalData }"
+            @click="personalData = false"
+            class="p-4 w-32 inline-block rounded-lg text-lg font-bold bg-gray-200 capitalize"
           >
             {{ $t("other") }}
           </button>
-          <button
-            class="p-4 w-32 inline-block rounded-lg bg-gray-200 capitalize"
-          >
-            {{ $t("reviews") }}
-          </button>
         </div>
         <h1 class="font-bold text-lg">{{ $t("personal information") }}</h1>
-        <input
-          type="text"
-          v-validate="{ alpha: true, required: true }"
-          name="FirstName"
-          :placeholder="$t('First Name')"
-          class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
-        />
-        <p class="text-red-400">{{ errors.first("FirstName") }}</p>
-        <input
-          type="text"
-          v-validate="{ alpha: true, required: true }"
-          name="LastName"
-          :placeholder="$t('Last Name')"
-          class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
-        />
-        <p class="text-red-400">{{ errors.first("LastName") }}</p>
-        <select
-          v-validate="{ required: true }"
-          name="Region"
-          class="focus:outline-0 mt-4 p-3 rounded-lg text-text-color bg-gray-100 w-full mx-auto"
-        >
-          <option disabled selected value="">
-            {{ $t("Select Region") }}
-          </option>
+        <div v-if="personalData" class="personal-data">
+          <input
+            type="text"
+            v-validate="{ alpha: true, required: true }"
+            name="FirstName"
+            :placeholder="$t('First Name')"
+            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+          />
+          <p class="text-red-400">{{ errors.first("FirstName") }}</p>
+          <input
+            type="text"
+            v-validate="{ alpha: true, required: true }"
+            name="LastName"
+            :placeholder="$t('Last Name')"
+            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+          />
+          <p class="text-red-400">{{ errors.first("LastName") }}</p>
+          <select
+            v-validate="{ required: true }"
+            name="Region"
+            class="focus:outline-0 mt-4 p-3 rounded-lg text-text-color bg-gray-100 w-full mx-auto"
+          >
+            <option disabled selected value="">
+              {{ $t("Select Region") }}
+            </option>
 
-          <option value="asd1">asd</option>
-          <option value="asd2">asd</option>
-          <option value="asd3">asd</option>
-        </select>
-        <p class="text-red-400">{{ errors.first("Region") }}</p>
-        <select
-          v-validate="{ alpha: true, required: true }"
-          name="City"
-          class="placeholder:capitalize focus:outline-0 mt-4 p-3 rounded-lg text-text-color bg-gray-100 w-full mx-auto"
-        >
-          <option disabled selected value="">
-            {{ $t("Select City") }}
-          </option>
+            <option value="asd1">asd</option>
+            <option value="asd2">asd</option>
+            <option value="asd3">asd</option>
+          </select>
+          <p class="text-red-400">{{ errors.first("Region") }}</p>
+          <select
+            v-validate="{ alpha: true, required: true }"
+            name="City"
+            class="placeholder:capitalize focus:outline-0 mt-4 p-3 rounded-lg text-text-color bg-gray-100 w-full mx-auto"
+          >
+            <option disabled selected value="">
+              {{ $t("Select City") }}
+            </option>
 
-          <option value="asd1">asd</option>
-          <option value="asd2">asd</option>
-          <option value="asd3">asd</option>
-        </select>
-        <p class="text-red-400">{{ errors.first("City") }}</p>
-        <h1 class="font-bold mt-2 text-lg">{{ $t("Contact information") }}</h1>
-        <input
-          v-validate="{ required: true, email: true }"
-          name="Email"
-          type="Email"
-          :placeholder="$t('enter email')"
-          class="placeholder:text-text-color placeholder:capitalize bg-gray-100 w-full p-3 rounded-md mt-4"
-        />
-        <p class="text-red-400">{{ errors.first("Email") }}</p>
-        <input
-          type="text"
-          v-validate="{ required: true, min: 11 }"
-          name="Number"
-          :placeholder="$t('Contact Number')"
-          class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
-        />
-        <p class="text-red-400">{{ errors.first("Number") }}</p>
+            <option value="asd1">asd</option>
+            <option value="asd2">asd</option>
+            <option value="asd3">asd</option>
+          </select>
+          <p class="text-red-400">{{ errors.first("City") }}</p>
+          <h1 class="font-bold mt-2 text-lg">
+            {{ $t("Contact information") }}
+          </h1>
+          <input
+            v-validate="{ required: true, email: true }"
+            name="Email"
+            type="Email"
+            :placeholder="$t('enter email')"
+            class="placeholder:text-text-color placeholder:capitalize bg-gray-100 w-full p-3 rounded-md mt-4"
+          />
+          <p class="text-red-400">{{ errors.first("Email") }}</p>
+          <input
+            type="text"
+            v-validate="{ required: true, min: 11 }"
+            name="Number"
+            :placeholder="$t('Contact Number')"
+            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+          />
+          <p class="text-red-400">{{ errors.first("Number") }}</p>
+        </div>
+        <div v-else class="others-data">
+          <input
+            type="text"
+            v-validate="{ required: true }"
+            name="ID"
+            :placeholder="$t('Enter ID Number')"
+            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+            v-model="person.ID"
+          />
+          <p class="text-red-400">{{ errors.first("ID") }}</p>
+          <input
+            type="text"
+            v-validate="{ required: true }"
+            name="IBAN"
+            v-model="person.IBAN"
+            :placeholder="$t('enter bank IBAN')"
+            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+          />
+          <p class="text-red-400">{{ errors.first("IBAN") }}</p>
+          <select
+            v-validate="{ required: true }"
+            name="Nationality"
+            v-model="person.Nationality"
+            class="focus:outline-0 mt-4 p-3 rounded-lg text-text-color bg-gray-100 w-full mx-auto"
+          >
+            <option disabled selected value="">
+              {{ $t("Select Nationality") }}
+            </option>
+
+            <option value="asd1">asd</option>
+            <option value="asd2">asd</option>
+            <option value="asd3">asd</option>
+          </select>
+          <p class="text-red-400">{{ errors.first("Nationality") }}</p>
+          <select
+            v-validate="{ alpha: true, required: true }"
+            name="Country"
+            v-model="person.Country"
+            class="placeholder:capitalize focus:outline-0 mt-4 p-3 rounded-lg text-text-color bg-gray-100 w-full mx-auto"
+          >
+            <option disabled selected value="">
+              {{ $t("Select Country") }}
+            </option>
+
+            <option value="asd1">asd</option>
+            <option value="asd2">asd</option>
+            <option value="asd3">asd</option>
+          </select>
+          <p class="text-red-400">{{ errors.first("Country") }}</p>
+
+          <input
+            v-validate="{ required: true }"
+            name="AccountNumber"
+            type="text"
+            v-model="person.AccountNumber"
+            :placeholder="$t('enter Account Number')"
+            class="placeholder:text-text-color placeholder:capitalize bg-gray-100 w-full p-3 rounded-md mt-4"
+          />
+          <p class="text-red-400">{{ errors.first("AccountNumber") }}</p>
+          <input
+            type="text"
+            v-validate="{ required: true, min: 11 }"
+            name="ComercialActivity"
+            v-model="person.ComercialActivity"
+            :placeholder="$t('Enter Comercial Activity')"
+            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+          />
+          <p class="text-red-400">{{ errors.first("ComercialActivity") }}</p>
+          <input
+            type="text"
+            v-validate="{ required: true }"
+            name="LegalCapacity"
+            v-model="person.LegalCapacity"
+            :placeholder="$t('enter Legal Capacity')"
+            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+          />
+          <p class="text-red-400">{{ errors.first("LegalCapacity") }}</p>
+        </div>
         <button
           @click="saveProfile"
           class="w-full p-2 mt-10 text-white rounded-lg bg-main-color"
@@ -135,13 +219,21 @@ export default {
   name: "UserProfile",
   data() {
     return {
+      personalData: true,
       person: {
         imageUrl: "",
         FirstName: "",
         LastName: "",
         Region: "",
         City: "",
+        Nationality: "",
         Number: "",
+        Country: "",
+        ID: "",
+        LegalCapacity: "",
+        IBAN: "",
+        ComercialActivity: "",
+        AccountNumber: "",
       },
     };
   },

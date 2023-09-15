@@ -91,7 +91,7 @@
           <p class="md:text-lg text-sm my-4 capitalize">
             {{ $t("total amount is") }} {{ total }}
           </p>
-          <div class="checkAllPrices my-4 flex gap-2 items-center">
+          <!-- <div class="checkAllPrices my-4 flex gap-2 items-center">
             <input
               type="checkbox"
               class="w-5 h-5 rounded-xl"
@@ -100,7 +100,7 @@
             <span class="md:text-lg text-sm">{{
               $t("Price includes shipping")
             }}</span>
-          </div>
+          </div> -->
           <div class="OfferPhotos my-4">
             <h1 class="my-4 md:text-xl text-md font-bold">
               {{ $t("Attached images") }}
