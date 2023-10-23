@@ -3,10 +3,10 @@
     <UserHeader :checked="checkUser" />
     <UserHeaderPhone />
     <div
-      class="bg-main-color min-h-20 w-full flex flex-warp content-center p-4 text-center"
+      class="bg-main-color min-h-20 w-full p-4 text-center"
     >
       <div
-        class="Seller-Nav w-[70%] mx-auto flex gap-10 capitalize justify-center text-white font-bold text-xl md:flex-row flex-col items-center"
+        class="Seller-Nav flex flex-wrap gap-10 capitalize justify-center text-white font-bold text-xl md:flex-row flex-col items-center"
       >
         <router-link :to="{ name: 'Seller.Profile Servies' }">{{
           $t("Profile Services")
@@ -23,13 +23,21 @@
         <router-link :to="{ name: 'Seller.Requests' }">{{
           $t("Requests")
         }}</router-link>
+        <router-link :to="{ name: 'Seller.Requested orders' }">{{
+          $t("Requested Orders")
+        }}</router-link>
+        <router-link :to="{ name: 'Seller.Requested service' }">{{
+          $t("Requested service")
+        }}</router-link>
         <router-link :to="{ name: 'Seller.Chats' }">{{
           $t("Chats")
         }}</router-link>
-
         <router-link :to="{ name: 'Seller.Wallet' }">{{
           $t("Wallet")
         }}</router-link>
+        <div class="cursor-pointer" @click="Logout()">
+          {{ $t("Logout") }}
+        </div>
       </div>
     </div>
     <div class="intro-page mb-16 mt-4 text-xl font-bold h-auto w-full">
@@ -307,6 +315,11 @@ export default {
         name: value,
       });
     },
+    Logout() {
+      this.$router.push({
+        name: "MainPage",
+      });
+    }
   },
 };
 </script>

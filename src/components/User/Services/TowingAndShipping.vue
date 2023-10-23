@@ -39,7 +39,7 @@
       <div class="lg:col-start-1 lg:col-end-4 col-start-1 col-end-2">
         <div class="Form-user bg-white h-auto rounded-lg p-4">
           <label for="SelectCity" class="mt-6 text-xl block">{{
-            $t("Select City")
+            $t("Select tow truck type")
           }}</label>
           <select
             class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-100 w-[100%]"
@@ -48,7 +48,7 @@
             v-model="Towing.City"
           >
             <option disabled selected value="">
-              {{ $t("Select City") }}
+              {{ $t("Select tow truck type") }}
             </option>
 
             <option value="asd1">asd</option>
