@@ -15,6 +15,7 @@ import SellerRequestedOrders from "../components/Seller/SellerRequestedOrders.vu
 import SellerRequestDetials from "../components/Seller/SellerRequestDetials.vue";
 import SellerOferCreate from "../components/Seller/SellerOferCreate.vue";
 import SellerProfileServices from "../components/Seller/SellerProfileServices.vue";
+import SellerPolicy from "../components/Seller/SellerPolicy.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -87,6 +88,11 @@ const routes = [
         path: "/Chat",
         name: "Seller.Chats",
         component: SellerChat,
+      },
+      {
+        path: "/Chat",
+        name: "Seller.Policy",
+        component: SellerPolicy,
       },
       {
         path: "/ProfileServices",

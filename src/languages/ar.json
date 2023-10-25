@@ -27,7 +27,10 @@
   "Controlpanel": "لوحة التحكم",
   "Wallet": "محفظة",
   "Card Number:": "رقم البطاقة",
-  "Full Name:": "الاسم الكامل:",
+  "Full Name": "الاسم الكامل",
+  "Enter Full Name": "ادخل الاسم الكامل",
+  "Nick Name": "الاسم المستعار",
+  "Enter Nick Name": "ادخل الاسم المستعار",
   "End Data:": "بيانات النهاية",
   "Confirmation Number:": "رقم التأكيد:",
   "please login to your account": "يرجى تسجيل الدخول إلى حسابك",
@@ -240,7 +243,12 @@
   "FAQs": "اسئلة متكرره",
   "Terms and Conditions": "الشروط والاحكام",
   "privacy policy": "سياسة الخصوصية",
-  "Return policy(1)": "سياسه الاسترجاع (1)",
-  "Return policy(2)": "سياسه الاسترجاع (2)",
-  "Shipping expenses": "مصاريف الشحن"
+  "Return policy": "سياسه الاسترجاع ",
+  "Policy": "اضافه سياسه",
+  "Shipping expenses": "مصاريف الشحن",
+  "Services": "خدمات",
+  "Services(2)": "خدمات2",
+  "Select Service": "اختار خدمه",
+  "Actions": "عمليات",
+  "delete": "مسح"
 }

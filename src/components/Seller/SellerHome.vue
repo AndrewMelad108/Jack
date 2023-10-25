@@ -2,9 +2,7 @@
   <section class="HomePage">
     <UserHeader :checked="checkUser" />
     <UserHeaderPhone />
-    <div
-      class="bg-main-color min-h-20 w-full p-4 text-center"
-    >
+    <div class="bg-main-color min-h-20 w-full p-4 text-center">
       <div
         class="Seller-Nav flex flex-wrap gap-10 capitalize justify-center text-white font-bold text-xl md:flex-row flex-col items-center"
       >
@@ -34,6 +32,9 @@
         }}</router-link>
         <router-link :to="{ name: 'Seller.Wallet' }">{{
           $t("Wallet")
+        }}</router-link>
+        <router-link :to="{ name: 'Seller.Policy' }">{{
+          $t("Policy")
         }}</router-link>
         <div class="cursor-pointer" @click="Logout()">
           {{ $t("Logout") }}
@@ -319,7 +320,7 @@ export default {
       this.$router.push({
         name: "MainPage",
       });
-    }
+    },
   },
 };
 </script>

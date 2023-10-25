@@ -98,10 +98,16 @@
             >
               {{ $t("Total") }}
             </th>
+            <th
+              scope="col"
+              class="md:px-4 px-1 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              {{ $t("Actions") }}
+            </th>
           </tr>
         </thead>
         <tbody class="bg-white divide-y capitalize divide-gray-200">
-          <tr v-for="service in services" :key="service.index">
+          <tr v-for="(service, index) in services" :key="index">
             <td
               class="md:px-2 px-1 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
             >
@@ -115,7 +121,12 @@
             <td
               class="md:px-2 px-1 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
             >
-              {{ service.Amount }}
+              <!-- {{ service.Amount }} -->
+              <input
+                type="number"
+                v-model="service.Amount"
+                class="block mx-auto border-4 text-center"
+              />
             </td>
             <td
               class="md:px-2 px-1 py-4 whitespace-nowrap text-sm text-gray-500"
@@ -125,14 +136,20 @@
             <td
               class="md:px-2 px-1 py-4 whitespace-nowrap text-sm text-gray-500"
             >
-              {{ service.Total }}
+              {{ service.Total * service.Amount }}
+            </td>
+            <td
+              @click="deleteService(index)"
+              class="md:px-2 cursor-pointer font-bold px-1 py-4 whitespace-nowrap text-sm text-gray-500"
+            >
+              {{ $t("delete") }}
             </td>
           </tr>
           <!-- Add more rows here -->
         </tbody>
       </table>
       <p class="md:text-lg text-sm my-4 capitalize">
-        {{ $t("total amount is") }} {{ total + " + "
+        {{ $t("total amount is") }} {{ totalAmount + " + "
         }}{{ $t("Shipping expenses") }}
       </p>
       <div
@@ -187,17 +204,26 @@ export default {
           description: "Description",
           Amount: 2,
           PartCost: 400,
-          Total: 2,
+          Total: 1,
         },
         {
           name: "service",
           description: "Description",
           Amount: 2,
           PartCost: 400,
-          Total: 2,
+          Total: 1,
         },
       ],
     };
+  },
+  computed: {
+    totalAmount() {
+      let sum = 0;
+      this.services.forEach((service) => {
+        sum += service.Amount * service.PartCost;
+      });
+      return sum;
+    },
   },
   watch: {
     Lang() {
@@ -208,6 +234,11 @@ export default {
     WelcomeMassage,
     InputSearch,
     SwitchLang,
+  },
+  methods: {
+    deleteService(index) {
+      this.services.splice(index, 1);
+    },
   },
 };
 </script>

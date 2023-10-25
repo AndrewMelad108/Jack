@@ -37,7 +37,9 @@
         <h1 class="md:text-xl text-md capitalize mt-4 pb-2">
           {{ $t("account type") }}
         </h1>
-        <div class="group-btn mb-4 sm:flex-row flex-col flex items-center gap-2">
+        <div
+          class="group-btn mb-4 sm:flex-row flex-col flex items-center gap-2"
+        >
           <div class="flex items-center gap-2 md:w-1/2 w-full">
             <button
               @click="
@@ -74,7 +76,7 @@
               v-validate="{ alpha: true, required: true }"
               name="FullName"
               class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
-              :placeholder="$t('enter FullName')"
+              :placeholder="$t('Enter Full Name')"
               v-model="person.FullName"
             />
             <span class="text-red-400">{{ errors.first("FullName") }}</span>
@@ -87,7 +89,7 @@
               type="text"
               v-validate="{ alpha: true, required: true }"
               name="NickName"
-              :placeholder="$t('enter NickName')"
+              :placeholder="$t('Enter Nick Name')"
               v-model="person.NickName"
               class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
@@ -324,6 +326,53 @@
               errors.first("LegalCapacity")
             }}</span>
           </div>
+          <!--Services inputs-->
+          <div class="input-field space-y-2">
+            <label for="Services" class="capitalize block text-xl">{{
+              $t("Services")
+            }}</label>
+            <select
+              v-model="person.Services"
+              v-validate="{ required: true }"
+              name="Services"
+              class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
+            >
+              <option disabled selected value="">
+                {{ $t("Select Service") }}
+              </option>
+              <option
+                v-for="Service in Services"
+                :key="Service.id"
+                :value="Service.id"
+              >
+                {{ $t(Service.name) }}
+              </option>
+            </select>
+            <span class="text-red-400">{{ errors.first("Services") }}</span>
+          </div>
+          <div class="input-field space-y-2">
+            <label for="Services" class="capitalize block text-xl">{{
+              $t("Services(2)")
+            }}</label>
+            <select
+              v-model="person.Services"
+              v-validate="{ required: true }"
+              name="Services"
+              class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
+            >
+              <option disabled selected value="">
+                {{ $t("Select Service") }}
+              </option>
+              <option
+                v-for="Service in Services"
+                :key="Service.id"
+                :value="Service.id"
+              >
+                {{ $t(Service.name) }}
+              </option>
+            </select>
+            <span class="text-red-400">{{ errors.first("Services") }}</span>
+          </div>
           <div class="input-field space-y-2">
             <label class="capitalize block text-xl">
               {{ $t("Licence Photo one") }}
@@ -424,7 +473,16 @@ export default {
         AccountNumber: "",
         ComercialActivity: "",
         LegalCapacity: "",
+        Services: "",
       },
+      Services: [
+        { id: 1, name: "towing and shipping" },
+        { id: 2, name: "car maintenance and care" },
+        { id: 3, name: "Spare Parts" },
+        { id: 4, name: "Baggage Transfer" },
+        { id: 5, name: "Free services and delivering household needs" },
+        { id: 6, name: "Sell Your Car" },
+      ],
       nations: [
         { id: 1, name: "Pakistani" },
         { id: 2, name: "American" },

@@ -259,33 +259,10 @@
           />
           <span class="text-red-400">{{ errors.first("Price") }}</span>
         </div>
-        <div
-          class="radio-inputs-group md:flex justify-between items-center my-4"
-        >
-          <div class="flex gap-2 items-center my-4">
-            <input
-              type="radio"
-              id="policy1"
-              name="policy"
-              class="cursor-pointer"
-            />
-            <label for="policy1" class="text-lg">{{
-              $t("Return policy(1)")
-            }}</label>
-          </div>
-          <div class="flex gap-2 items-center">
-            <input
-              type="radio"
-              id="policy2"
-              name="policy"
-              class="cursor-pointer"
-            />
-            <label for="policy2" class="text-lg">{{
-              $t("Return policy(2)")
-            }}</label>
-          </div>
+        <div class="checkAllPrices my-4 flex gap-2 items-center">
+          <input type="checkbox" class="w-5 h-5 rounded-xl" v-model="policy" />
+          <span class="md:text-lg text-sm">{{ $t("Return policy") }}</span>
         </div>
-
         <button
           @click="
             $router.push({
@@ -328,6 +305,7 @@ export default {
     return {
       Lang: localStorage.getItem("lang"),
       PriceCheck: true,
+      policy: false,
       total: "750",
       OfferDetails: {
         SparePartsType: "new",

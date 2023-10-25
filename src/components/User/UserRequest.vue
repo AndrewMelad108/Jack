@@ -28,7 +28,9 @@
             class="rounded-xl min-h-48 p-4 bg-white"
             @click="addRequest(Request.id)"
           >
-            <h1 class="text-xl font-bold capitalize">{{ $t(Request.RequestName) }}</h1>
+            <h1 class="text-xl font-bold capitalize">
+              {{ $t(Request.RequestName) }}
+            </h1>
             <p class="mt-4 text-text-color">
               {{ Request.Requestdes }}
             </p>
@@ -58,9 +60,16 @@
               />
               <div class="Offer-name">
                 <h1 class="font-bold mt-2">{{ offer.OfferName }}</h1>
-                <p class="text-text-color my-4">
+                <p class="text-text-color my-2">
                   Services in Riyadh, Saudi Arabia
                 </p>
+                <router-link
+                  class="text-text-color my-2 font-bold text-lg block"
+                  :to="{
+                    name: 'Seller.Profile',
+                  }"
+                  >اندرو ميلاد</router-link
+                >
               </div>
             </div>
             <div class="flex gap-4 Offer-details justify-center">

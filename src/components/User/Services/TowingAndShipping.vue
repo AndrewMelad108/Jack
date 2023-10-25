@@ -3,12 +3,17 @@
     <SwitchLang class="m-2" />
     <header class="service-title">
       <WelcomeMassage name="User" />
-      <img
-        src="../../../assets/images/Servies/towing_and_shipping.png"
-        alt="towing_and_shipping"
-        loading="lazy"
-        class="w-auto h-28"
-      />
+      <div class="lg:flex block items-center gap-4 space-y-4">
+        <img
+          src="../../../assets/images/Servies/towing_and_shipping.png"
+          alt="towing_and_shipping"
+          loading="lazy"
+          class="w-auto h-28"
+        />
+        <div
+          class="advertisement-container bg-advertisement h-24 lg:w-[70%] w-[90%] mx-auto bg-center bg-cover rounded-md"
+        ></div>
+      </div>
       <div class="flex lg:flex-row flex-col w-full lg:gap-6 items-center">
         <h1 class="text-xl lg:w-auto w-full font-bold mt-2 capitalize">
           {{ $t("towing and shipping") }}
@@ -178,7 +183,9 @@
             }}
           </p>
           <p>{{ $t("* Adding registration image is a legal requirement.") }}</p>
-          <div class="maps flex gap-8 lg:flex-row flex-col my-4 items-center">
+          <div
+            class="maps grid xl:grid-cols-2 w-[90%] mx-auto gap-8 lg:flex-row flex-col my-4 items-center"
+          >
             <MapGoogle></MapGoogle>
             <MapGoogle></MapGoogle>
           </div>

@@ -1,18 +1,23 @@
 <template>
   <section class="CarMaintenanceAndCare md:p-4 p-2 bg-white">
     <SwitchLang class="m-4" />
-    <header class="service-title">
-      <WelcomeMassage name="User" />
-      <img
-        src="../../../assets/images/Servies/car_maintenance_and_care.png"
-        alt="car_maintenance_and_care"
-        loading="lazy"
-        class="w-auto h-28"
-      />
-      <h1 class="text-xl font-bold mt-2 capitalize">
-        {{ $t("car maintenance and care") }}
-      </h1>
-    </header>
+    <div class="lg:flex block items-center gap-4 space-y-4">
+      <header class="service-title">
+        <WelcomeMassage name="User" />
+        <img
+          src="../../../assets/images/Servies/car_maintenance_and_care.png"
+          alt="car_maintenance_and_care"
+          loading="lazy"
+          class="w-auto h-28"
+        />
+        <h1 class="text-xl font-bold mt-2 capitalize">
+          {{ $t("car maintenance and care") }}
+        </h1>
+      </header>
+      <div
+        class="advertisement-container bg-advertisement h-24 lg:w-[70%] w-[90%] mx-auto bg-center bg-cover rounded-md"
+      ></div>
+    </div>
     <div class="service-content grid lg:grid-cols-4 grid-cols-1 gap-2">
       <div class="lg:col-start-1 lg:col-end-4 col-start-1 col-end-2">
         <div class="Form-services space-y-3 bg-white h-auto rounded-lg p-4">

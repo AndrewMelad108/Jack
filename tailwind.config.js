@@ -11,6 +11,7 @@ module.exports = {
       },
       backgroundImage: {
         mainPage: "url('/src/assets/images/Banner.png')",
+        advertisement: "url('/src/assets/images/advertisement.jpg')",
       },
     },
   },

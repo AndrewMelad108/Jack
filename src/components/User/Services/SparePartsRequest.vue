@@ -1,16 +1,23 @@
 <template>
   <section class="SparePartsRequest md:p-4 p-2 bg-white">
     <SwitchLang class="m-4" />
-    <header class="service-title">
-      <WelcomeMassage name="User" />
-      <img
-        src="../../../assets/images/Servies/spare_parts.png"
-        alt="Spare_Parts"
-        loading="lazy"
-        class="w-auto h-28"
-      />
-      <h1 class="text-xl font-bold mt-2 capitalize">{{ $t("Spare Parts") }}</h1>
-    </header>
+    <div class="lg:flex block items-center gap-4 space-y-4">
+      <header class="service-title">
+        <WelcomeMassage name="User" />
+        <img
+          src="../../../assets/images/Servies/spare_parts.png"
+          alt="Spare_Parts"
+          loading="lazy"
+          class="w-auto h-28"
+        />
+        <h1 class="text-xl font-bold mt-2 capitalize">
+          {{ $t("Spare Parts") }}
+        </h1>
+      </header>
+      <div
+        class="advertisement-container bg-advertisement h-24 lg:w-[70%] w-[90%] mx-auto bg-center bg-cover rounded-md"
+      ></div>
+    </div>
     <div class="service-content grid lg:grid-cols-4 grid-cols-1 gap-2">
       <div class="lg:col-start-1 lg:col-end-4 col-start-1 col-end-2">
         <div class="Form-user bg-white h-auto rounded-lg space-y-3">

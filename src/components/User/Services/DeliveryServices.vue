@@ -1,18 +1,23 @@
 <template>
   <section class="DeliveryServices md:p-4 p-2 bg-white">
     <SwitchLang />
-    <header class="service-title">
-      <WelcomeMassage name="User" />
-      <img
-        src="../../../assets/images/Servies/delivery_services.png"
-        alt="delivery_services"
-        loading="lazy"
-        class="w-auto h-28"
-      />
-      <h1 class="md:text-xl text-sm font-bold mt-2 capitalize">
-        {{ $t("Free services and delivering household needs") }}
-      </h1>
-    </header>
+    <div class="lg:flex block items-center gap-4 space-y-4">
+      <header class="service-title">
+        <WelcomeMassage name="User" />
+        <img
+          src="../../../assets/images/Servies/delivery_services.png"
+          alt="delivery_services"
+          loading="lazy"
+          class="w-auto h-28"
+        />
+        <h1 class="md:text-xl text-sm font-bold mt-2 capitalize">
+          {{ $t("Free services and delivering household needs") }}
+        </h1>
+      </header>
+      <div
+        class="advertisement-container bg-advertisement h-24 lg:w-[70%] w-[90%] mx-auto bg-center bg-cover rounded-md"
+      ></div>
+    </div>
     <div class="service-content grid lg:grid-cols-4 grid-cols-1 gap-2">
       <div class="lg:col-start-1 lg:col-end-4 col-start-1 col-end-2">
         <div class="Form-user space-y-3 bg-white h-auto rounded-lg p-4">
@@ -106,7 +111,9 @@
             {{ $t("* Please add documents images and location") }}
           </p>
         </div>
-        <div class="maps flex lg:flex-row flex-col gap-8 my-4 items-center">
+        <div
+          class="maps grid xl:grid-cols-2 w-[90%] mx-auto gap-8 lg:flex-row flex-col my-4 items-center"
+        >
           <MapGoogle></MapGoogle>
           <MapGoogle></MapGoogle>
         </div>
