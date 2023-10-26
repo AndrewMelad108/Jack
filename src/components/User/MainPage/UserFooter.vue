@@ -1,6 +1,6 @@
 <template>
   <section
-    class="UserFooter flex justify-around text-white items-center bg-[#095C5E] py-10 lg:pl-10 lg:flex-row flex-col lg:space-x-0 space-y-10"
+    class="UserFooter flex justify-around text-white items-center bg-[#095C5E] lg:flex-row flex-col p-4"
   >
     <div class="call-detials lg:w-4/12 w-[68%] space-y-10">
       <img
@@ -17,14 +17,52 @@
           loading="lazy"
         />+66 32329 r23523
       </p>
-      <p class="Email flex gap-1 cursor-pointer">
-        <img
-          src="../../../assets/images/android-mail.png"
-          class=""
-          alt="phone-icon"
-          loading="lazy"
-        />Serviceprovider@gmail.com
-      </p>
+      <div class="grid lg:grid-cols-2 grid-cols-1 items-center">
+        <p class="flex items-center gap-4 text-sm">
+          <img
+            src="../../../assets/images/android-mail.png"
+            class=""
+            alt="phone-icon"
+            loading="lazy"
+          />Serviceprovider@gmail.com
+        </p>
+        <p class="flex items-center lg:justify-self-center my-4 gap-4">
+          <img
+            src="../../../assets/images/android-mail.png"
+            class=""
+            alt="phone-icon"
+            loading="lazy"
+          />
+          تاميني
+        </p>
+        <p class="flex items-center my-4 gap-4">
+          <img
+            src="../../../assets/images/android-mail.png"
+            class=""
+            alt="phone-icon"
+            loading="lazy"
+          />
+          نجم
+        </p>
+        <p class="flex items-center lg:justify-self-center my-4 gap-4">
+          <img
+            src="../../../assets/images/android-mail.png"
+            class=""
+            alt="phone-icon"
+            loading="lazy"
+          />
+          بي كير
+        </p>
+        <p class="flex items-center gap-4">
+          <img
+            src="../../../assets/images/android-mail.png"
+            class=""
+            alt="phone-icon"
+            loading="lazy"
+          />
+          ابجاز
+        </p>
+      </div>
     </div>
     <div
       class="links lg:w-4/12 w-[90%] mx-auto space-y-6 lg:ml-6 lg:border-x-2 lg:border-solid lg:border-text-color lg:pl-8 pr-4"
@@ -36,19 +74,15 @@
         class="grid grid-cols-2 text-lg gap-6 justify-center w-[70%] mx-auto"
       >
         <router-link to="/">{{ $t("Home") }}</router-link>
-        <router-link to="/TowingAndShipping">{{
+        <router-link to="/FeaturedServices">{{
           $t("Featured Services")
         }}</router-link>
         <router-link to="/Login/Create">{{ $t("SignIn") }}</router-link>
-        <router-link to="">{{ $t("Testemonials") }}</router-link>
-        <router-link to="/User/Register/Create">{{
-          $t("Information about")
-        }}</router-link>
-        <router-link to="">{{ $t("FAQs") }}</router-link>
-        <router-link to="/User/Register/Create">{{
-          $t("Terms and Conditions")
-        }}</router-link>
-        <router-link to="">{{ $t("privacy policy") }}</router-link>
+        <router-link to="/Testemonials">{{ $t("Testemonials") }}</router-link>
+        <router-link to="/AboutUs">{{ $t("Information about") }}</router-link>
+        <router-link to="/FAQs">{{ $t("FAQs") }}</router-link>
+        <router-link to="/Terms">{{ $t("Terms and Conditions") }}</router-link>
+        <router-link to="/policy">{{ $t("privacy policy") }}</router-link>
       </div>
     </div>
     <div class="social lg:w-3/12 w-[70%] mx-auto px-4">
