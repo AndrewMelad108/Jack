@@ -28,8 +28,8 @@
         </p>
         <p class="flex items-center lg:justify-self-center my-4 gap-4">
           <img
-            src="../../../assets/images/android-mail.png"
-            class=""
+            src="../../../assets/images/icons/WhatsApp Image 2023-10-26 at 4.02.32 PM (1).jpeg"
+            class="w-auto h-10 rounded-full"
             alt="phone-icon"
             loading="lazy"
           />
@@ -37,8 +37,8 @@
         </p>
         <p class="flex items-center my-4 gap-4">
           <img
-            src="../../../assets/images/android-mail.png"
-            class=""
+            src="../../../assets/images/icons/WhatsApp Image 2023-10-26 at 4.02.32 PM.jpeg"
+            class="w-auto h-10 rounded-full"
             alt="phone-icon"
             loading="lazy"
           />
@@ -46,8 +46,8 @@
         </p>
         <p class="flex items-center lg:justify-self-center my-4 gap-4">
           <img
-            src="../../../assets/images/android-mail.png"
-            class=""
+            src="../../../assets/images/icons/WhatsApp Image 2023-10-26 at 4.02.33 PM.jpeg"
+            class="w-auto h-10 rounded-full"
             alt="phone-icon"
             loading="lazy"
           />
@@ -55,8 +55,8 @@
         </p>
         <p class="flex items-center gap-4">
           <img
-            src="../../../assets/images/android-mail.png"
-            class=""
+            src="../../../assets/images/icons/WhatsApp Image 2023-10-26 at 4.02.33 PM (1).jpeg"
+            class="w-10 h-10 rounded-full"
             alt="phone-icon"
             loading="lazy"
           />

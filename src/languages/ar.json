@@ -250,5 +250,7 @@
   "Services(2)": "خدمات2",
   "Select Service": "اختار خدمه",
   "Actions": "عمليات",
-  "delete": "مسح"
+  "delete": "مسح",
+  "The user is the person who can use the application for the purpose of requesting all available services": "المستخدم هىو الشخص الذي يمكنه استخدام  التطبيق لغرض طلب جميع الخدمات المتاحه",
+  "The provider is the person or facility that can provide one or some services through the application": " المزود هو الشخص او المنشاه التي يمكنها تقديم واحده او بعض الخدمات من خلال التطبيق"
 }
