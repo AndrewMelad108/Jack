@@ -148,10 +148,15 @@
           <!-- Add more rows here -->
         </tbody>
       </table>
+
       <p class="md:text-lg text-sm my-4 capitalize">
         {{ $t("total amount is") }} {{ totalAmount + " + "
         }}{{ $t("Shipping expenses") }}
       </p>
+      <div class="checkAllPrices my-4 flex gap-2 items-center">
+        <input type="checkbox" class="w-5 h-5 rounded-xl" v-model="policy" />
+        <span class="md:text-lg text-sm">{{ $t("Return policy") }}</span>
+      </div>
       <div
         class="group-btn capitalize flex justify-center items-center gap-4 mx-auto"
       >
@@ -190,6 +195,7 @@ export default {
     return {
       Lang: localStorage.getItem("lang"),
       total: "750",
+      policy: false,
       Offer: {
         SparePartsType: "new",
         Brand: "Yamaha",

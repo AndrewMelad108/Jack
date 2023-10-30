@@ -357,21 +357,23 @@
             <select
               v-model="person.Services"
               v-validate="{ required: true }"
-              name="Services"
+              name="TypesDelivery"
               class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             >
               <option disabled selected value="">
-                {{ $t("Select Service") }}
+                {{ $t("Select Types Delivery") }}
               </option>
               <option
-                v-for="Service in Services"
-                :key="Service.id"
-                :value="Service.id"
+                v-for="Type in TypesDelivery"
+                :key="Type.id"
+                :value="Type.id"
               >
-                {{ $t(Service.name) }}
+                {{ $t(Type.name) }}
               </option>
             </select>
-            <span class="text-red-400">{{ errors.first("Services") }}</span>
+            <span class="text-red-400">{{
+              errors.first("TypesDelivery")
+            }}</span>
           </div>
           <div class="input-field space-y-2">
             <label class="capitalize block text-xl">
@@ -482,6 +484,10 @@ export default {
         { id: 4, name: "Baggage Transfer" },
         { id: 5, name: "Free services and delivering household needs" },
         { id: 6, name: "Sell Your Car" },
+      ],
+      TypesDelivery: [
+        { id: 1, name: "Special delivery" },
+        { id: 2, name: "Professional delivery" },
       ],
       nations: [
         { id: 1, name: "Pakistani" },

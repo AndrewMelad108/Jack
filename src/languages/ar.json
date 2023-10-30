@@ -252,5 +252,12 @@
   "Actions": "عمليات",
   "delete": "مسح",
   "The user is the person who can use the application for the purpose of requesting all available services": "المستخدم هىو الشخص الذي يمكنه استخدام  التطبيق لغرض طلب جميع الخدمات المتاحه",
-  "The provider is the person or facility that can provide one or some services through the application": " المزود هو الشخص او المنشاه التي يمكنها تقديم واحده او بعض الخدمات من خلال التطبيق"
+  "The provider is the person or facility that can provide one or some services through the application": " المزود هو الشخص او المنشاه التي يمكنها تقديم واحده او بعض الخدمات من خلال التطبيق",
+  "Special delivery": "توصيل خاص",
+  "Professional delivery": "توصيل احترافي",
+  "Select Types Delivery": "حدد أنواع التسليم",
+  "Company Name": "اسم الشركه",
+  "Enter Company Name": "ادخل اسم الشركه",
+  "Company Total": "اجمالي الشركه",
+  "Enter Company Total": "ادخل إجمالي الشركة"
 }

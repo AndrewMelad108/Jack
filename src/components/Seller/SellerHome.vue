@@ -22,7 +22,7 @@
           $t("Requests")
         }}</router-link>
         <router-link :to="{ name: 'Seller.Requested orders' }">{{
-          $t("Requested Orders")
+          $t("Requested orders")
         }}</router-link>
         <router-link :to="{ name: 'Seller.Requested service' }">{{
           $t("Requested service")

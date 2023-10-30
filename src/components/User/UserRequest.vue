@@ -66,7 +66,7 @@
                 <router-link
                   class="text-text-color my-2 font-bold text-lg block"
                   :to="{
-                    name: 'Seller.Profile',
+                    name: 'Seller.Profile Servies',
                   }"
                   >اندرو ميلاد</router-link
                 >

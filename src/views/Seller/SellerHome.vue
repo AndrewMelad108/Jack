@@ -60,6 +60,7 @@ export default {
         "Profile",
         "Profile Servies",
         "Policy",
+        "Delivery",
       ],
     };
   },

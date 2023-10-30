@@ -91,25 +91,16 @@
           <p class="md:text-lg text-sm my-4 capitalize">
             {{ $t("total amount is") }} {{ total }}
           </p>
-          <!-- <div class="checkAllPrices my-4 flex gap-2 items-center">
-            <input
-              type="checkbox"
-              class="w-5 h-5 rounded-xl"
-              v-model="PriceCheck"
-            />
-            <span class="md:text-lg text-sm">{{
-              $t("Price includes shipping")
-            }}</span>
-          </div> -->
+
           <div class="OfferPhotos my-4">
             <h1 class="my-4 md:text-xl text-md font-bold">
               {{ $t("Attached images") }}
             </h1>
 
             <div
-              class="photos items-start flex space-y-4 gap-2 md:flex-row flex-col my-6 justify-between"
+              class="photos items-start grid md:grid-cols-2 grid-cols-1 space-y-4 gap-2 my-6 justify-between"
             >
-              <div class="photo1">
+              <div class="map">
                 <MapGoogle></MapGoogle>
               </div>
               <div class="photo2">

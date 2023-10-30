@@ -18,8 +18,29 @@
         class="advertisement-container bg-advertisement h-24 lg:w-[70%] w-[90%] mx-auto bg-center bg-cover rounded-md"
       ></div>
     </div>
+
     <div class="service-content grid lg:grid-cols-4 grid-cols-1 gap-2">
       <div class="lg:col-start-1 lg:col-end-4 col-start-1 col-end-2">
+        <div
+          class="Delivering-type my-4 w-[80%] mx-auto grid md:grid-cols-2 text-gray-400 font-bold text-lg grid-cols-1"
+        >
+          <button
+            @click="Delivery.Type = true"
+            :class="{
+              'text-main-color': Delivery.Type == true,
+            }"
+          >
+            {{ $t("Professional delivery") }}
+          </button>
+          <button
+            :class="{
+              'text-main-color': Delivery.Type == false,
+            }"
+            @click="Delivery.Type = false"
+          >
+            {{ $t("Special delivery") }}
+          </button>
+        </div>
         <div class="Form-user space-y-3 bg-white h-auto rounded-lg p-4">
           <label for="SearchScope" class="capitalize block text-xl">{{
             $t("Search Scope")
@@ -165,6 +186,7 @@ export default {
   data() {
     return {
       Delivery: {
+        Type: true,
         Scope: "",
         ServiceType: "",
         Weight: "",
