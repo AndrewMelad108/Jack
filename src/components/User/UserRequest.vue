@@ -28,9 +28,7 @@
             class="rounded-xl min-h-48 p-4 bg-white"
             @click="addRequest(Request.id)"
           >
-            <h1 class="text-xl font-bold capitalize">
-              {{ $t(Request.RequestName) }}
-            </h1>
+            <h1 class="text-xl font-bold capitalize">{{ $t(Request.RequestName) }}</h1>
             <p class="mt-4 text-text-color">
               {{ Request.Requestdes }}
             </p>
