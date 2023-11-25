@@ -4,16 +4,17 @@
     <UserHeaderPhone />
     <SwitchLang class="md:hidden block m-4" />
     <div
-      class="bg-main-color min-h-20 w-full flex flex-warp content-center p-4 text-center"
+      class="bg-main-color min-h-20 w-full p-4 text-center"
     >
       <div
-        class="w-[70%] mx-auto flex gap-10 capitalize justify-center text-white font-bold text-xl md:flex-row flex-col items-center"
+        class="flex flex-wrap gap-10 capitalize justify-center text-white font-bold text-xl md:flex-row flex-col items-center"
       >
         <router-link to="Profile">{{ $t("Profile") }}</router-link>
         <router-link to="Orders">{{ $t("Orders") }}</router-link>
         <router-link to="Request">{{ $t("Requests") }}</router-link>
         <router-link to="Chat">{{ $t("Chats") }}</router-link>
         <router-link to="Wallet">{{ $t("Wallet") }}</router-link>
+        <div class="cursor-pointer" @click="Logout()">{{ $t("Logout") }}</div>
       </div>
     </div>
     <div
@@ -129,6 +130,13 @@ export default {
   name: "HomePage",
   data() {
     return { checkUser: false };
+  },
+  methods: {
+    Logout() {
+      this.$router.push({
+        name: "MainPage",
+      });
+    }
   },
   components: {
     UserHeader,

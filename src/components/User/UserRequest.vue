@@ -58,9 +58,16 @@
               />
               <div class="Offer-name">
                 <h1 class="font-bold mt-2">{{ offer.OfferName }}</h1>
-                <p class="text-text-color my-4">
+                <p class="text-text-color my-2">
                   Services in Riyadh, Saudi Arabia
                 </p>
+                <router-link
+                  class="text-text-color my-2 font-bold text-lg block"
+                  :to="{
+                    name: 'Seller.Profile Servies',
+                  }"
+                  >اندرو ميلاد</router-link
+                >
               </div>
             </div>
             <div class="flex gap-4 Offer-details justify-center">

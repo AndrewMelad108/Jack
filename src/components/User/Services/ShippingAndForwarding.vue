@@ -1,18 +1,23 @@
 <template>
   <section class="ShippingAndForwarding md:p-4 p-2 bg-white">
     <SwitchLang />
-    <header class="service-title">
-      <WelcomeMassage name="User" />
-      <img
-        src="../../../assets/images/Servies/shipping_and_forwarding.png"
-        alt="shipping_and_forwarding"
-        loading="lazy"
-        class="w-auto h-28"
-      />
-      <h1 class="md:text-xl text-md font-bold my-2 capitalize">
-        {{ $t("Deportation and Baggage transfer") }}
-      </h1>
-    </header>
+    <div class="lg:flex block items-center gap-4 space-y-4">
+      <header class="service-title">
+        <WelcomeMassage name="User" />
+        <img
+          src="../../../assets/images/Servies/shipping_and_forwarding.png"
+          alt="shipping_and_forwarding"
+          loading="lazy"
+          class="w-auto h-28"
+        />
+        <h1 class="md:text-xl text-md font-bold my-2 capitalize">
+          {{ $t("Deportation and Baggage transfer") }}
+        </h1>
+      </header>
+      <div
+        class="advertisement-container bg-advertisement h-24 lg:w-[70%] w-[90%] mx-auto bg-center bg-cover rounded-md"
+      ></div>
+    </div>
     <div class="service-content grid lg:grid-cols-4 grid-cols-1 gap-2">
       <div class="lg:col-start-1 lg:col-end-4 col-start-1 col-end-2">
         <div class="Form-user bg-white h-auto rounded-lg space-y-3">
@@ -120,7 +125,9 @@
           />
           <p class="text-red-400">{{ errors.first("LocationTo") }}</p>
         </div>
-        <div class="maps flex lg:flex-row flex-col gap-8 my-4 items-center">
+        <div
+          class="maps grid xl:grid-cols-2 w-[90%] mx-auto gap-8 lg:flex-row flex-col my-4 items-center"
+        >
           <MapGoogle></MapGoogle>
           <MapGoogle></MapGoogle>
         </div>

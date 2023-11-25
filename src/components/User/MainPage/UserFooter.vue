@@ -1,14 +1,15 @@
 <template>
   <section
-    class="UserFooter flex justify-around text-white items-center bg-[#095C5E] py-10 lg:pl-10 lg:flex-row flex-col lg:space-x-0 space-y-10"
+    class="UserFooter flex justify-around text-white items-center bg-[#095C5E] lg:flex-row flex-col p-4"
   >
     <div class="call-detials lg:w-4/12 w-[68%] space-y-10">
       <img
         src="../../../assets/images/logo.png"
-        class="block"
+        class="block mb-8"
         alt="logo-image"
         loading="lazy"
       />
+      <span class="font-bold text-xl">المرور الاسعاف أمن الطريق</span>
       <p class="phone-number flex gap-1 cursor-pointer">
         <img
           src="../../../assets/images/phone.png"
@@ -17,14 +18,52 @@
           loading="lazy"
         />+66 32329 r23523
       </p>
-      <p class="Email flex gap-1 cursor-pointer">
-        <img
-          src="../../../assets/images/android-mail.png"
-          class=""
-          alt="phone-icon"
-          loading="lazy"
-        />Serviceprovider@gmail.com
-      </p>
+      <div style="margin-top: 0;" class="grid lg:grid-cols-2 grid-cols-1 items-center">
+        <p class="flex items-center gap-4 text-sm">
+          <img
+            src="../../../assets/images/android-mail.png"
+            class=""
+            alt="phone-icon"
+            loading="lazy"
+          />Serviceprovider@gmail.com
+        </p>
+        <p class="flex items-center lg:justify-self-center my-4 gap-4">
+          <img
+            src="../../../assets/images/icons/WhatsApp Image 2023-10-26 at 4.02.32 PM (1).jpeg"
+            class="w-auto h-10 rounded-full"
+            alt="phone-icon"
+            loading="lazy"
+          />
+          تاميني
+        </p>
+        <p class="flex items-center my-4 gap-4">
+          <img
+            src="../../../assets/images/icons/WhatsApp Image 2023-10-26 at 4.02.32 PM.jpeg"
+            class="w-auto h-10 rounded-full"
+            alt="phone-icon"
+            loading="lazy"
+          />
+          نجم
+        </p>
+        <p class="flex items-center lg:justify-self-center my-4 gap-4">
+          <img
+            src="../../../assets/images/icons/WhatsApp Image 2023-10-26 at 4.02.33 PM.jpeg"
+            class="w-auto h-10 rounded-full"
+            alt="phone-icon"
+            loading="lazy"
+          />
+          بي كير
+        </p>
+        <p class="flex items-center gap-4">
+          <img
+            src="../../../assets/images/icons/WhatsApp Image 2023-10-26 at 4.02.33 PM (1).jpeg"
+            class="w-10 h-10 rounded-full"
+            alt="phone-icon"
+            loading="lazy"
+          />
+          ابجاز
+        </p>
+      </div>
     </div>
     <div
       class="links lg:w-4/12 w-[90%] mx-auto space-y-6 lg:ml-6 lg:border-x-2 lg:border-solid lg:border-text-color lg:pl-8 pr-4"
@@ -36,19 +75,15 @@
         class="grid grid-cols-2 text-lg gap-6 justify-center w-[70%] mx-auto"
       >
         <router-link to="/">{{ $t("Home") }}</router-link>
-        <router-link to="/TowingAndShipping">{{
+        <router-link to="/FeaturedServices">{{
           $t("Featured Services")
         }}</router-link>
         <router-link to="/Login/Create">{{ $t("SignIn") }}</router-link>
-        <router-link to="">{{ $t("Testemonials") }}</router-link>
-        <router-link to="/User/Register/Create">{{
-          $t("Information about")
-        }}</router-link>
-        <router-link to="">{{ $t("FAQs") }}</router-link>
-        <router-link to="/User/Register/Create">{{
-          $t("Terms and Conditions")
-        }}</router-link>
-        <router-link to="">{{ $t("privacy policy") }}</router-link>
+        <router-link to="/Testemonials">{{ $t("Testemonials") }}</router-link>
+        <router-link to="/AboutUs">{{ $t("Information about") }}</router-link>
+        <router-link to="/FAQs">{{ $t("FAQs") }}</router-link>
+        <router-link to="/Terms">{{ $t("Terms and Conditions") }}</router-link>
+        <router-link to="/policy">{{ $t("privacy policy") }}</router-link>
       </div>
     </div>
     <div class="social lg:w-3/12 w-[70%] mx-auto px-4">

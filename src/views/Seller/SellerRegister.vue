@@ -37,7 +37,9 @@
         <h1 class="md:text-xl text-md capitalize mt-4 pb-2">
           {{ $t("account type") }}
         </h1>
-        <div class="group-btn sm:flex-row flex-col flex items-center gap-2">
+        <div
+          class="group-btn mb-4 sm:flex-row flex-col flex items-center gap-2"
+        >
           <div class="flex items-center gap-2 md:w-1/2 w-full">
             <button
               @click="
@@ -63,57 +65,35 @@
               {{ $t("seller") }}
             </button>
           </div>
-          <div
-            class="image-person flex items-center gap-3 mb-2 md:px-4 md:w-1/2 w-full"
-          >
-            <p
-              class="capitalize flex justify-center items-center md:text-3xl text-md text-white bg-main-color md:h-16 h-10 md:w-16 w-10 rounded-full sm:ml-8"
-            ></p>
-            <div class="flex justify-center items-center gap-3">
-              <label
-                for="upload_photo"
-                class="bg-gray-300 cursor-pointer text-lg text-center md:p-3 p-1 rounded-full inline-block w-[150px]"
-                >{{ $t("Add image") }}</label
-              >
-              <input
-                class="hidden"
-                type="file"
-                name="upload_photo"
-                id="upload_photo"
-                @change="uploadPhoto($event)"
-                accept="image/*"
-              />
-            </div>
-          </div>
         </div>
         <div class="form-inputs grid md:grid-cols-2 gap-6 grid-cols-1">
           <div class="input-field space-y-2">
-            <label for="FirstName" class="capitalize block text-xl">{{
-              $t("First Name")
+            <label for="FullName" class="capitalize block text-xl">{{
+              $t("Full Name")
             }}</label>
             <input
               type="text"
               v-validate="{ alpha: true, required: true }"
-              name="FirstName"
+              name="FullName"
               class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
-              :placeholder="$t('enter FirstName')"
-              v-model="person.FirstName"
+              :placeholder="$t('Enter Full Name')"
+              v-model="person.FullName"
             />
-            <span class="text-red-400">{{ errors.first("FirstName") }}</span>
+            <span class="text-red-400">{{ errors.first("FullName") }}</span>
           </div>
           <div class="input-field space-y-2">
-            <label for="LastName" class="capitalize block text-xl">{{
-              $t("Last Name")
+            <label for="NickName" class="capitalize block text-xl">{{
+              $t("Nick Name")
             }}</label>
             <input
               type="text"
               v-validate="{ alpha: true, required: true }"
-              name="LastName"
-              :placeholder="$t('enter LastName')"
-              v-model="person.LastName"
+              name="NickName"
+              :placeholder="$t('Enter Nick Name')"
+              v-model="person.NickName"
               class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
-            <span class="text-red-400">{{ errors.first("LastName") }}</span>
+            <span class="text-red-400">{{ errors.first("NickName") }}</span>
           </div>
           <div class="input-field space-y-2">
             <label for="Email" class="capitalize block text-xl">{{
@@ -346,6 +326,55 @@
               errors.first("LegalCapacity")
             }}</span>
           </div>
+          <!--Services inputs-->
+          <div class="input-field space-y-2">
+            <label for="Services" class="capitalize block text-xl">{{
+              $t("Services")
+            }}</label>
+            <select
+              v-model="person.Services"
+              v-validate="{ required: true }"
+              name="Services"
+              class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
+            >
+              <option disabled selected value="">
+                {{ $t("Select Service") }}
+              </option>
+              <option
+                v-for="Service in Services"
+                :key="Service.id"
+                :value="Service.id"
+              >
+                {{ $t(Service.name) }}
+              </option>
+            </select>
+            <span class="text-red-400">{{ errors.first("Services") }}</span>
+          </div>
+          <div class="input-field space-y-2">
+            <label for="Services" class="capitalize block text-xl">{{
+              $t("Services(2)")
+            }}</label>
+            <select
+              v-model="person.Services"
+              v-validate="{ required: true }"
+              name="TypesDelivery"
+              class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
+            >
+              <option disabled selected value="">
+                {{ $t("Select Types Delivery") }}
+              </option>
+              <option
+                v-for="Type in TypesDelivery"
+                :key="Type.id"
+                :value="Type.id"
+              >
+                {{ $t(Type.name) }}
+              </option>
+            </select>
+            <span class="text-red-400">{{
+              errors.first("TypesDelivery")
+            }}</span>
+          </div>
           <div class="input-field space-y-2">
             <label class="capitalize block text-xl">
               {{ $t("Licence Photo one") }}
@@ -429,8 +458,8 @@ export default {
       checkUser: true,
       selected: "Seller",
       person: {
-        FirstName: "",
-        LastName: "",
+        FullName: "",
+        NickName: "",
         Region: "",
         City: "",
         Email: "",
@@ -446,7 +475,20 @@ export default {
         AccountNumber: "",
         ComercialActivity: "",
         LegalCapacity: "",
+        Services: "",
       },
+      Services: [
+        { id: 1, name: "towing and shipping" },
+        { id: 2, name: "car maintenance and care" },
+        { id: 3, name: "Spare Parts" },
+        { id: 4, name: "Baggage Transfer" },
+        { id: 5, name: "Free services and delivering household needs" },
+        { id: 6, name: "Sell Your Car" },
+      ],
+      TypesDelivery: [
+        { id: 1, name: "Special delivery" },
+        { id: 2, name: "Professional delivery" },
+      ],
       nations: [
         { id: 1, name: "Pakistani" },
         { id: 2, name: "American" },

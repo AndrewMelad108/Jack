@@ -2,83 +2,51 @@
   <section class="SelllerProfile md:px-6 px-2">
     <WelcomeMassage name="Selller" />
     <div
-      class="grid lg:grid-cols-2 grid-cols-1 gap-4 mt-4 justify-center items-center"
+      class="Form-Seller bg-white min-h-[600px] h-auto rounded-lg md:p-6 p-2"
     >
-      <div
-        class="bg-white self-start w-[80%] mr-auto rounded-[20px] h-[400px] mb-28"
-      >
-        <div v-if="!person.imageUrl" class="">
-          <label
-            for="file-input"
-            class="bg-white rounded-[20px] flex justify-center items-center font-bold cursor-pointer h-[300px] w-full mb-28"
-          >
-            {{ $t("Add images") }}
-          </label>
-          <input
-            id="file-input"
-            class="hidden"
-            ref="fileInput"
-            type="file"
-            v-validate="{ required: true }"
-            name="profileIamge"
-            @change="changeImage($event)"
-            accept="image/*"
-            title="Add image"
-          />
-        </div>
-
+      <div class="group-btn mb-4 flex gap-4">
         <button
-          v-if="person.imageUrl"
-          @click="person.imageUrl = ''"
-          class="bg-main-color font-bold text-lg text-white block w-56 rounded-xl transition-all ease-in-out duration-300 p-4 mt-4 mx-auto hover:bg-red-600 hover:text-black"
+          @click="personalData = true"
+          :class="{ 'bg-main-color text-white ': personalData }"
+          class="p-4 w-32 inline-block rounded-lg text-lg font-bold bg-gray-200 text-black capitalize"
         >
-          {{ $t("DELETE") }}
+          {{ $t("general") }}
         </button>
-        <p class="text-red-400 text-center mt-2">
-          {{ errors.first("profileIamge") }}
-        </p>
+        <button
+          :class="{ 'bg-main-color text-white ': !personalData }"
+          @click="personalData = false"
+          class="p-4 w-32 inline-block rounded-lg text-lg font-bold bg-gray-200 capitalize"
+        >
+          {{ $t("other") }}
+        </button>
       </div>
-      <div
-        class="Form-Seller bg-white min-h-[600px] h-auto rounded-lg md:p-6 p-2"
-      >
-        <div class="group-btn mb-4 flex gap-4">
-          <button
-            @click="personalData = true"
-            :class="{ 'bg-main-color text-white ': personalData }"
-            class="p-4 w-32 inline-block rounded-lg text-lg font-bold bg-gray-200 text-black capitalize"
-          >
-            {{ $t("general") }}
-          </button>
-          <button
-            :class="{ 'bg-main-color text-white ': !personalData }"
-            @click="personalData = false"
-            class="p-4 w-32 inline-block rounded-lg text-lg font-bold bg-gray-200 capitalize"
-          >
-            {{ $t("other") }}
-          </button>
-        </div>
-        <h1 class="font-bold text-lg">{{ $t("personal information") }}</h1>
-        <div v-if="personalData" class="personal-data">
+      <h1 class="font-bold text-lg">{{ $t("personal information") }}</h1>
+      <div v-if="personalData" class="personal-data grid lg:grid-cols-2 gap-4 mt-4">
+        <div>
           <input
             type="text"
             v-validate="{ alpha: true, required: true }"
             name="FirstName"
             :placeholder="$t('First Name')"
-            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md"
           />
           <p class="text-red-400">{{ errors.first("FirstName") }}</p>
+        </div>
+        <div>
           <input
             type="text"
             v-validate="{ alpha: true, required: true }"
             name="LastName"
             :placeholder="$t('Last Name')"
-            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md"
           />
           <p class="text-red-400">{{ errors.first("LastName") }}</p>
+        </div>
+        <div>
           <select
             v-validate="{ required: true }"
             name="Region"
-            class="focus:outline-0 mt-4 p-3 rounded-lg text-text-color bg-gray-100 w-full mx-auto"
+            class="focus:outline-0 p-3 rounded-lg text-text-color bg-gray-100 w-full mx-auto"
           >
             <option disabled selected value="">
               {{ $t("Select Region") }}
@@ -89,10 +57,12 @@
             <option value="asd3">asd</option>
           </select>
           <p class="text-red-400">{{ errors.first("Region") }}</p>
+        </div>
+        <div>
           <select
             v-validate="{ alpha: true, required: true }"
             name="City"
-            class="placeholder:capitalize focus:outline-0 mt-4 p-3 rounded-lg text-text-color bg-gray-100 w-full mx-auto"
+            class="placeholder:capitalize focus:outline-0 p-3 rounded-lg text-text-color bg-gray-100 w-full mx-auto"
           >
             <option disabled selected value="">
               {{ $t("Select City") }}
@@ -103,50 +73,60 @@
             <option value="asd3">asd</option>
           </select>
           <p class="text-red-400">{{ errors.first("City") }}</p>
-          <h1 class="font-bold mt-2 text-lg">
-            {{ $t("Contact information") }}
-          </h1>
+        </div>
+        <h1 class="font-bold mt-2 text-lg lg:col-span-2 col-span-1">
+          {{ $t("Contact information") }}
+        </h1>
+        <div>
           <input
             v-validate="{ required: true, email: true }"
             name="Email"
             type="Email"
             :placeholder="$t('enter email')"
-            class="placeholder:text-text-color placeholder:capitalize bg-gray-100 w-full p-3 rounded-md mt-4"
+            class="placeholder:text-text-color placeholder:capitalize bg-gray-100 w-full p-3 rounded-md"
           />
           <p class="text-red-400">{{ errors.first("Email") }}</p>
+        </div>
+        <div>
           <input
             type="text"
             v-validate="{ required: true, min: 11 }"
             name="Number"
             :placeholder="$t('Contact Number')"
-            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md"
           />
           <p class="text-red-400">{{ errors.first("Number") }}</p>
         </div>
-        <div v-else class="others-data">
+      </div>
+      <div v-else class="others-data grid lg:grid-cols-2 gap-4 mt-4">
+        <div>
           <input
             type="text"
             v-validate="{ required: true }"
             name="ID"
             :placeholder="$t('Enter ID Number')"
-            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md"
             v-model="person.ID"
           />
           <p class="text-red-400">{{ errors.first("ID") }}</p>
+        </div>
+        <div>
           <input
             type="text"
             v-validate="{ required: true }"
             name="IBAN"
             v-model="person.IBAN"
             :placeholder="$t('enter bank IBAN')"
-            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md"
           />
           <p class="text-red-400">{{ errors.first("IBAN") }}</p>
+        </div>
+        <div>
           <select
             v-validate="{ required: true }"
             name="Nationality"
             v-model="person.Nationality"
-            class="focus:outline-0 mt-4 p-3 rounded-lg text-text-color bg-gray-100 w-full mx-auto"
+            class="focus:outline-0 p-3 rounded-lg text-text-color bg-gray-100 w-full mx-auto"
           >
             <option disabled selected value="">
               {{ $t("Select Nationality") }}
@@ -157,11 +137,13 @@
             <option value="asd3">asd</option>
           </select>
           <p class="text-red-400">{{ errors.first("Nationality") }}</p>
+        </div>
+        <div>
           <select
             v-validate="{ alpha: true, required: true }"
             name="Country"
             v-model="person.Country"
-            class="placeholder:capitalize focus:outline-0 mt-4 p-3 rounded-lg text-text-color bg-gray-100 w-full mx-auto"
+            class="placeholder:capitalize focus:outline-0 p-3 rounded-lg text-text-color bg-gray-100 w-full mx-auto"
           >
             <option disabled selected value="">
               {{ $t("Select Country") }}
@@ -172,42 +154,47 @@
             <option value="asd3">asd</option>
           </select>
           <p class="text-red-400">{{ errors.first("Country") }}</p>
-
+        </div>
+        <div>
           <input
             v-validate="{ required: true }"
             name="AccountNumber"
             type="text"
             v-model="person.AccountNumber"
             :placeholder="$t('enter Account Number')"
-            class="placeholder:text-text-color placeholder:capitalize bg-gray-100 w-full p-3 rounded-md mt-4"
+            class="placeholder:text-text-color placeholder:capitalize bg-gray-100 w-full p-3 rounded-md"
           />
           <p class="text-red-400">{{ errors.first("AccountNumber") }}</p>
+        </div>
+        <div>
           <input
             type="text"
             v-validate="{ required: true, min: 11 }"
             name="ComercialActivity"
             v-model="person.ComercialActivity"
             :placeholder="$t('Enter Comercial Activity')"
-            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md"
           />
           <p class="text-red-400">{{ errors.first("ComercialActivity") }}</p>
+        </div>
+        <div>
           <input
             type="text"
             v-validate="{ required: true }"
             name="LegalCapacity"
             v-model="person.LegalCapacity"
             :placeholder="$t('enter Legal Capacity')"
-            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md mt-4"
+            class="placeholder:text-text-color bg-gray-100 w-full p-3 rounded-md"
           />
           <p class="text-red-400">{{ errors.first("LegalCapacity") }}</p>
         </div>
-        <button
-          @click="saveProfile"
-          class="w-full p-2 mt-10 text-white rounded-lg bg-main-color"
-        >
-          {{ $t("Save changes") }}
-        </button>
       </div>
+      <button
+        @click="saveProfile"
+        class="w-full p-2 mt-10 text-white rounded-lg bg-main-color"
+      >
+        {{ $t("Save changes") }}
+      </button>
     </div>
   </section>
 </template>
@@ -241,13 +228,6 @@ export default {
     WelcomeMassage,
   },
   methods: {
-    changeImage() {
-      console.log("run");
-      const [file] = this.$refs.fileInput.files;
-      if (file) {
-        this.person.imageUrl = URL.createObjectURL(file);
-      }
-    },
     saveProfile() {
       this.$validator.validateAll().then((result) => {
         if (result) {

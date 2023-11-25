@@ -3,7 +3,7 @@
     <GmapMap
       :center="currentLocation"
       :zoom="7"
-      style="width: 400px; height: 400px"
+      class="w-auto h-96"
       @click="onMapClick"
     >
       <GmapMarker :position="selectedLocation" />

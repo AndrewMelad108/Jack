@@ -2,11 +2,9 @@
   <section class="HomePage">
     <UserHeader :checked="checkUser" />
     <UserHeaderPhone />
-    <div
-      class="bg-main-color min-h-20 w-full flex flex-warp content-center p-4 text-center"
-    >
+    <div class="bg-main-color min-h-20 w-full p-4 text-center">
       <div
-        class="Seller-Nav w-[70%] mx-auto flex gap-10 capitalize justify-center text-white font-bold text-xl md:flex-row flex-col items-center"
+        class="Seller-Nav flex flex-wrap gap-10 capitalize justify-center text-white font-bold text-xl md:flex-row flex-col items-center"
       >
         <router-link :to="{ name: 'Seller.Profile Servies' }">{{
           $t("Profile Services")
@@ -23,13 +21,24 @@
         <router-link :to="{ name: 'Seller.Requests' }">{{
           $t("Requests")
         }}</router-link>
+        <router-link :to="{ name: 'Seller.Requested orders' }">{{
+          $t("Requested orders")
+        }}</router-link>
+        <router-link :to="{ name: 'Seller.Requested service' }">{{
+          $t("Requested service")
+        }}</router-link>
         <router-link :to="{ name: 'Seller.Chats' }">{{
           $t("Chats")
         }}</router-link>
-
         <router-link :to="{ name: 'Seller.Wallet' }">{{
           $t("Wallet")
         }}</router-link>
+        <router-link :to="{ name: 'Seller.Policy' }">{{
+          $t("Policy")
+        }}</router-link>
+        <div class="cursor-pointer" @click="Logout()">
+          {{ $t("Logout") }}
+        </div>
       </div>
     </div>
     <div class="intro-page mb-16 mt-4 text-xl font-bold h-auto w-full">
@@ -120,69 +129,91 @@
         <p class="mt-16 text-main-color font-bold text-4xl">123</p>
       </div>
     </div>
-    <div
-      class="image-home my-8 grid md:grid-cols-5 grid-cols-3 items-center justify-center text-center w-[90%] mx-auto"
-    >
-      <img
-        src="../../assets/images/Companies/c_1.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_2.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_3.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_4.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_5.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_6.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_7.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_8.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_9.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_10.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
+    <div class="bg-main-color my-8">
+      <div
+        class="image-home grid md:grid-cols-5 grid-cols-3 gap-2 p-2 items-center justify-center text-center w-[90%] mx-auto"
+      >
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_1.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_2.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_3.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_4.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_5.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_6.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_7.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_8.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_9.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_10.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+      </div>
     </div>
     <div
       class="card-details my-12 grid md:grid-cols-3 grid-cols-1 items-center gap-4 justify-around w-[90%] mx-auto"
@@ -250,7 +281,7 @@
       <img
         src="../../assets/images/image_slider.png"
         alt="image_slider"
-        class="w-[70%] mt-2 h-full block rounded-lg mx-auto bg-cover bg-center"
+        class="w-[90%] mt-2 h-full block rounded-lg mx-auto bg-cover bg-center"
       />
     </div>
     <div class="grid md:grid-cols-2 min-h-[400px] grid-cols-1 gap-4 p-4">
@@ -305,6 +336,11 @@ export default {
     goServices(value) {
       this.$router.push({
         name: value,
+      });
+    },
+    Logout() {
+      this.$router.push({
+        name: "MainPage",
       });
     },
   },

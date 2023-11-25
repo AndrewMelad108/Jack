@@ -59,8 +59,15 @@
             selected === 'User' ? 'bg-green-100 text-[#24C6C9]' : 'bg-gray-100'
           "
           @click="selected = 'User'"
-          class="capitalize border-0 p-2 md:text-2xl text-lg rounded-2xl"
+          class="capitalize border-0 p-2 md:text-xl text-lg rounded-2xl relative"
         >
+          <div class="tooltip hidden text-base">
+            {{
+              $t(
+                "The user is the person who can use the application for the purpose of requesting all available services"
+              )
+            }}
+          </div>
           {{ $t("user") }}
         </button>
         <button
@@ -70,8 +77,15 @@
               : 'bg-gray-100'
           "
           @click="selected = 'Seller'"
-          class="capitalize border-0 p-2 text-2xlmd:text-2xl text-lg rounded-2xl"
+          class="capitalize border-0 p-2 md:text-xl text-lg rounded-2xl relative"
         >
+          <div class="tooltip hidden text-base">
+            {{
+              $t(
+                "The provider is the person or facility that can provide one or some services through the application"
+              )
+            }}
+          </div>
           {{ $t("seller") }}
         </button>
       </div>
@@ -173,4 +187,29 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.group-btn button:hover {
+  .tooltip {
+    position: absolute;
+    display: block;
+    top: -75px;
+    left: 0;
+    max-width: 350px;
+    width: 400px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 10px;
+    word-wrap: break-word;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -16px;
+      left: 25%;
+      border-width: 8px;
+      border-style: solid;
+      border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
+    }
+  }
+}
+</style>

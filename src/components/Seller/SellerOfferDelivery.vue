@@ -72,85 +72,41 @@
           <div class="Offer_form space-y-6 mt-2">
             <div class="input-field">
               <label
-                for="FirstName"
+                for="Company Name"
                 class="capitalize text-text-color block md:text-lg text-md text-lg"
-                >{{ $t("First Name") }}</label
+                >{{ $t("Company Name") }}</label
               >
               <input
                 type="text"
                 v-validate="{ alpha: true, required: true }"
-                name="FirstName"
+                name="CompanyName"
                 v-model="Offer.name"
                 class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
-                :placeholder="$t('enter First Name')"
+                :placeholder="$t('Enter Company Name')"
               />
-              <span class="text-red-400">{{ errors.first("FirstName") }}</span>
+              <span class="text-red-400">{{
+                errors.first("CompanyName")
+              }}</span>
             </div>
             <div class="input-field">
               <label
                 for="PostCost"
                 class="capitalize text-text-color block md:text-lg text-md"
-                >{{ $t("PostCost") }}</label
+                >{{ $t("Company Total") }}</label
               >
               <input
                 type="text"
                 v-validate="{ required: true }"
-                name="PostCost"
+                name="Company Total"
                 v-model="Offer.PartCost"
-                :placeholder="$t('enter Post Cost')"
+                :placeholder="$t('Enter Company Total')"
                 class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
               />
-              <span class="text-red-400">{{ errors.first("PostCost") }}</span>
+              <span class="text-red-400">{{
+                errors.first("Company Total")
+              }}</span>
             </div>
-            <div class="input-field">
-              <label
-                for="Amount"
-                class="capitalize text-text-color block md:text-lg text-md"
-                >{{ $t("Amount") }}</label
-              >
-              <input
-                type="number"
-                :placeholder="$t('Enter Amount')"
-                v-validate="{ required: true }"
-                name="Amount"
-                v-model="Offer.Amount"
-                class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
-              />
-              <span class="text-red-400">{{ errors.first("Amount") }}</span>
-            </div>
-            <div class="input-field">
-              <label
-                for="Total Cost"
-                class="capitalize text-text-color block md:text-lg text-md"
-                >{{ $t("TotalCost") }}</label
-              >
-              <input
-                type="number"
-                :placeholder="$t('Enter Total Cost')"
-                v-validate="{ required: true }"
-                name="TotalCost"
-                v-model="Offer.Total"
-                class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
-              />
-              <span class="text-red-400">{{ errors.first("TotalCost") }}</span>
-            </div>
-            <div class="input-field">
-              <label
-                for="Details"
-                class="capitalize text-text-color block md:text-lg text-md"
-                >{{ $t("Details") }}</label
-              >
-              <textarea
-                class="resize-none h-20 w-full placeholder:p-2 bg-gray-200 rounded-lg"
-                name="Details"
-                id="Details"
-                v-model="Offer.description"
-                rows="10"
-                :placeholder="$t('Enter More Details')"
-                v-validate="'required'"
-              ></textarea>
-              <span class="text-red-400">{{ errors.first("Details") }}</span>
-            </div>
+
             <button
               @click="addOffer"
               class="bg-main-color w-full font-bold border-2 md:text-md text-sm text-white p-1 md:px-3 md:py-2 rounded-lg"
@@ -168,32 +124,13 @@
                     scope="col"
                     class="md:px-4 px-1 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    {{ $t("Name") }}
+                    {{ $t("Company Name") }}
                   </th>
                   <th
                     scope="col"
                     class="md:px-4 px-1 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    {{ $t("Description") }}
-                  </th>
-
-                  <th
-                    scope="col"
-                    class="md:px-4 px-1 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    {{ $t("Amount") }}
-                  </th>
-                  <th
-                    scope="col"
-                    class="md:px-4 px-1 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    {{ $t("Part Cost") }}
-                  </th>
-                  <th
-                    scope="col"
-                    class="md:px-4 px-1 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    {{ $t("Total") }}
+                    {{ $t("Company Total") }}
                   </th>
                 </tr>
               </thead>
@@ -207,22 +144,7 @@
                   <td
                     class="md:px-2 px-1 py-4 whitespace-nowrap text-sm text-gray-500"
                   >
-                    {{ service.description }}
-                  </td>
-                  <td
-                    class="md:px-2 px-1 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
-                  >
-                    {{ service.Amount }}
-                  </td>
-                  <td
-                    class="md:px-2 px-1 py-4 whitespace-nowrap text-sm text-gray-500"
-                  >
-                    {{ service.PartCost }}
-                  </td>
-                  <td
-                    class="md:px-2 px-1 py-4 whitespace-nowrap text-sm text-gray-500"
-                  >
-                    {{ service.Total }}
+                    {{ service.total }}
                   </td>
                 </tr>
                 <!-- Add more rows here -->
@@ -309,26 +231,17 @@ export default {
       },
       services: [
         {
-          name: "service",
-          description: "Description",
-          Amount: 2,
-          PartCost: 400,
-          Total: 2,
+          name: "Company Name",
+          total: 0,
         },
         {
-          name: "service",
-          description: "Description",
-          Amount: 2,
-          PartCost: 400,
-          Total: 2,
+          name: "Company Name",
+          total: 0,
         },
       ],
       Offer: {
         name: "",
-        description: "",
-        Amount: null,
-        PartCost: null,
-        Total: null,
+        total: null,
       },
     };
   },
@@ -340,10 +253,7 @@ export default {
       try {
         this.services.push({
           name: this.Offer.name,
-          description: this.Offer.description,
-          Amount: this.Offer.Amount,
-          PartCost: this.Offer.PartCost,
-          Total: this.Offer.Total,
+          total: this.Offer.total,
         });
       } catch (error) {
         console.error("Error adding data:", error);

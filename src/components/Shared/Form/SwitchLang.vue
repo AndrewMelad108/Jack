@@ -1,6 +1,7 @@
 <template>
-  <div class="language-switcher" @click="toggleLanguage()">
+  <div class="language-switcher">
     <button
+      @click="toggleLanguage()"
       class="px-4 py-2 block ml-auto rounded-lg border-0 hover:text-main-color hover:bg-green-50 font-bold transition-all ease-in-out duration-500 dark:border-gray-700 bg-main-color text-white"
     >
       {{ lang === "ar" ? "English" : "العربيه" }}

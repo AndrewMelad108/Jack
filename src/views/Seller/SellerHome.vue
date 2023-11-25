@@ -59,6 +59,8 @@ export default {
         "Wallet",
         "Profile",
         "Profile Servies",
+        "Policy",
+        "Delivery",
       ],
     };
   },
