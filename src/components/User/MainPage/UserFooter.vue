@@ -5,10 +5,11 @@
     <div class="call-detials lg:w-4/12 w-[68%] space-y-10">
       <img
         src="../../../assets/images/logo.png"
-        class="block"
+        class="block mb-8"
         alt="logo-image"
         loading="lazy"
       />
+      <span class="font-bold text-xl">المرور الاسعاف أمن الطريق</span>
       <p class="phone-number flex gap-1 cursor-pointer">
         <img
           src="../../../assets/images/phone.png"
@@ -17,7 +18,7 @@
           loading="lazy"
         />+66 32329 r23523
       </p>
-      <div class="grid lg:grid-cols-2 grid-cols-1 items-center">
+      <div style="margin-top: 0;" class="grid lg:grid-cols-2 grid-cols-1 items-center">
         <p class="flex items-center gap-4 text-sm">
           <img
             src="../../../assets/images/android-mail.png"

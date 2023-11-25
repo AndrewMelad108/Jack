@@ -129,69 +129,91 @@
         <p class="mt-16 text-main-color font-bold text-4xl">123</p>
       </div>
     </div>
-    <div
-      class="image-home my-8 grid md:grid-cols-5 grid-cols-3 items-center justify-center text-center w-[90%] mx-auto"
-    >
-      <img
-        src="../../assets/images/Companies/c_1.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_2.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_3.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_4.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_5.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_6.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_7.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_8.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_9.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
-      <img
-        src="../../assets/images/Companies/c_10.png"
-        alt=""
-        class="block mx-auto"
-        loading="lazy"
-      />
+    <div class="bg-main-color my-8">
+      <div
+        class="image-home grid md:grid-cols-5 grid-cols-3 gap-2 p-2 items-center justify-center text-center w-[90%] mx-auto"
+      >
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_1.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_2.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_3.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_4.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_5.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_6.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_7.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_8.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_9.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+        <div class="bg-white h-full flex items-center">
+          <img
+            src="../../assets/images/Companies/c_10.png"
+            alt=""
+            class="block mx-auto"
+            loading="lazy"
+          />
+        </div>
+      </div>
     </div>
     <div
       class="card-details my-12 grid md:grid-cols-3 grid-cols-1 items-center gap-4 justify-around w-[90%] mx-auto"
@@ -259,7 +281,7 @@
       <img
         src="../../assets/images/image_slider.png"
         alt="image_slider"
-        class="w-[70%] mt-2 h-full block rounded-lg mx-auto bg-cover bg-center"
+        class="w-[90%] mt-2 h-full block rounded-lg mx-auto bg-cover bg-center"
       />
     </div>
     <div class="grid md:grid-cols-2 min-h-[400px] grid-cols-1 gap-4 p-4">

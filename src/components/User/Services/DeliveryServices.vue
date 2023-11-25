@@ -61,24 +61,26 @@
           </select>
           <p class="text-red-400">{{ errors.first("Search Scope") }}</p>
 
-          <label for="ServiceType" class="capitalize block text-xl">{{
-            $t("Service Type")
-          }}</label>
-          <select
-            v-validate="{ required: true }"
-            name="ServiceType"
-            v-model="Delivery.ServiceType"
-            class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-100 w-[100%]"
-          >
-            <option disabled selected value="">
-              {{ $t("Service Type") }}
-            </option>
+          <div v-show="Delivery.Type">
+            <label for="ServiceType" class="capitalize block text-xl mb-2">{{
+              $t("Service Type")
+            }}</label>
+            <select
+              v-validate="{ required: true }"
+              name="ServiceType"
+              v-model="Delivery.ServiceType"
+              class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-100 w-[100%]"
+            >
+              <option disabled selected value="">
+                {{ $t("Service Type") }}
+              </option>
 
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
-          </select>
-          <p class="text-red-400">{{ errors.first("ServiceType") }}</p>
+              <option value="asd1">asd</option>
+              <option value="asd2">asd</option>
+              <option value="asd3">asd</option>
+            </select>
+            <p class="text-red-400">{{ errors.first("ServiceType") }}</p>
+          </div>
 
           <label for="Size" class="capitalize block text-xl">
             {{ $t("Size") }}</label

@@ -1,11 +1,11 @@
 <template>
-  <section class="">
+  <section>
     <div class="bg-[#24C6C9] min-h-[300px] p-4 mx-auto">
       <div class="text-center my-4">
         <h1 class="text-white text-3xl">{{ $t("Work Hours") }}</h1>
         <span class="bg-white block w-20 mt-2 mx-auto h-2 rounded-xl"></span>
       </div>
-      <div class="flex md:flex-row flex-col md:gap-6 gap-4">
+      <div class="flex md:flex-row flex-col md:gap-6 gap-4 w-[90%] m-auto">
         <img src="../../assets/images/clock.png" class="md:w-60 md:h-60 w-40 h-40 md:m-0 m-auto" alt="clock" loading="lazy">
         <div>
           <div v-for="time in times" :key="time.day">
