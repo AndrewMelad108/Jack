@@ -147,6 +147,7 @@
 
 <script>
 import SwitchLang from "@/components/Shared/Form/SwitchLang.vue";
+import { sendRequest } from "../../../axios";
 export default {
   name: "LoginPage",
   data() {
@@ -166,18 +167,33 @@ export default {
     goToMainPage() {
       this.$router.go(-1);
     },
+
     Login() {
       this.$validator.validateAll().then((result) => {
         if (result) {
-          if (localStorage.getItem("role") === "User") {
-            this.$router.push({
-              name: "User.Home",
-            });
-          } else {
-            this.$router.push({
-              name: "Seller.Home",
-            });
-          }
+          let successCallback = (res) => {
+            console.log(res.status);
+          };
+          let errorCallback = (err) => {
+            console.log(err);
+          };
+          sendRequest(
+            "Account/Login",
+            "post",
+            { ...this.person },
+            false,
+            successCallback,
+            errorCallback
+          );
+          // if (localStorage.getItem("role") === "User") {
+          //   this.$router.push({
+          //     name: "User.Home",
+          //   });
+          // } else {
+          //   this.$router.push({
+          //     name: "Seller.Home",
+          //   });
+          // }
         } else {
           console.log("error");
         }
