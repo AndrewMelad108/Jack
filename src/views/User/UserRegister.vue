@@ -101,9 +101,9 @@
                 {{ $t("Select City") }}
               </option>
 
-              <option value="asd1">asd</option>
-              <option value="asd2">asd</option>
-              <option value="asd3">asd</option>
+              <option v-for="city in cities" :key="city.id" :value="city.id">
+                {{ city.name }}
+              </option>
             </select>
             <span class="text-red-400">{{ errors.first("City") }}</span>
           </div>
@@ -120,9 +120,13 @@
               <option disabled selected value="">
                 {{ $t("Select Region") }}
               </option>
-              <option value="asd1">asd</option>
-              <option value="asd2">asd</option>
-              <option value="asd3">asd</option>
+              <option
+                v-for="region in regions"
+                :key="region.id"
+                :value="region.id"
+              >
+                {{ region.name }}
+              </option>
             </select>
             <span class="text-red-400">{{ errors.first("Region") }}</span>
           </div>
@@ -213,12 +217,16 @@
 import SwitchLang from "@/components/Shared/Form/SwitchLang.vue";
 import UserHeader from "@/components/User/MainPage/UserHeader.vue";
 import UserHeaderPhone from "@/components/User/UserHeaderPhone.vue";
+import { sendRequest } from "../../../axios";
 export default {
   name: "LoginPage",
+  // Address/City/Regions?cityld=1
   data() {
     return {
       checkUser: true,
       selected: "User",
+      cities: [],
+      regions: [],
       person: {
         FirstName: "",
         LastName: "",
@@ -232,6 +240,26 @@ export default {
       },
     };
   },
+  watch: {
+    "person.City"(value) {
+      this.getRegions(value);
+    },
+  },
+  created() {
+    let successCallback = (res) => {
+      if (res.data.success) {
+        this.cities = res.data.data;
+      }
+    };
+    sendRequest(
+      "Address/City/AllCities",
+      "get",
+      null,
+      false,
+      successCallback,
+      null
+    );
+  },
   components: {
     UserHeader,
     UserHeaderPhone,
@@ -241,14 +269,52 @@ export default {
     goToMainPage() {
       this.$router.go(-1);
     },
-    Register() {
-      this.$validator.validateAll().then((result) => {
-        if (result) {
-          console.log("run");
-        } else {
-          console.log("error");
+    getRegions(id) {
+      let successCallback = (res) => {
+        console.log(res.data);
+        if (res.data.success) {
+          this.regions = res.data.data;
         }
-      });
+      };
+      sendRequest(
+        `Address/City/Regions?cityld=${id}`,
+        "get",
+        null,
+        false,
+        successCallback,
+        null
+      );
+    },
+    Register() {
+      // this.$validator.validateAll().then((result) => {
+      // if (result) {
+      let successCallback = (res) => {
+        console.log(res.data.success);
+        console.log(res.status);
+      };
+      let errorCallback = (err) => {
+        console.log(err);
+      };
+      sendRequest(
+        "Account/register/Customer",
+        "post",
+        {
+          firstName: "andrew1",
+          lastName: "melad1",
+          password: "Aa123456##@@",
+          email: "asd11@gmail.com",
+          contactNumber: "01211673776",
+          regionID: 0,
+        },
+        false,
+        successCallback,
+        errorCallback
+      );
+
+      // } else {
+      //   console.log("error");
+      // }
+      // });
     },
   },
 };

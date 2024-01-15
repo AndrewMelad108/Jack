@@ -172,6 +172,7 @@ export default {
       this.$validator.validateAll().then((result) => {
         if (result) {
           let successCallback = (res) => {
+            console.log(res.data.success);
             console.log(res.status);
           };
           let errorCallback = (err) => {

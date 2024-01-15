@@ -68,46 +68,46 @@
         </div>
         <div class="form-inputs grid md:grid-cols-2 gap-6 grid-cols-1">
           <div class="input-field space-y-2">
-            <label for="FullName" class="capitalize block text-xl">{{
+            <label for="fullName" class="capitalize block text-xl">{{
               $t("Full Name")
             }}</label>
             <input
               type="text"
               v-validate="{ alpha: true, required: true }"
-              name="FullName"
+              name="fullName"
               class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
               :placeholder="$t('Enter Full Name')"
-              v-model="person.FullName"
+              v-model="person.fullName"
             />
-            <span class="text-red-400">{{ errors.first("FullName") }}</span>
+            <span class="text-red-400">{{ errors.first("fullName") }}</span>
           </div>
           <div class="input-field space-y-2">
-            <label for="NickName" class="capitalize block text-xl">{{
+            <label for="nickName" class="capitalize block text-xl">{{
               $t("Nick Name")
             }}</label>
             <input
               type="text"
               v-validate="{ alpha: true, required: true }"
-              name="NickName"
+              name="nickName"
               :placeholder="$t('Enter Nick Name')"
-              v-model="person.NickName"
+              v-model="person.nickName"
               class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
-            <span class="text-red-400">{{ errors.first("NickName") }}</span>
+            <span class="text-red-400">{{ errors.first("nickName") }}</span>
           </div>
           <div class="input-field space-y-2">
-            <label for="Email" class="capitalize block text-xl">{{
-              $t("Email")
+            <label for="email" class="capitalize block text-xl">{{
+              $t("email")
             }}</label>
             <input
               type="email"
-              :placeholder="$t('enter Email')"
-              v-model="person.Email"
+              :placeholder="$t('enter email')"
+              v-model="person.email"
               v-validate="{ required: true, email: true }"
-              name="Email"
+              name="email"
               class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
-            <span class="text-red-400">{{ errors.first("Email") }}</span>
+            <span class="text-red-400">{{ errors.first("email") }}</span>
           </div>
           <div class="input-field space-y-2">
             <label for="Mobile Number" class="capitalize block text-xl">{{
@@ -154,18 +154,18 @@
             }}</span>
           </div>
           <div class="input-field space-y-2">
-            <label for="Address" class="capitalize block text-xl">{{
-              $t("Address")
+            <label for="address" class="capitalize block text-xl">{{
+              $t("address")
             }}</label>
             <input
               type="text"
               :placeholder="$t('enter shop address')"
               v-validate="{ required: true }"
-              name="Address"
-              v-model="person.Address"
+              name="address"
+              v-model="person.address"
               class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
-            <span class="text-red-400">{{ errors.first("Address") }}</span>
+            <span class="text-red-400">{{ errors.first("address") }}</span>
           </div>
           <div class="input-field space-y-2">
             <label for="ID" class="capitalize block text-xl">{{
@@ -222,27 +222,27 @@
             <span class="text-red-400">{{ errors.first("Nationality") }}</span>
           </div>
           <div class="input-field space-y-2">
-            <label for="Region" class="capitalize block text-xl">{{
-              $t("Region")
+            <label for="region" class="capitalize block text-xl">{{
+              $t("region")
             }}</label>
             <select
-              v-model="person.Region"
+              v-model="person.region"
               v-validate="{ required: true }"
-              name="Region"
+              name="region"
               class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             >
               <option disabled selected value="">
-                {{ $t("Select Region") }}
+                {{ $t("Select region") }}
               </option>
               <option
-                v-for="Region in regions"
-                :key="Region.id"
-                :value="Region.name"
+                v-for="region in regions"
+                :key="region.id"
+                :value="region.name"
               >
-                {{ Region.name }}
+                {{ region.name }}
               </option>
             </select>
-            <span class="text-red-400">{{ errors.first("Region") }}</span>
+            <span class="text-red-400">{{ errors.first("region") }}</span>
           </div>
           <div class="input-field space-y-2">
             <label for="City" class="capitalize block text-xl">{{
@@ -451,6 +451,7 @@
 <script>
 import UserHeader from "@/components/User/MainPage/UserHeader.vue";
 import UserHeaderPhone from "@/components/User/UserHeaderPhone.vue";
+import { sendRequest } from "../../../axios";
 export default {
   name: "LoginPage",
   data() {
@@ -458,17 +459,17 @@ export default {
       checkUser: true,
       selected: "Seller",
       person: {
-        FullName: "",
-        NickName: "",
-        Region: "",
+        fullName: "",
+        nickName: "",
+        region: "",
         City: "",
-        Email: "",
+        email: "",
         password: "",
         ConfirmPassword: "",
         condition: "",
         MobileNumber: null,
-        Address: "",
-        ID: "",
+        address: "",
+        iban: "",
         Country: "",
         Nationality: "",
         IBAN: "",
@@ -630,14 +631,62 @@ export default {
     goToMainPage() {
       this.$router.go(-1);
     },
+
     Register() {
-      this.$validator.validateAll().then((result) => {
-        if (result) {
-          console.log("run");
-        } else {
-          console.log("error");
-        }
-      });
+      // this.$validator.validateAll().then((result) => {
+      //   if (result) {
+      let successCallback = (res) => {
+        console.log(res.data.success);
+        console.log(res.status);
+      };
+      let errorCallback = (err) => {
+        console.log(err);
+      };
+      sendRequest(
+        "Account/register/Provider",
+        "post",
+        {
+          fullName: "andrew1",
+          nickName: "melad1",
+          password: "Aa123456##@@",
+          email: "asd11@gmail.com",
+          mobileNumber: "01211673776",
+          address: "aaaaaaaaaaa",
+          region: 1,
+          comercialRegistrationNumber: 0,
+          nationality: "asd",
+          iban: 0,
+          comercialActivity: "Assss",
+          accountNumber: "ssss",
+          legelCapcity: 0,
+          serviceID: 0,
+          licencePhotoOne: "sssssss",
+          licencePhotoTwo: "sssssss",
+        },
+        false,
+        successCallback,
+        errorCallback
+      );
+    },
+    licensePhotoOne(e) {
+      // const image = e.target.files[0];
+      // const reader = new FileReader();
+      // reader.readAsDataURL(image);
+      // reader.onload = (e) => {
+      //   this.previewImage = e.target.result;
+      //   console.log(this.previewImage);
+      console.log(URL.createObjectURL(e.target.files[0]));
+      // };
+    },
+    licensePhotoTwo(e) {
+      // const image = e.target.files[0];
+      // const reader = new FileReader();
+      // reader.readAsDataURL(image);
+      // reader.onload = (e) => {
+      //   this.previewImage = e.target.result;
+      //   console.log(this.previewImage);
+      console.log(URL.createObjectURL(e.target.files[0]));
+      // };
     },
   },
 };
