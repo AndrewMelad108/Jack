@@ -27,7 +27,7 @@ const routes = [
   },
   {
     path: "/Seller/main",
-    name: "Seller.Home",
+    name: "provider.Home",
     component: SellerHome,
   },
   {
@@ -37,72 +37,72 @@ const routes = [
     children: [
       {
         path: "/Home",
-        name: "Seller.ControlPanel",
+        name: "provider.ControlPanel",
         component: Home,
       },
       {
         path: "/Requests",
-        name: "Seller.Requests",
+        name: "provider.Requests",
         component: SellerRequests,
       },
       {
         path: "/RequestedOrders",
-        name: "Seller.Requested orders",
+        name: "provider.Requested orders",
         component: SellerRequestedOrders,
       },
       {
         path: "/RequestedService",
-        name: "Seller.Requested service",
+        name: "provider.Requested service",
         component: SellerRequestedService,
       },
       {
         path: "/request/:requestId/Details",
-        name: "Seller.RequestDetials",
+        name: "provider.RequestDetials",
         component: SellerRequestDetials,
       },
       {
         path: "/SellerOffers",
-        name: "Seller.Offers",
+        name: "provider.Offers",
         component: SellerOffers,
       },
       {
         path: "/Offer/:OfferId/Create",
-        name: "Seller.SellerOferCreate",
+        name: "provider.SellerOferCreate",
         component: SellerOferCreate,
       },
       {
         path: "/Orders",
-        name: "Seller.Orders",
+        name: "provider.Orders",
         component: SellerOrders,
       },
       {
         path: "/Profile",
-        name: "Seller.Profile",
+        name: "provider.Profile",
         component: SellerProfile,
       },
       {
         path: "/Wallet",
-        name: "Seller.Wallet",
+        name: "provider.Wallet",
         component: SellerWallet,
       },
       {
         path: "/Chat",
-        name: "Seller.Chats",
+        name: "provider.Chats",
         component: SellerChat,
       },
       {
         path: "/Policy",
-        name: "Seller.Policy",
+        name: "provider.Policy",
         component: SellerPolicy,
       },
       {
         path: "/Delivery",
-        name: "Seller.Delivery",
+        name: "provider.Delivery",
         component: SellerDelivery,
       },
       {
         path: "/ProfileServices",
-        name: "Seller.Profile Servies",
+        name: "provider.Profile Servies",
         component: SellerProfileServices,
       },
     ],

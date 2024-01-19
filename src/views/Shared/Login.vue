@@ -53,42 +53,7 @@
       <p class="text-center py-4 capitalize font-bold">
         {{ $t("please login to your account") }}
       </p>
-      <div class="group-btn mx-auto w-[80%] grid grid-cols-2 md:gap-3 gap-1">
-        <button
-          :class="
-            selected === 'User' ? 'bg-green-100 text-[#24C6C9]' : 'bg-gray-100'
-          "
-          @click="selected = 'User'"
-          class="capitalize border-0 p-2 md:text-xl text-lg rounded-2xl relative"
-        >
-          <div class="tooltip hidden text-base">
-            {{
-              $t(
-                "The user is the person who can use the application for the purpose of requesting all available services"
-              )
-            }}
-          </div>
-          {{ $t("user") }}
-        </button>
-        <button
-          :class="
-            selected === 'Seller'
-              ? 'bg-green-100 text-[#24C6C9]'
-              : 'bg-gray-100'
-          "
-          @click="selected = 'Seller'"
-          class="capitalize border-0 p-2 md:text-xl text-lg rounded-2xl relative"
-        >
-          <div class="tooltip hidden text-base">
-            {{
-              $t(
-                "The provider is the person or facility that can provide one or some services through the application"
-              )
-            }}
-          </div>
-          {{ $t("seller") }}
-        </button>
-      </div>
+
       <div class="form-inputs space-y-4 my-5">
         <div class="input-field space-y-2">
           <label for="Email" class="capitalize block text-xl">{{
@@ -148,21 +113,24 @@
 <script>
 import SwitchLang from "@/components/Shared/Form/SwitchLang.vue";
 import { sendRequest } from "../../../axios";
+import {
+  showSuccessMessage,
+  showErrorMessage,
+  extractUserInfoFromToken,
+} from "../../../common";
 export default {
   name: "LoginPage",
   data() {
     return {
-      selected: "User",
       person: {
         email: "",
         password: "",
       },
+      user: {},
     };
   },
   components: { SwitchLang },
-  updated() {
-    localStorage.setItem("role", this.selected);
-  },
+
   methods: {
     goToMainPage() {
       this.$router.go(-1);
@@ -172,8 +140,23 @@ export default {
       this.$validator.validateAll().then((result) => {
         if (result) {
           let successCallback = (res) => {
-            console.log(res.data.success);
-            console.log(res.status);
+            if (res.data.success) {
+              showSuccessMessage(res.data.message);
+              this.user = extractUserInfoFromToken(res.data.data.token);
+              localStorage.setItem("role", this.user.role);
+              localStorage.setItem("token", res.data.data.token);
+              if (this.user.role === "customer") {
+                this.$router.push({
+                  name: "customer.Home",
+                });
+              } else {
+                this.$router.push({
+                  name: "Seller.Home",
+                });
+              }
+            } else {
+              showErrorMessage(res.data.message);
+            }
           };
           let errorCallback = (err) => {
             console.log(err);
@@ -186,47 +169,9 @@ export default {
             successCallback,
             errorCallback
           );
-          // if (localStorage.getItem("role") === "User") {
-          //   this.$router.push({
-          //     name: "User.Home",
-          //   });
-          // } else {
-          //   this.$router.push({
-          //     name: "Seller.Home",
-          //   });
-          // }
-        } else {
-          console.log("error");
         }
       });
     },
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.group-btn button:hover {
-  .tooltip {
-    position: absolute;
-    display: block;
-    top: -75px;
-    left: 0;
-    max-width: 350px;
-    width: 400px;
-    background: rgba(0, 0, 0, 0.75);
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 10px;
-    word-wrap: break-word;
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -16px;
-      left: 25%;
-      border-width: 8px;
-      border-style: solid;
-      border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
-    }
-  }
-}
-</style>

@@ -2,6 +2,7 @@
   <section class="RegisterPage relative min-h-[100vh] w-[100%]">
     <UserHeader :checked="checkUser" />
     <UserHeaderPhone />
+    <SwitchLang class="md:hidden m-4" />
     <div class="Register-form bg-gray-100 w-[100%] py-4">
       <div
         class="bg-white md:max-w-[1100px] max-w-[600px] p-4 mx-auto min-h-[95vh] rounded-2xl"
@@ -42,13 +43,21 @@
         >
           <div class="flex items-center gap-2 md:w-1/2 w-full">
             <button
-              @click="
-                $router.push({
-                  name: 'Register',
-                })
+              :class="
+                selected === 'User'
+                  ? 'bg-green-100 text-[#24C6C9]'
+                  : 'bg-gray-100'
               "
-              class="capitalize px-12 bg-gray-100 border-0 py-2 md:text-xl text-md rounded-2xl"
+              @click="$router.push({ name: 'Register' })"
+              class="capitalize border-0 p-2 md:text-xl text-lg rounded-2xl relative w-32"
             >
+              <div class="tooltip hidden text-base">
+                {{
+                  $t(
+                    "The user is the person who can use the application for the purpose of requesting all available services"
+                  )
+                }}
+              </div>
               {{ $t("user") }}
             </button>
             <button
@@ -60,8 +69,15 @@
               @click="
                 selected = 'Seller' && router.push({ name: 'Seller.Register' })
               "
-              class="capitalize px-12 py-2 border-0 md:text-xl text-md rounded-xl"
+              class="capitalize border-0 p-2 md:text-xl text-lg rounded-2xl relative w-32"
             >
+              <div class="tooltip hidden text-base">
+                {{
+                  $t(
+                    "The provider is the person or facility that can provide one or some services through the application"
+                  )
+                }}
+              </div>
               {{ $t("seller") }}
             </button>
           </div>
@@ -222,6 +238,26 @@
             <span class="text-red-400">{{ errors.first("Nationality") }}</span>
           </div>
           <div class="input-field space-y-2">
+            <label for="City" class="capitalize block text-xl">{{
+              $t("City")
+            }}</label>
+            <select
+              v-model="person.City"
+              v-validate="{ required: true }"
+              name="City"
+              class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
+            >
+              <option disabled selected value="">
+                {{ $t("Select City") }}
+              </option>
+
+              <option v-for="City in cities" :key="City.id" :value="City.id">
+                {{ City.name }}
+              </option>
+            </select>
+            <span class="text-red-400">{{ errors.first("City") }}</span>
+          </div>
+          <div class="input-field space-y-2">
             <label for="region" class="capitalize block text-xl">{{
               $t("region")
             }}</label>
@@ -237,33 +273,14 @@
               <option
                 v-for="region in regions"
                 :key="region.id"
-                :value="region.name"
+                :value="region.id"
               >
                 {{ region.name }}
               </option>
             </select>
             <span class="text-red-400">{{ errors.first("region") }}</span>
           </div>
-          <div class="input-field space-y-2">
-            <label for="City" class="capitalize block text-xl">{{
-              $t("City")
-            }}</label>
-            <select
-              v-model="person.City"
-              v-validate="{ required: true }"
-              name="City"
-              class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
-            >
-              <option disabled selected value="">
-                {{ $t("Select City") }}
-              </option>
 
-              <option v-for="City in cities" :key="City.id" :value="City.name">
-                {{ City.name }}
-              </option>
-            </select>
-            <span class="text-red-400">{{ errors.first("City") }}</span>
-          </div>
           <div class="input-field space-y-2">
             <label for="IBAN" class="capitalize block text-xl">{{
               $t("IBAN")
@@ -451,6 +468,7 @@
 <script>
 import UserHeader from "@/components/User/MainPage/UserHeader.vue";
 import UserHeaderPhone from "@/components/User/UserHeaderPhone.vue";
+import SwitchLang from "@/components/Shared/Form/SwitchLang.vue";
 import { sendRequest } from "../../../axios";
 export default {
   name: "LoginPage",
@@ -458,6 +476,7 @@ export default {
     return {
       checkUser: true,
       selected: "Seller",
+      cities: [],
       person: {
         fullName: "",
         nickName: "",
@@ -465,6 +484,7 @@ export default {
         City: "",
         email: "",
         password: "",
+        ID: "",
         ConfirmPassword: "",
         condition: "",
         MobileNumber: null,
@@ -477,6 +497,8 @@ export default {
         ComercialActivity: "",
         LegalCapacity: "",
         Services: "",
+        licencePhotoOne: "",
+        licencePhotoTwo: "",
       },
       Services: [
         { id: 1, name: "towing and shipping" },
@@ -500,7 +522,7 @@ export default {
         { id: 2, name: "Qatar" },
         { id: 3, name: "India" },
       ],
-      cities: [
+      citie: [
         { id: 1, name: "Riyadh" },
         { id: 2, name: "Alkharag" },
         { id: 3, name: "Dawadmi" },
@@ -600,7 +622,7 @@ export default {
         { id: 97, name: "Tabarjal" },
         { id: 98, name: "Jandal" },
       ],
-      regions: [
+      region: [
         { id: 1, name: "Riyadh" },
         { id: 2, name: "Makkah Al-Mukarramah" },
         { id: 3, name: "Al-Madinah Al-Munawwarah" },
@@ -621,75 +643,137 @@ export default {
         { id: 18, name: "Tarot" },
         { id: 19, name: "Paradise" },
       ],
+      regions: [],
     };
+  },
+  created() {
+    let successCallback = (res) => {
+      if (res.data.success) {
+        this.cities = res.data.data;
+      }
+    };
+    sendRequest(
+      "Address/City/AllCities",
+      "get",
+      null,
+      false,
+      successCallback,
+      null
+    );
   },
   components: {
     UserHeader,
     UserHeaderPhone,
+    SwitchLang,
+  },
+  watch: {
+    "person.City"(value) {
+      this.getRegions(value);
+    },
   },
   methods: {
     goToMainPage() {
       this.$router.go(-1);
     },
-
-    Register() {
-      // this.$validator.validateAll().then((result) => {
-      //   if (result) {
+    getRegions(id) {
       let successCallback = (res) => {
-        console.log(res.data.success);
-        console.log(res.status);
-      };
-      let errorCallback = (err) => {
-        console.log(err);
+        if (res.data.success) {
+          this.regions = res.data.data;
+        }
       };
       sendRequest(
-        "Account/register/Provider",
-        "post",
-        {
-          fullName: "andrew1",
-          nickName: "melad1",
-          password: "Aa123456##@@",
-          email: "asd11@gmail.com",
-          mobileNumber: "01211673776",
-          address: "aaaaaaaaaaa",
-          region: 1,
-          comercialRegistrationNumber: 0,
-          nationality: "asd",
-          iban: 0,
-          comercialActivity: "Assss",
-          accountNumber: "ssss",
-          legelCapcity: 0,
-          serviceID: 0,
-          licencePhotoOne: "sssssss",
-          licencePhotoTwo: "sssssss",
-        },
+        `Address/City/Regions?cityId=${id}`,
+        "get",
+        null,
         false,
         successCallback,
-        errorCallback
+        null
       );
     },
+    Register() {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          let successCallback = (res) => {
+            if (res.data.success) {
+              this.$router.push({
+                name: "Login",
+              });
+            } else {
+              console.error("Error");
+            }
+          };
+
+          sendRequest(
+            "Account/register/Provider",
+            "post",
+            {
+              fullName: this.person.fullName,
+              nickName: this.person.nickName,
+              password: this.person.password,
+              email: this.person.email,
+              mobileNumber: this.person.mobileNumber,
+              address: this.person.address,
+              region: this.person.region,
+              comercialRegistrationNumber: this.person.ID,
+              nationality: "asd",
+              iban: this.person.iban,
+              comercialActivity: this.person.ComercialActivity,
+              accountNumber: this.person.AccountNumber,
+              legelCapcity: this.person.LegalCapacity,
+              serviceID: 1,
+              licencePhotoOne: this.person.LicencePhotoOne,
+              licencePhotoTwo: this.person.LicencePhotoTwo,
+            },
+            false,
+            successCallback,
+            null
+          );
+        }
+      });
+    },
     licensePhotoOne(e) {
-      // const image = e.target.files[0];
-      // const reader = new FileReader();
-      // reader.readAsDataURL(image);
-      // reader.onload = (e) => {
-      //   this.previewImage = e.target.result;
-      //   console.log(this.previewImage);
-      console.log(URL.createObjectURL(e.target.files[0]));
-      // };
+      const image = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onload = (e) => {
+        this.person.licencePhotoOne = e.target.result;
+      };
     },
     licensePhotoTwo(e) {
-      // const image = e.target.files[0];
-      // const reader = new FileReader();
-      // reader.readAsDataURL(image);
-      // reader.onload = (e) => {
-      //   this.previewImage = e.target.result;
-      //   console.log(this.previewImage);
-      console.log(URL.createObjectURL(e.target.files[0]));
-      // };
+      const image = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onload = (e) => {
+        this.person.licencePhotoTwo = e.target.result;
+      };
     },
   },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.group-btn button:hover {
+  .tooltip {
+    position: absolute;
+    display: block;
+    top: -75px;
+    left: 0;
+    max-width: 350px;
+    width: 400px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 10px;
+    word-wrap: break-word;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -16px;
+      left: 25%;
+      border-width: 8px;
+      border-style: solid;
+      border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
+    }
+  }
+}
+</style>

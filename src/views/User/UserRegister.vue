@@ -45,14 +45,29 @@
                 ? 'bg-green-100 text-[#24C6C9]'
                 : 'bg-gray-100'
             "
-            class="capitalize 'bg-gray-100 border-0 p-2 mr-4 md:text-xl text-lg rounded-2xl"
+            @click="selected = 'User'"
+            class="capitalize border-0 p-2 md:text-xl text-lg rounded-2xl relative"
           >
+            <div class="tooltip hidden text-base">
+              {{
+                $t(
+                  "The user is the person who can use the application for the purpose of requesting all available services"
+                )
+              }}
+            </div>
             {{ $t("user") }}
           </button>
           <button
             @click="$router.push({ name: 'Seller.Register' })"
-            class="capitalize bg-gray-100 border-0 p-2 md:text-xl text-lg rounded-xl"
+            class="capitalize border-0 p-2 md:text-xl text-lg rounded-2xl relative"
           >
+            <div class="tooltip hidden text-base">
+              {{
+                $t(
+                  "The provider is the person or facility that can provide one or some services through the application"
+                )
+              }}
+            </div>
             {{ $t("seller") }}
           </button>
         </div>
@@ -220,7 +235,6 @@ import UserHeaderPhone from "@/components/User/UserHeaderPhone.vue";
 import { sendRequest } from "../../../axios";
 export default {
   name: "LoginPage",
-  // Address/City/Regions?cityld=1
   data() {
     return {
       checkUser: true,
@@ -271,13 +285,12 @@ export default {
     },
     getRegions(id) {
       let successCallback = (res) => {
-        console.log(res.data);
         if (res.data.success) {
           this.regions = res.data.data;
         }
       };
       sendRequest(
-        `Address/City/Regions?cityld=${id}`,
+        `Address/City/Regions?cityId=${id}`,
         "get",
         null,
         false,
@@ -286,38 +299,62 @@ export default {
       );
     },
     Register() {
-      // this.$validator.validateAll().then((result) => {
-      // if (result) {
-      let successCallback = (res) => {
-        console.log(res.data.success);
-        console.log(res.status);
-      };
-      let errorCallback = (err) => {
-        console.log(err);
-      };
-      sendRequest(
-        "Account/register/Customer",
-        "post",
-        {
-          firstName: "andrew1",
-          lastName: "melad1",
-          password: "Aa123456##@@",
-          email: "asd11@gmail.com",
-          contactNumber: "01211673776",
-          regionID: 0,
-        },
-        false,
-        successCallback,
-        errorCallback
-      );
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          let successCallback = (res) => {
+            if (res.data.success) {
+              this.$router.push({
+                name: "Login",
+              });
+            } else {
+              console.error("Error");
+            }
+          };
 
-      // } else {
-      //   console.log("error");
-      // }
-      // });
+          sendRequest(
+            "Account/register/Customer",
+            "post",
+            {
+              firstName: this.person.FirstName,
+              lastName: this.person.LastName,
+              password: this.person.Password,
+              email: this.person.Email,
+              contactNumber: this.person.Number,
+              regionID: this.person.Region,
+            },
+            false,
+            successCallback,
+            null
+          );
+        }
+      });
     },
   },
 };
 </script>
-
-<style></style>
+<style lang="scss" scoped>
+.group-btn button:hover {
+  .tooltip {
+    position: absolute;
+    display: block;
+    top: -75px;
+    left: 0;
+    max-width: 350px;
+    width: 400px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 10px;
+    word-wrap: break-word;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -16px;
+      left: 25%;
+      border-width: 8px;
+      border-style: solid;
+      border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
+    }
+  }
+}
+</style>
