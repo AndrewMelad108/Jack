@@ -31,10 +31,13 @@
             <option disabled selected value="">
               {{ $t("Search Scope") }}
             </option>
-
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option
+              v-for="option in ServiceType"
+              :key="option.id"
+              :value="option.id"
+            >
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">{{ errors.first("Search Scope") }}</p>
         </div>
@@ -74,9 +77,9 @@
               {{ $t("Select Brand") }}
             </option>
 
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option v-for="option in Brand" :key="option.id" :value="option.id">
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">{{ errors.first("Select Brand") }}</p>
           <label for="Model" class="mt-6 text-xl block">
@@ -92,9 +95,9 @@
               {{ $t("Select Model") }}
             </option>
 
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option v-for="option in Model" :key="option.id" :value="option.id">
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">
             {{ errors.first("Select Model") }}
@@ -111,9 +114,13 @@
             <option disabled selected value="">
               {{ $t("Select Year") }}
             </option>
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option
+              v-for="option in Manufactur"
+              :key="option.id"
+              :value="option.id"
+            >
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">
             {{ errors.first("Select Year") }}
@@ -258,10 +265,16 @@
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
 import MapGoogle from "../../Shared/Map.vue";
+import { sendRequest } from "../../../../axios";
 export default {
   name: "TowingAndShipping",
   data() {
     return {
+      ServiceDetails: [],
+      ServiceType: [],
+      Brand: [],
+      Model: [],
+      Manufactur: [],
       Towing: {
         Scope: "",
         City: "",
@@ -281,8 +294,31 @@ export default {
     SwitchLang,
     MapGoogle,
   },
-
+  mounted() {
+    this.getAllServicesOptions();
+  },
   methods: {
+    getAllServicesOptions() {
+      let successCallback = (res) => {
+        if (res.data.success) {
+          this.ServiceDetails = res.data.data.filters;
+          this.ServiceType = res.data.data.filters[0].filterValues;
+          this.Brand = res.data.data.filters[1].filterValues;
+          this.Manufactur = res.data.data.filters[2].filterValues;
+          console.log(this.Manufactur);
+          this.Model = res.data.data.filters[3].filterValues;
+        }
+      };
+
+      sendRequest(
+        "Admin/ServiceDetails?id=1",
+        "get",
+        null,
+        true,
+        successCallback,
+        null
+      );
+    },
     SendServices() {
       this.$validator.validateAll().then((result) => {
         if (result) {
