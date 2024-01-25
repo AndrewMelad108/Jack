@@ -221,11 +221,16 @@
 <script>
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
-
+import { sendRequest } from "../../../../axios";
 export default {
   name: "SparePartsRequest",
   data() {
     return {
+      ServiceDetails: [],
+      SearchScope: [],
+      SparePartsType: [],
+      Brand: [],
+      Model: [],
       SpareParts: {
         Scope: "",
         CarSerialNumber: "",
@@ -241,7 +246,30 @@ export default {
     WelcomeMassage,
     SwitchLang,
   },
+  created() {
+    this.getAllServicesOptions();
+  },
   methods: {
+    getAllServicesOptions() {
+      let successCallback = (res) => {
+        if (res.data.success) {
+          this.SearchScope = res.data.data.filters[0].filterValues;
+          this.SparePartsType = res.data.data.filters[1].filterValues;
+          this.Brand = res.data.data.filters[2].filterValues;
+          this.Model = res.data.data.filters[3].filterValues;
+          this.Manufactur = res.data.data.filters[4].filterValues;
+        }
+      };
+
+      sendRequest(
+        "Admin/ServiceDetails?id=3",
+        "get",
+        null,
+        true,
+        successCallback,
+        null
+      );
+    },
     SendServices() {
       this.$validator.validateAll().then((result) => {
         if (result) {

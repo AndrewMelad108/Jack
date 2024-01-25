@@ -78,7 +78,12 @@
 
 <script>
 import SwitchLang from "@/components/Shared/Form/SwitchLang.vue";
-
+import { sendRequest } from "../../../axios";
+import {
+  showSuccessMessage,
+  showErrorMessage,
+  extractUserInfoFromToken,
+} from "../../../common";
 export default {
   name: "AdmiLogin",
   data() {
@@ -90,6 +95,7 @@ export default {
     };
   },
   components: { SwitchLang },
+
   methods: {
     goToMainPage() {
       this.$router.push({
@@ -99,18 +105,33 @@ export default {
     Login() {
       this.$validator.validateAll().then((result) => {
         if (result) {
-          console.log("run");
-          localStorage.setItem("role", "Admin");
-          this.$router.push({
-            name: "Admin.Home",
-          });
-        } else {
-          console.log("error");
+          let successCallback = (res) => {
+            if (res.data.success) {
+              showSuccessMessage(res.data.message);
+              this.user = extractUserInfoFromToken(res.data.data.token);
+              localStorage.setItem("role", this.user.role);
+              localStorage.setItem("token", res.data.data.token);
+              if (this.user.role === "Admin") {
+                this.$router.push({
+                  name: "Admin.Home",
+                });
+              }
+            } else {
+              showErrorMessage(res.data.message);
+            }
+          };
+
+          sendRequest(
+            "Account/Login",
+            "post",
+            { ...this.person },
+            false,
+            successCallback,
+            null
+          );
         }
       });
     },
   },
 };
 </script>
-
-<style></style>

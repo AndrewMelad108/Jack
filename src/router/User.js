@@ -22,7 +22,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/User/main",
-    name: "User.Home",
+    name: "customer.Home",
     component: HomePage,
   },
   {
@@ -42,72 +42,72 @@ const routes = [
     children: [
       {
         path: "Home",
-        name: "User.ControlPanel",
+        name: "customer.ControlPanel",
         component: UserHome,
       },
       {
         path: "Request",
-        name: "User.Requests",
+        name: "customer.Requests",
         component: UserRequest,
       },
       {
         path: "OfferDetails/:OfferID",
-        name: "User.OfferDetails",
+        name: "customer.OfferDetails",
         component: OfferDetails,
       },
       {
         path: "Orders",
-        name: "User.Orders",
+        name: "customer.Orders",
         component: UserOrders,
       },
       {
         path: "Chat",
-        name: "User.Chats",
+        name: "customer.Chats",
         component: UserChat,
       },
       {
         path: "ChatInfo/:chatId/Create",
-        name: "User.ChatInfo",
+        name: "customer.ChatInfo",
         component: ChatInfo,
       },
       {
         path: "Profile",
-        name: "User.Profile",
+        name: "customer.Profile",
         component: UserProfile,
       },
       {
         path: "Wallet",
-        name: "User.Wallet",
+        name: "customer.Wallet",
         component: UserWallet,
       },
       {
         path: "TowingAndShipping",
-        name: "User.Towing",
+        name: "customer.Towing",
         component: TowingAndShipping,
       },
       {
         path: "CarMaintenanceAndCare",
-        name: "User.Repairing",
+        name: "customer.Repairing",
         component: CarMaintenanceAndCare,
       },
       {
         path: "SparePartsRequest",
-        name: "User.Spare Parts",
+        name: "customer.Spare Parts",
         component: SparePartsRequest,
       },
       {
         path: "ShippingAndForwarding",
-        name: "User.Baggage Transfer",
+        name: "customer.Baggage Transfer",
         component: ShippingAndForwarding,
       },
       {
         path: "Delivery",
-        name: "User.Delivery",
+        name: "customer.Delivery",
         component: DeliveryServices,
       },
       {
         path: "SellyourBrokenCar",
-        name: "User.Selling Cars",
+        name: "customer.Selling Cars",
         component: SellyourBrokenCar,
       },
     ],
