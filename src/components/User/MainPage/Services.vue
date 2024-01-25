@@ -10,7 +10,7 @@
       <div
         @click="
           $router.push({
-            name: 'User.Towing',
+            name: 'customer.Towing',
           })
         "
         class="bg-green-100 cursor-pointer py-10 space-y-12 rounded-2xl text-main-color text-2xl font-bold min-h-[350px]"
@@ -28,7 +28,7 @@
       <div
         @click="
           $router.push({
-            name: 'User.Repairing',
+            name: 'customer.Repairing',
           })
         "
         class="bg-green-100 cursor-pointer py-10 space-y-12 rounded-2xl text-main-color text-2xl font-bold min-h-[350px]"
@@ -46,7 +46,7 @@
       <div
         @click="
           $router.push({
-            name: 'User.Spare Parts',
+            name: 'customer.Spare Parts',
           })
         "
         class="bg-green-100 py-10 cursor-pointer space-y-12 rounded-2xl text-main-color text-2xl font-bold min-h-[350px]"
@@ -64,7 +64,7 @@
       <div
         @click="
           $router.push({
-            name: 'User.Baggage Transfer',
+            name: 'customer.Baggage Transfer',
           })
         "
         class="bg-green-100 py-10 cursor-pointer space-y-12 rounded-2xl text-main-color text-2xl font-bold min-h-[350px]"
@@ -82,7 +82,7 @@
       <div
         @click="
           $router.push({
-            name: 'User.Delivery',
+            name: 'customer.Delivery',
           })
         "
         class="bg-green-100 py-10 cursor-pointer space-y-12 rounded-2xl text-main-color text-2xl font-bold min-h-[350px]"

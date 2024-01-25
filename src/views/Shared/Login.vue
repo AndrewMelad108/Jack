@@ -145,6 +145,7 @@ export default {
               this.user = extractUserInfoFromToken(res.data.data.token);
               localStorage.setItem("role", this.user.role);
               localStorage.setItem("token", res.data.data.token);
+              console.log(this.user.role);
               if (this.user.role === "customer") {
                 this.$router.push({
                   name: "customer.Home",

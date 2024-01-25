@@ -500,7 +500,8 @@ export default {
         licencePhotoOne: "",
         licencePhotoTwo: "",
       },
-      Services: [
+      Services: [],
+      Service: [
         { id: 1, name: "towing and shipping" },
         { id: 2, name: "car maintenance and care" },
         { id: 3, name: "Spare Parts" },
@@ -658,6 +659,19 @@ export default {
       null,
       false,
       successCallback,
+      null
+    );
+    let successServicesCallback = (res) => {
+      if (res.data.success) {
+        this.Services = res.data.data;
+      }
+    };
+    sendRequest(
+      "Service/GetAllService",
+      "get",
+      null,
+      false,
+      successServicesCallback,
       null
     );
   },
