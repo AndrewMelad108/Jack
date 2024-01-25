@@ -106,7 +106,7 @@ export default {
         "Admin/ServiceDetails?id=4",
         "get",
         null,
-        false,
+        true,
         successCallback,
         null
       );
@@ -121,8 +121,10 @@ export default {
       sendRequest(
         `Admin/FilterValue?ServiceID=4&FilterID=5&Value=${newoptions}`,
         "post",
-        null,
-        false,
+        {
+          Value: newoptions,
+        },
+        true,
         successCallback,
         null
       );
@@ -137,8 +139,10 @@ export default {
       sendRequest(
         `Admin/FilterValue?ServiceID=4&FilterID=1&Value=${newoptions}`,
         "post",
-        null,
-        false,
+        {
+          Value: newoptions,
+        },
+        true,
         successCallback,
         null
       );
@@ -153,8 +157,10 @@ export default {
       sendRequest(
         `Admin/FilterValue?ServiceID=4&FilterID=7&Value=${newoptions}`,
         "post",
-        null,
-        false,
+        {
+          Value: newoptions,
+        },
+        true,
         successCallback,
         null
       );
@@ -181,7 +187,7 @@ export default {
         {
           ...option,
         },
-        false,
+        true,
         successCallback,
         null
       );

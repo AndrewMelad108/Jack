@@ -100,8 +100,6 @@ export default {
     getAllServicesOptions() {
       let successCallback = (res) => {
         if (res.data.success) {
-          console.log(res.data.data);
-          console.log(res.data.data);
           this.serviceId = res.data.data.id;
           this.commision = res.data.data.commision;
           this.ServiceDetails = res.data.data.filters;
@@ -116,7 +114,7 @@ export default {
         "Admin/ServiceDetails?id=1",
         "get",
         null,
-        false,
+        true,
         successCallback,
         null
       );
@@ -127,12 +125,13 @@ export default {
           this.getAllServicesOptions();
         }
       };
-
       sendRequest(
         `Admin/FilterValue?ServiceID=1&FilterID=1&Value=${newoptions}`,
         "post",
-        null,
-        false,
+        {
+          Value: newoptions,
+        },
+        true,
         successCallback,
         null
       );
@@ -147,8 +146,10 @@ export default {
       sendRequest(
         `Admin/FilterValue?ServiceID=1&FilterID=2&Value=${newoptions}`,
         "post",
-        null,
-        false,
+        {
+          Value: newoptions,
+        },
+        true,
         successCallback,
         null
       );
@@ -163,8 +164,10 @@ export default {
       sendRequest(
         `Admin/FilterValue?ServiceID=1&FilterID=3&Value=${newoptions}`,
         "post",
-        null,
-        false,
+        {
+          Value: newoptions,
+        },
+        true,
         successCallback,
         null
       );
@@ -179,8 +182,10 @@ export default {
       sendRequest(
         `Admin/FilterValue?ServiceID=1&FilterID=4&Value=${newoptions}`,
         "post",
-        null,
-        false,
+        {
+          Value: newoptions,
+        },
+        true,
         successCallback,
         null
       );
@@ -206,7 +211,7 @@ export default {
         {
           ...option,
         },
-        false,
+        true,
         successCallback,
         null
       );

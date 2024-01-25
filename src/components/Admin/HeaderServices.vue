@@ -63,8 +63,10 @@ export default {
           this.ratio
         )}`,
         "put",
-        null,
-        false,
+        {
+          commision: this.ratio,
+        },
+        true,
         successCallback,
         null
       );

@@ -14,6 +14,7 @@
       <SidebaPhone
         :links="LinksData"
         :closeSidebar="showSidebar"
+        :type="UserType"
         v-if="showSidebar"
         @changeCloseSidebarValue="showSidebar = !showSidebar"
       />

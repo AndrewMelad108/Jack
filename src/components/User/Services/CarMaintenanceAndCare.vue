@@ -34,9 +34,13 @@
               {{ $t("Service Type") }}
             </option>
 
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option
+              v-for="option in ServiceType"
+              :key="option.id"
+              :value="option.id"
+            >
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">{{ errors.first("ServiceType") }}</p>
 
@@ -53,9 +57,9 @@
               {{ $t("Select Brand") }}
             </option>
 
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option v-for="option in Brand" :key="option.id" :value="option.id">
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">{{ errors.first("SelectBrand") }}</p>
           <label for="Model" class="capitalize block text-xl">
@@ -71,9 +75,9 @@
               {{ $t("Select Model") }}
             </option>
 
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option v-for="option in Model" :key="option.id" :value="option.id">
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">{{ errors.first("SelectModel") }}</p>
           <label for="YearofManufactur" class="capitalize block text-xl">
@@ -89,9 +93,13 @@
               {{ $t("Select Year") }}
             </option>
 
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option
+              v-for="option in Manufactur"
+              :key="option.id"
+              :value="option.id"
+            >
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">{{ errors.first("SelectYear") }}</p>
 
@@ -183,10 +191,15 @@
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
 import MapGoogle from "../../Shared/Map.vue";
+import { sendRequest } from "../../../../axios";
 export default {
   name: "CarMaintenanceAndCare",
   data() {
     return {
+      ServiceType: [],
+      Brand: [],
+      Model: [],
+      Manufactur: [],
       yourActualApiKeyHere: "AIzaSyD1qZn-hta_tR9_z2To2Qcrg1CgaXeyP0g",
       Repairing: {
         ServiceType: "",
@@ -204,7 +217,29 @@ export default {
     SwitchLang,
     MapGoogle,
   },
+  created() {
+    this.getAllServicesOptions();
+  },
   methods: {
+    getAllServicesOptions() {
+      let successCallback = (res) => {
+        if (res.data.success) {
+          this.ServiceType = res.data.data.filters[0].filterValues;
+          this.Brand = res.data.data.filters[1].filterValues;
+          this.Model = res.data.data.filters[2].filterValues;
+          this.Manufactur = res.data.data.filters[3].filterValues;
+        }
+      };
+
+      sendRequest(
+        "Admin/ServiceDetails?id=2",
+        "get",
+        null,
+        true,
+        successCallback,
+        null
+      );
+    },
     SendServices() {
       this.$validator.validateAll().then((result) => {
         if (result) {
@@ -217,5 +252,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

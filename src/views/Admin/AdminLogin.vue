@@ -95,9 +95,7 @@ export default {
     };
   },
   components: { SwitchLang },
-  created() {
-    localStorage.setItem("role", "Admin");
-  },
+
   methods: {
     goToMainPage() {
       this.$router.push({

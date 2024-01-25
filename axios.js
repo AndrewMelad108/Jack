@@ -13,7 +13,7 @@ const request = (
   if (authenticated) {
     headers = {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     };
   }
