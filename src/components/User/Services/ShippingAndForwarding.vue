@@ -34,9 +34,13 @@
               {{ $t("Search Scope") }}
             </option>
 
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option
+              v-for="option in SearchScope"
+              :key="option.id"
+              :value="option.id"
+            >
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">{{ errors.first("Search Scope") }}</p>
           <label for="ServiceType" class="capitalize block text-xl">{{
@@ -51,10 +55,13 @@
             <option disabled selected value="">
               {{ $t("Service Type") }}
             </option>
-
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option
+              v-for="option in ServiceType"
+              :key="option.id"
+              :value="option.id"
+            >
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">{{ errors.first("ServiceType") }}</p>
 
@@ -70,9 +77,13 @@
             <option disabled selected value="">
               {{ $t("Select Shipping Type") }}
             </option>
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option
+              v-for="option in shipping"
+              :key="option.id"
+              :value="option.id"
+            >
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">{{ errors.first("ShippingType") }}</p>
           <label for="Size" class="capitalize block text-xl">
@@ -174,11 +185,14 @@
 import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import MapGoogle from "../../Shared/Map.vue";
-
+import { sendRequest } from "../../../../axios";
 export default {
   name: "ShippingAndForwarding",
   data() {
     return {
+      SearchScope: [],
+      ServiceType: [],
+      shipping: [],
       Shipping: {
         Scope: "",
         ServiceType: "",
@@ -195,7 +209,28 @@ export default {
     SwitchLang,
     MapGoogle,
   },
+  created() {
+    this.getAllServicesOptions();
+  },
   methods: {
+    getAllServicesOptions() {
+      let successCallback = (res) => {
+        if (res.data.success) {
+          this.SearchScope = res.data.data.filters[0].filterValues;
+          this.ServiceType = res.data.data.filters[1].filterValues;
+          this.shipping = res.data.data.filters[2].filterValues;
+        }
+      };
+
+      sendRequest(
+        "Admin/ServiceDetails?id=4",
+        "get",
+        null,
+        true,
+        successCallback,
+        null
+      );
+    },
     SendServices() {
       this.$validator.validateAll().then((result) => {
         if (result) {
@@ -208,5 +243,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

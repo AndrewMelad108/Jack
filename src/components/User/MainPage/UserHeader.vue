@@ -17,11 +17,7 @@
       <button @click="goUserPages()" class="hover:text-black">
         {{ $t("Home") }}
       </button>
-      <button
-        @click="goUserServices()"
-        class="hover:text-black"
-        :to="{ name: 'User.Towing' }"
-      >
+      <button @click="goUserServices()" class="hover:text-black">
         {{ $t("Servies") }}
       </button>
       <router-link
@@ -51,11 +47,11 @@ export default {
   methods: {
     goUserPages() {
       if (
-        localStorage.getItem("role") === "User" &&
-        this.$route.name !== "User.Home"
+        localStorage.getItem("role") === "customer" &&
+        this.$route.name !== "customer.Home"
       ) {
         this.$router.push({
-          name: "User.Home",
+          name: "customer.Home",
         });
       }
     },
@@ -65,9 +61,9 @@ export default {
       });
     },
     goUserServices() {
-      if (localStorage.getItem("role") === "User") {
+      if (localStorage.getItem("role") === "customer") {
         this.$router.push({
-          name: "User.Towing",
+          name: "customer.Towing",
         });
       }
     },

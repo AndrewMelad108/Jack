@@ -54,10 +54,13 @@
             <option disabled selected value="">
               {{ $t("Search Scope") }}
             </option>
-
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option
+              v-for="option in SearchScope"
+              :key="option.id"
+              :value="option.id"
+            >
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">{{ errors.first("Search Scope") }}</p>
 
@@ -74,10 +77,13 @@
               <option disabled selected value="">
                 {{ $t("Service Type") }}
               </option>
-
-              <option value="asd1">asd</option>
-              <option value="asd2">asd</option>
-              <option value="asd3">asd</option>
+              <option
+                v-for="option in ServiceType"
+                :key="option.id"
+                :value="option.id"
+              >
+                {{ option.value }}
+              </option>
             </select>
             <p class="text-red-400">{{ errors.first("ServiceType") }}</p>
           </div>
@@ -183,10 +189,13 @@
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
 import MapGoogle from "../../Shared/Map.vue";
+import { sendRequest } from "../../../../axios";
 export default {
   name: "DeliveryServices",
   data() {
     return {
+      SearchScope: [],
+      ServiceType: [],
       Delivery: {
         Type: true,
         Scope: "",
@@ -198,7 +207,27 @@ export default {
       },
     };
   },
+  created() {
+    this.getAllServicesOptions();
+  },
   methods: {
+    getAllServicesOptions() {
+      let successCallback = (res) => {
+        if (res.data.success) {
+          this.SearchScope = res.data.data.filters[0].filterValues;
+          this.ServiceType = res.data.data.filters[1].filterValues;
+        }
+      };
+
+      sendRequest(
+        "Admin/ServiceDetails?id=5",
+        "get",
+        null,
+        true,
+        successCallback,
+        null
+      );
+    },
     SendServices() {
       this.$validator.validateAll().then((result) => {
         if (result) {
