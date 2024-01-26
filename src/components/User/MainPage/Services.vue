@@ -100,7 +100,7 @@
       <div
         @click="
           $router.push({
-            name: 'User.Selling Cars',
+            name: 'customer.Selling Cars',
             query: { type: 'add', serviceId: 1 },
           })
         "

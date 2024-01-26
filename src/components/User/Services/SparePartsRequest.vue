@@ -34,9 +34,13 @@
               {{ $t("Search Scope") }}
             </option>
 
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option
+              v-for="option in SearchScope"
+              :key="option.id"
+              :value="option.id"
+            >
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">{{ errors.first("Search Scope") }}</p>
 
@@ -52,10 +56,13 @@
             <option disabled selected value="">
               {{ $t("Select Spare Parts Type") }}
             </option>
-
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option
+              v-for="option in SparePartsType"
+              :key="option.id"
+              :value="option.id"
+            >
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">{{ errors.first("SparePartsType") }}</p>
 
@@ -71,10 +78,9 @@
             <option disabled selected value="">
               {{ $t("Select Brand") }}
             </option>
-
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option v-for="option in Brand" :key="option.id" :value="option.id">
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">{{ errors.first("Brand") }}</p>
 
@@ -90,10 +96,9 @@
             <option disabled selected value="">
               {{ $t("Select Model") }}
             </option>
-
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option v-for="option in Model" :key="option.id" :value="option.id">
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">
             {{ errors.first("Select Model") }}
@@ -110,10 +115,13 @@
             <option disabled selected value="">
               {{ $t("Select Year") }}
             </option>
-
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option
+              v-for="option in Manufactur"
+              :key="option.id"
+              :value="option.id"
+            >
+              {{ option.value }}
+            </option>
           </select>
           <p class="text-red-400">
             {{ errors.first("Select Year") }}
@@ -226,11 +234,11 @@ export default {
   name: "SparePartsRequest",
   data() {
     return {
-      ServiceDetails: [],
       SearchScope: [],
       SparePartsType: [],
       Brand: [],
       Model: [],
+      Manufactur: [],
       SpareParts: {
         Scope: "",
         CarSerialNumber: "",
