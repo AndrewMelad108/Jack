@@ -10,7 +10,7 @@
       <div
         @click="
           $router.push({
-            name: 'customer.Towing',
+            name: 'Customer.Towing',
           })
         "
         class="bg-green-100 cursor-pointer py-10 space-y-12 rounded-2xl text-main-color text-2xl font-bold min-h-[350px]"
@@ -28,7 +28,7 @@
       <div
         @click="
           $router.push({
-            name: 'customer.Repairing',
+            name: 'Customer.Repairing',
           })
         "
         class="bg-green-100 cursor-pointer py-10 space-y-12 rounded-2xl text-main-color text-2xl font-bold min-h-[350px]"
@@ -46,7 +46,7 @@
       <div
         @click="
           $router.push({
-            name: 'customer.Spare Parts',
+            name: 'Customer.Spare Parts',
           })
         "
         class="bg-green-100 py-10 cursor-pointer space-y-12 rounded-2xl text-main-color text-2xl font-bold min-h-[350px]"
@@ -64,7 +64,7 @@
       <div
         @click="
           $router.push({
-            name: 'customer.Baggage Transfer',
+            name: 'Customer.Baggage Transfer',
           })
         "
         class="bg-green-100 py-10 cursor-pointer space-y-12 rounded-2xl text-main-color text-2xl font-bold min-h-[350px]"
@@ -82,7 +82,7 @@
       <div
         @click="
           $router.push({
-            name: 'customer.Delivery',
+            name: 'Customer.Delivery',
           })
         "
         class="bg-green-100 py-10 cursor-pointer space-y-12 rounded-2xl text-main-color text-2xl font-bold min-h-[350px]"
@@ -100,7 +100,7 @@
       <div
         @click="
           $router.push({
-            name: 'customer.Selling Cars',
+            name: 'Customer.Selling Cars',
             query: { type: 'add', serviceId: 1 },
           })
         "

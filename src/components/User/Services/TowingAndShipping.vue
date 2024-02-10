@@ -58,10 +58,9 @@
             <option disabled selected value="">
               {{ $t("Select tow truck type") }}
             </option>
-
-            <option value="asd1">asd</option>
-            <option value="asd2">asd</option>
-            <option value="asd3">asd</option>
+            <option value="1">asd</option>
+            <option value="2">asd</option>
+            <option value="3">asd</option>
           </select>
           <p class="text-red-400">{{ errors.first("Search City") }}</p>
           <label for="Brand" class="mt-6 text-xl block">
@@ -215,7 +214,7 @@
             class="hidden"
             type="file"
             id="upload_photo"
-            @change="onFileChanged($event)"
+            @change="onFileChangedRegistration($event)"
             accept="image/*"
             v-validate="{ required: true }"
             name="AddRegistrationimages"
@@ -243,7 +242,7 @@
             v-validate="{ required: true }"
             name="Addimages"
             id="upload_photo"
-            @change="onFileChanged($event)"
+            @change="onFileChangedImage($event)"
             accept="image/*"
           />
         </div>
@@ -276,16 +275,17 @@ export default {
       Model: [],
       Manufactur: [],
       Towing: {
-        Scope: "",
-        City: "",
-        Brand: "",
-        Model: "",
-        Year: "",
+        Scope: null,
+        City: null,
+        Brand: null,
+        Model: null,
+        Year: null,
         color: "",
         PlateNumber: "",
-
         LocationFrom: "",
         LocationTo: "",
+        image: "",
+        registrationImage: "",
       },
     };
   },
@@ -320,16 +320,56 @@ export default {
       );
     },
     SendServices() {
-      this.$validator.validateAll().then((result) => {
-        if (result) {
-          console.log("run");
-        } else {
-          console.log("error");
-        }
-      });
+      // this.$validator.validateAll().then((result) => {
+      // if (result) {
+      let successCallback = (res) => {
+        console.log(res);
+      };
+      let errorCallback = (err) => {
+        console.log(err);
+      };
+      let formData = new FormData();
+      formData.append("searchScope", 1);
+      formData.append("serviceType", 1);
+      formData.append("brand", 1);
+      formData.append("model", 1);
+      formData.append("yearOfManufactur", 1);
+      formData.append("color", "xcvcxv");
+      formData.append("plateNumber", "zxczxc");
+      formData.append("locationFrom", "Zxczxc");
+      formData.append("locationTo", "szxczxc");
+      formData.append("registrationImage", "szdasdasd");
+      formData.append("image", "sadasd");
+      for (var pair of formData.entries()) {
+        console.log(pair[0] + ", " + pair[1]);
+      }
+      sendRequest(
+        "Towing/Request",
+        "post",
+        { formData },
+        true,
+        successCallback,
+        errorCallback
+      );
+      // }
+      // });
+    },
+    onFileChangedRegistration(e) {
+      const image = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onload = (e) => {
+        this.Towing.registrationImage = e.target.result;
+      };
+    },
+    onFileChangedImage(e) {
+      const image = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onload = (e) => {
+        this.Towing.image = e.target.result;
+      };
     },
   },
 };
 </script>
-
-<style></style>

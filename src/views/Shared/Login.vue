@@ -146,9 +146,9 @@ export default {
               localStorage.setItem("role", this.user.role);
               localStorage.setItem("token", res.data.data.token);
               console.log(this.user.role);
-              if (this.user.role === "customer") {
+              if (this.user.role === "Customer") {
                 this.$router.push({
-                  name: "customer.Home",
+                  name: "Customer.Home",
                 });
               } else {
                 this.$router.push({

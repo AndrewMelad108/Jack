@@ -268,7 +268,6 @@ export default {
           this.Manufactur = res.data.data.filters[4].filterValues;
         }
       };
-
       sendRequest(
         "Admin/ServiceDetails?id=3",
         "get",
@@ -279,13 +278,55 @@ export default {
       );
     },
     SendServices() {
-      this.$validator.validateAll().then((result) => {
-        if (result) {
-          console.log("run");
-        } else {
-          console.log("error");
-        }
-      });
+      // this.$validator.validateAll().then((result) => {
+      // if (result) {
+      let successCallback = (res) => {
+        console.log(res);
+      };
+      let errorCallback = (err) => {
+        console.log(err);
+      };
+      let formData = new FormData();
+      formData.append("searchScope", 1);
+      formData.append("sparePartType", 1);
+      formData.append("brand", 1);
+      formData.append("model", 1);
+      formData.append("yearOfManufactur", 1);
+      formData.append("color", "xcvcxv");
+      formData.append("CarSerialNumber", "zxczxc");
+      formData.append("PartName", "Zxczxc");
+      formData.append("Location", "szxczxc");
+      formData.append("RegistrationImage", "szdasdasd");
+      formData.append("Image", "sadasd");
+      for (var pair of formData.entries()) {
+        console.log(pair[0] + ", " + pair[1]);
+      }
+      sendRequest(
+        "SpareParts/Request",
+        "post",
+        { formData },
+        true,
+        successCallback,
+        errorCallback
+      );
+      // }
+      // });
+    },
+    onFileChangedRegistration(e) {
+      const image = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onload = (e) => {
+        this.Towing.registrationImage = e.target.result;
+      };
+    },
+    onFileChangedImage(e) {
+      const image = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onload = (e) => {
+        this.Towing.image = e.target.result;
+      };
     },
   },
 };
