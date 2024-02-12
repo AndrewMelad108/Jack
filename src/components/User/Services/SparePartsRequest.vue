@@ -172,7 +172,7 @@
           class="flex items-center justify-center bg-gray-100 rounded-[10px] focus:ring-[#24C6C9] focus:border-[#24C6C9] w-full h-[200px]"
         >
           <label
-            for="upload_photo"
+            for="upload_photo1"
             class="cursor-pointer h-full w-full flex justify-center items-center font-bold"
             >{{ $t("Add images") }}</label
           >
@@ -181,8 +181,8 @@
             type="file"
             v-validate="{ required: true }"
             name="AddRegistrationimages"
-            id="upload_photo"
-            @change="onFileChanged($event)"
+            id="upload_photo1"
+            @change="onFileChangedRegistration($event)"
             accept="image/*"
           />
         </div>
@@ -198,7 +198,7 @@
           class="flex items-center justify-center bg-gray-100 rounded-[10px] focus:ring-[#24C6C9] focus:border-[#24C6C9] w-full h-[200px]"
         >
           <label
-            for="upload_photo"
+            for="upload_photo2"
             class="cursor-pointer h-full w-full flex justify-center items-center font-bold"
             >{{ $t("Add images") }}</label
           >
@@ -207,8 +207,8 @@
             type="file"
             v-validate="{ required: true }"
             name="Addimages"
-            id="upload_photo"
-            @change="onFileChanged($event)"
+            id="upload_photo2"
+            @change="onFileChangedImage($event)"
             accept="image/*"
           />
         </div>
@@ -247,6 +247,8 @@ export default {
         Year: "",
         PartName: "",
         SparePartsType: "",
+        image: "",
+        registrationImage: "",
       },
     };
   },
@@ -286,25 +288,22 @@ export default {
       let errorCallback = (err) => {
         console.log(err);
       };
-      let formData = new FormData();
-      formData.append("searchScope", 1);
-      formData.append("sparePartType", 1);
-      formData.append("brand", 1);
-      formData.append("model", 1);
-      formData.append("yearOfManufactur", 1);
-      formData.append("color", "xcvcxv");
-      formData.append("CarSerialNumber", "zxczxc");
-      formData.append("PartName", "Zxczxc");
-      formData.append("Location", "szxczxc");
-      formData.append("RegistrationImage", "szdasdasd");
-      formData.append("Image", "sadasd");
-      for (var pair of formData.entries()) {
-        console.log(pair[0] + ", " + pair[1]);
-      }
+      const FormData = require("form-data");
+      let data = new FormData();
+      data.append("searchScope", 1);
+      data.append("sparePartType", 1);
+      data.append("brand", 1);
+      data.append("model", 1);
+      data.append("yearOfManufactur", 1);
+      data.append("carSerialNumber", "zxczxc");
+      data.append("partName", "Zxczxc");
+      data.append("location", "szxczxc");
+      data.append("registrationImage", this.SpareParts.registrationImage);
+      data.append("image", this.SpareParts.image);
       sendRequest(
         "SpareParts/Request",
         "post",
-        { formData },
+        data,
         true,
         successCallback,
         errorCallback
@@ -313,20 +312,12 @@ export default {
       // });
     },
     onFileChangedRegistration(e) {
-      const image = e.target.files[0];
-      const reader = new FileReader();
-      reader.readAsDataURL(image);
-      reader.onload = (e) => {
-        this.Towing.registrationImage = e.target.result;
-      };
+      const file = e.target.files[0];
+      this.SpareParts.registrationImage = file;
     },
     onFileChangedImage(e) {
-      const image = e.target.files[0];
-      const reader = new FileReader();
-      reader.readAsDataURL(image);
-      reader.onload = (e) => {
-        this.Towing.image = e.target.result;
-      };
+      const file = e.target.files[0];
+      this.SpareParts.image = file;
     },
   },
 };
