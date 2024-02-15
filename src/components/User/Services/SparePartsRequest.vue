@@ -33,14 +33,8 @@
             <option disabled selected value="">
               {{ $t("Search Scope") }}
             </option>
-
-            <option
-              v-for="option in SearchScope"
-              :key="option.id"
-              :value="option.id"
-            >
-              {{ option.value }}
-            </option>
+            <option value="1">local</option>
+            <option value="2">global</option>
           </select>
           <p class="text-red-400">{{ errors.first("Search Scope") }}</p>
 

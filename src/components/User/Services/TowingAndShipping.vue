@@ -206,14 +206,14 @@
           class="flex items-center justify-center bg-gray-100 rounded-[10px] focus:ring-[#24C6C9] focus:border-[#24C6C9] w-full h-[200px]"
         >
           <label
-            for="upload_photo"
+            for="upload_photo1"
             class="cursor-pointer h-full w-full flex justify-center items-center font-bold"
             >{{ $t("Add images") }}</label
           >
           <input
             class="hidden"
             type="file"
-            id="upload_photo"
+            id="upload_photo1"
             @change="onFileChangedRegistration($event)"
             accept="image/*"
             v-validate="{ required: true }"
@@ -232,7 +232,7 @@
           class="flex items-center justify-center bg-gray-100 rounded-[10px] focus:ring-[#24C6C9] focus:border-[#24C6C9] w-full h-[200px]"
         >
           <label
-            for="upload_photo"
+            for="upload_photo2"
             class="cursor-pointer h-full w-full flex justify-center items-center font-bold"
             >{{ $t("Add images") }}</label
           >
@@ -241,7 +241,7 @@
             type="file"
             v-validate="{ required: true }"
             name="Addimages"
-            id="upload_photo"
+            id="upload_photo2"
             @change="onFileChangedImage($event)"
             accept="image/*"
           />
@@ -328,25 +328,23 @@ export default {
       let errorCallback = (err) => {
         console.log(err);
       };
-      let formData = new FormData();
-      formData.append("searchScope", 1);
-      formData.append("serviceType", 1);
-      formData.append("brand", 1);
-      formData.append("model", 1);
-      formData.append("yearOfManufactur", 1);
-      formData.append("color", "xcvcxv");
-      formData.append("plateNumber", "zxczxc");
-      formData.append("locationFrom", "Zxczxc");
-      formData.append("locationTo", "szxczxc");
-      formData.append("registrationImage", "szdasdasd");
-      formData.append("image", "sadasd");
-      for (var pair of formData.entries()) {
-        console.log(pair[0] + ", " + pair[1]);
-      }
+      const FormData = require("form-data");
+      let data = new FormData();
+      data.append("searchScope", 1);
+      data.append("serviceType", 1);
+      data.append("brand", 1);
+      data.append("model", 1);
+      data.append("yearOfManufactur", 1);
+      data.append("color", "xcvcxv");
+      data.append("plateNumber", "zxczxc");
+      data.append("locationFrom", "Zxczxc");
+      data.append("locationTo", "szxczxc");
+      data.append("image", this.Towing.image);
+      data.append("registrationImage", this.Towing.registrationImage);
       sendRequest(
         "Towing/Request",
         "post",
-        { formData },
+        data,
         true,
         successCallback,
         errorCallback
@@ -355,20 +353,12 @@ export default {
       // });
     },
     onFileChangedRegistration(e) {
-      const image = e.target.files[0];
-      const reader = new FileReader();
-      reader.readAsDataURL(image);
-      reader.onload = (e) => {
-        this.Towing.registrationImage = e.target.result;
-      };
+      const file = e.target.files[0];
+      this.Towing.registrationImage = file;
     },
     onFileChangedImage(e) {
-      const image = e.target.files[0];
-      const reader = new FileReader();
-      reader.readAsDataURL(image);
-      reader.onload = (e) => {
-        this.Towing.image = e.target.result;
-      };
+      const file = e.target.files[0];
+      this.Towing.image = file;
     },
   },
 };

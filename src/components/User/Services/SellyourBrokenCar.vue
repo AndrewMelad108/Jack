@@ -238,7 +238,7 @@
             v-validate="{ required: true }"
             name="Addimages"
             id="upload_photo"
-            @change="onFileChanged($event)"
+            @change="onFileChangedImage($event)"
             accept="image/*"
           />
         </div>
@@ -311,13 +311,43 @@ export default {
       );
     },
     SendServices() {
-      this.$validator.validateAll().then((result) => {
-        if (result) {
-          console.log("run");
-        } else {
-          console.log("error");
-        }
-      });
+      // this.$validator.validateAll().then((result) => {
+      // if (result) {
+      let successCallback = (res) => {
+        console.log(res);
+      };
+      let errorCallback = (err) => {
+        console.log(err);
+      };
+      const FormData = require("form-data");
+      let data = new FormData();
+      data.append("searchScope", 1);
+      data.append("brand", 1);
+      data.append("model", 1);
+      data.append("yearOfManufactur", 1);
+      data.append("fuelType", 1);
+      data.append("transmisionType", 1);
+      data.append("color", "zxczxc");
+      data.append("chasisCase", "Zxczxc");
+      data.append("regionalSpecification", "szxczxc");
+      data.append("kiloMeters", "szxczxc");
+      data.append("price", "szxczxc");
+      data.append("location", "szxczxc");
+      data.append("image", this.Selling.image);
+      sendRequest(
+        "CarSell/Request",
+        "post",
+        data,
+        true,
+        successCallback,
+        errorCallback
+      );
+      // }
+      // });
+    },
+    onFileChangedImage(e) {
+      const file = e.target.files[0];
+      this.Selling.image = file;
     },
   },
   components: {
@@ -326,5 +356,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

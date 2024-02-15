@@ -204,6 +204,7 @@ export default {
         Size: "",
         LocationFrom: "",
         LocationTo: "",
+        image: "",
       },
     };
   },
@@ -229,13 +230,37 @@ export default {
       );
     },
     SendServices() {
-      this.$validator.validateAll().then((result) => {
-        if (result) {
-          console.log("run");
-        } else {
-          console.log("error");
-        }
-      });
+      // this.$validator.validateAll().then((result) => {
+      // if (result) {
+      let successCallback = (res) => {
+        console.log(res);
+      };
+      let errorCallback = (err) => {
+        console.log(err);
+      };
+      const FormData = require("form-data");
+      let data = new FormData();
+      data.append("searchScope", 1);
+      data.append("serviceType", 1);
+      data.append("size", "zxczxc");
+      data.append("weight", "Zxczxc");
+      data.append("locationFrom", "szxczxc");
+      data.append("locationTo", "szxczxc");
+      data.append("image", this.Delivery.image);
+      sendRequest(
+        "Delivery/Request",
+        "post",
+        data,
+        true,
+        successCallback,
+        errorCallback
+      );
+      // }
+      // });
+    },
+    onFileChangedImage(e) {
+      const file = e.target.files[0];
+      this.Delivery.image = file;
     },
   },
   components: {

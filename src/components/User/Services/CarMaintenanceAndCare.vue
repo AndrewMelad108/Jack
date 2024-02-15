@@ -167,7 +167,7 @@
             class="hidden"
             type="file"
             id="upload_photo"
-            @change="onFileChanged($event)"
+            @change="onFileChangedImage($event)"
             accept="image/*"
             v-validate="{ required: true }"
             name="Addimages"
@@ -209,6 +209,7 @@ export default {
         color: "",
         PlateNumber: "",
         LocationTo: "",
+        image: "",
       },
     };
   },
@@ -241,13 +242,40 @@ export default {
       );
     },
     SendServices() {
-      this.$validator.validateAll().then((result) => {
-        if (result) {
-          console.log("run");
-        } else {
-          console.log("error");
-        }
-      });
+      // this.$validator.validateAll().then((result) => {
+      // if (result) {
+      let successCallback = (res) => {
+        console.log(res);
+      };
+      let errorCallback = (err) => {
+        console.log(err);
+      };
+      const FormData = require("form-data");
+      let data = new FormData();
+      data.append("searchScope", 1);
+      data.append("sparePartType", 1);
+      data.append("brand", 1);
+      data.append("model", 1);
+      data.append("yearOfManufactur", 1);
+      data.append("color", "zxczxc");
+      data.append("partName", "Zxczxc");
+      data.append("location", "szxczxc");
+      data.append("image", this.SpareParts.image);
+      sendRequest(
+        "Maintainance/Request",
+        "post",
+        data,
+        true,
+        successCallback,
+        errorCallback
+      );
+      // }
+      // });
+    },
+
+    onFileChangedImage(e) {
+      const file = e.target.files[0];
+      this.SpareParts.image = file;
     },
   },
 };
