@@ -242,40 +242,39 @@ export default {
       );
     },
     SendServices() {
-      // this.$validator.validateAll().then((result) => {
-      // if (result) {
-      let successCallback = (res) => {
-        console.log(res);
-      };
-      let errorCallback = (err) => {
-        console.log(err);
-      };
-      const FormData = require("form-data");
-      let data = new FormData();
-      data.append("searchScope", 1);
-      data.append("sparePartType", 1);
-      data.append("brand", 1);
-      data.append("model", 1);
-      data.append("yearOfManufactur", 1);
-      data.append("color", "zxczxc");
-      data.append("partName", "Zxczxc");
-      data.append("location", "szxczxc");
-      data.append("image", this.SpareParts.image);
-      sendRequest(
-        "Maintainance/Request",
-        "post",
-        data,
-        true,
-        successCallback,
-        errorCallback
-      );
-      // }
-      // });
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          let successCallback = (res) => {
+            console.log(res);
+          };
+          let errorCallback = (err) => {
+            console.log(err);
+          };
+          const FormData = require("form-data");
+          let data = new FormData();
+          data.append("serviceType", this.Repairing.ServiceType);
+          data.append("brand", this.Repairing.Brand);
+          data.append("model", this.Repairing.Model);
+          data.append("yearOfManufactur", this.Repairing.Year);
+          data.append("color", this.Repairing.color);
+          data.append("PlateNumber", this.Repairing.PlateNumber);
+          data.append("location", this.Repairing.LocationTo);
+          data.append("image", this.Repairing.image);
+          sendRequest(
+            "Maintainance/Request",
+            "post",
+            data,
+            true,
+            successCallback,
+            errorCallback
+          );
+        }
+      });
     },
 
     onFileChangedImage(e) {
       const file = e.target.files[0];
-      this.SpareParts.image = file;
+      this.Repairing.image = file;
     },
   },
 };

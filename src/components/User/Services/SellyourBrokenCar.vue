@@ -1,7 +1,10 @@
 <template>
   <section class="SellyourBrokenCar md:p-4 p-2 bg-white">
     <SwitchLang />
-    <div class="lg:flex block items-center gap-4 space-y-4">
+    <div class="h-screen flex items-center justify-center">
+      <p class="text-xl">{{$t('This service will be available soon...')}}</p>
+    </div>
+    <!-- <div class="lg:flex block items-center gap-4 space-y-4">
       <header class="service-title">
         <WelcomeMassage name="User" />
         <img
@@ -17,8 +20,8 @@
       <div
         class="advertisement-container bg-advertisement h-24 lg:w-[70%] w-[90%] mx-auto bg-center bg-cover rounded-md"
       ></div>
-    </div>
-    <div class="service-content grid lg:grid-cols-4 grid-cols-1 gap-2">
+    </div> -->
+    <!-- <div class="service-content grid lg:grid-cols-4 grid-cols-1 gap-2">
       <div class="lg:col-start-1 lg:col-end-4 col-start-1 col-end-2">
         <div class="Form-user space-y-3 bg-white h-auto rounded-lg p-4">
           <label for="SearchScope" class="capitalize block text-xl">{{
@@ -252,12 +255,12 @@
       >
         {{ $t("Post Request") }}
       </button>
-    </div>
+    </div> -->
   </section>
 </template>
 
 <script>
-import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
+// import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
 import { sendRequest } from "../../../../axios";
 export default {
@@ -351,7 +354,7 @@ export default {
     },
   },
   components: {
-    WelcomeMassage,
+    // WelcomeMassage,
     SwitchLang,
   },
 };

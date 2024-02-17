@@ -32,7 +32,7 @@
               {{ $t("Search Scope") }}
             </option>
             <option
-              v-for="option in ServiceType"
+              v-for="option in scope"
               :key="option.id"
               :value="option.id"
             >
@@ -53,14 +53,14 @@
             class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-100 w-[100%]"
             v-validate="{ required: true }"
             name="Search City"
-            v-model="Towing.City"
+            v-model="Towing.Type"
           >
             <option disabled selected value="">
               {{ $t("Select tow truck type") }}
             </option>
-            <option value="1">asd</option>
-            <option value="2">asd</option>
-            <option value="3">asd</option>
+            <option v-for="option in ServiceType" :key="option.id" :value="option.id">
+              {{option.value}}
+            </option>
           </select>
           <p class="text-red-400">{{ errors.first("Search City") }}</p>
           <label for="Brand" class="mt-6 text-xl block">
@@ -271,12 +271,22 @@ export default {
     return {
       ServiceDetails: [],
       ServiceType: [],
+      scope: [
+        {
+          id: 1,
+          value: 'Local'
+        },
+        {
+          id: 2,
+          value: 'Global'
+        }
+      ],
       Brand: [],
       Model: [],
       Manufactur: [],
       Towing: {
         Scope: null,
-        City: null,
+        Type: null,
         Brand: null,
         Model: null,
         Year: null,
@@ -302,11 +312,10 @@ export default {
       let successCallback = (res) => {
         if (res.data.success) {
           this.ServiceDetails = res.data.data.filters;
-          this.ServiceType = res.data.data.filters[0].filterValues;
-          this.Brand = res.data.data.filters[1].filterValues;
+          this.Brand = res.data.data.filters[0].filterValues;
+          this.Model = res.data.data.filters[1].filterValues;
           this.Manufactur = res.data.data.filters[2].filterValues;
-          console.log(this.Manufactur);
-          this.Model = res.data.data.filters[3].filterValues;
+          this.ServiceType = res.data.data.filters[3].filterValues;
         }
       };
 
@@ -320,37 +329,37 @@ export default {
       );
     },
     SendServices() {
-      // this.$validator.validateAll().then((result) => {
-      // if (result) {
-      let successCallback = (res) => {
-        console.log(res);
-      };
-      let errorCallback = (err) => {
-        console.log(err);
-      };
-      const FormData = require("form-data");
-      let data = new FormData();
-      data.append("searchScope", 1);
-      data.append("serviceType", 1);
-      data.append("brand", 1);
-      data.append("model", 1);
-      data.append("yearOfManufactur", 1);
-      data.append("color", "xcvcxv");
-      data.append("plateNumber", "zxczxc");
-      data.append("locationFrom", "Zxczxc");
-      data.append("locationTo", "szxczxc");
-      data.append("image", this.Towing.image);
-      data.append("registrationImage", this.Towing.registrationImage);
-      sendRequest(
-        "Towing/Request",
-        "post",
-        data,
-        true,
-        successCallback,
-        errorCallback
-      );
-      // }
-      // });
+      this.$validator.validateAll().then((result) => {
+      if (result) {
+        let successCallback = (res) => {
+          console.log(res);
+        };
+        let errorCallback = (err) => {
+          console.log(err);
+        };
+        const FormData = require("form-data");
+        let data = new FormData();
+        data.append("searchScope", this.Towing.Scope);
+        data.append("serviceType", this.Towing.Type);
+        data.append("brand", this.Towing.Brand);
+        data.append("model", this.Towing.Model);
+        data.append("yearOfManufactur", this.Towing.Year);
+        data.append("color", this.Towing.color);
+        data.append("plateNumber", this.Towing.PlateNumber);
+        data.append("locationFrom", this.Towing.LocationFrom);
+        data.append("locationTo", this.Towing.LocationTo);
+        data.append("image", this.Towing.image);
+        data.append("registrationImage", this.Towing.registrationImage);
+        sendRequest(
+          "Towing/Request",
+          "post",
+          data,
+          true,
+          successCallback,
+          errorCallback
+        );
+      }
+      });
     },
     onFileChangedRegistration(e) {
       const file = e.target.files[0];

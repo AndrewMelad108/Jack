@@ -33,8 +33,8 @@
             <option disabled selected value="">
               {{ $t("Search Scope") }}
             </option>
-            <option value="1">local</option>
-            <option value="2">global</option>
+            <option value="1">Local</option>
+            <option value="2">Global</option>
           </select>
           <p class="text-red-400">{{ errors.first("Search Scope") }}</p>
 
@@ -148,6 +148,18 @@
           <p class="text-red-400">
             {{ errors.first("PartName") }}
           </p>
+          <label for="LocationTo" class="capitalize block text-xl">
+            {{ $t("Location") }}
+          </label>
+          <input
+            type="text"
+            v-validate="{ required: true }"
+            name="LocationTo"
+            v-model.trim="SpareParts.LocationTo"
+            :placeholder="$t('Enter Location')"
+            class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-100 w-[100%]"
+          />
+          <p class="text-red-400">{{ errors.first("LocationTo") }}</p>
           <p class="my-2">
             {{
               $t(
@@ -228,7 +240,6 @@ export default {
   name: "SparePartsRequest",
   data() {
     return {
-      SearchScope: [],
       SparePartsType: [],
       Brand: [],
       Model: [],
@@ -240,6 +251,7 @@ export default {
         Model: "",
         Year: "",
         PartName: "",
+        LocationTo: "",
         SparePartsType: "",
         image: "",
         registrationImage: "",
@@ -257,11 +269,10 @@ export default {
     getAllServicesOptions() {
       let successCallback = (res) => {
         if (res.data.success) {
-          this.SearchScope = res.data.data.filters[0].filterValues;
-          this.SparePartsType = res.data.data.filters[1].filterValues;
-          this.Brand = res.data.data.filters[2].filterValues;
-          this.Model = res.data.data.filters[3].filterValues;
-          this.Manufactur = res.data.data.filters[4].filterValues;
+          this.SparePartsType = res.data.data.filters[0].filterValues;
+          this.Brand = res.data.data.filters[1].filterValues;
+          this.Model = res.data.data.filters[2].filterValues;
+          this.Manufactur = res.data.data.filters[3].filterValues;
         }
       };
       sendRequest(
@@ -274,36 +285,36 @@ export default {
       );
     },
     SendServices() {
-      // this.$validator.validateAll().then((result) => {
-      // if (result) {
-      let successCallback = (res) => {
-        console.log(res);
-      };
-      let errorCallback = (err) => {
-        console.log(err);
-      };
-      const FormData = require("form-data");
-      let data = new FormData();
-      data.append("searchScope", 1);
-      data.append("sparePartType", 1);
-      data.append("brand", 1);
-      data.append("model", 1);
-      data.append("yearOfManufactur", 1);
-      data.append("carSerialNumber", "zxczxc");
-      data.append("partName", "Zxczxc");
-      data.append("location", "szxczxc");
-      data.append("registrationImage", this.SpareParts.registrationImage);
-      data.append("image", this.SpareParts.image);
-      sendRequest(
-        "SpareParts/Request",
-        "post",
-        data,
-        true,
-        successCallback,
-        errorCallback
-      );
-      // }
-      // });
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          let successCallback = (res) => {
+            console.log(res);
+          };
+          let errorCallback = (err) => {
+            console.log(err);
+          };
+          const FormData = require("form-data");
+          let data = new FormData();
+          data.append("searchScope", this.SpareParts.Scope);
+          data.append("sparePartType", this.SpareParts.SparePartsType);
+          data.append("brand", this.SpareParts.Brand);
+          data.append("model", this.SpareParts.Model);
+          data.append("yearOfManufactur", this.SpareParts.Year);
+          data.append("carSerialNumber", this.SpareParts.CarSerialNumber);
+          data.append("partName", this.SpareParts.PartName);
+          data.append("location", this.SpareParts.LocationTo);
+          data.append("registrationImage", this.SpareParts.registrationImage);
+          data.append("image", this.SpareParts.image);
+          sendRequest(
+            "SpareParts/Request",
+            "post",
+            data,
+            true,
+            successCallback,
+            errorCallback
+          );
+        }
+      });
     },
     onFileChangedRegistration(e) {
       const file = e.target.files[0];
