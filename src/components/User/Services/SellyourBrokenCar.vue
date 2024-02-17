@@ -1,7 +1,10 @@
 <template>
   <section class="SellyourBrokenCar md:p-4 p-2 bg-white">
     <SwitchLang />
-    <div class="lg:flex block items-center gap-4 space-y-4">
+    <div class="h-screen flex items-center justify-center">
+      <p class="text-xl">{{$t('This service will be available soon...')}}</p>
+    </div>
+    <!-- <div class="lg:flex block items-center gap-4 space-y-4">
       <header class="service-title">
         <WelcomeMassage name="User" />
         <img
@@ -17,8 +20,8 @@
       <div
         class="advertisement-container bg-advertisement h-24 lg:w-[70%] w-[90%] mx-auto bg-center bg-cover rounded-md"
       ></div>
-    </div>
-    <div class="service-content grid lg:grid-cols-4 grid-cols-1 gap-2">
+    </div> -->
+    <!-- <div class="service-content grid lg:grid-cols-4 grid-cols-1 gap-2">
       <div class="lg:col-start-1 lg:col-end-4 col-start-1 col-end-2">
         <div class="Form-user space-y-3 bg-white h-auto rounded-lg p-4">
           <label for="SearchScope" class="capitalize block text-xl">{{
@@ -238,7 +241,7 @@
             v-validate="{ required: true }"
             name="Addimages"
             id="upload_photo"
-            @change="onFileChanged($event)"
+            @change="onFileChangedImage($event)"
             accept="image/*"
           />
         </div>
@@ -252,12 +255,12 @@
       >
         {{ $t("Post Request") }}
       </button>
-    </div>
+    </div> -->
   </section>
 </template>
 
 <script>
-import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
+// import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
 import { sendRequest } from "../../../../axios";
 export default {
@@ -311,20 +314,48 @@ export default {
       );
     },
     SendServices() {
-      this.$validator.validateAll().then((result) => {
-        if (result) {
-          console.log("run");
-        } else {
-          console.log("error");
-        }
-      });
+      // this.$validator.validateAll().then((result) => {
+      // if (result) {
+      let successCallback = (res) => {
+        console.log(res);
+      };
+      let errorCallback = (err) => {
+        console.log(err);
+      };
+      const FormData = require("form-data");
+      let data = new FormData();
+      data.append("searchScope", 1);
+      data.append("brand", 1);
+      data.append("model", 1);
+      data.append("yearOfManufactur", 1);
+      data.append("fuelType", 1);
+      data.append("transmisionType", 1);
+      data.append("color", "zxczxc");
+      data.append("chasisCase", "Zxczxc");
+      data.append("regionalSpecification", "szxczxc");
+      data.append("kiloMeters", "szxczxc");
+      data.append("price", "szxczxc");
+      data.append("location", "szxczxc");
+      data.append("image", this.Selling.image);
+      sendRequest(
+        "CarSell/Request",
+        "post",
+        data,
+        true,
+        successCallback,
+        errorCallback
+      );
+      // }
+      // });
+    },
+    onFileChangedImage(e) {
+      const file = e.target.files[0];
+      this.Selling.image = file;
     },
   },
   components: {
-    WelcomeMassage,
+    // WelcomeMassage,
     SwitchLang,
   },
 };
 </script>
-
-<style></style>
