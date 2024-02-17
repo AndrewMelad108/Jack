@@ -55,7 +55,7 @@ const sendRequest = (
   successCallback = null,
   errorCallback = null
 ) => {
-  const url = `https://aou2023-001-site1.btempurl.com/api/${endpoint}`;
+  const url = `http://jackfrontend-001-site1.etempurl.com/api/${endpoint}`;
   request(
     url,
     endpoint,

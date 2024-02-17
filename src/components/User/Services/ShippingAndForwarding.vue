@@ -163,7 +163,7 @@
             v-validate="{ required: true }"
             name="Addimages"
             id="upload_photo"
-            @change="onFileChanged($event)"
+            @change="onFileChangedImage($event)"
             accept="image/*"
           />
         </div>
@@ -232,13 +232,38 @@ export default {
       );
     },
     SendServices() {
-      this.$validator.validateAll().then((result) => {
-        if (result) {
-          console.log("run");
-        } else {
-          console.log("error");
-        }
-      });
+      // this.$validator.validateAll().then((result) => {
+      // if (result) {
+      let successCallback = (res) => {
+        console.log(res);
+      };
+      let errorCallback = (err) => {
+        console.log(err);
+      };
+      const FormData = require("form-data");
+      let data = new FormData();
+      data.append("searchScope", 1);
+      data.append("serviceType", 1);
+      data.append("shippingType", 1);
+      data.append("size", "zxczxc");
+      data.append("weight", "Zxczxc");
+      data.append("locationFrom", "szxczxc");
+      data.append("locationTo", "szxczxc");
+      data.append("image", this.SpareParts.image);
+      sendRequest(
+        "Shipping/Request",
+        "post",
+        data,
+        true,
+        successCallback,
+        errorCallback
+      );
+      // }
+      // });
+    },
+    onFileChangedImage(e) {
+      const file = e.target.files[0];
+      this.Shipping.image = file;
     },
   },
 };

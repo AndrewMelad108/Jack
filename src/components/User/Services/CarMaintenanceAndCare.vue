@@ -167,7 +167,7 @@
             class="hidden"
             type="file"
             id="upload_photo"
-            @change="onFileChanged($event)"
+            @change="onFileChangedImage($event)"
             accept="image/*"
             v-validate="{ required: true }"
             name="Addimages"
@@ -209,6 +209,7 @@ export default {
         color: "",
         PlateNumber: "",
         LocationTo: "",
+        image: "",
       },
     };
   },
@@ -243,11 +244,37 @@ export default {
     SendServices() {
       this.$validator.validateAll().then((result) => {
         if (result) {
-          console.log("run");
-        } else {
-          console.log("error");
+          let successCallback = (res) => {
+            console.log(res);
+          };
+          let errorCallback = (err) => {
+            console.log(err);
+          };
+          const FormData = require("form-data");
+          let data = new FormData();
+          data.append("serviceType", this.Repairing.ServiceType);
+          data.append("brand", this.Repairing.Brand);
+          data.append("model", this.Repairing.Model);
+          data.append("yearOfManufactur", this.Repairing.Year);
+          data.append("color", this.Repairing.color);
+          data.append("PlateNumber", this.Repairing.PlateNumber);
+          data.append("location", this.Repairing.LocationTo);
+          data.append("image", this.Repairing.image);
+          sendRequest(
+            "Maintainance/Request",
+            "post",
+            data,
+            true,
+            successCallback,
+            errorCallback
+          );
         }
       });
+    },
+
+    onFileChangedImage(e) {
+      const file = e.target.files[0];
+      this.Repairing.image = file;
     },
   },
 };
