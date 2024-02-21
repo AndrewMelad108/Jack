@@ -58,7 +58,7 @@
             {{ $t("user") }}
           </button>
           <button
-            @click="$router.push({ name: 'Seller.Register' })"
+            @click="$router.push({ name: 'Provider.Register' })"
             class="capitalize border-0 p-2 md:text-xl text-lg rounded-2xl relative"
           >
             <div class="tooltip hidden text-base">
@@ -304,7 +304,7 @@ export default {
           let successCallback = (res) => {
             if (res.data.success) {
               this.$router.push({
-                name: "Login",
+                name: "LogIn",
               });
             } else {
               console.error("Error");

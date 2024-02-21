@@ -67,7 +67,8 @@
                   : 'bg-gray-100'
               "
               @click="
-                selected = 'Seller' && router.push({ name: 'Seller.Register' })
+                selected =
+                  'Seller' && router.push({ name: 'Provider.Register' })
               "
               class="capitalize border-0 p-2 md:text-xl text-lg rounded-2xl relative w-32"
             >
@@ -130,7 +131,7 @@
               $t("Mobile Number")
             }}</label>
             <input
-              type="number"
+              type="text"
               :placeholder="$t('enter mobile number')"
               v-validate="{ required: true, min: 6 }"
               name="MobileNumber"
@@ -211,9 +212,9 @@
                 {{ $t("Select Country") }}
               </option>
 
-              <option value="asd1">{{ $t("Libia") }}</option>
-              <option value="asd2">{{ $t("Qatar") }}</option>
-              <option value="asd3">{{ $t("India") }}</option>
+              <option value="1">{{ $t("Libia") }}</option>
+              <option value="2">{{ $t("Qatar") }}</option>
+              <option value="3">{{ $t("India") }}</option>
             </select>
             <span class="text-red-400">{{ errors.first("Country") }}</span>
           </div>
@@ -231,9 +232,9 @@
                 {{ $t("Select Nationality") }}
               </option>
 
-              <option value="pakistani">{{ $t("pakistani") }}</option>
-              <option value="American">{{ $t("American") }}</option>
-              <option value="Arabian">{{ $t("Arabian") }}</option>
+              <option value="1">{{ $t("pakistani") }}</option>
+              <option value="2">{{ $t("American") }}</option>
+              <option value="3">{{ $t("Arabian") }}</option>
             </select>
             <span class="text-red-400">{{ errors.first("Nationality") }}</span>
           </div>
@@ -286,7 +287,7 @@
               $t("IBAN")
             }}</label>
             <input
-              type="number"
+              type="text"
               v-validate="{ required: true }"
               name="IBAN"
               class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
@@ -358,7 +359,7 @@
                 {{ $t("Select Service") }}
               </option>
               <option
-                v-for="Service in Services"
+                v-for="Service in Service"
                 :key="Service.id"
                 :value="Service.id"
               >
@@ -372,7 +373,7 @@
               $t("Services(2)")
             }}</label>
             <select
-              v-model="person.Services"
+              v-model="person.Service2"
               v-validate="{ required: true }"
               name="TypesDelivery"
               class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
@@ -497,10 +498,10 @@ export default {
         ComercialActivity: "",
         LegalCapacity: "",
         Services: "",
+        Service2: "",
         licencePhotoOne: "",
         licencePhotoTwo: "",
       },
-      Services: [],
       Service: [
         { id: 1, name: "towing and shipping" },
         { id: 2, name: "car maintenance and care" },
@@ -710,7 +711,7 @@ export default {
           let successCallback = (res) => {
             if (res.data.success) {
               this.$router.push({
-                name: "Login",
+                name: "LogIn",
               });
             } else {
               console.error("Error");
@@ -725,18 +726,18 @@ export default {
               nickName: this.person.nickName,
               password: this.person.password,
               email: this.person.email,
-              mobileNumber: this.person.mobileNumber,
+              mobileNumber: this.person.MobileNumber,
               address: this.person.address,
               region: this.person.region,
-              comercialRegistrationNumber: this.person.ID,
-              nationality: "asd",
-              iban: this.person.iban,
+              comercialRegistrationNumber: Number(this.person.ID),
+              nationality: "egypt",
+              iban: Number(this.person.iban),
               comercialActivity: this.person.ComercialActivity,
               accountNumber: this.person.AccountNumber,
-              legelCapcity: this.person.LegalCapacity,
-              serviceID: 1,
-              licencePhotoOne: this.person.LicencePhotoOne,
-              licencePhotoTwo: this.person.LicencePhotoTwo,
+              legelCapcity: Number(this.person.LegalCapacity),
+              serviceID: Number(this.person.Services),
+              LicencePhotoOne: this.person.LicencePhotoOne.split(",")[1],
+              LicencePhotoTwo: this.person.LicencePhotoTwo.split(",")[1],
             },
             false,
             successCallback,
@@ -750,7 +751,7 @@ export default {
       const reader = new FileReader();
       reader.readAsDataURL(image);
       reader.onload = (e) => {
-        this.person.licencePhotoOne = e.target.result;
+        this.person.LicencePhotoOne = e.target.result;
       };
     },
     licensePhotoTwo(e) {
@@ -758,7 +759,7 @@ export default {
       const reader = new FileReader();
       reader.readAsDataURL(image);
       reader.onload = (e) => {
-        this.person.licencePhotoTwo = e.target.result;
+        this.person.LicencePhotoTwo = e.target.result;
       };
     },
   },

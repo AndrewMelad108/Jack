@@ -7,14 +7,15 @@
         :key="Request.index"
       >
         <div class="flex justify-between gap-4 font-bold">
-          <h1 class="md:text-xl text-md">{{ Request.name }}</h1>
-          <p>{{ Request.date }}</p>
+          <h1 class="md:text-xl text-md">{{ $t(Request.name) }}</h1>
+          <p>{{ Request.createdDate.split("T")[0] }}</p>
         </div>
         <p class="flex items-center mt-4 text-text-color">
           <img
-            src="../../assets/images/location-pin.png"
-            alt="location-image"
+            :src="`https://jackfrontend-001-site1.etempurl.com/Images/${Request.image}`"
+            alt="Request-image"
             loading="lazy"
+            class="mt-4 w-10 h-10"
           />
 
           {{ Request.location }}
@@ -38,34 +39,35 @@
 <script>
 export default {
   name: "RequestsList",
+  props: ["Requests"],
   data() {
     return {
-      Requests: [
-        {
-          name: "Service 1",
-          date: "2022-01-01",
-          location: "Specific Location, Saudi Arabia",
-          description: "Description 1",
-        },
-        {
-          name: "Service 2",
-          date: "2022-01-01",
-          location: "Specific Location, Saudi Arabia",
-          description: "Description 2",
-        },
-        {
-          name: "Service 3",
-          date: "2022-01-01",
-          location: "Specific Location, Saudi Arabia",
-          description: "Description 3",
-        },
+      Request: [
+        // {
+        //   name: "Service 1",
+        //   date: "2022-01-01",
+        //   location: "Specific Location, Saudi Arabia",
+        //   description: "Description 1",
+        // },
+        // {
+        //   name: "Service 2",
+        //   date: "2022-01-01",
+        //   location: "Specific Location, Saudi Arabia",
+        //   description: "Description 2",
+        // },
+        // {
+        //   name: "Service 3",
+        //   date: "2022-01-01",
+        //   location: "Specific Location, Saudi Arabia",
+        //   description: "Description 3",
+        // },
       ],
     };
   },
   methods: {
     requestDetails() {
       this.$router.push({
-        name: "Seller.RequestDetials",
+        name: "Provider.RequestDetials",
         params: {
           requestId: 1,
         },

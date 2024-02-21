@@ -55,7 +55,7 @@ const sendRequest = (
   successCallback = null,
   errorCallback = null
 ) => {
-  const url = `http://jackfrontend-001-site1.etempurl.com/api/${endpoint}`;
+  const url = `https://jackfrontend-001-site1.etempurl.com/api/${endpoint}`;
   request(
     url,
     endpoint,

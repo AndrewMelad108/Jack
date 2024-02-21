@@ -22,12 +22,12 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/Seller/Register/Create",
-    name: "Seller.Register",
+    name: "Provider.Register",
     component: SellerRegister,
   },
   {
     path: "/Seller/main",
-    name: "provider.Home",
+    name: "Provider.Home",
     component: SellerHome,
   },
   {
@@ -37,72 +37,72 @@ const routes = [
     children: [
       {
         path: "/Home",
-        name: "provider.ControlPanel",
+        name: "Provider.ControlPanel",
         component: Home,
       },
       {
         path: "/Requests",
-        name: "provider.Requests",
+        name: "Provider.Requests",
         component: SellerRequests,
       },
       {
         path: "/RequestedOrders",
-        name: "provider.Requested orders",
+        name: "Provider.Requested orders",
         component: SellerRequestedOrders,
       },
       {
         path: "/RequestedService",
-        name: "provider.Requested service",
+        name: "Provider.Requested service",
         component: SellerRequestedService,
       },
       {
         path: "/request/:requestId/Details",
-        name: "provider.RequestDetials",
+        name: "Provider.RequestDetials",
         component: SellerRequestDetials,
       },
       {
         path: "/SellerOffers",
-        name: "provider.Offers",
+        name: "Provider.Offers",
         component: SellerOffers,
       },
       {
         path: "/Offer/:OfferId/Create",
-        name: "provider.SellerOferCreate",
+        name: "Provider.SellerOferCreate",
         component: SellerOferCreate,
       },
       {
         path: "/Orders",
-        name: "provider.Orders",
+        name: "Provider.Orders",
         component: SellerOrders,
       },
       {
         path: "/Profile",
-        name: "provider.Profile",
+        name: "Provider.Profile",
         component: SellerProfile,
       },
       {
         path: "/Wallet",
-        name: "provider.Wallet",
+        name: "Provider.Wallet",
         component: SellerWallet,
       },
       {
         path: "/Chat",
-        name: "provider.Chats",
+        name: "Provider.Chats",
         component: SellerChat,
       },
       {
         path: "/Policy",
-        name: "provider.Policy",
+        name: "Provider.Policy",
         component: SellerPolicy,
       },
       {
         path: "/Delivery",
-        name: "provider.Delivery",
+        name: "Provider.Delivery",
         component: SellerDelivery,
       },
       {
         path: "/ProfileServices",
-        name: "provider.Profile Servies",
+        name: "Provider.Profile Servies",
         component: SellerProfileServices,
       },
     ],
