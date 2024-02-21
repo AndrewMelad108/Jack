@@ -30,7 +30,7 @@ export default {
       };
 
       sendRequest(
-        `User/UserRequests`,
+        `User/ApplicableRequests`,
         "get",
         null,
         true,

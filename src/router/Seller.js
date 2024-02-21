@@ -56,7 +56,7 @@ const routes = [
         component: SellerRequestedService,
       },
       {
-        path: "/request/:requestId/Details",
+        path: "/request/:requestId/:requestType/Details",
         name: "Provider.RequestDetials",
         component: SellerRequestDetials,
       },
