@@ -22,7 +22,7 @@
     >
       <div
         class="h-62 w-3/12 px-2 bg-white cursor-pointer rounded-xl capitalize text-center font-boldx 2 py-6"
-        @click="goServices('User.Towing')"
+        @click="goServices('Customer.Towing')"
       >
         <img
           src="../../assets/images/Servies/towing_and_shipping.png"
@@ -35,7 +35,7 @@
         </p>
       </div>
       <div
-        @click="goServices('User.Spare Parts')"
+        @click="goServices('Customer.Spare Parts')"
         class="h-62 w-3/12 px-2 bg-white rounded-xl cursor-pointer capitalize text-center font-boldx 2 py-6"
       >
         <img
@@ -50,7 +50,7 @@
       </div>
       <div
         class="h-62 w-3/12 px-2 bg-white rounded-xl cursor-pointer capitalize text-center font-boldx 2 py-6"
-        @click="goServices('User.Baggage Transfer')"
+        @click="goServices('Customer.Baggage Transfer')"
       >
         <img
           src="../../assets/images/Servies/shipping_and_forwarding.png"
@@ -64,7 +64,7 @@
       </div>
       <div
         class="h-62 w-3/12 px-2 bg-white rounded-xl cursor-pointer capitalize text-center font-boldx 2 py-6"
-        @click="goServices('User.Selling Cars')"
+        @click="goServices('Customer.Selling Cars')"
       >
         <img
           src="../../assets/images/Servies/sell_your_broken_car.png"
@@ -80,7 +80,7 @@
     <div v-else class="show_all_services grid md:grid-cols-3 grid-cols-2 gap-6">
       <div
         class="h-62 bg-white rounded-xl capitalize cursor-pointer text-center font-bold px-2 py-6"
-        @click="goServices('User.Towing')"
+        @click="goServices('Customer.Towing')"
       >
         <img
           src="../../assets/images/Servies/towing_and_shipping.png"
@@ -94,7 +94,7 @@
       </div>
       <div
         class="h-62 bg-white rounded-xl capitalize cursor-pointer text-center font-bold px-2 py-6"
-        @click="goServices('User.Spare Parts')"
+        @click="goServices('Customer.Spare Parts')"
       >
         <img
           src="../../assets/images/Servies/spare_parts.png"
@@ -108,7 +108,7 @@
       </div>
       <div
         class="h-62 bg-white rounded-xl capitalize cursor-pointer text-center font-bold px-2 py-6"
-        @click="goServices('User.Baggage Transfer')"
+        @click="goServices('Customer.Baggage Transfer')"
       >
         <img
           src="../../assets/images/Servies/shipping_and_forwarding.png"
@@ -122,7 +122,7 @@
       </div>
       <div
         class="h-62 bg-white rounded-xl capitalize cursor-pointer text-center font-bold px-2 py-6"
-        @click="goServices('User.Selling Cars')"
+        @click="goServices('Customer.Selling Cars')"
       >
         <img
           src="../../assets/images/Servies/sell_your_broken_car.png"
@@ -136,7 +136,7 @@
       </div>
       <div
         class="h-62 bg-white rounded-xl capitalize cursor-pointer text-center font-bold px-2 py-6"
-        @click="goServices('User.Delivery')"
+        @click="goServices('Customer.Delivery')"
       >
         <img
           src="../../assets/images/Servies/delivery_services.png"
@@ -150,7 +150,7 @@
       </div>
       <div
         class="h-62 bg-white rounded-xl capitalize cursor-pointer text-center font-bold px-2 py-6"
-        @click="goServices('User.Repairing')"
+        @click="goServices('Customer.Repairing')"
       >
         <img
           src="../../assets/images/Servies/car_maintenance_and_care.png"
@@ -172,7 +172,7 @@
           class="cursor-pointer text-text-color"
           @click="
             $router.push({
-              name: 'User.Orders',
+              name: 'Customer.Orders',
             })
           "
           >{{ $t("See All") }}</span

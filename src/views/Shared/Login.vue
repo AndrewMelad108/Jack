@@ -152,7 +152,7 @@ export default {
                 });
               } else {
                 this.$router.push({
-                  name: "Seller.Home",
+                  name: "Provider.Home",
                 });
               }
             } else {

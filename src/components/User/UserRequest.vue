@@ -28,17 +28,21 @@
             class="rounded-xl min-h-48 p-4 bg-white"
             @click="addRequest(Request.id)"
           >
-            <h1 class="text-xl font-bold capitalize">{{ $t(Request.RequestName) }}</h1>
+            <h1 class="text-xl font-bold capitalize">
+              {{ $t(Request.name) }}
+            </h1>
             <p class="mt-4 text-text-color">
               {{ Request.Requestdes }}
             </p>
             <img
-              src="../../assets/images/1667831181-Group_1.png"
+              :src="`https://jackfrontend-001-site1.etempurl.com/Images/${Request.image}`"
               alt="Request-image"
               loading="lazy"
-              class="mt-4"
+              class="mt-4 w-10 h-10"
             />
-            <p class="text-right font-bold">{{ Request.RequestDate }}</p>
+            <p class="text-right font-bold">
+              {{ Request.createdDate.split("T")[0] }}
+            </p>
           </div>
         </div>
         <div class="Offer cursor-pointer mx-auto lg:w-4/12 w-[100%]">
@@ -64,7 +68,7 @@
                 <router-link
                   class="text-text-color my-2 font-bold text-lg block"
                   :to="{
-                    name: 'Seller.Profile Servies',
+                    name: 'Provider.Profile Servies',
                   }"
                   >اندرو ميلاد</router-link
                 >
@@ -103,35 +107,56 @@
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import SwitchLang from "../../components/Shared/Form/SwitchLang.vue";
 import InputSearch from "@/components/Shared/Form/InputSearch.vue";
+import { sendRequest } from "../../../axios";
 export default {
   name: "UserRequest",
   data() {
     return {
       showAllServices: false,
       Requests: [
-        {
-          id: 1,
-          RequestName: "towing and shipping",
-          Requestdes: "This include the services related to the oil change",
-          RequestDate: "2022-11-11",
-        },
-        {
-          id: 2,
-          RequestName: "car maintenance and care",
-          Requestdes: "This include the services related to the oil change",
-          RequestDate: "2022-11-11",
-        },
-        {
-          id: 3,
-          RequestName: "Spare Parts",
-          Requestdes: "This include the services related to the oil change",
-          RequestDate: "2022-11-11",
-        },
+        // {
+        //   id: 1,
+        //   RequestName: "towing and shipping",
+        //   Requestdes: "This include the services related to the oil change",
+        //   RequestDate: "2022-11-11",
+        // },
+        // {
+        //   id: 2,
+        //   RequestName: "car maintenance and care",
+        //   Requestdes: "This include the services related to the oil change",
+        //   RequestDate: "2022-11-11",
+        // },
+        // {
+        //   id: 3,
+        //   RequestName: "Spare Parts",
+        //   Requestdes: "This include the services related to the oil change",
+        //   RequestDate: "2022-11-11",
+        // },
       ],
       Offers: [],
     };
   },
+  mounted() {
+    this.getServices();
+  },
   methods: {
+    getServices() {
+      let successCallback = (res) => {
+        this.Requests = res.data.data;
+      };
+      let errorCallback = (err) => {
+        console.log(err);
+      };
+
+      sendRequest(
+        `User/UserRequests`,
+        "get",
+        null,
+        true,
+        successCallback,
+        errorCallback
+      );
+    },
     addRequest(RequestId) {
       this.Offers.push({
         id: RequestId,
@@ -147,5 +172,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

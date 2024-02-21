@@ -33,7 +33,6 @@
 
 <script>
 import SwitchLang from "@/components/Shared/Form/SwitchLang.vue";
-
 export default {
   props: ["checked"],
   data() {
@@ -47,11 +46,11 @@ export default {
   methods: {
     goUserPages() {
       if (
-        localStorage.getItem("role") === "customer" &&
-        this.$route.name !== "customer.Home"
+        localStorage.getItem("role") === "Customer" &&
+        this.$route.name !== "Customer.Home"
       ) {
         this.$router.push({
-          name: "customer.Home",
+          name: "Customer.Home",
         });
       }
     },
@@ -61,14 +60,12 @@ export default {
       });
     },
     goUserServices() {
-      if (localStorage.getItem("role") === "customer") {
+      if (localStorage.getItem("role") === "Customer") {
         this.$router.push({
-          name: "customer.Towing",
+          name: "Customer.Towing",
         });
       }
     },
   },
 };
 </script>
-
-<style></style>

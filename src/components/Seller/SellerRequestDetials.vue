@@ -7,7 +7,7 @@
     <div
       @click="
         $router.push({
-          name: 'Seller.Requests',
+          name: 'Provider.Requests',
         })
       "
       class="back_Requests cursor-pointer mx-4 my-8 flex gap-4 font-bold items-center text-xl"
@@ -116,7 +116,7 @@
         <button
           @click="
             $router.push({
-              name: 'Seller.SellerOferCreate',
+              name: 'Provider.SellerOferCreate',
               params: {
                 OfferId: 1,
               },

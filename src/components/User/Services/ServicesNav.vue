@@ -24,38 +24,36 @@ export default {
       services: [
         {
           image: require("../../../assets/images/Servies/towing_and_shipping.png"),
-          routerData: "User.Towing",
+          routerData: "Customer.Towing",
           alt: "towing_and_shipping",
         },
         {
           image: require("../../../assets/images/Servies/car_maintenance_and_care.png"),
           alt: "car_maintenance_and_care",
-          routerData: "User.Repairing",
+          routerData: "Customer.Repairing",
         },
         {
           image: require("../../../assets/images/Servies/shipping_and_forwarding.png"),
           alt: "shipping_and_forwarding",
-          routerData: "User.Baggage Transfer",
+          routerData: "Customer.Baggage Transfer",
         },
         {
           image: require("../../../assets/images/Servies/spare_parts.png"),
           alt: "spare_parts",
-          routerData: "User.Spare Parts",
+          routerData: "Customer.Spare Parts",
         },
         {
           image: require("../../../assets/images/Servies/delivery_services.png"),
-          routerData: "User.Delivery",
+          routerData: "Customer.Delivery",
           alt: "delivery_services",
         },
         {
           image: require("../../../assets/images/Servies/sell_your_broken_car.png"),
           alt: "sell_your_broken_car",
-          routerData: "User.Selling Cars",
+          routerData: "Customer.Selling Cars",
         },
       ],
     };
   },
 };
 </script>
-
-<style></style>

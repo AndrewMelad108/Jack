@@ -67,7 +67,7 @@ export default {
   methods: {
     goChat(id) {
       this.$router.push({
-        name: "User.ChatInfo",
+        name: "Customer.ChatInfo",
         params: {
           chatId: id,
         },

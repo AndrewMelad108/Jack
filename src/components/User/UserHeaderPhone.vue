@@ -24,7 +24,7 @@
       v-if="showLinks"
     >
       <button
-        @click="goUserPages('User.Home')"
+        @click="goUserPages('Customer.Home')"
         class="hover:text-black block text-lg"
       >
         {{ $t("Home") }}
@@ -51,17 +51,17 @@ export default {
     goUserPages() {
       if (
         localStorage.getItem("role") === "User" &&
-        this.$route.name !== "User.Home"
+        this.$route.name !== "Customer.Home"
       ) {
         this.$router.push({
-          name: "User.Home",
+          name: "Customer.Home",
         });
       }
     },
     goUserServices() {
       if (localStorage.getItem("role") === "User") {
         this.$router.push({
-          name: "User.Towing",
+          name: "Customer.Towing",
         });
       }
     },
