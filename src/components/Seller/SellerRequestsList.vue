@@ -21,12 +21,9 @@
           {{ Request.location }}
         </p>
         <p class="my-6 text-text-color">{{ Request.description }}</p>
-        <img
-          src="../../assets/images/1667831181-Group_1.png"
-          alt="request-image"
-        />
+
         <button
-          @click="requestDetails()"
+          @click="requestDetails(Request.id, Request.name)"
           class="block rounded-lg mt-4 p-4 ml-auto text-white bg-main-color"
         >
           {{ $t("Details") }}
@@ -65,11 +62,13 @@ export default {
     };
   },
   methods: {
-    requestDetails() {
+    requestDetails(id, requestName) {
+      console.log(id);
       this.$router.push({
         name: "Provider.RequestDetials",
         params: {
-          requestId: 1,
+          requestId: 21,
+          requestType: requestName.replace(" ", ""),
         },
       });
     },

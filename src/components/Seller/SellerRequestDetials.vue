@@ -33,7 +33,7 @@
           class="person-details my-6 p-3 gap-4 bg-white md:text-md text-sm shadow-md shadow-slate-400 rounded-xl min-h-52 flex items-center"
         >
           <img
-            src="../../assets/images/1667831181-Group_1.png"
+            :src="`https://jackfrontend-001-site1.etempurl.com/Images/${Offer.image}`"
             alt=""
             class="h-10"
           />
@@ -88,9 +88,9 @@
             </p>
           </div>
 
-          <p class="md:text-lg text-sm my-4 capitalize">
+          <!-- <p class="md:text-lg text-sm my-4 capitalize">
             {{ $t("total amount is") }} {{ total }}
-          </p>
+          </p> -->
 
           <div class="OfferPhotos my-4">
             <h1 class="my-4 md:text-xl text-md font-bold">
@@ -105,7 +105,7 @@
               </div>
               <div class="photo2">
                 <img
-                  :src="imageUrl"
+                  :src="`https://jackfrontend-001-site1.etempurl.com/RegistrationImages/${Offer.registrationImage}`"
                   alt="الصورة المختارة"
                   class="md:w-[80%] md:mx-auto w-full"
                 />
@@ -127,11 +127,6 @@
           {{ $t("Send Offer") }}
         </button>
       </div>
-      <img
-        src="../../assets/images/1667831181-Group_1.png"
-        alt=""
-        class="w-52 h-52 md:col-start-4 place-self-center justify-self-center md:col-end-5 col-start-1 col-end-2"
-      />
     </div>
   </section>
 </template>
@@ -140,7 +135,7 @@
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import InputSearch from "@/components/Shared/Form/InputSearch.vue";
 import MapGoogle from "../../components/Shared/Map.vue";
-
+import { sendRequest } from "../../../axios";
 export default {
   name: "SellerRequestDetials",
   data() {
@@ -149,12 +144,14 @@ export default {
       Lang: localStorage.getItem("lang"),
       total: "750",
       Offer: {
-        SparePartsType: "new",
-        Brand: "Yamaha",
-        Model: "Hilux",
-        YearofManufactur: "2022",
-        CarSerialNumber: "54546186441864",
-        PartName: "Something",
+        SparePartsType: "",
+        Brand: "",
+        Model: "",
+        YearofManufactur: "",
+        CarSerialNumber: "",
+        PartName: "",
+        image: "",
+        registrationImage: "",
       },
       services: [
         {
@@ -175,7 +172,36 @@ export default {
       PriceCheck: false,
     };
   },
+  mounted() {
+    this.getRequestDetails();
+  },
+  methods: {
+    getRequestDetails() {
+      let successCallback = (res) => {
+        console.log(res.data.data);
+        this.Offer.Brand = res.data.data.brand;
+        this.Offer.Model = res.data.data.model;
+        this.Offer.CarSerialNumber = res.data.data.carSerialNumber;
+        this.Offer.PartName = res.data.data.partName;
+        this.Offer.SparePartType = res.data.data.sparePartType;
+        this.Offer.YearofManufactur = res.data.data.yearOfManufactur;
+        this.Offer.image = res.data.data.image;
+        this.Offer.registrationImage = res.data.data.registrationImage;
+      };
+      let errorCallback = (err) => {
+        console.log(err);
+      };
 
+      sendRequest(
+        `${this.$route?.params?.requestType}/Provider/RequestDetails?id=${this.$route?.params?.requestId}`,
+        "get",
+        null,
+        true,
+        successCallback,
+        errorCallback
+      );
+    },
+  },
   components: {
     WelcomeMassage,
     InputSearch,
@@ -183,5 +209,3 @@ export default {
   },
 };
 </script>
-
-<style></style>
