@@ -66,7 +66,7 @@ const routes = [
         component: SellerOffers,
       },
       {
-        path: "/Offer/:OfferId/Create",
+        path: "/Offer/:requestId/:requestType/Create",
         name: "Provider.SellerOferCreate",
         component: SellerOferCreate,
       },
