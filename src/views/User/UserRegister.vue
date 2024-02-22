@@ -192,7 +192,7 @@
               $t("Confirm password")
             }}</label>
             <input
-              type="text"
+              type="password"
               :placeholder="$t('enter Confirm Password')"
               v-model="person.ConfirmPassword"
               v-validate="{ required: true, min: 8 }"
