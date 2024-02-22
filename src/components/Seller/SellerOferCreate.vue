@@ -292,13 +292,14 @@
 
 <script>
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
+import { sendRequest } from "../../../axios";
 export default {
   name: "SellerRequestDetials",
   data() {
     return {
       Lang: localStorage.getItem("lang"),
       PriceCheck: true,
-      total: "750",
+      total: null,
       OfferDetails: {
         SparePartsType: "new",
         Brand: "Yamaha",
@@ -307,35 +308,34 @@ export default {
         CarSerialNumber: "54546186441864",
         PartName: "Something",
       },
-      services: [
-        {
-          name: "service",
-          description: "Description",
-          Amount: 2,
-          PartCost: 400,
-          Total: 2,
-        },
-        {
-          name: "service",
-          description: "Description",
-          Amount: 2,
-          PartCost: 400,
-          Total: 2,
-        },
-      ],
+      services: [],
       Offer: {
         name: "",
         description: "",
         Amount: null,
         PartCost: null,
         Total: null,
+        image: null,
       },
     };
+  },
+  watch: {
+    "Offer.Amount"() {
+      this.calculateTotal();
+    },
   },
   components: {
     WelcomeMassage,
   },
   methods: {
+    calculateTotal() {
+      this.services.forEach((element) => {
+        this.total = 0;
+        if (element.amount !== null && element.Total !== null) {
+          this.total += element.amount * element.Total;
+        }
+      });
+    },
     addOffer() {
       try {
         this.services.push({
@@ -349,15 +349,43 @@ export default {
         console.error("Error adding data:", error);
       }
     },
-
     createOffers() {
       // this.$validator.validateAll().then((result) => {
       // if (result) {
-      this.$router.push({
-        name: "Provider.Orders",
-      });
+      let successCallback = (res) => {
+        console.log(res.data.data);
+      };
+      let errorCallback = (err) => {
+        console.log(err);
+      };
+
+      sendRequest(
+        `${this.$route?.params?.requestType}/Offer?RequestID=${this.$route?.params?.requestId}`,
+        "post",
+        {
+          cost: 3.5,
+          image:this.Offer.image.split(",")[1],
+          sparePartDTOs: [
+            { name: "string", partCost: 3.5, amount: 3, details: "string" },
+          ],
+        },
+        true,
+        successCallback,
+        errorCallback
+      );
+      // this.$router.push({
+      //   name: "Provider.Orders",
+      // });
       // } else {
       // Validation errors occurred, log them
+    },
+    onFileChanged(e) {
+      const image = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onload = (e) => {
+        this.Offer.image = e.target.result;
+      };
     },
     // });
     // },

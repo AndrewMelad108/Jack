@@ -118,7 +118,8 @@
             $router.push({
               name: 'Provider.SellerOferCreate',
               params: {
-                OfferId: 1,
+                requestId: $route.params.requestId,
+                requestType: $route.params.requestType,
               },
             })
           "
