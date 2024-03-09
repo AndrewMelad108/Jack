@@ -67,7 +67,7 @@ export default {
       this.$router.push({
         name: "Provider.RequestDetials",
         params: {
-          requestId: 21,
+          requestId: id,
           requestType: requestName.replace(" ", ""),
         },
       });

@@ -352,19 +352,19 @@ export default {
     createOffers() {
       // this.$validator.validateAll().then((result) => {
       // if (result) {
+      console.log("run");
       let successCallback = (res) => {
         console.log(res.data.data);
       };
       let errorCallback = (err) => {
         console.log(err);
       };
-
       sendRequest(
         `${this.$route?.params?.requestType}/Offer?RequestID=${this.$route?.params?.requestId}`,
         "post",
         {
           cost: 3.5,
-          image:this.Offer.image.split(",")[1],
+          image: this.Offer.image.split(",")[1],
           sparePartDTOs: [
             { name: "string", partCost: 3.5, amount: 3, details: "string" },
           ],
