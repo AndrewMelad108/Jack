@@ -24,6 +24,7 @@ export default {
     getServices() {
       let successCallback = (res) => {
         this.Requests = res.data.data;
+        this.Requests.reverse();
       };
       let errorCallback = (err) => {
         console.log(err);
