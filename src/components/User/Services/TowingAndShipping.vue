@@ -31,11 +31,7 @@
             <option disabled selected value="">
               {{ $t("Search Scope") }}
             </option>
-            <option
-              v-for="option in scope"
-              :key="option.id"
-              :value="option.id"
-            >
+            <option v-for="option in scope" :key="option.id" :value="option.id">
               {{ option.value }}
             </option>
           </select>
@@ -58,8 +54,12 @@
             <option disabled selected value="">
               {{ $t("Select tow truck type") }}
             </option>
-            <option v-for="option in ServiceType" :key="option.id" :value="option.id">
-              {{option.value}}
+            <option
+              v-for="option in ServiceType"
+              :key="option.id"
+              :value="option.id"
+            >
+              {{ option.value }}
             </option>
           </select>
           <p class="text-red-400">{{ errors.first("Search City") }}</p>
@@ -274,12 +274,12 @@ export default {
       scope: [
         {
           id: 1,
-          value: 'Local'
+          value: "Local",
         },
         {
           id: 2,
-          value: 'Global'
-        }
+          value: "Global",
+        },
       ],
       Brand: [],
       Model: [],
@@ -330,35 +330,40 @@ export default {
     },
     SendServices() {
       this.$validator.validateAll().then((result) => {
-      if (result) {
-        let successCallback = (res) => {
-          console.log(res);
-        };
-        let errorCallback = (err) => {
-          console.log(err);
-        };
-        const FormData = require("form-data");
-        let data = new FormData();
-        data.append("searchScope", this.Towing.Scope);
-        data.append("serviceType", this.Towing.Type);
-        data.append("brand", this.Towing.Brand);
-        data.append("model", this.Towing.Model);
-        data.append("yearOfManufactur", this.Towing.Year);
-        data.append("color", this.Towing.color);
-        data.append("plateNumber", this.Towing.PlateNumber);
-        data.append("locationFrom", this.Towing.LocationFrom);
-        data.append("locationTo", this.Towing.LocationTo);
-        data.append("image", this.Towing.image);
-        data.append("registrationImage", this.Towing.registrationImage);
-        sendRequest(
-          "Towing/Request",
-          "post",
-          data,
-          true,
-          successCallback,
-          errorCallback
-        );
-      }
+        if (result) {
+          let successCallback = (res) => {
+            if (res.data.success) {
+              console.log(res);
+              this.$router.push({
+                name: "Customer.Requests",
+              });
+            }
+          };
+          let errorCallback = (err) => {
+            console.log(err);
+          };
+          const FormData = require("form-data");
+          let data = new FormData();
+          data.append("searchScope", this.Towing.Scope);
+          data.append("serviceType", this.Towing.Type);
+          data.append("brand", this.Towing.Brand);
+          data.append("model", this.Towing.Model);
+          data.append("yearOfManufactur", this.Towing.Year);
+          data.append("color", this.Towing.color);
+          data.append("plateNumber", this.Towing.PlateNumber);
+          data.append("locationFrom", this.Towing.LocationFrom);
+          data.append("locationTo", this.Towing.LocationTo);
+          data.append("image", this.Towing.image);
+          data.append("registrationImage", this.Towing.registrationImage);
+          sendRequest(
+            "Towing/Request",
+            "post",
+            data,
+            true,
+            successCallback,
+            errorCallback
+          );
+        }
       });
     },
     onFileChangedRegistration(e) {
