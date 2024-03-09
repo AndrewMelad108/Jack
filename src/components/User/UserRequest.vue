@@ -24,9 +24,9 @@
         <div class="Request cursor-pointer lg:w-7/12 w-[100%] space-y-4">
           <div
             v-for="Request in Requests"
-            :key="Request.id"
+            :key="Request.index"
             class="rounded-xl min-h-48 p-4 bg-white"
-            @click="addRequest(Request.id)"
+            @click="showOffers(Request.name, Request.id)"
           >
             <h1 class="text-xl font-bold capitalize">
               {{ $t(Request.name) }}
@@ -113,26 +113,7 @@ export default {
   data() {
     return {
       showAllServices: false,
-      Requests: [
-        // {
-        //   id: 1,
-        //   RequestName: "towing and shipping",
-        //   Requestdes: "This include the services related to the oil change",
-        //   RequestDate: "2022-11-11",
-        // },
-        // {
-        //   id: 2,
-        //   RequestName: "car maintenance and care",
-        //   Requestdes: "This include the services related to the oil change",
-        //   RequestDate: "2022-11-11",
-        // },
-        // {
-        //   id: 3,
-        //   RequestName: "Spare Parts",
-        //   Requestdes: "This include the services related to the oil change",
-        //   RequestDate: "2022-11-11",
-        // },
-      ],
+      Requests: [],
       Offers: [],
     };
   },
@@ -143,6 +124,7 @@ export default {
     getServices() {
       let successCallback = (res) => {
         this.Requests = res.data.data;
+        console.log(this.Requests);
       };
       let errorCallback = (err) => {
         console.log(err);
@@ -157,12 +139,22 @@ export default {
         errorCallback
       );
     },
-    addRequest(RequestId) {
-      this.Offers.push({
-        id: RequestId,
-        OfferName: this.Requests[RequestId].RequestName,
-        Offerdes: this.Requests[RequestId].Requestdes,
-      });
+    showOffers(RequestName, RequestId) {
+      let successCallback = (res) => {
+        this.Offers = res.data.data;
+      };
+      let errorCallback = (err) => {
+        console.log(err);
+      };
+
+      sendRequest(
+        `${RequestName}/offers?id=${RequestId}`,
+        "get",
+        null,
+        true,
+        successCallback,
+        errorCallback
+      );
     },
   },
   components: {

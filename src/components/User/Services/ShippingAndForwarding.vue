@@ -235,7 +235,12 @@ export default {
       // this.$validator.validateAll().then((result) => {
       // if (result) {
       let successCallback = (res) => {
-        console.log(res);
+        if (res.data.success) {
+          console.log(res);
+          this.$router.push({
+            name: "Customer.Requests",
+          });
+        }
       };
       let errorCallback = (err) => {
         console.log(err);
