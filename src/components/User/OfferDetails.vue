@@ -231,6 +231,7 @@ export default {
       return sum;
     },
   },
+  created() {},
   watch: {
     Lang() {
       return this.Lang;
@@ -245,6 +246,23 @@ export default {
     deleteService(index) {
       this.services.splice(index, 1);
     },
+    // getOfferDetials(id) {
+    //   let successCallback = (res) => {
+    //     this.Offers = res.data.data;
+    //   };
+    //   let errorCallback = (err) => {
+    //     console.log(err);
+    //   };
+
+    //   sendRequest(
+    //     `${RequestName}/offers?id=${RequestId}`,
+    //     "get",
+    //     null,
+    //     true,
+    //     successCallback,
+    //     errorCallback
+    //   );
+    // },
   },
 };
 </script>
