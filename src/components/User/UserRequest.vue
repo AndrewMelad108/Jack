@@ -77,19 +77,22 @@
             <div class="flex gap-4 Offer-details justify-center">
               <p class="text-text-color">
                 {{ $t("Time") }}
-                <span class="text-main-color px-2">12:00:00</span>
+                <span class="text-main-color px-2">{{
+                  offer.createdDate.split("T")[1]
+                }}</span>
               </p>
               <p class="text-text-color">
-                {{ $t("Cost") }} <span class="text-main-color px-2">50000</span>
+                {{ $t("Cost") }}
+                <span class="text-main-color px-2">{{ offer.cost }}</span>
               </p>
             </div>
             <button
               class="Offer-details-btn block mx-auto p-2 mt-2 text-main-color text-lg border border-main-color rounded-md hover:bg-main-color hover:text-white transition-all duration-300 ease-linear"
               @click="
                 $router.push({
-                  name: 'User.OfferDetails',
+                  name: 'Customer.OfferDetails',
                   params: {
-                    OfferID: 1,
+                    OfferID: offer.id,
                   },
                 })
               "

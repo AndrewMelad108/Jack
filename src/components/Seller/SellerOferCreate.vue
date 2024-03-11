@@ -80,8 +80,6 @@
                 >
                 <input
                   type="text"
-                  v-validate="{ alpha: true, required: true }"
-                  name="FirstName"
                   v-model="SparePartDTO.name"
                   class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
                   :placeholder="$t('enter First Name')"
@@ -98,8 +96,6 @@
                 >
                 <input
                   type="text"
-                  v-validate="{ required: true }"
-                  name="PostCost"
                   v-model="SparePartDTO.PartCost"
                   :placeholder="$t('enter Post Cost')"
                   class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
@@ -115,8 +111,6 @@
                 <input
                   type="number"
                   :placeholder="$t('Enter Amount')"
-                  v-validate="{ required: true }"
-                  name="Amount"
                   v-model="SparePartDTO.Amount"
                   class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
                 />
@@ -131,7 +125,6 @@
                 <input
                   type="number"
                   :placeholder="$t('Enter Total Cost')"
-                  v-validate="{ required: true }"
                   name="TotalCost"
                   v-model="SparePartDTO.Total"
                   class="placeholder:capitalize p-2 rounded-lg placeholder:text-gray-600 placeholder:text-md bg-gray-200 md:w-[100%] w-[100%] mx-auto"
@@ -148,12 +141,10 @@
                 >
                 <textarea
                   class="resize-none h-20 w-full placeholder:p-2 bg-gray-200 rounded-lg"
-                  name="Details"
                   id="Details"
                   v-model="SparePartDTO.description"
                   rows="10"
                   :placeholder="$t('Enter More Details')"
-                  v-validate="'required'"
                 ></textarea>
                 <span class="text-red-400">{{ errors.first("Details") }}</span>
               </div>
@@ -391,42 +382,47 @@ export default {
         PartCost: this.SparePartDTO.PartCost,
         Total: this.SparePartDTO.Total,
       });
+      this.SparePartDTO = {};
     },
     onFileChanged(e) {
       this.offer.image = e.target.files[0];
     },
     createOffers() {
-      // this.$validator.validateAll().then((result) => {
-      //   if (result) {
-      let successCallback = (res) => {
-        console.log(res.data);
-        if (res.data.success) {
-          this.$router.push({
-            name: "Provider.Requests",
-          });
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          let successCallback = (res) => {
+            console.log(res.data);
+            if (res.data.success) {
+              this.$router.push({
+                name: "Provider.Requests",
+              });
+            }
+          };
+          let errorCallback = (err) => {
+            console.log(err);
+          };
+          const data = new FormData();
+          console.log(this.$route.params.requestType);
+          this.$route.params.requestType === "SpareParts"
+            ? data.append("SparePartDTOs", JSON.stringify(this.SparePartDTOs))
+            : null;
+          data.append(
+            "cost",
+            this.PriceCheck === true ? (this.offer.cost = 0) : this.offer.cost
+          );
+          data.append("image", this.offer.image);
+          sendRequest(
+            `${this.$route?.params?.requestType}/Offer?RequestID=${this.$route?.params?.requestId}`,
+            "post",
+            data,
+            true,
+            successCallback,
+            errorCallback
+          );
         }
-      };
-      let errorCallback = (err) => {
-        console.log(err);
-      };
-      const data = new FormData();
-      data.append(
-        "cost",
-        this.PriceCheck === true ? (this.offer.cost = 0) : this.offer.cost
-      );
-      data.append("image", this.offer.image);
-      sendRequest(
-        `${this.$route?.params?.requestType}/Offer?RequestID=${this.$route?.params?.requestId}`,
-        "post",
-        data,
-        true,
-        successCallback,
-        errorCallback
-      );
+      });
     },
-    // });
   },
-  // },
 };
 </script>
 <style scoped>
