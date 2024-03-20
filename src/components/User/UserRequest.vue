@@ -70,7 +70,7 @@
                   :to="{
                     name: 'Provider.Profile Servies',
                   }"
-                  >اندرو ميلاد</router-link
+                  >{{ offer.providerName }}</router-link
                 >
               </div>
             </div>
