@@ -55,7 +55,7 @@ const sendRequest = (
   successCallback = null,
   errorCallback = null
 ) => {
-  const url = `http://masaratpipe-001-site2.atempurl.com/api/${endpoint}`;
+  const url = `https://masaratpipe-001-site2.atempurl.com/api/${endpoint}`;
   request(
     url,
     endpoint,
