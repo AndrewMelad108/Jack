@@ -55,7 +55,7 @@ const sendRequest = (
   successCallback = null,
   errorCallback = null
 ) => {
-  const url = `https://jackfrontend-001-site1.etempurl.com/api/${endpoint}`;
+  const url = `http://masaratpipe-001-site2.atempurl.com/api/${endpoint}`;
   request(
     url,
     endpoint,
