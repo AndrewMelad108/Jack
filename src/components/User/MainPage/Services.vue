@@ -64,7 +64,7 @@
         </p>
       </div>
       <div
-        @click="goToService('Baggage Delivery')"
+        @click="goToService('Delivery')"
         class="bg-green-100 py-10 cursor-pointer space-y-12 rounded-2xl text-main-color text-2xl font-bold min-h-[350px]"
       >
         <img
