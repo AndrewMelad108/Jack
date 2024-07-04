@@ -12,7 +12,7 @@ A project aimed at offering car repair services, parts purchase, and selling old
 
 ## Images
 
-![Image](./images/image1.png)
+<img src="./images/image1.png" alt="Image" style="width: 400px; height: 300px;">
 ![Image](./images/image2.png)
 ![Image](./images/image3.png)
 ![Image](./images/image4.png)
