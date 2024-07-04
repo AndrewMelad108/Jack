@@ -12,11 +12,13 @@ A project aimed at offering car repair services, parts purchase, and selling old
 
 ## Images
 
-<img src="./images/image1.png" alt="Image" style="width: 400px; height: 300px;">
+<div style="display : grid ; grid-template-columns: 1fr 1fr"  >
+   <img src="./images/image1.png" alt="Image" style="width: 400px; height: 300px;">
 <img src="./images/image2.png" alt="Image" style="width: 400px; height: 300px;">
 <img src="./images/image3.png" alt="Image" style="width: 400px; height: 300px;">
 <img src="./images/image4.png" alt="Image" style="width: 400px; height: 300px;">
 <img src="./images/image5.png" alt="Image" style="width: 400px; height: 300px;">
+</div>
 
 ## Installation
 
