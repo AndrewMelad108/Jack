@@ -13,10 +13,10 @@ A project aimed at offering car repair services, parts purchase, and selling old
 ## Images
 
 <img src="./images/image1.png" alt="Image" style="width: 400px; height: 300px;">
-![Image](./images/image2.png)
-![Image](./images/image3.png)
-![Image](./images/image4.png)
-![Image](./images/image5.png)
+<img src="./images/image2.png" alt="Image" style="width: 400px; height: 300px;">
+<img src="./images/image3.png" alt="Image" style="width: 400px; height: 300px;">
+<img src="./images/image4.png" alt="Image" style="width: 400px; height: 300px;">
+<img src="./images/image5.png" alt="Image" style="width: 400px; height: 300px;">
 
 ## Installation
 
