@@ -54,13 +54,10 @@
             <option disabled selected value="">
               {{ $t("Search Scope") }}
             </option>
-            <option
-              v-for="option in SearchScope"
-              :key="option.id"
-              :value="option.id"
-            >
-              {{ option.value }}
-            </option>
+
+            <option value="asd1">asd</option>
+            <option value="asd2">asd</option>
+            <option value="asd3">asd</option>
           </select>
           <p class="text-red-400">{{ errors.first("Search Scope") }}</p>
 
@@ -77,13 +74,10 @@
               <option disabled selected value="">
                 {{ $t("Service Type") }}
               </option>
-              <option
-                v-for="option in ServiceType"
-                :key="option.id"
-                :value="option.id"
-              >
-                {{ option.value }}
-              </option>
+
+              <option value="asd1">asd</option>
+              <option value="asd2">asd</option>
+              <option value="asd3">asd</option>
             </select>
             <p class="text-red-400">{{ errors.first("ServiceType") }}</p>
           </div>
@@ -189,13 +183,10 @@
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
 import MapGoogle from "../../Shared/Map.vue";
-import { sendRequest } from "../../../../axios";
 export default {
   name: "DeliveryServices",
   data() {
     return {
-      SearchScope: [],
-      ServiceType: [],
       Delivery: {
         Type: true,
         Scope: "",
@@ -204,68 +195,18 @@ export default {
         Size: "",
         LocationFrom: "",
         LocationTo: "",
-        image: "",
       },
     };
   },
-  created() {
-    this.getAllServicesOptions();
-  },
   methods: {
-    getAllServicesOptions() {
-      let successCallback = (res) => {
-        if (res.data.success) {
-          this.SearchScope = res.data.data.filters[0].filterValues;
-          this.ServiceType = res.data.data.filters[1].filterValues;
-        }
-      };
-
-      sendRequest(
-        "Admin/ServiceDetails?id=5",
-        "get",
-        null,
-        true,
-        successCallback,
-        null
-      );
-    },
     SendServices() {
-      // this.$validator.validateAll().then((result) => {
-      // if (result) {
-      let successCallback = (res) => {
-        if (res.data.success) {
-          console.log(res);
-          this.$router.push({
-            name: "Customer.Requests",
-          });
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          console.log("run");
+        } else {
+          console.log("error");
         }
-      };
-      let errorCallback = (err) => {
-        console.log(err);
-      };
-      const FormData = require("form-data");
-      let data = new FormData();
-      data.append("searchScope", 1);
-      data.append("serviceType", 1);
-      data.append("size", "zxczxc");
-      data.append("weight", "Zxczxc");
-      data.append("locationFrom", "szxczxc");
-      data.append("locationTo", "szxczxc");
-      data.append("image", this.Delivery.image);
-      sendRequest(
-        "Delivery/Request",
-        "post",
-        data,
-        true,
-        successCallback,
-        errorCallback
-      );
-      // }
-      // });
-    },
-    onFileChangedImage(e) {
-      const file = e.target.files[0];
-      this.Delivery.image = file;
+      });
     },
   },
   components: {

@@ -6,34 +6,34 @@
       <div
         class="Seller-Nav flex flex-wrap gap-10 capitalize justify-center text-white font-bold text-xl md:flex-row flex-col items-center"
       >
-        <router-link :to="{ name: 'Provider.Profile Servies' }">{{
+        <router-link :to="{ name: 'Seller.Profile Servies' }">{{
           $t("Profile Services")
         }}</router-link>
-        <router-link :to="{ name: 'Provider.Profile' }">{{
+        <router-link :to="{ name: 'Seller.Profile' }">{{
           $t("Profile")
         }}</router-link>
-        <router-link :to="{ name: 'Provider.Orders' }">{{
+        <router-link :to="{ name: 'Seller.Orders' }">{{
           $t("Orders")
         }}</router-link>
-        <router-link :to="{ name: 'Provider.Offers' }">{{
+        <router-link :to="{ name: 'Seller.Offers' }">{{
           $t("Offers")
         }}</router-link>
-        <router-link :to="{ name: 'Provider.Requests' }">{{
+        <router-link :to="{ name: 'Seller.Requests' }">{{
           $t("Requests")
         }}</router-link>
-        <router-link :to="{ name: 'Provider.Requested orders' }">{{
+        <router-link :to="{ name: 'Seller.Requested orders' }">{{
           $t("Requested orders")
         }}</router-link>
-        <router-link :to="{ name: 'Provider.Requested service' }">{{
+        <router-link :to="{ name: 'Seller.Requested service' }">{{
           $t("Requested service")
         }}</router-link>
-        <router-link :to="{ name: 'Provider.Chats' }">{{
+        <router-link :to="{ name: 'Seller.Chats' }">{{
           $t("Chats")
         }}</router-link>
-        <router-link :to="{ name: 'Provider.Wallet' }">{{
+        <router-link :to="{ name: 'Seller.Wallet' }">{{
           $t("Wallet")
         }}</router-link>
-        <router-link :to="{ name: 'Provider.Policy' }">{{
+        <router-link :to="{ name: 'Seller.Policy' }">{{
           $t("Policy")
         }}</router-link>
         <div class="cursor-pointer" @click="Logout()">
@@ -58,14 +58,14 @@
             alt="spare_parts"
             class="md:h-20 h-16 cursor-pointer"
             loading="lazy"
-            @click="goServices('Provider.Requested service')"
+            @click="goServices('Seller.Requested service')"
           />
           <img
             src="../../assets/images/Servies/delivery_services.png"
             alt="delivery_services"
             class="md:h-20 h-16 cursor-pointer"
             loading="lazy"
-            @click="goServices('Provider.Requested orders')"
+            @click="goServices('Seller.Requested orders')"
           />
         </div>
         <div class="text-center">

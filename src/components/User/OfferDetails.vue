@@ -8,7 +8,7 @@
     <div
       @click="
         $router.push({
-          name: 'Customer.Requests',
+          name: 'User.Requests',
         })
       "
       class="back_Requests cursor-pointer mx-4 my-8 flex gap-4 font-bold items-center text-xl"
@@ -163,7 +163,7 @@
         <button
           @click="
             $router.push({
-              name: 'Customer.Chats',
+              name: 'User.Chats',
             })
           "
           class="text-main-color font-bold border-2 md:text-md text-sm border-main-color w-auto md:p-4 p-2 rounded-lg"
@@ -173,7 +173,7 @@
         <button
           @click="
             $router.push({
-              name: 'Customer.Orders',
+              name: 'User.Orders',
             })
           "
           class="bg-main-color font-bold w-auto md:text-md text-sm md:p-4 p-2 text-white rounded-lg"
@@ -231,7 +231,6 @@ export default {
       return sum;
     },
   },
-  created() {},
   watch: {
     Lang() {
       return this.Lang;
@@ -246,23 +245,6 @@ export default {
     deleteService(index) {
       this.services.splice(index, 1);
     },
-    // getOfferDetials(id) {
-    //   let successCallback = (res) => {
-    //     this.Offers = res.data.data;
-    //   };
-    //   let errorCallback = (err) => {
-    //     console.log(err);
-    //   };
-
-    //   sendRequest(
-    //     `${RequestName}/offers?id=${RequestId}`,
-    //     "get",
-    //     null,
-    //     true,
-    //     successCallback,
-    //     errorCallback
-    //   );
-    // },
   },
 };
 </script>

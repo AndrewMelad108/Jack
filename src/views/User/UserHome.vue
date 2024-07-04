@@ -30,6 +30,7 @@
       </div>
     </div>
     <div class="h-[100%] min-h-[100vh] md:w-screen w-auto">
+      <!-- <SwitchLang /> -->
       <router-view />
     </div>
   </section>
@@ -50,6 +51,7 @@ export default {
   components: {
     SideBar,
     SidebaPhone,
+    // SwitchLang,
   },
 };
 </script>

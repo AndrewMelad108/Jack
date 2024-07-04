@@ -34,13 +34,9 @@
               {{ $t("Search Scope") }}
             </option>
 
-            <option
-              v-for="option in SearchScope"
-              :key="option.id"
-              :value="option.id"
-            >
-              {{ option.value }}
-            </option>
+            <option value="asd1">asd</option>
+            <option value="asd2">asd</option>
+            <option value="asd3">asd</option>
           </select>
           <p class="text-red-400">{{ errors.first("Search Scope") }}</p>
           <label for="ServiceType" class="capitalize block text-xl">{{
@@ -55,13 +51,10 @@
             <option disabled selected value="">
               {{ $t("Service Type") }}
             </option>
-            <option
-              v-for="option in ServiceType"
-              :key="option.id"
-              :value="option.id"
-            >
-              {{ option.value }}
-            </option>
+
+            <option value="asd1">asd</option>
+            <option value="asd2">asd</option>
+            <option value="asd3">asd</option>
           </select>
           <p class="text-red-400">{{ errors.first("ServiceType") }}</p>
 
@@ -77,13 +70,9 @@
             <option disabled selected value="">
               {{ $t("Select Shipping Type") }}
             </option>
-            <option
-              v-for="option in shipping"
-              :key="option.id"
-              :value="option.id"
-            >
-              {{ option.value }}
-            </option>
+            <option value="asd1">asd</option>
+            <option value="asd2">asd</option>
+            <option value="asd3">asd</option>
           </select>
           <p class="text-red-400">{{ errors.first("ShippingType") }}</p>
           <label for="Size" class="capitalize block text-xl">
@@ -163,7 +152,7 @@
             v-validate="{ required: true }"
             name="Addimages"
             id="upload_photo"
-            @change="onFileChangedImage($event)"
+            @change="onFileChanged($event)"
             accept="image/*"
           />
         </div>
@@ -185,14 +174,11 @@
 import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import MapGoogle from "../../Shared/Map.vue";
-import { sendRequest } from "../../../../axios";
+
 export default {
   name: "ShippingAndForwarding",
   data() {
     return {
-      SearchScope: [],
-      ServiceType: [],
-      shipping: [],
       Shipping: {
         Scope: "",
         ServiceType: "",
@@ -209,67 +195,18 @@ export default {
     SwitchLang,
     MapGoogle,
   },
-  created() {
-    this.getAllServicesOptions();
-  },
   methods: {
-    getAllServicesOptions() {
-      let successCallback = (res) => {
-        if (res.data.success) {
-          this.SearchScope = res.data.data.filters[0].filterValues;
-          this.ServiceType = res.data.data.filters[1].filterValues;
-          this.shipping = res.data.data.filters[2].filterValues;
-        }
-      };
-
-      sendRequest(
-        "Admin/ServiceDetails?id=4",
-        "get",
-        null,
-        true,
-        successCallback,
-        null
-      );
-    },
     SendServices() {
-      // this.$validator.validateAll().then((result) => {
-      // if (result) {
-      let successCallback = (res) => {
-        if (res.data.success) {
-          console.log(res);
-          this.$router.push({
-            name: "Customer.Requests",
-          });
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          console.log("run");
+        } else {
+          console.log("error");
         }
-      };
-      let errorCallback = (err) => {
-        console.log(err);
-      };
-      const FormData = require("form-data");
-      let data = new FormData();
-      data.append("searchScope", 1);
-      data.append("serviceType", 1);
-      data.append("shippingType", 1);
-      data.append("size", "zxczxc");
-      data.append("weight", "Zxczxc");
-      data.append("locationFrom", "szxczxc");
-      data.append("locationTo", "szxczxc");
-      data.append("image", this.SpareParts.image);
-      sendRequest(
-        "Shipping/Request",
-        "post",
-        data,
-        true,
-        successCallback,
-        errorCallback
-      );
-      // }
-      // });
-    },
-    onFileChangedImage(e) {
-      const file = e.target.files[0];
-      this.Shipping.image = file;
+      });
     },
   },
 };
 </script>
+
+<style></style>

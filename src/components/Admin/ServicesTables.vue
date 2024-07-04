@@ -32,13 +32,11 @@
             {{ option.id }}
           </td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            {{ $t(option.value) }}
+            {{ $t(option.name) }}
           </td>
 
           <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-            <button @click="editOption(option)" class="text-blue-600">
-              {{ $t("Edit") }}
-            </button>
+            <button class="text-blue-600">{{ $t("Edit") }}</button>
             <!-- <button class="text-red-600">Delete</button> -->
           </td>
         </tr>
@@ -53,12 +51,16 @@ export default {
   name: "ServicesTables",
   props: ["options"],
   data() {
-    return {};
-  },
-  methods: {
-    editOption(option) {
-      this.$emit("editOption", option);
-    },
+    return {
+      //   options: [
+      //     {
+      //       id: 1,
+      //       name: "",
+      //     },
+      //   ],
+    };
   },
 };
 </script>
+
+<style></style>

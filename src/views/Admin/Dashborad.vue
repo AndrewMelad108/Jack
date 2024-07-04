@@ -1,5 +1,5 @@
 <template>
-  <section class="AdminHome flex bg-cover-color md:flex-row flex-col">
+  <section class="AdminHome relative flex bg-cover-color md:flex-row flex-col">
     <SideBar :links="LinksData" :type="UserType" />
     <div
       class="bg-main-color py-2 px-10 w-[100%] h-12 md:hidden flex justify-between items-center"
@@ -14,7 +14,6 @@
       <SidebaPhone
         :links="LinksData"
         :closeSidebar="showSidebar"
-        :type="UserType"
         v-if="showSidebar"
         @changeCloseSidebarValue="showSidebar = !showSidebar"
       />

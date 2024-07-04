@@ -33,8 +33,10 @@
             <option disabled selected value="">
               {{ $t("Search Scope") }}
             </option>
-            <option value="1">Local</option>
-            <option value="2">Global</option>
+
+            <option value="asd1">asd</option>
+            <option value="asd2">asd</option>
+            <option value="asd3">asd</option>
           </select>
           <p class="text-red-400">{{ errors.first("Search Scope") }}</p>
 
@@ -50,13 +52,10 @@
             <option disabled selected value="">
               {{ $t("Select Spare Parts Type") }}
             </option>
-            <option
-              v-for="option in SparePartsType"
-              :key="option.id"
-              :value="option.id"
-            >
-              {{ option.value }}
-            </option>
+
+            <option value="asd1">asd</option>
+            <option value="asd2">asd</option>
+            <option value="asd3">asd</option>
           </select>
           <p class="text-red-400">{{ errors.first("SparePartsType") }}</p>
 
@@ -72,9 +71,10 @@
             <option disabled selected value="">
               {{ $t("Select Brand") }}
             </option>
-            <option v-for="option in Brand" :key="option.id" :value="option.id">
-              {{ option.value }}
-            </option>
+
+            <option value="asd1">asd</option>
+            <option value="asd2">asd</option>
+            <option value="asd3">asd</option>
           </select>
           <p class="text-red-400">{{ errors.first("Brand") }}</p>
 
@@ -90,9 +90,10 @@
             <option disabled selected value="">
               {{ $t("Select Model") }}
             </option>
-            <option v-for="option in Model" :key="option.id" :value="option.id">
-              {{ option.value }}
-            </option>
+
+            <option value="asd1">asd</option>
+            <option value="asd2">asd</option>
+            <option value="asd3">asd</option>
           </select>
           <p class="text-red-400">
             {{ errors.first("Select Model") }}
@@ -109,13 +110,10 @@
             <option disabled selected value="">
               {{ $t("Select Year") }}
             </option>
-            <option
-              v-for="option in Manufactur"
-              :key="option.id"
-              :value="option.id"
-            >
-              {{ option.value }}
-            </option>
+
+            <option value="asd1">asd</option>
+            <option value="asd2">asd</option>
+            <option value="asd3">asd</option>
           </select>
           <p class="text-red-400">
             {{ errors.first("Select Year") }}
@@ -148,18 +146,6 @@
           <p class="text-red-400">
             {{ errors.first("PartName") }}
           </p>
-          <label for="LocationTo" class="capitalize block text-xl">
-            {{ $t("Location") }}
-          </label>
-          <input
-            type="text"
-            v-validate="{ required: true }"
-            name="LocationTo"
-            v-model.trim="SpareParts.LocationTo"
-            :placeholder="$t('Enter Location')"
-            class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-100 w-[100%]"
-          />
-          <p class="text-red-400">{{ errors.first("LocationTo") }}</p>
           <p class="my-2">
             {{
               $t(
@@ -178,7 +164,7 @@
           class="flex items-center justify-center bg-gray-100 rounded-[10px] focus:ring-[#24C6C9] focus:border-[#24C6C9] w-full h-[200px]"
         >
           <label
-            for="upload_photo1"
+            for="upload_photo"
             class="cursor-pointer h-full w-full flex justify-center items-center font-bold"
             >{{ $t("Add images") }}</label
           >
@@ -187,8 +173,8 @@
             type="file"
             v-validate="{ required: true }"
             name="AddRegistrationimages"
-            id="upload_photo1"
-            @change="onFileChangedRegistration($event)"
+            id="upload_photo"
+            @change="onFileChanged($event)"
             accept="image/*"
           />
         </div>
@@ -204,7 +190,7 @@
           class="flex items-center justify-center bg-gray-100 rounded-[10px] focus:ring-[#24C6C9] focus:border-[#24C6C9] w-full h-[200px]"
         >
           <label
-            for="upload_photo2"
+            for="upload_photo"
             class="cursor-pointer h-full w-full flex justify-center items-center font-bold"
             >{{ $t("Add images") }}</label
           >
@@ -213,8 +199,8 @@
             type="file"
             v-validate="{ required: true }"
             name="Addimages"
-            id="upload_photo2"
-            @change="onFileChangedImage($event)"
+            id="upload_photo"
+            @change="onFileChanged($event)"
             accept="image/*"
           />
         </div>
@@ -235,15 +221,11 @@
 <script>
 import WelcomeMassage from "@/components/Shared/WelcomeMassage.vue";
 import SwitchLang from "../../../components/Shared/Form/SwitchLang.vue";
-import { sendRequest } from "../../../../axios";
+
 export default {
   name: "SparePartsRequest",
   data() {
     return {
-      SparePartsType: [],
-      Brand: [],
-      Model: [],
-      Manufactur: [],
       SpareParts: {
         Scope: "",
         CarSerialNumber: "",
@@ -251,10 +233,7 @@ export default {
         Model: "",
         Year: "",
         PartName: "",
-        LocationTo: "",
         SparePartsType: "",
-        image: "",
-        registrationImage: "",
       },
     };
   },
@@ -262,72 +241,15 @@ export default {
     WelcomeMassage,
     SwitchLang,
   },
-  created() {
-    this.getAllServicesOptions();
-  },
   methods: {
-    getAllServicesOptions() {
-      let successCallback = (res) => {
-        if (res.data.success) {
-          this.SparePartsType = res.data.data.filters[0].filterValues;
-          this.Brand = res.data.data.filters[1].filterValues;
-          this.Model = res.data.data.filters[2].filterValues;
-          this.Manufactur = res.data.data.filters[3].filterValues;
-        }
-      };
-      sendRequest(
-        "Admin/ServiceDetails?id=3",
-        "get",
-        null,
-        true,
-        successCallback,
-        null
-      );
-    },
     SendServices() {
       this.$validator.validateAll().then((result) => {
         if (result) {
-          let successCallback = (res) => {
-            if (res.data.success) {
-              console.log(res);
-              this.$router.push({
-                name: "Customer.Requests",
-              });
-            }
-          };
-          let errorCallback = (err) => {
-            console.log(err);
-          };
-          const FormData = require("form-data");
-          let data = new FormData();
-          data.append("searchScope", this.SpareParts.Scope);
-          data.append("sparePartType", this.SpareParts.SparePartsType);
-          data.append("brand", this.SpareParts.Brand);
-          data.append("model", this.SpareParts.Model);
-          data.append("yearOfManufactur", this.SpareParts.Year);
-          data.append("carSerialNumber", this.SpareParts.CarSerialNumber);
-          data.append("partName", this.SpareParts.PartName);
-          data.append("location", this.SpareParts.LocationTo);
-          data.append("registrationImage", this.SpareParts.registrationImage);
-          data.append("image", this.SpareParts.image);
-          sendRequest(
-            "SpareParts/Request",
-            "post",
-            data,
-            true,
-            successCallback,
-            errorCallback
-          );
+          console.log("run");
+        } else {
+          console.log("error");
         }
       });
-    },
-    onFileChangedRegistration(e) {
-      const file = e.target.files[0];
-      this.SpareParts.registrationImage = file;
-    },
-    onFileChangedImage(e) {
-      const file = e.target.files[0];
-      this.SpareParts.image = file;
     },
   },
 };

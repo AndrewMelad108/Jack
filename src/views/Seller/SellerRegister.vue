@@ -2,7 +2,6 @@
   <section class="RegisterPage relative min-h-[100vh] w-[100%]">
     <UserHeader :checked="checkUser" />
     <UserHeaderPhone />
-    <SwitchLang class="md:hidden m-4" />
     <div class="Register-form bg-gray-100 w-[100%] py-4">
       <div
         class="bg-white md:max-w-[1100px] max-w-[600px] p-4 mx-auto min-h-[95vh] rounded-2xl"
@@ -43,21 +42,13 @@
         >
           <div class="flex items-center gap-2 md:w-1/2 w-full">
             <button
-              :class="
-                selected === 'User'
-                  ? 'bg-green-100 text-[#24C6C9]'
-                  : 'bg-gray-100'
+              @click="
+                $router.push({
+                  name: 'Register',
+                })
               "
-              @click="$router.push({ name: 'Register' })"
-              class="capitalize border-0 p-2 md:text-xl text-lg rounded-2xl relative w-32"
+              class="capitalize px-12 bg-gray-100 border-0 py-2 md:text-xl text-md rounded-2xl"
             >
-              <div class="tooltip hidden text-base">
-                {{
-                  $t(
-                    "The user is the person who can use the application for the purpose of requesting all available services"
-                  )
-                }}
-              </div>
               {{ $t("user") }}
             </button>
             <button
@@ -67,71 +58,63 @@
                   : 'bg-gray-100'
               "
               @click="
-                selected =
-                  'Seller' && router.push({ name: 'Provider.Register' })
+                selected = 'Seller' && router.push({ name: 'Seller.Register' })
               "
-              class="capitalize border-0 p-2 md:text-xl text-lg rounded-2xl relative w-32"
+              class="capitalize px-12 py-2 border-0 md:text-xl text-md rounded-xl"
             >
-              <div class="tooltip hidden text-base">
-                {{
-                  $t(
-                    "The provider is the person or facility that can provide one or some services through the application"
-                  )
-                }}
-              </div>
               {{ $t("seller") }}
             </button>
           </div>
         </div>
         <div class="form-inputs grid md:grid-cols-2 gap-6 grid-cols-1">
           <div class="input-field space-y-2">
-            <label for="fullName" class="capitalize block text-xl">{{
+            <label for="FullName" class="capitalize block text-xl">{{
               $t("Full Name")
             }}</label>
             <input
               type="text"
               v-validate="{ alpha: true, required: true }"
-              name="fullName"
+              name="FullName"
               class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
               :placeholder="$t('Enter Full Name')"
-              v-model="person.fullName"
+              v-model="person.FullName"
             />
-            <span class="text-red-400">{{ errors.first("fullName") }}</span>
+            <span class="text-red-400">{{ errors.first("FullName") }}</span>
           </div>
           <div class="input-field space-y-2">
-            <label for="nickName" class="capitalize block text-xl">{{
+            <label for="NickName" class="capitalize block text-xl">{{
               $t("Nick Name")
             }}</label>
             <input
               type="text"
               v-validate="{ alpha: true, required: true }"
-              name="nickName"
+              name="NickName"
               :placeholder="$t('Enter Nick Name')"
-              v-model="person.nickName"
+              v-model="person.NickName"
               class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
-            <span class="text-red-400">{{ errors.first("nickName") }}</span>
+            <span class="text-red-400">{{ errors.first("NickName") }}</span>
           </div>
           <div class="input-field space-y-2">
-            <label for="email" class="capitalize block text-xl">{{
-              $t("email")
+            <label for="Email" class="capitalize block text-xl">{{
+              $t("Email")
             }}</label>
             <input
               type="email"
-              :placeholder="$t('enter email')"
-              v-model="person.email"
+              :placeholder="$t('enter Email')"
+              v-model="person.Email"
               v-validate="{ required: true, email: true }"
-              name="email"
+              name="Email"
               class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
-            <span class="text-red-400">{{ errors.first("email") }}</span>
+            <span class="text-red-400">{{ errors.first("Email") }}</span>
           </div>
           <div class="input-field space-y-2">
             <label for="Mobile Number" class="capitalize block text-xl">{{
               $t("Mobile Number")
             }}</label>
             <input
-              type="text"
+              type="number"
               :placeholder="$t('enter mobile number')"
               v-validate="{ required: true, min: 6 }"
               name="MobileNumber"
@@ -171,18 +154,18 @@
             }}</span>
           </div>
           <div class="input-field space-y-2">
-            <label for="address" class="capitalize block text-xl">{{
-              $t("address")
+            <label for="Address" class="capitalize block text-xl">{{
+              $t("Address")
             }}</label>
             <input
               type="text"
               :placeholder="$t('enter shop address')"
               v-validate="{ required: true }"
-              name="address"
-              v-model="person.address"
+              name="Address"
+              v-model="person.Address"
               class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
             />
-            <span class="text-red-400">{{ errors.first("address") }}</span>
+            <span class="text-red-400">{{ errors.first("Address") }}</span>
           </div>
           <div class="input-field space-y-2">
             <label for="ID" class="capitalize block text-xl">{{
@@ -212,9 +195,9 @@
                 {{ $t("Select Country") }}
               </option>
 
-              <option value="1">{{ $t("Libia") }}</option>
-              <option value="2">{{ $t("Qatar") }}</option>
-              <option value="3">{{ $t("India") }}</option>
+              <option value="asd1">{{ $t("Libia") }}</option>
+              <option value="asd2">{{ $t("Qatar") }}</option>
+              <option value="asd3">{{ $t("India") }}</option>
             </select>
             <span class="text-red-400">{{ errors.first("Country") }}</span>
           </div>
@@ -232,11 +215,34 @@
                 {{ $t("Select Nationality") }}
               </option>
 
-              <option value="1">{{ $t("pakistani") }}</option>
-              <option value="2">{{ $t("American") }}</option>
-              <option value="3">{{ $t("Arabian") }}</option>
+              <option value="pakistani">{{ $t("pakistani") }}</option>
+              <option value="American">{{ $t("American") }}</option>
+              <option value="Arabian">{{ $t("Arabian") }}</option>
             </select>
             <span class="text-red-400">{{ errors.first("Nationality") }}</span>
+          </div>
+          <div class="input-field space-y-2">
+            <label for="Region" class="capitalize block text-xl">{{
+              $t("Region")
+            }}</label>
+            <select
+              v-model="person.Region"
+              v-validate="{ required: true }"
+              name="Region"
+              class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
+            >
+              <option disabled selected value="">
+                {{ $t("Select Region") }}
+              </option>
+              <option
+                v-for="Region in regions"
+                :key="Region.id"
+                :value="Region.name"
+              >
+                {{ Region.name }}
+              </option>
+            </select>
+            <span class="text-red-400">{{ errors.first("Region") }}</span>
           </div>
           <div class="input-field space-y-2">
             <label for="City" class="capitalize block text-xl">{{
@@ -252,42 +258,18 @@
                 {{ $t("Select City") }}
               </option>
 
-              <option v-for="City in cities" :key="City.id" :value="City.id">
+              <option v-for="City in cities" :key="City.id" :value="City.name">
                 {{ City.name }}
               </option>
             </select>
             <span class="text-red-400">{{ errors.first("City") }}</span>
           </div>
           <div class="input-field space-y-2">
-            <label for="region" class="capitalize block text-xl">{{
-              $t("region")
-            }}</label>
-            <select
-              v-model="person.region"
-              v-validate="{ required: true }"
-              name="region"
-              class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
-            >
-              <option disabled selected value="">
-                {{ $t("Select region") }}
-              </option>
-              <option
-                v-for="region in regions"
-                :key="region.id"
-                :value="region.id"
-              >
-                {{ region.name }}
-              </option>
-            </select>
-            <span class="text-red-400">{{ errors.first("region") }}</span>
-          </div>
-
-          <div class="input-field space-y-2">
             <label for="IBAN" class="capitalize block text-xl">{{
               $t("IBAN")
             }}</label>
             <input
-              type="text"
+              type="number"
               v-validate="{ required: true }"
               name="IBAN"
               class="placeholder:capitalize focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
@@ -359,7 +341,7 @@
                 {{ $t("Select Service") }}
               </option>
               <option
-                v-for="Service in Service"
+                v-for="Service in Services"
                 :key="Service.id"
                 :value="Service.id"
               >
@@ -373,7 +355,7 @@
               $t("Services(2)")
             }}</label>
             <select
-              v-model="person.Service2"
+              v-model="person.Services"
               v-validate="{ required: true }"
               name="TypesDelivery"
               class="placeholder:capitalize text-gray-600 focus:outline-0 text-lg p-4 rounded-lg placeholder:text-gray-600 placeholder:text-lg bg-gray-200 w-[100%]"
@@ -469,28 +451,24 @@
 <script>
 import UserHeader from "@/components/User/MainPage/UserHeader.vue";
 import UserHeaderPhone from "@/components/User/UserHeaderPhone.vue";
-import SwitchLang from "@/components/Shared/Form/SwitchLang.vue";
-import { sendRequest } from "../../../axios";
 export default {
   name: "LoginPage",
   data() {
     return {
       checkUser: true,
       selected: "Seller",
-      cities: [],
       person: {
-        fullName: "",
-        nickName: "",
-        region: "",
+        FullName: "",
+        NickName: "",
+        Region: "",
         City: "",
-        email: "",
+        Email: "",
         password: "",
-        ID: "",
         ConfirmPassword: "",
         condition: "",
         MobileNumber: null,
-        address: "",
-        iban: "",
+        Address: "",
+        ID: "",
         Country: "",
         Nationality: "",
         IBAN: "",
@@ -498,11 +476,8 @@ export default {
         ComercialActivity: "",
         LegalCapacity: "",
         Services: "",
-        Service2: "",
-        licencePhotoOne: "",
-        licencePhotoTwo: "",
       },
-      Service: [
+      Services: [
         { id: 1, name: "towing and shipping" },
         { id: 2, name: "car maintenance and care" },
         { id: 3, name: "Spare Parts" },
@@ -524,7 +499,7 @@ export default {
         { id: 2, name: "Qatar" },
         { id: 3, name: "India" },
       ],
-      citie: [
+      cities: [
         { id: 1, name: "Riyadh" },
         { id: 2, name: "Alkharag" },
         { id: 3, name: "Dawadmi" },
@@ -624,7 +599,7 @@ export default {
         { id: 97, name: "Tabarjal" },
         { id: 98, name: "Jandal" },
       ],
-      region: [
+      regions: [
         { id: 1, name: "Riyadh" },
         { id: 2, name: "Makkah Al-Mukarramah" },
         { id: 3, name: "Al-Madinah Al-Munawwarah" },
@@ -645,150 +620,29 @@ export default {
         { id: 18, name: "Tarot" },
         { id: 19, name: "Paradise" },
       ],
-      regions: [],
     };
-  },
-  created() {
-    let successCallback = (res) => {
-      if (res.data.success) {
-        this.cities = res.data.data;
-      }
-    };
-    sendRequest(
-      "Address/City/AllCities",
-      "get",
-      null,
-      false,
-      successCallback,
-      null
-    );
-    let successServicesCallback = (res) => {
-      if (res.data.success) {
-        this.Services = res.data.data;
-      }
-    };
-    sendRequest(
-      "Service/GetAllService",
-      "get",
-      null,
-      false,
-      successServicesCallback,
-      null
-    );
   },
   components: {
     UserHeader,
     UserHeaderPhone,
-    SwitchLang,
-  },
-  watch: {
-    "person.City"(value) {
-      this.getRegions(value);
-    },
   },
   methods: {
     goToMainPage() {
       this.$router.go(-1);
     },
-    getRegions(id) {
-      let successCallback = (res) => {
-        if (res.data.success) {
-          this.regions = res.data.data;
-        }
-      };
-      sendRequest(
-        `Address/City/Regions?cityId=${id}`,
-        "get",
-        null,
-        false,
-        successCallback,
-        null
-      );
-    },
     Register() {
       this.$validator.validateAll().then((result) => {
         if (result) {
-          let successCallback = (res) => {
-            if (res.data.success) {
-              this.$router.push({
-                name: "LogIn",
-              });
-            } else {
-              console.error("Error");
-            }
-          };
-
-          sendRequest(
-            "Account/register/Provider",
-            "post",
-            {
-              fullName: this.person.fullName,
-              nickName: this.person.nickName,
-              password: this.person.password,
-              email: this.person.email,
-              mobileNumber: this.person.MobileNumber,
-              address: this.person.address,
-              region: this.person.region,
-              comercialRegistrationNumber: Number(this.person.ID),
-              nationality: "egypt",
-              iban: Number(this.person.iban),
-              comercialActivity: this.person.ComercialActivity,
-              accountNumber: this.person.AccountNumber,
-              legelCapcity: Number(this.person.LegalCapacity),
-              serviceID: Number(this.person.Services),
-              LicencePhotoOne: this.person.LicencePhotoOne.split(",")[1],
-              LicencePhotoTwo: this.person.LicencePhotoTwo.split(",")[1],
-            },
-            false,
-            successCallback,
-            null
-          );
+          this.$router.push({
+            name: "MainPage",
+          });
+        } else {
+          console.log("error");
         }
       });
-    },
-    licensePhotoOne(e) {
-      const image = e.target.files[0];
-      const reader = new FileReader();
-      reader.readAsDataURL(image);
-      reader.onload = (e) => {
-        this.person.LicencePhotoOne = e.target.result;
-      };
-    },
-    licensePhotoTwo(e) {
-      const image = e.target.files[0];
-      const reader = new FileReader();
-      reader.readAsDataURL(image);
-      reader.onload = (e) => {
-        this.person.LicencePhotoTwo = e.target.result;
-      };
     },
   },
 };
 </script>
 
-<style lang="scss" scoped>
-.group-btn button:hover {
-  .tooltip {
-    position: absolute;
-    display: block;
-    top: -75px;
-    left: 0;
-    max-width: 350px;
-    width: 400px;
-    background: rgba(0, 0, 0, 0.75);
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 10px;
-    word-wrap: break-word;
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -16px;
-      left: 25%;
-      border-width: 8px;
-      border-style: solid;
-      border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
-    }
-  }
-}
-</style>
+<style></style>

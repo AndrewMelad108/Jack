@@ -15,7 +15,7 @@
           class="cursor-pointer text-text-color"
           @click="
             $router.push({
-              name: 'Customer.Orders',
+              name: 'User.Orders',
             })
           "
           >{{ $t("See All") }}</span

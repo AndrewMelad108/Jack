@@ -6,7 +6,7 @@
     <div
       @click="
         $router.push({
-          name: 'Provider.Requests',
+          name: 'Seller.Requests',
         })
       "
       class="back_Requests cursor-pointer mx-4 my-8 flex gap-4 font-bold items-center text-xl"
@@ -264,7 +264,7 @@ export default {
       // this.$validator.validateAll().then((result) => {
       // if (result) {
       this.$router.push({
-        name: "Provider.Orders",
+        name: "Seller.Orders",
       });
       // } else {
       // Validation errors occurred, log them

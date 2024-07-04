@@ -45,29 +45,14 @@
                 ? 'bg-green-100 text-[#24C6C9]'
                 : 'bg-gray-100'
             "
-            @click="selected = 'User'"
-            class="capitalize border-0 p-2 md:text-xl text-lg rounded-2xl relative"
+            class="capitalize 'bg-gray-100 border-0 p-2 mr-4 md:text-xl text-lg rounded-2xl"
           >
-            <div class="tooltip hidden text-base">
-              {{
-                $t(
-                  "The user is the person who can use the application for the purpose of requesting all available services"
-                )
-              }}
-            </div>
             {{ $t("user") }}
           </button>
           <button
-            @click="$router.push({ name: 'Provider.Register' })"
-            class="capitalize border-0 p-2 md:text-xl text-lg rounded-2xl relative"
+            @click="$router.push({ name: 'Seller.Register' })"
+            class="capitalize bg-gray-100 border-0 p-2 md:text-xl text-lg rounded-xl"
           >
-            <div class="tooltip hidden text-base">
-              {{
-                $t(
-                  "The provider is the person or facility that can provide one or some services through the application"
-                )
-              }}
-            </div>
             {{ $t("seller") }}
           </button>
         </div>
@@ -116,9 +101,9 @@
                 {{ $t("Select City") }}
               </option>
 
-              <option v-for="city in cities" :key="city.id" :value="city.id">
-                {{ city.name }}
-              </option>
+              <option value="asd1">asd</option>
+              <option value="asd2">asd</option>
+              <option value="asd3">asd</option>
             </select>
             <span class="text-red-400">{{ errors.first("City") }}</span>
           </div>
@@ -135,13 +120,9 @@
               <option disabled selected value="">
                 {{ $t("Select Region") }}
               </option>
-              <option
-                v-for="region in regions"
-                :key="region.id"
-                :value="region.id"
-              >
-                {{ region.name }}
-              </option>
+              <option value="asd1">asd</option>
+              <option value="asd2">asd</option>
+              <option value="asd3">asd</option>
             </select>
             <span class="text-red-400">{{ errors.first("Region") }}</span>
           </div>
@@ -192,7 +173,7 @@
               $t("Confirm password")
             }}</label>
             <input
-              type="password"
+              type="text"
               :placeholder="$t('enter Confirm Password')"
               v-model="person.ConfirmPassword"
               v-validate="{ required: true, min: 8 }"
@@ -232,15 +213,12 @@
 import SwitchLang from "@/components/Shared/Form/SwitchLang.vue";
 import UserHeader from "@/components/User/MainPage/UserHeader.vue";
 import UserHeaderPhone from "@/components/User/UserHeaderPhone.vue";
-import { sendRequest } from "../../../axios";
 export default {
   name: "LoginPage",
   data() {
     return {
       checkUser: true,
       selected: "User",
-      cities: [],
-      regions: [],
       person: {
         FirstName: "",
         LastName: "",
@@ -254,26 +232,6 @@ export default {
       },
     };
   },
-  watch: {
-    "person.City"(value) {
-      this.getRegions(value);
-    },
-  },
-  created() {
-    let successCallback = (res) => {
-      if (res.data.success) {
-        this.cities = res.data.data;
-      }
-    };
-    sendRequest(
-      "Address/City/AllCities",
-      "get",
-      null,
-      false,
-      successCallback,
-      null
-    );
-  },
   components: {
     UserHeader,
     UserHeaderPhone,
@@ -283,78 +241,19 @@ export default {
     goToMainPage() {
       this.$router.go(-1);
     },
-    getRegions(id) {
-      let successCallback = (res) => {
-        if (res.data.success) {
-          this.regions = res.data.data;
-        }
-      };
-      sendRequest(
-        `Address/City/Regions?cityId=${id}`,
-        "get",
-        null,
-        false,
-        successCallback,
-        null
-      );
-    },
     Register() {
       this.$validator.validateAll().then((result) => {
         if (result) {
-          let successCallback = (res) => {
-            if (res.data.success) {
-              this.$router.push({
-                name: "LogIn",
-              });
-            } else {
-              console.error("Error");
-            }
-          };
-
-          sendRequest(
-            "Account/register/Customer",
-            "post",
-            {
-              firstName: this.person.FirstName,
-              lastName: this.person.LastName,
-              password: this.person.Password,
-              email: this.person.Email,
-              contactNumber: this.person.Number,
-              regionID: this.person.Region,
-            },
-            false,
-            successCallback,
-            null
-          );
+          this.$router.push({
+            name: "MainPage",
+          });
+        } else {
+          console.log("error");
         }
       });
     },
   },
 };
 </script>
-<style lang="scss" scoped>
-.group-btn button:hover {
-  .tooltip {
-    position: absolute;
-    display: block;
-    top: -75px;
-    left: 0;
-    max-width: 350px;
-    width: 400px;
-    background: rgba(0, 0, 0, 0.75);
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 10px;
-    word-wrap: break-word;
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -16px;
-      left: 25%;
-      border-width: 8px;
-      border-style: solid;
-      border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
-    }
-  }
-}
-</style>
+
+<style></style>

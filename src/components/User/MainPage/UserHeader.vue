@@ -17,7 +17,11 @@
       <button @click="goUserPages()" class="hover:text-black">
         {{ $t("Home") }}
       </button>
-      <button @click="goUserServices()" class="hover:text-black">
+      <button
+        @click="goUserServices()"
+        class="hover:text-black"
+        :to="{ name: 'User.Towing' }"
+      >
         {{ $t("Servies") }}
       </button>
       <router-link
@@ -33,6 +37,7 @@
 
 <script>
 import SwitchLang from "@/components/Shared/Form/SwitchLang.vue";
+
 export default {
   props: ["checked"],
   data() {
@@ -46,11 +51,11 @@ export default {
   methods: {
     goUserPages() {
       if (
-        localStorage.getItem("role") === "Customer" &&
-        this.$route.name !== "Customer.Home"
+        localStorage.getItem("role") === "User" &&
+        this.$route.name !== "User.Home"
       ) {
         this.$router.push({
-          name: "Customer.Home",
+          name: "User.Home",
         });
       }
     },
@@ -60,12 +65,14 @@ export default {
       });
     },
     goUserServices() {
-      if (localStorage.getItem("role") === "Customer") {
+      if (localStorage.getItem("role") === "User") {
         this.$router.push({
-          name: "Customer.Towing",
+          name: "User.Towing",
         });
       }
     },
   },
 };
 </script>
+
+<style></style>
